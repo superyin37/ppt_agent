@@ -1,0 +1,54 @@
+[
+  {
+    "review_id": null,
+    "target_type": "slide",
+    "target_id": "00000000-0000-0000-0000-000000000000",
+    "review_layer": "rule,vision",
+    "severity": "P2",
+    "issues": [
+      {
+        "issue_id": "R008_key_message",
+        "rule_code": "KEY_MESSAGE_MISSING",
+        "layer": "rule",
+        "severity": "P2",
+        "message": "key_message is empty",
+        "location": "key_message",
+        "suggested_fix": "Add a concise key message for the slide.",
+        "auto_fixable": false
+      }
+    ],
+    "final_decision": "repair_required",
+    "repair_plan": []
+  },
+  {
+    "review_id": null,
+    "target_type": "slide",
+    "target_id": "00000000-0000-0000-0000-000000000000",
+    "review_layer": "rule,vision",
+    "severity": "P0",
+    "issues": [
+      {
+        "issue_id": "R006_empty",
+        "rule_code": "EMPTY_SLIDE",
+        "layer": "rule",
+        "severity": "P0",
+        "message": "slide has no meaningful content",
+        "location": null,
+        "suggested_fix": "Add content blocks before rendering.",
+        "auto_fixable": false
+      },
+      {
+        "issue_id": "R008_key_message",
+        "rule_code": "KEY_MESSAGE_MISSING",
+        "layer": "rule",
+        "severity": "P2",
+        "message": "key_message is empty",
+        "location": "key_message",
+        "suggested_fix": "Add a concise key message for the slide.",
+        "auto_fixable": false
+      }
+    ],
+    "final_decision": "escalate_human",
+    "repair_plan": []
+  }
+]

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #6B7B6E;
+  --color-accent:         #C8875A;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E2A1F;
+  --color-text-secondary: #5F6B60;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #1E2A1F 0%, #3A4F3B 48%, #5A6E5B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);overflow:hidden}.s31-left{position:absolute;left:0;top:0;width:52%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 calc(var(--safe-margin)*1.2) 0 calc(var(--safe-margin)*1.5);box-sizing:border-box;z-index:2}.s31-right{position:absolute;right:0;top:0;width:48%;height:100%;z-index:1;overflow:hidden;display:flex;align-items:center;justify-content:center}.s31-label{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;opacity:.8}.s31-scheme-no{font-family:var(--font-en);font-size:14px;color:var(--color-text-secondary);letter-spacing:6px;margin-bottom:20px;display:inline-block;padding:4px 14px;border:1px solid var(--color-border);border-radius:4px}.s31-title{font-family:var(--font-heading);font-size:var(--text-display);color:var(--color-text-primary);line-height:1.2;margin-bottom:8px;letter-spacing:4px}.s31-title-en{font-family:var(--font-en);font-size:var(--text-h3);color:var(--color-text-secondary);margin-bottom:36px;font-weight:300;letter-spacing:2px;opacity:.6}.s31-concept{font-size:var(--text-h3);color:var(--color-primary);font-weight:600;margin-bottom:16px;line-height:1.5;font-family:var(--font-heading)}.s31-desc{font-size:var(--text-body);color:var(--color-text-secondary);line-height:1.9;margin-bottom:28px;max-width:580px}.s31-tags{display:flex;gap:12px;flex-wrap:wrap}.s31-tag{font-size:var(--text-caption);color:var(--color-primary);background:rgba(0,0,0,.04);border:1px solid var(--color-border);border-radius:20px;padding:6px 18px;font-family:var(--font-body)}.s31-divider{width:48px;height:3px;background:var(--color-accent);border-radius:2px;margin-bottom:28px}.s31-sketch-area{width:100%;height:100%;position:relative;background:var(--color-surface);display:flex;align-items:center;justify-content:center}.s31-grid-bg{position:absolute;inset:0;opacity:.06}.s31-concept-svg{position:relative;z-index:2}</style><div class="s31-left"><span class="s31-scheme-no">SCHEME 02</span><h1 class="s31-title">隐山栖水</h1><p class="s31-title-en">Hidden in Mountains, Dwelling by Water</p><div class="s31-divider"></div><p class="s31-concept">建筑消隐于大地，让自然成为主角</p><p class="s31-desc">以覆土半埋入地形为核心策略，建筑体量消隐于广场绿地之下。屋顶花园延续地面景观，形成连续的生态绿廊，实现建筑与十堰山水环境的深度融合。通过被动式节能设计与生态修复技术，达成人工与自然的动态平衡。</p><div class="s31-tags"><span class="s31-tag">覆土建筑</span><span class="s31-tag">生态修复</span><span class="s31-tag">被动节能</span><span class="s31-tag">景观延续</span><span class="s31-tag">地形消隐</span></div></div><div class="s31-right"><div class="s31-sketch-area"><svg class="s31-grid-bg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="g31" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--color-text-secondary)" stroke-width=".5"/></pattern></defs><rect width="100%" height="100%" fill="url(#g31)"/></svg><svg class="s31-concept-svg" width="680" height="520" viewBox="0 0 680 520" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hill31a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity=".25"/><stop offset="100%" stop-color="var(--color-primary)" stop-opacity=".06"/></linearGradient><linearGradient id="hill31b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity=".18"/><stop offset="100%" stop-color="var(--color-primary)" stop-opacity=".03"/></linearGradient><linearGradient id="water31" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="var(--color-secondary)" stop-opacity=".15"/><stop offset="100%" stop-color="var(--color-primary)" stop-opacity=".08"/></linearGradient><linearGradient id="earth31" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-accent)" stop-opacity=".35"/><stop offset="100%" stop-color="var(--color-accent)" stop-opacity=".08"/></linearGradient></defs><path d="M0 340 Q120 240 240 280 Q360 320 480 260 Q580 220 680 270 L680 340Z" fill="url(#hill31a)"/><path d="M0 370 Q160 300 320 330 Q500 360 680 310 L680 370Z" fill="url(#hill31b)"/><rect x="120" y="320" width="420" height="60" rx="6" fill="url(#earth31)" opacity=".7"/><rect x="140" y="325" width="120" height="50" rx="4" fill="none" stroke="var(--color-text-secondary)" stroke-width="1" stroke-dasharray="4 3" opacity=".4"/><rect x="280" y="325" width="100" height="50" rx="4" fill="none" stroke="var(--color-text-secondary)" stroke-width="1" stroke-dasharray="4 3" opacity=".4"/><rect x="400" y="325" width="120" height="50" rx="4" fill="none" stroke="var(--color-text-secondary)" stroke-width="1" stroke-dasharray="4 3" opacity=".4"/><path d="M120 320 Q230 290 340 310 Q450 330 540 305" stroke="var(--color-primary)" stroke-width="2.5" fill="none" opacity=".6"/><g opacity=".5"><line x1="170" y1="310" x2="170" y2="290" stroke="var(--color-primary)" stroke-width="1.2"/><circle cx="170" cy="284" r="8" fill="var(--color-primary)" opacity=".2"/><line x1="250" y1="315" x2="250" y2="292" stroke="var(--color-primary)" stroke-width="1.2"/><circle cx="250" cy="286" r="10" fill="var(--color-primary)" opacity=".15"/><line x1="350" y1="318" x2="350" y2="295" stroke="var(--color-primary)" stroke-width="1.2"/><circle cx="350" cy="289" r="9" fill="var(--color-primary)" opacity=".18"/><line x1="440" y1="322" x2="440" y2="298" stroke="var(--color-primary)" stroke-width="1.2"/><circle cx="440" cy="292" r="7" fill="var(--color-primary)" opacity=".22"/><line x1="500" y1="316" x2="500" y2="296" stroke="var(--color-primary)" stroke-width="1.2"/><circle cx="500" cy="290" r="8" fill="var(--color-primary)" opacity=".17"/></g><path d="M0 400 Q170 385 340 395 Q510 405 680 390 L680 420 Q510 430 340 420 Q170 410 0 425Z" fill="url(#water31)"/><path d="M60 410 Q200 400 340 408 Q480 416 620 404" stroke="var(--color-primary)" stroke-width=".8" fill="none" opacity=".25"/><path d="M40 420 Q180 412 340 418 Q500 424 640 414" stroke="var(--color-primary)" stroke-width=".6" fill="none" opacity=".18"/><g font-family="var(--font-body)" font-size="11" fill="var(--color-text-secondary)" opacity=".6"><text x="180" y="360">功能空间A</text><text x="305" y="360">中庭采光</text><text x="430" y="360">功能空间B</text></g><line x1="120" y1="450" x2="540" y2="450" stroke="var(--color-border)" stroke-width="1" opacity=".4"/><g font-family="var(--font-en)" font-size="10" fill="var(--color-text-secondary)" opacity=".45"><text x="120" y="465">SECTION DIAGRAM — CONCEPTUAL</text></g><g opacity=".35"><path d="M580 180 L620 180 L620 320" stroke="var(--color-accent)" stroke-width="1" stroke-dasharray="3 3" fill="none"/><text x="626" y="250" font-family="var(--font-en)" font-size="9" fill="var(--color-accent)" opacity=".7" transform="rotate(90,626,250)">GROUND LEVEL</text></g></svg></div></div><svg style="position:absolute;bottom:0;left:0;width:100%;height:6px;z-index:3" preserveAspectRatio="none" viewBox="0 0 1920 6"><rect width="1920" height="6" fill="var(--color-primary)" opacity=".12"/><rect width="640" height="6" fill="var(--color-primary)" opacity=".35"/></svg></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>31 / 41</span>
+</div>
+</body>
+</html>

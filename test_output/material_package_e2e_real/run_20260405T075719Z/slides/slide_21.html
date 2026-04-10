@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #1C3A5F;
+  --color-secondary:      #2D6A8F;
+  --color-accent:         #E8A020;
+  --color-bg:             #F8F6F1;
+  --color-surface:        #EDEAE3;
+  --color-text-primary:   #1C1C1C;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D4D0C8;
+  --color-overlay:        rgba(0,0,0,0.55);
+  --color-cover-bg:       linear-gradient(135deg, #1C3A5F 0%, #2D6A8F 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 49px;
+  --text-h1:      39px;
+  --text-h2:      31px;
+  --text-h3:      25px;
+  --text-body:    20px;
+  --text-caption: 16px;
+  --text-label:   13px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.6;
+  --line-height-heading: 1.15;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   80px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+
+</head>
+<body>
+<div class="layout-sidebar slide-root" style="display:flex;width:100%;height:100%;"><div class="region-main" style="width:68%;height:100%;overflow:hidden;padding:var(--safe-margin);display:flex;flex-direction:column;gap:var(--element-gap);"><h1 class="block-heading">人民广场周边公厕现状分布</h1>
+<div class="block-chart" style="width:100%;height:100%;"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%9C%BA%E5%9C%B0poi_285.xlsx" alt="chart" style="object-fit:contain;" /></div>
+<p class="block-caption emphasis-muted">数据来源：人民广场周边 POI 调研（十堰市张湾区，坐标 110.78°E / 32.66°N）</p></div><div class="region-sidebar" style="width:32%;height:100%;overflow:hidden;padding:var(--safe-margin);background:#EDEAE3;display:flex;flex-direction:column;gap:var(--element-gap);"><span class="block-label emphasis-highlight">现状评估</span>
+<ul class="block-bullet-list"><li>功能配置基础：周边公厕以蹲位为主，无障碍设施覆盖率低，第三卫生间配置缺失</li><li>设计水平薄弱：外立面多为瓷砖贴面或简易彩钢板，缺乏与城市界面的协调设计</li><li>卫生状况参差：部分设施老旧，通风采光不足，日常维护管理水平有限</li><li>文化表达缺位：现有公厕均未体现车城文化或武当文化等地域特色，标识系统单一</li></ul>
+<blockquote class="block-quote emphasis-highlight">现状公厕普遍停留于基础功能满足，设计感与文化表达几近空白，存在显著提升空间。</blockquote></div></div>
+
+<div style="
+  position:fixed;bottom:0;left:0;right:0;height:40px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--safe-margin);
+  border-top:1px solid #D4D0C8;
+  font-family:var(--font-en);font-size:var(--text-label);
+  color:#6B6B6B;
+  background:#F8F6F1;
+  z-index:100;">
+  <span>Material Package E2E</span>
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>21 / 41</span>
+</div>
+</body>
+</html>

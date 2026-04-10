@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.s25-left{position:absolute;left:0;top:0;width:55%;height:100%;overflow:hidden;}.s25-left img{width:100%;height:100%;object-fit:cover;display:block;}.s25-left-overlay{position:absolute;left:0;bottom:0;width:100%;padding:28px 36px;background:linear-gradient(0deg,rgba(0,0,0,.62) 0%,transparent 100%);z-index:2;}.s25-left-overlay .s25-tag{display:inline-block;font-family:var(--font-en);font-size:var(--text-label);color:var(--color-accent);background:rgba(255,255,255,.12);border:1px solid var(--color-accent);border-radius:3px;padding:3px 10px;margin-bottom:8px;letter-spacing:.5px;}.s25-left-overlay .s25-meta{color:#fff;font-size:var(--text-caption);opacity:.85;line-height:1.6;}.s25-right{position:absolute;left:55%;top:0;width:45%;height:100%;padding:var(--safe-margin) var(--safe-margin) var(--safe-margin) 48px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;}.s25-section-label{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}.s25-title{font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);line-height:1.25;margin:0 0 6px 0;}.s25-subtitle{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-text-secondary);margin-bottom:24px;}.s25-divider{width:48px;height:3px;background:var(--color-primary);border-radius:2px;margin-bottom:24px;}.s25-analysis-title{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-primary);margin:0 0 14px 0;}.s25-item{display:flex;align-items:flex-start;margin-bottom:16px;}.s25-icon{flex-shrink:0;width:28px;height:28px;margin-right:12px;margin-top:2px;}.s25-item-text{font-size:var(--text-body);color:var(--color-text-primary);line-height:1.65;}.s25-item-text strong{color:var(--color-primary);font-weight:700;}.s25-insight-box{margin-top:20px;background:var(--color-surface);border-left:4px solid var(--color-accent);border-radius:0 var(--border-radius) var(--border-radius) 0;padding:16px 20px;}.s25-insight-label{font-family:var(--font-heading);font-size:var(--text-label);color:var(--color-accent);margin-bottom:6px;letter-spacing:1px;}.s25-insight-text{font-size:var(--text-body);color:var(--color-text-primary);line-height:1.7;}.s25-deco-arc{position:absolute;top:0;right:0;z-index:0;pointer-events:none;}</style><!-- 装饰弧线 --><svg class="s25-deco-arc" width="360" height="360" viewBox="0 0 360 360" fill="none"><circle cx="360" cy="0" r="300" stroke="var(--color-primary)" stroke-width="1.2" opacity=".1"/><circle cx="360" cy="0" r="230" stroke="var(--color-accent)" stroke-width=".8" opacity=".08"/><circle cx="360" cy="0" r="160" stroke="var(--color-primary)" stroke-width=".6" opacity=".06"/></svg><!-- 左侧大图 --><div class="s25-left"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png" alt="草莓园活动馆外观"><div class="s25-left-overlay"><span class="s25-tag">CASE 03</span><div class="s25-meta">小写建筑事务所 &nbsp;|&nbsp; 十堰市 &nbsp;|&nbsp; 620 m² &nbsp;|&nbsp; 2019<br>来源：ArchDaily</div></div></div><!-- 右侧分析 --><div class="s25-right"><span class="s25-section-label">Reference Case</span><h2 class="s25-title">草莓园活动馆</h2><p class="s25-subtitle">十堰在地实践 · 社区建筑 · 覆土绿化验证</p><div class="s25-divider"></div><h3 class="s25-analysis-title">设计策略分析</h3><div class="s25-item"><svg class="s25-icon" viewBox="0 0 28 28"><rect x="2" y="8" width="10" height="12" rx="1.5" fill="var(--color-primary)" opacity=".7"/><rect x="14" y="4" width="12" height="16" rx="1.5" fill="var(--color-primary)" opacity=".45"/><rect x="8" y="14" width="10" height="10" rx="1.5" fill="var(--color-accent)" opacity=".55"/></svg><div class="s25-item-text"><strong>体块错落组合</strong>——多个小尺度体量高低交错布置，消解建筑体量感，形成丰富的空间层次与视线通廊</div></div><div class="s25-item"><svg class="s25-icon" viewBox="0 0 28 28"><path d="M2 22 Q14 6 26 22" fill="none" stroke="var(--color-primary)" stroke-width="2"/><line x1="2" y1="22" x2="26" y2="22" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="10" cy="16" r="2" fill="var(--color-accent)"/><circle cx="18" cy="14" r="2" fill="var(--color-accent)"/></svg><div class="s25-item-text"><strong>屋顶覆土绿化</strong>——利用缓坡屋面实现种植覆土，建筑与周边农田景观无缝衔接，降低视觉侵入感</div></div><div class="s25-item"><svg class="s25-icon" viewBox="0 0 28 28"><rect x="3" y="6" width="22" height="16" rx="2" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><line x1="10" y1="6" x2="10" y2="22" stroke="var(--color-accent)" stroke-width="1" stroke-dasharray="3 2"/><line x1="18" y1="6" x2="18" y2="22" stroke="var(--color-accent)" stroke-width="1" stroke-dasharray="3 2"/><rect x="10" y="6" width="8" height="16" fill="var(--color-primary)" opacity=".12"/></svg><div class="s25-item-text"><strong>灰空间过渡</strong>——檐下、廊道等半室外空间作为室内外过渡带，为采摘休憩提供遮蔽，同时引入自然通风与光线</div></div><div class="s25-insight-box"><div class="s25-insight-label">▸ 对本项目的启示</div><div class="s25-insight-text">作为十堰本地已建成案例，草莓园活动馆验证了覆土绿化与体块错落组合在鄂西北气候条件下的可行性，为本项目的生态屋面、体量消隐及灰空间设计提供了直接的在地经验参照。</div></div></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>25 / 41</span>
+</div>
+</body>
+</html>

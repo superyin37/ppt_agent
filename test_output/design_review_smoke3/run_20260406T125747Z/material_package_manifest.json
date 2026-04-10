@@ -1,0 +1,720 @@
+{
+  "items": [
+    {
+      "entries": [
+        {
+          "id": "46844dbe-af80-4208-9814-8419d6656c50",
+          "kind": "document",
+          "title": "设计建议书大纲_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E8%AE%BE%E8%AE%A1%E5%BB%BA%E8%AE%AE%E4%B9%A6%E5%A4%A7%E7%BA%B2_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\设计建议书大纲_285.md"
+        }
+      ],
+      "logical_key": "brief.design_outline"
+    },
+    {
+      "entries": [
+        {
+          "id": "7eb18229-d62c-4077-b0d5-e07369fca80d",
+          "kind": "chart_bundle",
+          "title": "经济背景 - 城市经济_chart_0_285",
+          "format": "bundle",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E5%9F%8E%E5%B8%82%E7%BB%8F%E6%B5%8E_chart_0_285.html",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E5%9F%8E%E5%B8%82%E7%BB%8F%E6%B5%8E_chart_0_285.svg",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\经济背景 - 城市经济_chart_0_285.svg"
+        }
+      ],
+      "logical_key": "economy.city.chart.0"
+    },
+    {
+      "entries": [
+        {
+          "id": "bc0e0b5a-5de5-4d49-8a90-d8c46afcd0b2",
+          "kind": "chart_bundle",
+          "title": "经济背景 - 城市经济_chart_1_285",
+          "format": "bundle",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E5%9F%8E%E5%B8%82%E7%BB%8F%E6%B5%8E_chart_1_285.html",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E5%9F%8E%E5%B8%82%E7%BB%8F%E6%B5%8E_chart_1_285.svg",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\经济背景 - 城市经济_chart_1_285.svg"
+        }
+      ],
+      "logical_key": "economy.city.chart.1"
+    },
+    {
+      "entries": [
+        {
+          "id": "a9d5fb21-a3ff-44c7-8a4a-52894bf8e912",
+          "kind": "chart_bundle",
+          "title": "经济背景 - 城市经济_chart_2_285",
+          "format": "bundle",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E5%9F%8E%E5%B8%82%E7%BB%8F%E6%B5%8E_chart_2_285.html",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E5%9F%8E%E5%B8%82%E7%BB%8F%E6%B5%8E_chart_2_285.svg",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\经济背景 - 城市经济_chart_2_285.svg"
+        }
+      ],
+      "logical_key": "economy.city.chart.2"
+    },
+    {
+      "entries": [
+        {
+          "id": "54f08ebf-f616-4eb4-95bc-2025a384aece",
+          "kind": "chart_bundle",
+          "title": "经济背景 - 消费水平_chart_0_285",
+          "format": "bundle",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E6%B6%88%E8%B4%B9%E6%B0%B4%E5%B9%B3_chart_0_285.html",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E6%B6%88%E8%B4%B9%E6%B0%B4%E5%B9%B3_chart_0_285.svg",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\经济背景 - 消费水平_chart_0_285.svg"
+        }
+      ],
+      "logical_key": "economy.consumption.chart.0"
+    },
+    {
+      "entries": [
+        {
+          "id": "fbbef05b-dee7-4506-9c31-86daa92f1ead",
+          "kind": "chart_bundle",
+          "title": "经济背景 - 消费水平_chart_1_285",
+          "format": "bundle",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E6%B6%88%E8%B4%B9%E6%B0%B4%E5%B9%B3_chart_1_285.html",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E6%B6%88%E8%B4%B9%E6%B0%B4%E5%B9%B3_chart_1_285.svg",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\经济背景 - 消费水平_chart_1_285.svg"
+        }
+      ],
+      "logical_key": "economy.consumption.chart.1"
+    },
+    {
+      "entries": [
+        {
+          "id": "b53e91d6-0b9c-43a0-9999-c05d46c9c4cd",
+          "kind": "chart_bundle",
+          "title": "经济背景 - 产业发展_chart_0_285",
+          "format": "bundle",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E4%BA%A7%E4%B8%9A%E5%8F%91%E5%B1%95_chart_0_285.html",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E4%BA%A7%E4%B8%9A%E5%8F%91%E5%B1%95_chart_0_285.svg",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\经济背景 - 产业发展_chart_0_285.svg"
+        }
+      ],
+      "logical_key": "economy.industry.chart.0"
+    },
+    {
+      "entries": [
+        {
+          "id": "838652aa-4fa5-4c45-80e8-be96990206ea",
+          "kind": "chart_bundle",
+          "title": "经济背景 - 产业发展_chart_1_285",
+          "format": "bundle",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E4%BA%A7%E4%B8%9A%E5%8F%91%E5%B1%95_chart_1_285.html",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E7%BB%8F%E6%B5%8E%E8%83%8C%E6%99%AF%20-%20%E4%BA%A7%E4%B8%9A%E5%8F%91%E5%B1%95_chart_1_285.svg",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\经济背景 - 产业发展_chart_1_285.svg"
+        }
+      ],
+      "logical_key": "economy.industry.chart.1"
+    },
+    {
+      "entries": [
+        {
+          "id": "17beb250-8202-4d30-8aaa-97e5b65ae02f",
+          "kind": "document",
+          "title": "案例1_评价和分析_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E6%A1%88%E4%BE%8B1_%E8%AF%84%E4%BB%B7%E5%92%8C%E5%88%86%E6%9E%90_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\案例1_评价和分析_285.md"
+        }
+      ],
+      "logical_key": "reference.case.1.analysis"
+    },
+    {
+      "entries": [
+        {
+          "id": "c74e0f30-d0d5-439a-9481-0099dbed0243",
+          "kind": "image",
+          "title": "参考案例1_图片_1_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_1_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_1_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例1_图片_1_285.png"
+        },
+        {
+          "id": "55755ce4-d459-42c5-ade4-1ade950d9d0d",
+          "kind": "image",
+          "title": "参考案例1_图片_2_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_2_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_2_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例1_图片_2_285.png"
+        },
+        {
+          "id": "5bb50a9b-5f54-43a2-a9c6-fd845023bd45",
+          "kind": "image",
+          "title": "参考案例1_图片_3_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_3_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_3_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例1_图片_3_285.png"
+        },
+        {
+          "id": "ca03d056-bb6a-4c0f-b1f9-dc886e248c22",
+          "kind": "image",
+          "title": "参考案例1_图片_4_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_4_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_4_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例1_图片_4_285.png"
+        },
+        {
+          "id": "c6a26c6b-7599-46a2-b594-2c4f8744035e",
+          "kind": "image",
+          "title": "参考案例1_图片_5_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_5_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E5%9B%BE%E7%89%87_5_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例1_图片_5_285.png"
+        }
+      ],
+      "logical_key": "reference.case.1.images"
+    },
+    {
+      "entries": [
+        {
+          "id": "dbb5f93c-0c39-4377-ab0f-2973950594cc",
+          "kind": "document",
+          "title": "参考案例1_archdaily.cn_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_archdaily.cn_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例1_archdaily.cn_285.md"
+        }
+      ],
+      "logical_key": "reference.case.1.source"
+    },
+    {
+      "entries": [
+        {
+          "id": "63b2e1d4-b778-4af8-a634-0dc65c069485",
+          "kind": "image",
+          "title": "参考案例1_缩略图_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例1_缩略图_285.png"
+        }
+      ],
+      "logical_key": "reference.case.1.thumbnail"
+    },
+    {
+      "entries": [
+        {
+          "id": "0c5e08e6-820f-49ec-8e58-e83a0abb98cf",
+          "kind": "document",
+          "title": "案例2_评价和分析_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E6%A1%88%E4%BE%8B2_%E8%AF%84%E4%BB%B7%E5%92%8C%E5%88%86%E6%9E%90_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\案例2_评价和分析_285.md"
+        }
+      ],
+      "logical_key": "reference.case.2.analysis"
+    },
+    {
+      "entries": [
+        {
+          "id": "28d4d713-f154-4b8a-8cf6-e4442858d198",
+          "kind": "image",
+          "title": "参考案例2_图片_1_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_1_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_1_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例2_图片_1_285.png"
+        },
+        {
+          "id": "85b37a8d-37a4-4f8e-865e-a8edba3cc069",
+          "kind": "image",
+          "title": "参考案例2_图片_2_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_2_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_2_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例2_图片_2_285.png"
+        },
+        {
+          "id": "8cfb2a06-be23-4fd1-9556-17bd5b9a0b61",
+          "kind": "image",
+          "title": "参考案例2_图片_3_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_3_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_3_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例2_图片_3_285.png"
+        },
+        {
+          "id": "9d4c3ee6-c20f-4502-897a-47f77a28eee5",
+          "kind": "image",
+          "title": "参考案例2_图片_4_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_4_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_4_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例2_图片_4_285.png"
+        },
+        {
+          "id": "39067917-318d-4a8b-91cb-a661b2ad9793",
+          "kind": "image",
+          "title": "参考案例2_图片_5_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_5_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E5%9B%BE%E7%89%87_5_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例2_图片_5_285.png"
+        }
+      ],
+      "logical_key": "reference.case.2.images"
+    },
+    {
+      "entries": [
+        {
+          "id": "7c73c320-7436-405c-83f7-3cca2e117468",
+          "kind": "document",
+          "title": "参考案例2_archdaily.cn_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_archdaily.cn_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例2_archdaily.cn_285.md"
+        }
+      ],
+      "logical_key": "reference.case.2.source"
+    },
+    {
+      "entries": [
+        {
+          "id": "be1b5e40-2255-4610-bbd1-6dfde8556c67",
+          "kind": "image",
+          "title": "参考案例2_缩略图_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B2_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例2_缩略图_285.png"
+        }
+      ],
+      "logical_key": "reference.case.2.thumbnail"
+    },
+    {
+      "entries": [
+        {
+          "id": "b56ca849-6b46-46c8-b758-493815395d48",
+          "kind": "document",
+          "title": "案例3_评价和分析_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E6%A1%88%E4%BE%8B3_%E8%AF%84%E4%BB%B7%E5%92%8C%E5%88%86%E6%9E%90_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\案例3_评价和分析_285.md"
+        }
+      ],
+      "logical_key": "reference.case.3.analysis"
+    },
+    {
+      "entries": [
+        {
+          "id": "f16caaf9-4215-495c-b421-341ff80bc09b",
+          "kind": "image",
+          "title": "参考案例3_图片_1_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_1_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_1_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例3_图片_1_285.png"
+        },
+        {
+          "id": "bf73d0ed-666f-4571-9de5-5ba84fcde24f",
+          "kind": "image",
+          "title": "参考案例3_图片_2_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_2_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_2_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例3_图片_2_285.png"
+        },
+        {
+          "id": "c984c0b5-0c01-4019-ad3e-479fd5bd2f71",
+          "kind": "image",
+          "title": "参考案例3_图片_3_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_3_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_3_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例3_图片_3_285.png"
+        },
+        {
+          "id": "05232d6b-1096-4b5d-915c-14066a160810",
+          "kind": "image",
+          "title": "参考案例3_图片_4_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_4_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_4_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例3_图片_4_285.png"
+        },
+        {
+          "id": "3a407662-ee5a-441d-a044-cc725783d6ac",
+          "kind": "image",
+          "title": "参考案例3_图片_5_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_5_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E5%9B%BE%E7%89%87_5_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例3_图片_5_285.png"
+        }
+      ],
+      "logical_key": "reference.case.3.images"
+    },
+    {
+      "entries": [
+        {
+          "id": "52788960-a2cf-44e4-9f1d-3be2c8e6d9f0",
+          "kind": "document",
+          "title": "参考案例3_archdaily.cn_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_archdaily.cn_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例3_archdaily.cn_285.md"
+        }
+      ],
+      "logical_key": "reference.case.3.source"
+    },
+    {
+      "entries": [
+        {
+          "id": "fbeb7b19-1622-4b17-89f6-ccfc7b06bfc6",
+          "kind": "image",
+          "title": "参考案例3_缩略图_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B3_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例3_缩略图_285.png"
+        }
+      ],
+      "logical_key": "reference.case.3.thumbnail"
+    },
+    {
+      "entries": [
+        {
+          "id": "75af9c9f-56f2-4c3c-82d7-5a54d06a3601",
+          "kind": "document",
+          "title": "案例4_评价和分析_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E6%A1%88%E4%BE%8B4_%E8%AF%84%E4%BB%B7%E5%92%8C%E5%88%86%E6%9E%90_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\案例4_评价和分析_285.md"
+        }
+      ],
+      "logical_key": "reference.case.4.analysis"
+    },
+    {
+      "entries": [
+        {
+          "id": "b7889fa3-c97e-4c28-8461-edd2c13301f6",
+          "kind": "image",
+          "title": "参考案例4_图片_1_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_1_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_1_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例4_图片_1_285.png"
+        },
+        {
+          "id": "5ccebbd3-a036-48bb-996d-c1e67729fe9a",
+          "kind": "image",
+          "title": "参考案例4_图片_2_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_2_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_2_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例4_图片_2_285.png"
+        },
+        {
+          "id": "1a0c8c7f-6ea7-499e-89b0-fc28552bdc46",
+          "kind": "image",
+          "title": "参考案例4_图片_3_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_3_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_3_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例4_图片_3_285.png"
+        },
+        {
+          "id": "3af5d997-527e-43f6-bd8d-e7d93cdd17b1",
+          "kind": "image",
+          "title": "参考案例4_图片_4_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_4_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_4_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例4_图片_4_285.png"
+        },
+        {
+          "id": "ed0a9bdc-9d12-48d1-a7b7-0594ef31d656",
+          "kind": "image",
+          "title": "参考案例4_图片_5_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_5_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E5%9B%BE%E7%89%87_5_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例4_图片_5_285.png"
+        }
+      ],
+      "logical_key": "reference.case.4.images"
+    },
+    {
+      "entries": [
+        {
+          "id": "b16d39a1-351a-4e52-931f-1624de0b9ca7",
+          "kind": "document",
+          "title": "参考案例4_archdaily.cn_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_archdaily.cn_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例4_archdaily.cn_285.md"
+        }
+      ],
+      "logical_key": "reference.case.4.source"
+    },
+    {
+      "entries": [
+        {
+          "id": "b2acb804-a012-49ca-82f8-2fcbcb5f6b8e",
+          "kind": "image",
+          "title": "参考案例4_缩略图_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\参考案例4_缩略图_285.png"
+        }
+      ],
+      "logical_key": "reference.case.4.thumbnail"
+    },
+    {
+      "entries": [
+        {
+          "id": "4aa16458-f16c-4ebc-8995-a8c4691ad96c",
+          "kind": "image",
+          "title": "场地四至分析_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%9C%BA%E5%9C%B0%E5%9B%9B%E8%87%B3%E5%88%86%E6%9E%90_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%9C%BA%E5%9C%B0%E5%9B%9B%E8%87%B3%E5%88%86%E6%9E%90_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\场地四至分析_285.png"
+        }
+      ],
+      "logical_key": "site.boundary.image"
+    },
+    {
+      "entries": [
+        {
+          "id": "9128c119-591e-4153-ae9d-42a6bd7d3a16",
+          "kind": "image",
+          "title": "附近同类型产品分析_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E9%99%84%E8%BF%91%E5%90%8C%E7%B1%BB%E5%9E%8B%E4%BA%A7%E5%93%81%E5%88%86%E6%9E%90_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E9%99%84%E8%BF%91%E5%90%8C%E7%B1%BB%E5%9E%8B%E4%BA%A7%E5%93%81%E5%88%86%E6%9E%90_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\附近同类型产品分析_285.png"
+        }
+      ],
+      "logical_key": "site.competitor.image"
+    },
+    {
+      "entries": [
+        {
+          "id": "b22e9d2f-b2ee-4191-ae86-4141bd8b33ac",
+          "kind": "spreadsheet",
+          "title": "附近同类型产品分析_POI_285",
+          "format": "xlsx",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E9%99%84%E8%BF%91%E5%90%8C%E7%B1%BB%E5%9E%8B%E4%BA%A7%E5%93%81%E5%88%86%E6%9E%90_POI_285.xlsx",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\附近同类型产品分析_POI_285.xlsx"
+        }
+      ],
+      "logical_key": "site.competitor.table"
+    },
+    {
+      "entries": [
+        {
+          "id": "c5b53868-5a75-44f3-878e-130ee3aa357a",
+          "kind": "document",
+          "title": "场地坐标_285",
+          "format": "md",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%9C%BA%E5%9C%B0%E5%9D%90%E6%A0%87_285.md",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\场地坐标_285.md"
+        }
+      ],
+      "logical_key": "site.coordinate.text"
+    },
+    {
+      "entries": [
+        {
+          "id": "12ee79f8-7357-43ba-8cd4-ff3b001a23dc",
+          "kind": "image",
+          "title": "区域开发情况_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8C%BA%E5%9F%9F%E5%BC%80%E5%8F%91%E6%83%85%E5%86%B5_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8C%BA%E5%9F%9F%E5%BC%80%E5%8F%91%E6%83%85%E5%86%B5_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\区域开发情况_285.png"
+        }
+      ],
+      "logical_key": "site.development.image"
+    },
+    {
+      "entries": [
+        {
+          "id": "7625f6cd-e3fc-4ea5-ae43-3aee0075e31a",
+          "kind": "spreadsheet",
+          "title": "区域开发情况_POI_285",
+          "format": "xlsx",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%8C%BA%E5%9F%9F%E5%BC%80%E5%8F%91%E6%83%85%E5%86%B5_POI_285.xlsx",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\区域开发情况_POI_285.xlsx"
+        }
+      ],
+      "logical_key": "site.development.table"
+    },
+    {
+      "entries": [
+        {
+          "id": "fbba172c-fd37-4e77-841c-4e746cb9f30d",
+          "kind": "image",
+          "title": "周边基础设施建设规划_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%91%A8%E8%BE%B9%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%BB%BA%E8%AE%BE%E8%A7%84%E5%88%92_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%91%A8%E8%BE%B9%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%BB%BA%E8%AE%BE%E8%A7%84%E5%88%92_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\周边基础设施建设规划_285.png"
+        }
+      ],
+      "logical_key": "site.infrastructure.plan.image"
+    },
+    {
+      "entries": [
+        {
+          "id": "4112e517-1975-49d0-90b3-fd87d0f84547",
+          "kind": "spreadsheet",
+          "title": "周边基础设施建设规划_POI_285",
+          "format": "xlsx",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%91%A8%E8%BE%B9%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%BB%BA%E8%AE%BE%E8%A7%84%E5%88%92_POI_285.xlsx",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\周边基础设施建设规划_POI_285.xlsx"
+        }
+      ],
+      "logical_key": "site.infrastructure.plan.table"
+    },
+    {
+      "entries": [
+        {
+          "id": "5f5c0149-1d88-4a7b-9363-89ec261f9eb0",
+          "kind": "spreadsheet",
+          "title": "场地poi_285",
+          "format": "xlsx",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%9C%BA%E5%9C%B0poi_285.xlsx",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\场地poi_285.xlsx"
+        }
+      ],
+      "logical_key": "site.poi.table"
+    },
+    {
+      "entries": [
+        {
+          "id": "81928efd-a9cf-466d-a78e-0ad48150677c",
+          "kind": "image",
+          "title": "外部交通_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\外部交通_285.png"
+        }
+      ],
+      "logical_key": "site.transport.external.image"
+    },
+    {
+      "entries": [
+        {
+          "id": "2f882578-f4ef-4dba-a35d-d22632dca2ca",
+          "kind": "image",
+          "title": "枢纽站点_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E6%9E%A2%E7%BA%BD%E7%AB%99%E7%82%B9_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E6%9E%A2%E7%BA%BD%E7%AB%99%E7%82%B9_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\枢纽站点_285.png"
+        }
+      ],
+      "logical_key": "site.transport.hub.image"
+    },
+    {
+      "entries": [
+        {
+          "id": "769e9355-90f6-46f2-b3e2-10dfd722f68d",
+          "kind": "spreadsheet",
+          "title": "枢纽站点_POI_285",
+          "format": "xlsx",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E6%9E%A2%E7%BA%BD%E7%AB%99%E7%82%B9_POI_285.xlsx",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\枢纽站点_POI_285.xlsx"
+        }
+      ],
+      "logical_key": "site.transport.hub.table"
+    },
+    {
+      "entries": [
+        {
+          "id": "e0dd39b5-4b3c-4f96-b28d-aba0dd0927ef",
+          "kind": "image",
+          "title": "外部交通站点_285",
+          "format": "png",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A%E7%AB%99%E7%82%B9_285.png",
+          "preview_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A%E7%AB%99%E7%82%B9_285.png",
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\外部交通站点_285.png"
+        }
+      ],
+      "logical_key": "site.transport.station.image"
+    },
+    {
+      "entries": [
+        {
+          "id": "7e489413-3ccb-4698-b9ee-b42f01d14a65",
+          "kind": "spreadsheet",
+          "title": "外部交通站点_POI_285",
+          "format": "xlsx",
+          "content_url": "file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A%E7%AB%99%E7%82%B9_POI_285.xlsx",
+          "preview_url": null,
+          "source_path": "D:\\projects\\PPT_Agent\\test_material\\project1\\外部交通站点_POI_285.xlsx"
+        }
+      ],
+      "logical_key": "site.transport.station.table"
+    }
+  ],
+  "logical_keys": [
+    "brief.design_outline",
+    "economy.city.chart.0",
+    "economy.city.chart.1",
+    "economy.city.chart.2",
+    "economy.consumption.chart.0",
+    "economy.consumption.chart.1",
+    "economy.industry.chart.0",
+    "economy.industry.chart.1",
+    "reference.case.1.analysis",
+    "reference.case.1.images",
+    "reference.case.1.source",
+    "reference.case.1.thumbnail",
+    "reference.case.2.analysis",
+    "reference.case.2.images",
+    "reference.case.2.source",
+    "reference.case.2.thumbnail",
+    "reference.case.3.analysis",
+    "reference.case.3.images",
+    "reference.case.3.source",
+    "reference.case.3.thumbnail",
+    "reference.case.4.analysis",
+    "reference.case.4.images",
+    "reference.case.4.source",
+    "reference.case.4.thumbnail",
+    "site.boundary.image",
+    "site.competitor.image",
+    "site.competitor.table",
+    "site.coordinate.text",
+    "site.development.image",
+    "site.development.table",
+    "site.infrastructure.plan.image",
+    "site.infrastructure.plan.table",
+    "site.poi.table",
+    "site.transport.external.image",
+    "site.transport.hub.image",
+    "site.transport.hub.table",
+    "site.transport.station.image",
+    "site.transport.station.table"
+  ]
+}

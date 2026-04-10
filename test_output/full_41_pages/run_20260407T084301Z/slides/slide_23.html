@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C5545;
+  --color-secondary:      #6B4C3B;
+  --color-accent:         #C4883A;
+  --color-bg:             #F4F1EC;
+  --color-surface:        #EAE5DD;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #5C5C5C;
+  --color-border:         #D1C9BD;
+  --color-overlay:        rgba(44,85,69,0.85);
+  --color-cover-bg:       linear-gradient(155deg, #1B3D30 0%, #2C5545 40%, #3A6B55 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正标雅宋", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.s23-top-bar{position:absolute;top:0;left:0;width:100%;height:6px;background:var(--color-primary);}.s23-section-tag{position:absolute;top:40px;left:var(--safe-margin);font-family:var(--font-en);font-size:var(--text-label);color:var(--color-text-secondary);letter-spacing:2px;text-transform:uppercase;}.s23-title{position:absolute;top:72px;left:var(--safe-margin);font-family:var(--font-heading);font-size:var(--text-h2);color:var(--color-text-primary);font-weight:700;line-height:1.3;}.s23-subtitle{position:absolute;top:72px;right:var(--safe-margin);font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);text-align:right;line-height:1.5;}.s23-main{position:absolute;top:140px;left:var(--safe-margin);right:var(--safe-margin);bottom:50px;display:grid;grid-template-columns:540px 1fr;gap:36px;}.s23-img-col{display:flex;flex-direction:column;gap:16px;}.s23-hero-img{width:540px;flex:1;min-height:0;border-radius:var(--border-radius);overflow:hidden;position:relative;}.s23-hero-img img{width:100%;height:100%;object-fit:cover;display:block;}.s23-img-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:var(--color-overlay);color:#fff;font-size:var(--text-caption);font-family:var(--font-body);}.s23-meta-row{display:flex;gap:12px;flex-wrap:wrap;}.s23-meta-chip{padding:6px 14px;border-radius:20px;background:var(--color-surface);border:1px solid var(--color-border);font-size:var(--text-label);color:var(--color-text-secondary);white-space:nowrap;}.s23-design-note{background:var(--color-surface);border-radius:var(--border-radius);padding:16px 20px;border-left:3px solid var(--color-accent);}.s23-design-note p{margin:0;font-size:var(--text-caption);color:var(--color-text-secondary);line-height:1.65;}.s23-design-note strong{color:var(--color-text-primary);}.s23-right-col{display:flex;flex-direction:column;gap:14px;overflow:hidden;}.s23-action-title{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-primary);font-weight:700;line-height:1.4;margin:0;padding-left:16px;border-left:4px solid var(--color-accent);}.s23-analysis-block{background:var(--color-surface);border-radius:var(--border-radius);padding:20px 24px;flex:1;overflow:hidden;}.s23-analysis-block h4{margin:0 0 10px 0;font-family:var(--font-heading);font-size:var(--text-body);color:var(--color-text-primary);font-weight:700;}.s23-analysis-block ul{margin:0;padding:0 0 0 18px;list-style:none;}.s23-analysis-block li{position:relative;padding:4px 0;font-size:var(--text-body);color:var(--color-text-secondary);line-height:1.6;}.s23-analysis-block li::before{content:'';position:absolute;left:-18px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--color-accent);}.s23-insight-box{background:var(--color-primary);border-radius:var(--border-radius);padding:18px 22px;}.s23-insight-box h4{margin:0 0 8px 0;font-family:var(--font-heading);font-size:var(--text-body);color:#fff;font-weight:700;display:flex;align-items:center;gap:8px;}.s23-insight-box ul{margin:0;padding:0 0 0 18px;list-style:none;}.s23-insight-box li{position:relative;padding:3px 0;font-size:var(--text-caption);color:rgba(255,255,255,0.88);line-height:1.55;}.s23-insight-box li::before{content:'';position:absolute;left:-16px;top:10px;width:5px;height:5px;background:var(--color-accent);border-radius:1px;transform:rotate(45deg);}.s23-key-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}.s23-metric-card{background:var(--color-surface);border-radius:var(--border-radius);padding:14px 16px;text-align:center;border:1px solid var(--color-border);}.s23-metric-card .metric-value{font-family:var(--font-en);font-size:var(--text-h3);color:var(--color-primary);font-weight:700;line-height:1.2;}.s23-metric-card .metric-label{font-size:var(--text-caption);color:var(--color-text-secondary);margin-top:4px;}.s23-page-no{position:absolute;bottom:18px;right:var(--safe-margin);font-family:var(--font-en);font-size:var(--text-label);color:var(--color-text-secondary);}</style><div class="s23-top-bar"></div><svg style="position:absolute;top:120px;right:0;width:320px;height:320px;opacity:0.06;pointer-events:none" viewBox="0 0 320 320"><circle cx="320" cy="0" r="280" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="320" cy="0" r="220" fill="none" stroke="var(--color-accent)" stroke-width="1"/><circle cx="320" cy="0" r="160" fill="none" stroke="var(--color-primary)" stroke-width="0.8"/></svg><div class="s23-section-tag">Reference Case 01</div><div class="s23-title">城东公厕 · 文化场景</div><div class="s23-subtitle">西安大唐不夜城旁<br/>三谷设计 / 2019</div><div class="s23-main"><div class="s23-img-col"><div class="s23-hero-img"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B1_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png" alt="城东公厕外观"/><div class="s23-img-caption">「城东」公共卫生间 · 西安大唐不夜城</div></div><div class="s23-meta-row"><span class="s23-meta-chip">三谷设计</span><span class="s23-meta-chip">200 m²</span><span class="s23-meta-chip">2019年</span><span class="s23-meta-chip">西安</span><span class="s23-meta-chip">文化公建</span></div><div class="s23-design-note"><p><strong>设计亮点：</strong>以唐代坡屋顶轮廓为母题，通过耐候钢板与穿孔铝板的现代构造转译，实现传统意象与当代功能的精准平衡。单层压低体量融入大唐不夜城天际线，灰空间过渡赋予市政设施场所精神。</p></div></div><div class="s23-right-col"><p class="s23-action-title">以唐代建筑意象重构公厕立面，证明市政设施可成为城市文化叙事的载体</p><div class="s23-analysis-block"><h4>设计手法分析</h4><ul><li><strong>立面语言：</strong>提取唐代坡屋顶轮廓与格栅肌理，以耐候钢板与穿孔铝板转译传统建筑元素，兼顾通风与视觉遮蔽</li><li><strong>空间叙事：</strong>入口设置过渡灰空间，借景大唐不夜城街景，将如厕动线转化为一段文化体验序列</li><li><strong>材料策略：</strong>外立面采用锈蚀钢板与深色石材，呼应周边仿唐建筑的厚重质感，同时以现代构造逻辑保证耐久性</li><li><strong>尺度控制：</strong>200m² 体量压低至单层，屋顶线条与周边唐风建筑群天际线协调，避免突兀</li></ul></div><div class="s23-key-metrics"><div class="s23-metric-card"><div class="metric-value">200</div><div class="metric-label">建筑面积 m²</div></div><div class="s23-metric-card"><div class="metric-value">1F</div><div class="metric-label">单层体量</div></div><div class="s23-metric-card"><div class="metric-value">3</div><div class="metric-label">核心材料体系</div></div></div><div class="s23-insight-box"><h4><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.5 6.5L17 7.5L13 11.5L14 17L9 14.5L4 17L5 11.5L1 7.5L6.5 6.5L9 1Z" fill="var(--color-accent)"/></svg>对十堰项目的启示</h4><ul><li>公共设施立面可承载地域文化符号——十堰项目可提炼武当山建筑或汽车工业元素融入外立面</li><li>灰空间过渡手法值得借鉴，在功能入口前营造场所感，提升公共建筑的文化辨识度</li><li>材料选择应兼顾文化表达与气候适应性，耐候钢板在鄂西北湿润气候下需评估维护周期</li></ul></div></div></div><div class="s23-page-no">23 / 30</div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>23 / 41</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C5545;
+  --color-secondary:      #6B4C3B;
+  --color-accent:         #C4883A;
+  --color-bg:             #F4F1EC;
+  --color-surface:        #EAE5DD;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #5C5C5C;
+  --color-border:         #D1C9BD;
+  --color-overlay:        rgba(44,85,69,0.85);
+  --color-cover-bg:       linear-gradient(155deg, #1B3D30 0%, #2C5545 40%, #3A6B55 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正标雅宋", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.s37-top-bar{position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent),var(--color-secondary));}.s37-label{position:absolute;top:48px;left:var(--safe-margin);font-family:var(--font-en);font-size:var(--text-label);color:var(--color-accent);letter-spacing:4px;text-transform:uppercase;opacity:.7;}.s37-title{position:absolute;top:78px;left:var(--safe-margin);font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);font-weight:700;letter-spacing:2px;}.s37-subtitle{position:absolute;top:136px;left:var(--safe-margin);font-family:var(--font-body);font-size:var(--text-body);color:var(--color-text-secondary);max-width:900px;line-height:1.6;}.s37-triptych{position:absolute;top:210px;left:var(--safe-margin);right:var(--safe-margin);height:680px;display:grid;grid-template-columns:1fr 1fr 0.7fr;gap:24px;}.s37-card{position:relative;border-radius:var(--border-radius);overflow:hidden;background:var(--color-surface);border:1px solid var(--color-border);display:flex;flex-direction:column;}.s37-card-img{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,0,0,.06),rgba(0,0,0,.12));}.s37-card-img svg{width:70%;height:70%;opacity:.35;}.s37-card-footer{padding:18px 22px;border-top:1px solid var(--color-border);}.s37-card-footer h3{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-text-primary);margin:0 0 6px 0;}.s37-card-footer p{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-text-secondary);margin:0;line-height:1.55;}.s37-note-card{display:flex;flex-direction:column;justify-content:space-between;padding:28px 24px;border-radius:var(--border-radius);background:var(--color-primary);color:#fff;position:relative;overflow:hidden;}.s37-note-card h3{font-family:var(--font-heading);font-size:var(--text-h2);margin:0 0 16px 0;line-height:1.3;position:relative;z-index:2;}.s37-note-item{margin-bottom:20px;position:relative;z-index:2;}.s37-note-item .label{font-size:var(--text-label);opacity:.7;margin-bottom:4px;letter-spacing:1px;font-family:var(--font-en);text-transform:uppercase;}.s37-note-item .desc{font-size:var(--text-body);line-height:1.6;}.s37-gear-deco{position:absolute;bottom:-40px;right:-40px;opacity:.1;}</style><div class="s37-top-bar"></div><span class="s37-label">Concept B · Perspective</span><h1 class="s37-title">「车城齿轮」人视图</h1><p class="s37-subtitle">耐候钢板质感与工业玻璃砖透光效果的街道体验，呈现十堰汽车工业文化的空间记忆</p><div class="s37-triptych"><div class="s37-card"><div class="s37-card-img"><svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="100" width="160" height="200" rx="4" stroke="var(--color-accent)" stroke-width="2" fill="none"/><rect x="30" y="110" width="60" height="40" rx="2" fill="var(--color-accent)" opacity=".15"/><rect x="100" y="110" width="70" height="40" rx="2" fill="var(--color-accent)" opacity=".15"/><rect x="30" y="160" width="60" height="40" rx="2" fill="var(--color-accent)" opacity=".1"/><rect x="100" y="160" width="70" height="40" rx="2" fill="var(--color-accent)" opacity=".1"/><rect x="220" y="80" width="160" height="220" rx="4" stroke="var(--color-primary)" stroke-width="2" fill="none"/><rect x="230" y="90" width="50" height="50" rx="2" fill="var(--color-primary)" opacity=".12"/><rect x="290" y="90" width="80" height="50" rx="2" fill="var(--color-primary)" opacity=".12"/><line x1="0" y1="300" x2="400" y2="300" stroke="var(--color-text-secondary)" stroke-width="1" opacity=".3"/><circle cx="80" cy="290" r="8" fill="var(--color-text-secondary)" opacity=".15"/><circle cx="120" cy="288" r="10" fill="var(--color-text-secondary)" opacity=".12"/><rect x="60" y="270" width="4" height="30" fill="var(--color-accent)" opacity=".2"/><rect x="340" y="260" width="4" height="40" fill="var(--color-primary)" opacity=".2"/></svg></div><div class="s37-card-footer"><h3>街道人视效果</h3><p>耐候钢板外墙在自然光下呈现温暖锈红色调，与灰色混凝土基座形成工业对话，齿轮造型檐口投射出有韵律的光影</p></div></div><div class="s37-card"><div class="s37-card-img"><svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="40" width="320" height="240" rx="6" stroke="var(--color-primary)" stroke-width="1.5" fill="none"/><rect x="60" y="60" width="80" height="100" rx="3" fill="var(--color-accent)" opacity=".08" stroke="var(--color-accent)" stroke-width="1"/><rect x="160" y="60" width="80" height="100" rx="3" fill="var(--color-accent)" opacity=".08" stroke="var(--color-accent)" stroke-width="1"/><rect x="260" y="60" width="80" height="100" rx="3" fill="var(--color-accent)" opacity=".08" stroke="var(--color-accent)" stroke-width="1"/><line x1="60" y1="200" x2="340" y2="200" stroke="var(--color-border)" stroke-width="1"/><rect x="60" y="210" width="120" height="50" rx="3" fill="var(--color-primary)" opacity=".08"/><rect x="200" y="210" width="140" height="50" rx="3" fill="var(--color-secondary)" opacity=".08"/><circle cx="100" cy="110" r="15" fill="var(--color-accent)" opacity=".12"/><circle cx="200" cy="110" r="15" fill="var(--color-accent)" opacity=".12"/><circle cx="300" cy="110" r="15" fill="var(--color-accent)" opacity=".12"/></svg></div><div class="s37-card-footer"><h3>室内透光效果</h3><p>工业玻璃砖墙体在日间引入柔和漫射光，夜间内部灯光外溢形成琥珀色光带，营造温暖而富有工业美学的如厕体验</p></div></div><div class="s37-note-card"><svg class="s37-gear-deco" width="200" height="200" viewBox="0 0 200 200"><path d="M100 20 L110 45 L135 35 L125 60 L150 65 L130 80 L150 100 L125 95 L130 120 L105 110 L100 135 L95 110 L70 120 L75 95 L50 100 L70 80 L50 65 L75 60 L65 35 L90 45 Z" fill="#fff" opacity=".5"/><circle cx="100" cy="75" r="25" fill="none" stroke="#fff" stroke-width="2" opacity=".5"/></svg><h3>设计要点<br/>解读</h3><div class="s37-note-item"><div class="label">Corten Steel</div><div class="desc">耐候钢板自然氧化形成保护层，免维护且随时间演变色泽，呼应十堰工业城市基因</div></div><div class="s37-note-item"><div class="label">Glass Brick</div><div class="desc">工业玻璃砖兼顾隐私与采光，透光率约60%，内部空间明亮而不通透</div></div><div class="s37-note-item"><div class="label">Third Restroom</div><div class="desc">第三卫生间配置无障碍设施与婴儿护理台，净宽≥1.8m，满足特殊人群如厕需求</div></div><div style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);font-size:var(--text-caption);opacity:.6;">方案二 · 车城齿轮 — 概念人视</div></div></div><svg style="position:absolute;bottom:0;left:0;width:480px;height:120px;opacity:.06;" viewBox="0 0 480 120"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/><circle cx="60" cy="60" r="35" fill="none" stroke="var(--color-accent)" stroke-width="1"/><circle cx="170" cy="70" r="40" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="260" cy="55" r="55" fill="none" stroke="var(--color-secondary)" stroke-width="1"/></svg></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>37 / 41</span>
+</div>
+</body>
+</html>

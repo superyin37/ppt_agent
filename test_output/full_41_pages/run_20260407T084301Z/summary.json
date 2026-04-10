@@ -1,0 +1,58 @@
+{
+  "material_path": "D:\\projects\\PPT_Agent\\test_material\\project1",
+  "output_dir": "D:\\projects\\PPT_Agent\\test_output\\full_41_pages\\run_20260407T084301Z",
+  "mode": "real-llm",
+  "steps": [
+    {
+      "step": "create_project",
+      "status": "ok"
+    },
+    {
+      "step": "ingest_material_package",
+      "status": "ok",
+      "item_count": 54
+    },
+    {
+      "step": "generate_brief_doc",
+      "status": "ok"
+    },
+    {
+      "step": "generate_visual_theme",
+      "status": "ok",
+      "style_keywords": [
+        "自然质朴",
+        "工业肌理",
+        "文化沉稳",
+        "现代东方",
+        "生态绿意"
+      ]
+    },
+    {
+      "step": "generate_outline",
+      "status": "ok",
+      "total_pages": 41
+    },
+    {
+      "step": "bind_slides",
+      "status": "ok",
+      "binding_count": 41
+    },
+    {
+      "step": "compose_slides",
+      "status": "ok",
+      "slide_count": 41
+    },
+    {
+      "step": "render_and_review",
+      "status": "ok",
+      "rendered_slide_count": 41
+    },
+    {
+      "step": "export_pdf",
+      "status": "ok",
+      "pdf_path": "D:\\projects\\PPT_Agent\\test_output\\full_41_pages\\run_20260407T084301Z\\deck.pdf"
+    }
+  ],
+  "project_id": "085113fd-920c-4370-98fe-086ba9ffb3a7",
+  "package_id": "fed781bb-256e-4c26-9e44-35f9be122a2d"
+}

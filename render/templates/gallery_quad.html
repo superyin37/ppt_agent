@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding: var(--safe-margin, 64px); padding-top: 56px; height: 100%;">
+  <div class="section-tag">{{ section }}</div>
+  <h2 class="slide-title">{{ title }}</h2>
+
+  <!-- 2×2 image grid -->
+  <div style="
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    height: calc(100% - 200px);
+    margin-top: 8px;
+  ">
+    {%- set image_blocks = [] %}
+    {%- for bid, block in blocks.items() %}
+      {%- if block.block_type == 'image' %}
+        {%- set _ = image_blocks.append(block) %}
+      {%- endif %}
+    {%- endfor %}
+
+    {% for i in range(4) %}
+    {%- set block = image_blocks[i] if i < image_blocks | length else none %}
+    <div style="
+      border-radius: var(--radius-md, 8px);
+      overflow: hidden;
+      background: var(--color-bg-secondary, #f8f8f8);
+      position: relative;
+    ">
+      {% if block and block.content %}
+      <img src="{{ block.content }}" style="width: 100%; height: 100%; object-fit: cover;">
+      {% else %}
+      <div style="
+        width: 100%; height: 100%;
+        display: flex; align-items: center; justify-content: center;
+        color: #9ca3af; font-size: 18px;
+        background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+      ">图片 {{ i + 1 }}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

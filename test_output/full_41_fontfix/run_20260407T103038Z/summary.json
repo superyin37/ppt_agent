@@ -1,0 +1,52 @@
+{
+  "material_path": "D:\\projects\\PPT_Agent\\test_material\\project1",
+  "output_dir": "D:\\projects\\PPT_Agent\\test_output\\full_41_fontfix\\run_20260407T103038Z",
+  "mode": "real-llm",
+  "steps": [
+    {
+      "step": "create_project",
+      "status": "ok"
+    },
+    {
+      "step": "ingest_material_package",
+      "status": "ok",
+      "item_count": 54
+    },
+    {
+      "step": "generate_brief_doc",
+      "status": "ok"
+    },
+    {
+      "step": "generate_visual_theme",
+      "status": "fallback",
+      "error": "LLM 输出解析失败（3次尝试）: Error code: 402 - {'error': {'message': 'This request requires more credits, or fewer max_tokens. You requested up to 4096 tokens, but can only afford 652. To increase, visit https://openrouter.ai/settings/credits and add more credits', 'code': 402, 'metadata': {'provider_name': None}}, 'user_id': 'user_3AIur5ouVr4BohWj5IT0M03QfRI'}"
+    },
+    {
+      "step": "generate_outline",
+      "status": "ok",
+      "total_pages": 41
+    },
+    {
+      "step": "bind_slides",
+      "status": "ok",
+      "binding_count": 41
+    },
+    {
+      "step": "compose_slides",
+      "status": "ok",
+      "slide_count": 41
+    },
+    {
+      "step": "render_and_review",
+      "status": "ok",
+      "rendered_slide_count": 41
+    },
+    {
+      "step": "export_pdf",
+      "status": "ok",
+      "pdf_path": "D:\\projects\\PPT_Agent\\test_output\\full_41_fontfix\\run_20260407T103038Z\\deck.pdf"
+    }
+  ],
+  "project_id": "049914a1-d07c-4848-9d67-dd546e3ae019",
+  "package_id": "8d5eaa7a-5d1a-4596-a7fa-6f3ed186bf1d"
+}

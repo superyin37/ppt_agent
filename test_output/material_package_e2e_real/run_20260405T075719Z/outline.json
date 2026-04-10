@@ -1,0 +1,978 @@
+{
+  "theme": "cultural",
+  "slides": [
+    {
+      "title": "十堰人民广场生态公厕",
+      "purpose": "项目全称「十堰市张湾区人民广场公共厕所」，副标题突出「车城武当双文化·被动节能示范」定位，标注300m²及甲方名称。",
+      "section": "封面",
+      "slot_id": "cover",
+      "is_cover": true,
+      "slide_no": 1,
+      "key_message": "项目全称「十堰市张湾区人民广场公共厕所」，副标题突出「车城武当双文化·被动节能示范」定位，标注300m²及甲方名称。",
+      "layout_hint": "full-bleed 封面，现代简约风格，呼应武当山水意象",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "project_name"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "目录",
+      "purpose": "列出六大章节：背景研究、场地分析、竞品分析、参考案例、项目定位与设计策略、概念方案，标注页码范围。",
+      "section": "目录",
+      "slot_id": "toc",
+      "is_cover": false,
+      "slide_no": 2,
+      "key_message": "列出六大章节：背景研究、场地分析、竞品分析、参考案例、项目定位与设计策略、概念方案，标注页码范围。",
+      "layout_hint": "split-h：左侧大插画，右侧目录列表",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "背景研究",
+      "purpose": "章节页，编号01，中文「背景研究」英文「Background Research」，配政策提标与文旅需求的引导语。",
+      "section": "背景研究",
+      "slot_id": "chapter-1-divider",
+      "is_cover": false,
+      "slide_no": 3,
+      "key_message": "章节页，编号01，中文「背景研究」英文「Background Research」，配政策提标与文旅需求的引导语。",
+      "layout_hint": "full-bleed，章节编号 + 中英文标题",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": true,
+      "optional_input_keys": [],
+      "required_input_keys": [],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "国家政策解读",
+      "purpose": "重点解读CJJ14-2016对二类以上公厕第三卫生间、无障碍设施、通风除臭的强制要求，说明对本项目功能配置的直接约束。列表呈现。",
+      "section": "背景研究",
+      "slot_id": "policy-1",
+      "is_cover": false,
+      "slide_no": 4,
+      "key_message": "重点解读CJJ14-2016对二类以上公厕第三卫生间、无障碍设施、通风除臭的强制要求，说明对本项目功能配置的直接约束。列表呈现。",
+      "layout_hint": "sidebar：政策条目列表 + 来源链接",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "web_search_policy"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "湖北十四五规划要求",
+      "purpose": "解读湖北十四五城乡人居环境规划中公共设施品质提升要求，结合十堰市文旅发展目标，说明公厕升级的政策机遇。",
+      "section": "背景研究",
+      "slot_id": "policy-2",
+      "is_cover": false,
+      "slide_no": 5,
+      "key_message": "解读湖北十四五城乡人居环境规划中公共设施品质提升要求，结合十堰市文旅发展目标，说明公厕升级的政策机遇。",
+      "layout_hint": "sidebar：政策条目列表 + 来源链接",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "web_search_policy"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "政策影响综述",
+      "purpose": "以矩阵图总结国家标准+省级规划双重驱动对本项目的影响：功能配置底线、品质提升方向、生态节能目标三条主线。",
+      "section": "背景研究",
+      "slot_id": "policy-impact",
+      "is_cover": false,
+      "slide_no": 6,
+      "key_message": "以矩阵图总结国家标准+省级规划双重驱动对本项目的影响：功能配置底线、品质提升方向、生态节能目标三条主线。",
+      "layout_hint": "split-h：大图表 + 文字分析",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "上位规划分析",
+      "purpose": "梳理十堰市总体规划与张湾区控规对人民广场地块的用地性质、建筑限高、绿化率等控制指标，表格对比呈现。",
+      "section": "背景研究",
+      "slot_id": "upper-planning",
+      "is_cover": false,
+      "slide_no": 7,
+      "key_message": "梳理十堰市总体规划与张湾区控规对人民广场地块的用地性质、建筑限高、绿化率等控制指标，表格对比呈现。",
+      "layout_hint": "sidebar：规划对比表格 + 文字说明",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "web_search_planning"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "交通与基础设施",
+      "purpose": "展示人民广场周边公交枢纽、主干道及市政基础设施分布，三图并排标注距离与通达性，说明高可达性优势。",
+      "section": "背景研究",
+      "slot_id": "transport-map",
+      "is_cover": false,
+      "slide_no": 8,
+      "key_message": "展示人民广场周边公交枢纽、主干道及市政基础设施分布，三图并排标注距离与通达性，说明高可达性优势。",
+      "layout_hint": "triptych：三图并排，下方简要说明条",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.transport.hub.image",
+        "site.transport.station.image",
+        "site.infrastructure.plan.image"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "map_hub_stations",
+        "map_transport_nodes",
+        "map_infra_plan"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "在地文化特征",
+      "purpose": "分析十堰车城文化（东风汽车工业遗产）与武当文化（道教建筑美学）两大IP资源，提炼可转化为建筑语言的文化符号。",
+      "section": "背景研究",
+      "slot_id": "cultural-analysis",
+      "is_cover": false,
+      "slide_no": 9,
+      "key_message": "分析十堰车城文化（东风汽车工业遗产）与武当文化（道教建筑美学）两大IP资源，提炼可转化为建筑语言的文化符号。",
+      "layout_hint": "split-h：左侧文化分析，右侧文化插画",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "城市经济概览",
+      "purpose": "展示十堰市GDP、常住人口、城镇化率近年趋势图表，说明城市发展阶段对公共设施品质的需求升级。",
+      "section": "背景研究",
+      "slot_id": "economic-1",
+      "is_cover": false,
+      "slide_no": 10,
+      "key_message": "展示十堰市GDP、常住人口、城镇化率近年趋势图表，说明城市发展阶段对公共设施品质的需求升级。",
+      "layout_hint": "grid 2×2：图表卡片 + 底部文字总结",
+      "coverage_status": "complete",
+      "required_assets": [
+        "economy.city.chart.0",
+        "economy.city.chart.1",
+        "economy.city.chart.2"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "chart_gdp",
+        "chart_population",
+        "chart_urbanization",
+        "chart_tertiary",
+        "chart_industry_structure",
+        "chart_retail",
+        "chart_income_expense"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "产业结构分析",
+      "purpose": "展示十堰产业结构与第三产业占比变化，说明文旅服务业增长对公共配套设施品质的拉动效应。",
+      "section": "背景研究",
+      "slot_id": "economic-2",
+      "is_cover": false,
+      "slide_no": 11,
+      "key_message": "展示十堰产业结构与第三产业占比变化，说明文旅服务业增长对公共配套设施品质的拉动效应。",
+      "layout_hint": "grid 2×2：图表卡片 + 底部文字总结",
+      "coverage_status": "complete",
+      "required_assets": [
+        "economy.industry.chart.0",
+        "economy.industry.chart.1"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "chart_gdp",
+        "chart_population",
+        "chart_urbanization",
+        "chart_tertiary",
+        "chart_industry_structure",
+        "chart_retail",
+        "chart_income_expense"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "消费水平分析",
+      "purpose": "展示十堰居民收入与消费支出趋势，说明市民对公共空间品质感知力提升，支撑公厕升级的社会基础。",
+      "section": "背景研究",
+      "slot_id": "economic-3",
+      "is_cover": false,
+      "slide_no": 12,
+      "key_message": "展示十堰居民收入与消费支出趋势，说明市民对公共空间品质感知力提升，支撑公厕升级的社会基础。",
+      "layout_hint": "grid 2×2：图表卡片 + 底部文字总结",
+      "coverage_status": "complete",
+      "required_assets": [
+        "economy.consumption.chart.0",
+        "economy.consumption.chart.1"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "chart_gdp",
+        "chart_population",
+        "chart_urbanization",
+        "chart_tertiary",
+        "chart_industry_structure",
+        "chart_retail",
+        "chart_income_expense"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "场地分析",
+      "purpose": "章节页，编号02，中文「场地分析」英文「Site Analysis」，引导语强调核心城区高曝光地块。",
+      "section": "场地分析",
+      "slot_id": "chapter-2-divider",
+      "is_cover": false,
+      "slide_no": 13,
+      "key_message": "章节页，编号02，中文「场地分析」英文「Site Analysis」，引导语强调核心城区高曝光地块。",
+      "layout_hint": "full-bleed 章节页",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": true,
+      "optional_input_keys": [],
+      "required_input_keys": [],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "城市区位分析",
+      "purpose": "展示十堰市域尺度区位图，标注人民广场在张湾区核心位置及与武当山景区的空间关系，说明城市展示面价值。",
+      "section": "场地分析",
+      "slot_id": "site-location-1",
+      "is_cover": false,
+      "slide_no": 14,
+      "key_message": "展示十堰市域尺度区位图，标注人民广场在张湾区核心位置及与武当山景区的空间关系，说明城市展示面价值。",
+      "layout_hint": "overlay-mosaic：大地图 + 浮动分析标注面板",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.transport.external.image"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "map_site_boundary",
+        "map_transport_nodes",
+        "map_hub_stations"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "场地四至分析",
+      "purpose": "展示场地红线及四至边界，标注东西南北相邻建筑与道路，分析300m²紧凑用地的设计约束条件。",
+      "section": "场地分析",
+      "slot_id": "site-location-2",
+      "is_cover": false,
+      "slide_no": 15,
+      "key_message": "展示场地红线及四至边界，标注东西南北相邻建筑与道路，分析300m²紧凑用地的设计约束条件。",
+      "layout_hint": "overlay-mosaic：大地图 + 浮动分析标注面板",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.boundary.image"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "map_site_boundary",
+        "map_transport_nodes",
+        "map_hub_stations"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "交通可达性分析",
+      "purpose": "展示场地周边公交站点、枢纽分布图，标注步行可达范围，量化日均人流量优势。",
+      "section": "场地分析",
+      "slot_id": "site-location-3",
+      "is_cover": false,
+      "slide_no": 16,
+      "key_message": "展示场地周边公交站点、枢纽分布图，标注步行可达范围，量化日均人流量优势。",
+      "layout_hint": "overlay-mosaic：大地图 + 浮动分析标注面板",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.transport.hub.image",
+        "site.transport.hub.table"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "map_site_boundary",
+        "map_transport_nodes",
+        "map_hub_stations"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "区域开发现状",
+      "purpose": "展示场地周边区域开发情况地图，分析周边已建成与在建项目对公厕使用需求的支撑。",
+      "section": "场地分析",
+      "slot_id": "site-location-4",
+      "is_cover": false,
+      "slide_no": 17,
+      "key_message": "展示场地周边区域开发情况地图，分析周边已建成与在建项目对公厕使用需求的支撑。",
+      "layout_hint": "overlay-mosaic：大地图 + 浮动分析标注面板",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.development.image",
+        "site.development.table"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "map_site_boundary",
+        "map_transport_nodes",
+        "map_hub_stations"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "周边业态分析",
+      "purpose": "基于POI数据分析场地1km范围内餐饮、商业、公共服务等业态分布，图表呈现业态占比，说明如厕需求来源。",
+      "section": "场地分析",
+      "slot_id": "poi-analysis",
+      "is_cover": false,
+      "slide_no": 18,
+      "key_message": "基于POI数据分析场地1km范围内餐饮、商业、公共服务等业态分布，图表呈现业态占比，说明如厕需求来源。",
+      "layout_hint": "split-h：左 POI 分类图表，右文字分析",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.poi.table"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "poi_data"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "场地综合研判",
+      "purpose": "以SWOT矩阵总结场地优势（核心区位、高人流）、劣势（用地紧凑）、机会（政策提标）、威胁（形象要求高），推导设计策略方向。",
+      "section": "场地分析",
+      "slot_id": "site-summary",
+      "is_cover": false,
+      "slide_no": 19,
+      "key_message": "以SWOT矩阵总结场地优势（核心区位、高人流）、劣势（用地紧凑）、机会（政策提标）、威胁（形象要求高），推导设计策略方向。",
+      "layout_hint": "sidebar：SWOT 矩阵框",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.poi.table",
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "poi_data"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "竞品分析",
+      "purpose": "章节页，编号03，中文「竞品分析」英文「Competitor Analysis」，引导语点明填补文化型公厕空白。",
+      "section": "竞品分析",
+      "slot_id": "chapter-3-divider",
+      "is_cover": false,
+      "slide_no": 20,
+      "key_message": "章节页，编号03，中文「竞品分析」英文「Competitor Analysis」，引导语点明填补文化型公厕空白。",
+      "layout_hint": "full-bleed 章节页",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": true,
+      "optional_input_keys": [],
+      "required_input_keys": [],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "本地公厕现状",
+      "purpose": "展示人民广场周边现有公厕分布地图与表格，分析功能配置、设计水平、卫生状况，指出普遍缺乏设计感与文化表达。",
+      "section": "竞品分析",
+      "slot_id": "competitor-local",
+      "is_cover": false,
+      "slide_no": 21,
+      "key_message": "展示人民广场周边现有公厕分布地图与表格，分析功能配置、设计水平、卫生状况，指出普遍缺乏设计感与文化表达。",
+      "layout_hint": "sidebar：地图+表格为主，配文字分析",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.competitor.image",
+        "site.competitor.table"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "poi_data",
+        "site_coordinate"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "行业标杆对标",
+      "purpose": "对比国内文化型/生态型公厕标杆项目（大唐不夜城、望江亭等），以表格呈现面积、技术、文化策略差异，锁定差异化空间。",
+      "section": "竞品分析",
+      "slot_id": "competitor-web",
+      "is_cover": false,
+      "slide_no": 22,
+      "key_message": "对比国内文化型/生态型公厕标杆项目（大唐不夜城、望江亭等），以表格呈现面积、技术、文化策略差异，锁定差异化空间。",
+      "layout_hint": "grid：对比表格为主",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "web_search_competitors"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "大唐不夜城公厕",
+      "purpose": "介绍西安大唐不夜城「城东」公厕（200m²），重点分析文化场景植入手法——唐风建筑语言融入公共设施，提炼对本项目文化表达的启示。",
+      "section": "参考案例",
+      "slot_id": "reference-case-1",
+      "is_cover": false,
+      "slide_no": 23,
+      "key_message": "介绍西安大唐不夜城「城东」公厕（200m²），重点分析文化场景植入手法——唐风建筑语言融入公共设施，提炼对本项目文化表达的启示。",
+      "layout_hint": "split-h：左案例大图，右分析文字 + 启示条目",
+      "coverage_status": "complete",
+      "required_assets": [
+        "reference.case.1.thumbnail",
+        "reference.case.1.images",
+        "reference.case.1.source",
+        "reference.case.1.analysis"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "case_thumbnail",
+        "brief_doc",
+        "case_meta"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "西班牙Trado生态公厕",
+      "purpose": "介绍Trado生态公厕（56m²），重点分析被动节能策略与在地材料运用，提炼小体量建筑实现生态示范的技术路径启示。",
+      "section": "参考案例",
+      "slot_id": "reference-case-2",
+      "is_cover": false,
+      "slide_no": 24,
+      "key_message": "介绍Trado生态公厕（56m²），重点分析被动节能策略与在地材料运用，提炼小体量建筑实现生态示范的技术路径启示。",
+      "layout_hint": "split-h：左案例大图，右分析文字 + 启示条目",
+      "coverage_status": "complete",
+      "required_assets": [
+        "reference.case.2.thumbnail",
+        "reference.case.2.images",
+        "reference.case.2.source",
+        "reference.case.2.analysis"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "case_thumbnail",
+        "brief_doc",
+        "case_meta"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "十堰草莓园活动馆",
+      "purpose": "介绍十堰本地草莓园活动馆（620m²），分析体块错落、灰空间过渡、低反射材料等手法，提炼在地实践对本项目形态与材质的参考价值。",
+      "section": "参考案例",
+      "slot_id": "reference-case-3",
+      "is_cover": false,
+      "slide_no": 25,
+      "key_message": "介绍十堰本地草莓园活动馆（620m²），分析体块错落、灰空间过渡、低反射材料等手法，提炼在地实践对本项目形态与材质的参考价值。",
+      "layout_hint": "split-h：左案例大图，右分析文字 + 启示条目",
+      "coverage_status": "complete",
+      "required_assets": [
+        "reference.case.3.thumbnail",
+        "reference.case.3.images",
+        "reference.case.3.source",
+        "reference.case.3.analysis"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "case_thumbnail",
+        "brief_doc",
+        "case_meta"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "上海望江亭",
+      "purpose": "介绍望江亭覆土建筑（207m²），重点分析覆土被动节能降耗60%+、雨水滞留与生态修复策略，提炼对本项目节能目标的核心技术启示。",
+      "section": "参考案例",
+      "slot_id": "reference-case-4",
+      "is_cover": false,
+      "slide_no": 26,
+      "key_message": "介绍望江亭覆土建筑（207m²），重点分析覆土被动节能降耗60%+、雨水滞留与生态修复策略，提炼对本项目节能目标的核心技术启示。",
+      "layout_hint": "split-h：左案例大图，右分析文字 + 启示条目",
+      "coverage_status": "complete",
+      "required_assets": [
+        "reference.case.4.thumbnail",
+        "reference.case.4.images",
+        "reference.case.4.source",
+        "reference.case.4.analysis"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "case_thumbnail",
+        "brief_doc",
+        "case_meta"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "项目定位",
+      "purpose": "大字呈现核心定位：「十堰首座融合车城与武当文化的生态节能示范公厕」，下方分三点阐释文化标识、被动节能降耗60%+、城市形象展示面价值。",
+      "section": "项目定位",
+      "slot_id": "project-positioning",
+      "is_cover": false,
+      "slide_no": 27,
+      "key_message": "大字呈现核心定位：「十堰首座融合车城与武当文化的生态节能示范公厕」，下方分三点阐释文化标识、被动节能降耗60%+、城市形象展示面价值。",
+      "layout_hint": "single-column：大字定位标语 + 下方价值说明",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "设计策略",
+      "purpose": "章节页，编号04，中文「设计策略」英文「Design Strategy」，引导语：以生态技术与文化叙事定义新一代城市公厕。",
+      "section": "设计策略",
+      "slot_id": "chapter-4-divider",
+      "is_cover": false,
+      "slide_no": 28,
+      "key_message": "章节页，编号04，中文「设计策略」英文「Design Strategy」，引导语：以生态技术与文化叙事定义新一代城市公厕。",
+      "layout_hint": "full-bleed 章节页",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": true,
+      "optional_input_keys": [],
+      "required_input_keys": [],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "四大设计策略",
+      "purpose": "并排呈现四条策略：①车城武当双文化符号植入形态与材料；②覆土/被动通风降耗60%+；③半开放灰空间衔接广场；④在地材料低反射饰面融入环境。每条含图标+说明。",
+      "section": "设计策略",
+      "slot_id": "design-strategies",
+      "is_cover": false,
+      "slide_no": 29,
+      "key_message": "并排呈现四条策略：①车城武当双文化符号植入形态与材料；②覆土/被动通风降耗60%+；③半开放灰空间衔接广场；④在地材料低反射饰面融入环境。每条含图标+说明。",
+      "layout_hint": "grid 2×2：多策略并排，每条含标题 + 说明",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "方案一「太和归真」",
+      "purpose": "方案一以武当太和殿屋脊曲线为形态母题，覆土屋面+被动通风，强调道法自然的文化叙事。阐述设计理念与空间组织逻辑。",
+      "section": "概念方案",
+      "slot_id": "concept-intro-1",
+      "is_cover": false,
+      "slide_no": 30,
+      "key_message": "方案一以武当太和殿屋脊曲线为形态母题，覆土屋面+被动通风，强调道法自然的文化叙事。阐述设计理念与空间组织逻辑。",
+      "layout_hint": "split-h：理念大字 + 概念意向图",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "方案二「车辙印迹」",
+      "purpose": "方案二以车城工业线条为形态母题，折板屋面+天窗采光，强调现代工业美学与功能理性。阐述设计理念与空间组织逻辑。",
+      "section": "概念方案",
+      "slot_id": "concept-intro-2",
+      "is_cover": false,
+      "slide_no": 31,
+      "key_message": "方案二以车城工业线条为形态母题，折板屋面+天窗采光，强调现代工业美学与功能理性。阐述设计理念与空间组织逻辑。",
+      "layout_hint": "split-h：理念大字 + 概念意向图",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "方案三「云栖山房」",
+      "purpose": "方案三融合武当云雾意象与车城钢构语言，坡屋面覆绿+半围合灰空间，强调山水与工业的诗意共生。阐述设计理念与空间组织逻辑。",
+      "section": "概念方案",
+      "slot_id": "concept-intro-3",
+      "is_cover": false,
+      "slide_no": 32,
+      "key_message": "方案三融合武当云雾意象与车城钢构语言，坡屋面覆绿+半围合灰空间，强调山水与工业的诗意共生。阐述设计理念与空间组织逻辑。",
+      "layout_hint": "split-h：理念大字 + 概念意向图",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "「太和归真」鸟瞰",
+      "purpose": "展示方案一鸟瞰效果图，标注覆土屋面与广场的衔接关系、入口灰空间位置、绿化覆盖范围，底部注明关键尺寸。",
+      "section": "概念方案",
+      "slot_id": "concept-aerial-1",
+      "is_cover": false,
+      "slide_no": 33,
+      "key_message": "展示方案一鸟瞰效果图，标注覆土屋面与广场的衔接关系、入口灰空间位置、绿化覆盖范围，底部注明关键尺寸。",
+      "layout_hint": "full-bleed：大鸟瞰图 + 底部图注条",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "concept_description"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "「车辙印迹」鸟瞰",
+      "purpose": "展示方案二鸟瞰效果图，标注折板屋面走向、天窗位置、与朝阳北路的界面关系，底部注明关键尺寸。",
+      "section": "概念方案",
+      "slot_id": "concept-aerial-2",
+      "is_cover": false,
+      "slide_no": 34,
+      "key_message": "展示方案二鸟瞰效果图，标注折板屋面走向、天窗位置、与朝阳北路的界面关系，底部注明关键尺寸。",
+      "layout_hint": "full-bleed：大鸟瞰图 + 底部图注条",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "concept_description"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "「云栖山房」鸟瞰",
+      "purpose": "展示方案三鸟瞰效果图，标注坡屋面覆绿范围、半围合院落空间、与人民广场的视线关系，底部注明关键尺寸。",
+      "section": "概念方案",
+      "slot_id": "concept-aerial-3",
+      "is_cover": false,
+      "slide_no": 35,
+      "key_message": "展示方案三鸟瞰效果图，标注坡屋面覆绿范围、半围合院落空间、与人民广场的视线关系，底部注明关键尺寸。",
+      "layout_hint": "full-bleed：大鸟瞰图 + 底部图注条",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "concept_description"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "「太和归真」人视图",
+      "purpose": "展示方案一主入口与灰空间人视效果图，标注武当文化符号在立面的具体呈现方式，配简要材质说明。",
+      "section": "概念方案",
+      "slot_id": "concept-perspective-1",
+      "is_cover": false,
+      "slide_no": 36,
+      "key_message": "展示方案一主入口与灰空间人视效果图，标注武当文化符号在立面的具体呈现方式，配简要材质说明。",
+      "layout_hint": "split-h：两张效果图 + 注释文字",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "concept_description"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "「车辙印迹」人视图",
+      "purpose": "展示方案二沿街界面与折板屋面人视效果图，标注工业线条语言与天窗采光效果，配简要材质说明。",
+      "section": "概念方案",
+      "slot_id": "concept-perspective-2",
+      "is_cover": false,
+      "slide_no": 37,
+      "key_message": "展示方案二沿街界面与折板屋面人视效果图，标注工业线条语言与天窗采光效果，配简要材质说明。",
+      "layout_hint": "split-h：两张效果图 + 注释文字",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "concept_description"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "「云栖山房」人视图",
+      "purpose": "展示方案三半围合院落入口人视效果图，标注坡屋面覆绿与钢构细节，呈现山水诗意氛围，配简要材质说明。",
+      "section": "概念方案",
+      "slot_id": "concept-perspective-3",
+      "is_cover": false,
+      "slide_no": 38,
+      "key_message": "展示方案三半围合院落入口人视效果图，标注坡屋面覆绿与钢构细节，呈现山水诗意氛围，配简要材质说明。",
+      "layout_hint": "split-h：两张效果图 + 注释文字",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "concept_description"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "材质与经济指标对比",
+      "purpose": "三方案对比表格：主要材质（覆土/折板金属/坡屋面覆绿）、单方造价估算、被动节能降耗率、施工周期，上方配材质样板色卡。",
+      "section": "深化比选",
+      "slot_id": "material-economic",
+      "is_cover": false,
+      "slide_no": 39,
+      "key_message": "三方案对比表格：主要材质（覆土/折板金属/坡屋面覆绿）、单方造价估算、被动节能降耗率、施工周期，上方配材质样板色卡。",
+      "layout_hint": "triptych：三方案对比表格，上方材质样板",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline",
+        "site.coordinate.text"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "project_brief_data"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "设计任务书",
+      "purpose": "正式文档排版呈现：项目概况（300m²、容积率1.0）、功能要求（第三卫生间、无障碍、通风除臭）、设计目标（被动节能降耗60%+、双文化表达）、交付物清单。",
+      "section": "设计任务书",
+      "slot_id": "design-brief-doc",
+      "is_cover": false,
+      "slide_no": 40,
+      "key_message": "正式文档排版呈现：项目概况（300m²、容积率1.0）、功能要求（第三卫生间、无障碍、通风除臭）、设计目标（被动节能降耗60%+、双文化表达）、交付物清单。",
+      "layout_hint": "single-column：正式文档排版",
+      "coverage_status": "missing",
+      "required_assets": [
+        "brief.design_outline",
+        "site.coordinate.text"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "project_brief_data"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "感谢聆听",
+      "purpose": "结尾页呈现项目名称与甲方名称，配「生态·文化·城市新名片」收束语，风格与封面呼应。",
+      "section": "结尾",
+      "slot_id": "closing",
+      "is_cover": false,
+      "slide_no": 41,
+      "key_message": "结尾页呈现项目名称与甲方名称，配「生态·文化·城市新名片」收束语，风格与封面呼应。",
+      "layout_hint": "full-bleed：与封面风格呼应",
+      "coverage_status": "missing",
+      "required_assets": [],
+      "is_chapter_divider": true,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "project_name",
+        "client_name"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    }
+  ],
+  "sections": [
+    "封面",
+    "目录",
+    "背景研究",
+    "场地分析",
+    "竞品分析",
+    "参考案例",
+    "项目定位",
+    "设计策略",
+    "概念方案",
+    "深化比选",
+    "设计任务书",
+    "结尾"
+  ],
+  "deck_title": "十堰市张湾区人民广场公共厕所建筑方案汇报",
+  "outline_id": null,
+  "project_id": "a38c3c0a-431f-4e31-a93a-fa7549b9ac01",
+  "total_pages": 42
+}

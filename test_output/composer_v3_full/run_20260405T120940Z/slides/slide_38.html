@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.s38-header{position:absolute;top:48px;left:var(--safe-margin);z-index:10;}.s38-label{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-accent);letter-spacing:3px;text-transform:uppercase;opacity:.7;}.s38-title{font-family:var(--font-heading);font-size:var(--text-h2);color:var(--color-text-primary);margin-top:8px;font-weight:700;}.s38-subtitle{font-size:var(--text-caption);color:var(--color-text-secondary);margin-top:4px;letter-spacing:1px;}.s38-main{position:absolute;top:160px;left:var(--safe-margin);right:var(--safe-margin);bottom:60px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}.s38-img-panel{position:relative;border-radius:var(--border-radius);overflow:hidden;background:var(--color-surface);display:flex;align-items:center;justify-content:center;}.s38-img-panel svg.placeholder-scene{width:100%;height:100%;}.s38-img-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 20px;background:var(--color-overlay);backdrop-filter:blur(6px);font-size:var(--text-caption);color:#fff;letter-spacing:.5px;}.s38-anno-layer{position:absolute;top:160px;left:var(--safe-margin);right:var(--safe-margin);bottom:60px;display:grid;grid-template-columns:1fr 1fr;gap:32px;pointer-events:none;z-index:5;}.s38-anno-col{position:relative;}.s38-callout{position:absolute;background:rgba(255,255,255,.92);border-left:3px solid var(--color-accent);padding:8px 14px;border-radius:0 var(--border-radius) var(--border-radius) 0;pointer-events:auto;max-width:260px;box-shadow:0 2px 12px rgba(0,0,0,.08);}.s38-callout-title{font-family:var(--font-heading);font-size:var(--text-label);color:var(--color-primary);font-weight:700;margin-bottom:3px;}.s38-callout-text{font-size:13px;color:var(--color-text-secondary);line-height:1.55;}.s38-detail-strip{position:absolute;bottom:60px;left:var(--safe-margin);right:var(--safe-margin);height:1px;background:var(--color-border);}.s38-footer-bar{position:absolute;bottom:18px;left:var(--safe-margin);right:var(--safe-margin);display:flex;justify-content:space-between;align-items:center;}.s38-footer-tag{font-size:var(--text-label);color:var(--color-text-secondary);opacity:.6;font-family:var(--font-en);}.s38-page-no{font-size:var(--text-label);color:var(--color-text-secondary);opacity:.5;font-family:var(--font-en);}</style><div class="s38-header"><div class="s38-label">Concept C — Perspective View</div><div class="s38-title">「云水间」人视效果</div><div class="s38-subtitle">檐廊灰空间 · 金属骨架与绿顶交接 · 自然光引入 · 广场视线通透</div></div><div class="s38-main"><div class="s38-img-panel"><svg class="placeholder-scene" viewBox="0 0 880 700" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sky38a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity=".12"/><stop offset="100%" stop-color="var(--color-bg)" stop-opacity=".03"/></linearGradient><linearGradient id="ground38a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-surface)" stop-opacity=".6"/><stop offset="100%" stop-color="var(--color-border)" stop-opacity=".25"/></linearGradient></defs><rect width="880" height="700" fill="url(#sky38a)"/><rect y="460" width="880" height="240" fill="url(#ground38a)"/><g stroke="var(--color-text-secondary)" stroke-opacity=".18" fill="none" stroke-width="1.2"><line x1="80" y1="460" x2="880" y2="460"/><line x1="80" y1="460" x2="0" y2="700"/><line x1="800" y1="460" x2="880" y2="700"/></g><g fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-opacity=".35"><path d="M120,460 L120,280 L760,280 L760,460"/><path d="M120,280 L440,180 L760,280"/><line x1="220" y1="460" x2="220" y2="295" stroke-dasharray="6,4"/><line x1="440" y1="460" x2="440" y2="180" stroke-dasharray="6,4"/><line x1="660" y1="460" x2="660" y2="295" stroke-dasharray="6,4"/></g><g fill="var(--color-accent)" fill-opacity=".13"><rect x="120" y="270" width="640" height="14" rx="2"/></g><g fill="var(--color-primary)" fill-opacity=".08"><rect x="140" y="284" width="100" height="176" rx="3"/><rect x="380" y="284" width="120" height="176" rx="3"/><rect x="640" y="284" width="100" height="176" rx="3"/></g><g stroke="var(--color-accent)" stroke-width="1" stroke-opacity=".3" stroke-dasharray="3,3"><path d="M440,180 L440,100"/><path d="M200,350 L200,100 L680,100 L680,350" fill="none"/></g><text x="440" y="90" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)" opacity=".5" font-family="var(--font-en)">natural light penetration zone</text><g fill="var(--color-accent)" opacity=".18"><circle cx="260" cy="440" r="22"/><circle cx="580" cy="445" r="18"/><circle cx="700" cy="435" r="26"/><circle cx="160" cy="448" r="15"/></g></svg><div class="s38-img-caption">檐廊灰空间人视 — 金属骨架韵律与绿顶覆盖</div></div><div class="s38-img-panel"><svg class="placeholder-scene" viewBox="0 0 880 700" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sky38b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-secondary)" stop-opacity=".1"/><stop offset="100%" stop-color="var(--color-bg)" stop-opacity=".02"/></linearGradient></defs><rect width="880" height="700" fill="url(#sky38b)"/><rect y="480" width="880" height="220" fill="var(--color-surface)" fill-opacity=".4"/><g stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-opacity=".3"><rect x="60" y="200" width="760" height="280" rx="6"/><line x1="60" y1="200" x2="440" y2="120"/><line x1="820" y1="200" x2="440" y2="120"/><line x1="200" y1="200" x2="200" y2="480"/><line x1="440" y1="120" x2="440" y2="480"/><line x1="680" y1="200" x2="680" y2="480"/></g><g fill="var(--color-accent)" fill-opacity=".06"><rect x="210" y="210" width="220" height="260" rx="4"/><rect x="450" y="210" width="220" height="260" rx="4"/></g><g stroke="var(--color-accent)" stroke-width="1.2" stroke-opacity=".4" fill="none"><path d="M310,210 L310,140 Q310,130 320,130 L520,130 Q530,130 530,140 L530,210"/><line x1="420" y1="130" x2="420" y2="60" stroke-dasharray="4,3"/></g><text x="420" y="52" text-anchor="middle" font-size="12" fill="var(--color-text-secondary)" opacity=".5" font-family="var(--font-en)">skylight aperture</text><g fill="var(--color-primary)" fill-opacity=".06"><ellipse cx="150" cy="520" rx="60" ry="30"/><ellipse cx="740" cy="530" rx="50" ry="25"/></g><g stroke="var(--color-border)" stroke-width=".8" stroke-opacity=".3"><line x1="0" y1="480" x2="880" y2="480"/></g></svg><div class="s38-img-caption">内部效果 — 自然光引入与广场视线通透性</div></div></div><div class="s38-anno-layer"><div class="s38-anno-col"><div class="s38-callout" style="top:32px;left:12px;"><div class="s38-callout-title">金属骨架与绿顶交接</div><div class="s38-callout-text">轻钢格构柱以1.8m模数排列，顶部通过铰接节点与绿化覆土屋面衔接，形成连续檐廊灰空间，兼顾结构表现力与生态覆绿。</div></div><div class="s38-callout" style="bottom:80px;left:12px;"><div class="s38-callout-title">自然光引入方式</div><div class="s38-callout-text">屋面设置条形天窗带，沿骨架间隙引入漫射光线；檐口高度控制在4.2m，确保冬季低角度阳光深入廊下空间。</div></div></div><div class="s38-anno-col"><div class="s38-callout" style="top:32px;right:12px;"><div class="s38-callout-title">广场视线通透性</div><div class="s38-callout-text">檐廊无实墙围合，四面开敞；柱距≥3.6m保证视线穿透，站立于廊下可一览广场全景与远山轮廓，强化场所开放感。</div></div><div class="s38-callout" style="bottom:80px;right:12px;"><div class="s38-callout-title">灰空间体验</div><div class="s38-callout-text">檐廊作为室内外过渡地带，提供遮阳避雨的半户外活动场所；地面采用透水混凝土与本地砂岩拼铺，延续自然质朴基调。</div></div></div></div><div class="s38-detail-strip"></div><div class="s38-footer-bar"><span class="s38-footer-tag">CONCEPT C「云水间」· 十堰市文化建筑</span><span class="s38-page-no">38 / 48</span></div><svg style="position:absolute;top:0;right:0;width:320px;height:320px;opacity:.06;z-index:1;" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg"><circle cx="320" cy="0" r="280" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="320" cy="0" r="220" fill="none" stroke="var(--color-primary)" stroke-width="1"/><circle cx="320" cy="0" r="160" fill="none" stroke="var(--color-accent)" stroke-width=".8"/></svg></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>38 / 41</span>
+</div>
+</body>
+</html>

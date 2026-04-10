@@ -1,0 +1,59 @@
+/* Design Token CSS Variables — Phase 7 */
+:root {
+  /* Colors */
+  --color-primary: #1a1a2e;
+  --color-accent: #e94560;
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #6c757d;
+  --color-border: #dee2e6;
+
+  /* Typography */
+  --font-heading: "思源黑体", "Source Han Sans", "Noto Sans CJK SC", sans-serif;
+  --font-body: "思源宋体", "Source Han Serif", "Noto Serif CJK SC", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --font-size-display: 56px;
+  --font-size-h1: 40px;
+  --font-size-h2: 32px;
+  --font-size-h3: 24px;
+  --font-size-body: 18px;
+  --font-size-caption: 14px;
+  --font-size-label: 12px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-loose: 1.8;
+
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+  --spacing-xl: 64px;
+  --spacing-2xl: 96px;
+
+  /* Slide dimensions */
+  --slide-width: 1920px;
+  --slide-height: 1080px;
+
+  /* Grid */
+  --grid-columns: 12;
+  --grid-gutter: 24px;
+  --grid-margin: 80px;
+
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.16);
+}

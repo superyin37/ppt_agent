@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920">
+  <style>
+{{ tokens_css }}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width, 1920px);
+  height: var(--slide-height, 1080px);
+  overflow: hidden;
+  font-family: var(--font-body, "PingFang SC", "Microsoft YaHei", sans-serif);
+  background: var(--color-bg, #ffffff);
+  color: var(--color-text-primary, #1a1a2e);
+}
+
+.slide {
+  position: relative;
+  width: var(--slide-width, 1920px);
+  height: var(--slide-height, 1080px);
+  overflow: hidden;
+}
+
+.slide-footer {
+  position: absolute;
+  bottom: 28px;
+  left: var(--safe-margin, 64px);
+  right: var(--safe-margin, 64px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-small, 14px);
+  color: var(--color-text-light, #999);
+  font-family: var(--font-en, "Inter", sans-serif);
+  border-top: 1px solid var(--color-border, #e0e0e0);
+  padding-top: 10px;
+}
+
+.section-tag {
+  font-size: var(--text-caption, 16px);
+  color: var(--color-accent, #e94560);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: var(--font-en, "Inter", sans-serif);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.slide-title {
+  font-size: var(--text-h2, 36px);
+  font-family: var(--font-heading, "PingFang SC", "Microsoft YaHei", sans-serif);
+  font-weight: 700;
+  color: var(--color-text-primary, #1a1a2e);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.key-message {
+  font-size: var(--text-body, 20px);
+  color: var(--color-text-secondary, #666);
+  border-left: 4px solid var(--color-accent, #e94560);
+  padding-left: 16px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+  </style>
+</head>
+<body>
+<div class="slide">
+  {% block content %}{% endblock %}
+  <div class="slide-footer">
+    <span>{{ client_name }}</span>
+    <span>{{ deck_title }}</span>
+    <span>{{ slide_no }}{% if total_slides %} / {{ total_slides }}{% endif %}</span>
+  </div>
+</div>
+</body>
+</html>

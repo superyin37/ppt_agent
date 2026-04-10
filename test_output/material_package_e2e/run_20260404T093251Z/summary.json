@@ -1,0 +1,42 @@
+{
+  "material_path": "D:\\projects\\PPT_Agent\\test_material\\project1",
+  "output_dir": "D:\\projects\\PPT_Agent\\test_output\\material_package_e2e\\run_20260404T093251Z",
+  "mode": "mock-llm",
+  "steps": [
+    {
+      "step": "create_project",
+      "status": "ok"
+    },
+    {
+      "step": "ingest_material_package",
+      "status": "ok",
+      "item_count": 54
+    },
+    {
+      "step": "generate_brief_doc",
+      "status": "ok"
+    },
+    {
+      "step": "generate_outline",
+      "status": "ok",
+      "total_pages": 41
+    },
+    {
+      "step": "bind_slides",
+      "status": "ok",
+      "binding_count": 41
+    },
+    {
+      "step": "compose_slides",
+      "status": "ok",
+      "slide_count": 41
+    },
+    {
+      "step": "render_and_review",
+      "status": "ok",
+      "rendered_slide_count": 41
+    }
+  ],
+  "project_id": "540134f9-e96e-4e05-aba1-f4136860e64f",
+  "package_id": "9f1907cd-87de-4a38-a6e2-02fbc4652dac"
+}

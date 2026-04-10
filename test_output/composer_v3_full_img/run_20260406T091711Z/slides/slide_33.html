@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #6B7B6E;
+  --color-accent:         #C8875A;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E2A1F;
+  --color-text-secondary: #5F6B60;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #1E2A1F 0%, #3A4F3B 48%, #5A6E5B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.aerial-bg{position:absolute;inset:0;background:linear-gradient(160deg,#e8ede9 0%,#d4ddd6 40%,#c8d5cc 100%);}.topo-grid{position:absolute;inset:0;opacity:0.06;}.aerial-main{position:absolute;top:60px;left:var(--safe-margin);right:var(--safe-margin);bottom:160px;border-radius:var(--border-radius);overflow:hidden;background:var(--color-surface);box-shadow:0 4px 24px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;}.aerial-placeholder{width:100%;height:100%;position:relative;overflow:hidden;}.aerial-sketch{position:absolute;inset:0;}.bldg-base{fill:var(--color-surface);stroke:var(--color-primary);stroke-width:1.5;}.bldg-roof{fill:var(--color-primary);opacity:0.7;}.bldg-accent{fill:var(--color-accent);opacity:0.5;}.green-zone{fill:var(--color-primary);opacity:0.18;}.plaza-zone{fill:var(--color-secondary);opacity:0.12;}.road-line{stroke:var(--color-border);stroke-width:1;fill:none;stroke-dasharray:8 4;}.label-group text{font-family:var(--font-body);font-size:13px;fill:var(--color-text-primary);}.label-line{stroke:var(--color-text-secondary);stroke-width:0.8;}.label-dot{fill:var(--color-accent);}.label-tag{font-family:var(--font-body);font-size:12px;fill:var(--color-bg);}.label-tag-bg{fill:var(--color-primary);rx:3;ry:3;}.page-header{position:absolute;top:16px;left:var(--safe-margin);display:flex;align-items:center;gap:12px;z-index:5;}.header-bar{width:4px;height:28px;background:var(--color-primary);border-radius:2px;}.header-title{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-text-primary);font-weight:700;letter-spacing:1px;}.header-sub{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);margin-left:8px;text-transform:uppercase;}.bottom-bar{position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(0deg,rgba(255,255,255,0.97) 60%,rgba(255,255,255,0.0));display:flex;align-items:flex-end;padding:0 var(--safe-margin) 28px;gap:40px;z-index:5;}.caption-block{flex:1;}.caption-title{font-family:var(--font-heading);font-size:var(--text-body);color:var(--color-primary);font-weight:600;margin-bottom:6px;}.caption-text{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-text-secondary);line-height:1.7;}.legend-row{display:flex;gap:20px;align-items:center;flex-shrink:0;}.legend-item{display:flex;align-items:center;gap:6px;font-size:var(--text-label);color:var(--color-text-secondary);font-family:var(--font-body);}.legend-swatch{width:14px;height:14px;border-radius:3px;}.north-arrow{position:absolute;top:80px;right:calc(var(--safe-margin) + 20px);z-index:6;}</style><div class="aerial-bg"></div><svg class="topo-grid" viewBox="0 0 1920 1080" preserveAspectRatio="none"><defs><pattern id="tgrid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0L0 0 0 60" fill="none" stroke="var(--color-primary)" stroke-width="0.5"/></pattern></defs><rect width="1920" height="1080" fill="url(#tgrid)"/></svg><div class="page-header"><div class="header-bar"></div><span class="header-title">钢城折岳 · 鸟瞰总图</span><span class="header-sub">Scheme A — Aerial View</span></div><div class="aerial-main"><div class="aerial-placeholder"><svg class="aerial-sketch" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d0ddd4" stop-opacity="0.5"/><stop offset="100%" stop-color="#e8ede9" stop-opacity="0.1"/></linearGradient><linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.75"/><stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.45"/></linearGradient></defs><rect width="1600" height="760" fill="url(#skyGrad)"/><ellipse cx="800" cy="680" rx="750" ry="120" class="green-zone"/><ellipse cx="500" cy="650" rx="200" ry="60" class="green-zone"/><ellipse cx="1100" cy="660" rx="180" ry="50" class="green-zone"/><rect x="300" y="300" width="500" height="200" rx="4" class="bldg-base"/><rect x="820" y="320" width="350" height="160" rx="4" class="bldg-base"/><polygon points="280,300 550,220 800,300" fill="url(#roofGrad)"/><polygon points="520,300 700,235 880,300" fill="url(#roofGrad)" opacity="0.8"/><polygon points="800,320 975,260 1170,320" fill="url(#roofGrad)" opacity="0.65"/><polygon points="680,310 750,275 820,310" fill="var(--color-accent)" opacity="0.4"/><rect x="550" y="500" width="300" height="180" rx="6" class="plaza-zone"/><path d="M100 680 Q400 660 700 670 Q1000 680 1300 660 Q1500 650 1600 660" class="road-line"/><path d="M700 670 L700 760" class="road-line"/><g class="label-group"><line x1="550" y1="240" x2="460" y2="170" class="label-line"/><circle cx="550" cy="240" r="3" class="label-dot"/><rect x="370" y="155" width="90" height="22" class="label-tag-bg"/><text x="415" y="170" text-anchor="middle" class="label-tag">折板屋面</text></g><g class="label-group"><line x1="700" y1="520" x2="780" y2="470" class="label-line"/><circle cx="700" cy="520" r="3" class="label-dot"/><rect x="780" y="457" width="90" height="22" class="label-tag-bg"/><text x="825" y="472" text-anchor="middle" class="label-tag">入口广场</text></g><g class="label-group"><line x1="450" y1="640" x2="380" y2="590" class="label-line"/><circle cx="450" cy="640" r="3" class="label-dot"/><rect x="300" y="577" width="80" height="22" class="label-tag-bg"/><text x="340" y="592" text-anchor="middle" class="label-tag">绿化带</text></g><g class="label-group"><line x1="1100" y1="650" x2="1180" y2="600" class="label-line"/><circle cx="1100" cy="650" r="3" class="label-dot"/><rect x="1180" y="587" width="100" height="22" class="label-tag-bg"/><text x="1230" y="602" text-anchor="middle" class="label-tag">景观绿廊</text></g><g class="label-group"><line x1="700" y1="700" x2="820" y2="720" class="label-line"/><circle cx="700" cy="700" r="3" class="label-dot"/><rect x="820" y="707" width="120" height="22" class="label-tag-bg"/><text x="880" y="722" text-anchor="middle" class="label-tag">人民广场轴线</text></g><g class="label-group"><line x1="950" y1="280" x2="1050" y2="230" class="label-line"/><circle cx="950" cy="280" r="3" class="label-dot"/><rect x="1050" y="217" width="100" height="22" class="label-tag-bg"/><text x="1100" y="232" text-anchor="middle" class="label-tag">展览主体</text></g></svg></div></div><svg class="north-arrow" width="36" height="50" viewBox="0 0 36 50"><polygon points="18,0 24,18 18,14 12,18" fill="var(--color-primary)" opacity="0.7"/><polygon points="18,50 12,18 18,14 24,18" fill="var(--color-primary)" opacity="0.25"/><text x="18" y="48" text-anchor="middle" font-size="10" fill="var(--color-text-secondary)" font-family="var(--font-en)">N</text></svg><div class="bottom-bar"><div class="caption-block"><div class="caption-title">方案一「钢城折岳」鸟瞰总图</div><div class="caption-text">建筑以连续折板屋面呼应十堰山脉起伏轮廓，主入口广场正对人民广场中轴线，形成城市级视觉通廊。周边绿化带与景观绿廊环绕建筑，将自然生态渗透至场地边界，实现建筑与城市公共空间的有机衔接。</div></div><div class="legend-row"><div class="legend-item"><div class="legend-swatch" style="background:var(--color-primary);opacity:0.7;"></div>折板屋面</div><div class="legend-item"><div class="legend-swatch" style="background:var(--color-secondary);opacity:0.35;"></div>入口广场</div><div class="legend-item"><div class="legend-swatch" style="background:var(--color-primary);opacity:0.25;"></div>绿化景观</div><div class="legend-item"><div class="legend-swatch" style="background:var(--color-border);"></div>城市道路</div></div></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>33 / 41</span>
+</div>
+</body>
+</html>

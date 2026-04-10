@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);padding:0;margin:0;box-sizing:border-box}.s22-header{position:absolute;top:60px;left:var(--safe-margin);right:var(--safe-margin);display:flex;align-items:flex-end;gap:20px}.s22-sec-label{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-text-secondary);letter-spacing:3px;text-transform:uppercase;opacity:.7}.s22-title{font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);font-weight:700;line-height:1.2}.s22-subtitle{font-size:var(--text-caption);color:var(--color-text-secondary);margin-left:auto;max-width:480px;text-align:right;line-height:1.5}.s22-table-wrap{position:absolute;top:180px;left:var(--safe-margin);right:var(--safe-margin);bottom:80px;overflow:hidden}.s22-table{width:100%;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.6}.s22-table thead th{background:var(--color-primary);color:#fff;font-family:var(--font-heading);font-size:var(--text-body);font-weight:600;padding:16px 20px;text-align:left;border:none;white-space:nowrap}.s22-table thead th:first-child{border-radius:var(--border-radius) 0 0 0}.s22-table thead th:last-child{border-radius:0 var(--border-radius) 0 0}.s22-table tbody td{padding:14px 20px;border-bottom:1px solid var(--color-border);color:var(--color-text-primary);vertical-align:top;font-size:14.5px}.s22-table tbody tr:last-child td{border-bottom:none}.s22-table tbody tr:nth-child(even) td{background:var(--color-surface)}.s22-table tbody tr:nth-child(odd) td{background:var(--color-bg)}.s22-col-project{font-family:var(--font-heading);font-weight:700;font-size:15px;white-space:nowrap;min-width:160px}.s22-highlight{background:rgba(var(--color-accent),.08)!important}.s22-table tbody tr.s22-highlight-row td{background:color-mix(in srgb,var(--color-accent) 8%,var(--color-bg));border-bottom-color:var(--color-accent)}.s22-tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:600;margin:2px 3px 2px 0;white-space:nowrap}.s22-tag-green{background:color-mix(in srgb,var(--color-primary) 15%,transparent);color:var(--color-primary)}.s22-tag-accent{background:color-mix(in srgb,var(--color-accent) 15%,transparent);color:var(--color-accent)}.s22-tag-sec{background:color-mix(in srgb,var(--color-secondary) 15%,transparent);color:var(--color-secondary)}.s22-footer-bar{position:absolute;bottom:0;left:0;right:0;height:60px;display:flex;align-items:center;padding:0 var(--safe-margin);gap:32px;background:var(--color-surface);border-top:1px solid var(--color-border)}.s22-footer-item{display:flex;align-items:center;gap:8px;font-size:var(--text-caption);color:var(--color-text-secondary)}.s22-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}.s22-arrow{font-size:16px;color:var(--color-accent);font-weight:700;margin-right:4px}</style><svg style="position:absolute;top:0;right:0;width:520px;height:520px;opacity:.06;pointer-events:none" viewBox="0 0 520 520"><circle cx="520" cy="0" r="460" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="520" cy="0" r="360" fill="none" stroke="var(--color-primary)" stroke-width="1"/><circle cx="520" cy="0" r="260" fill="none" stroke="var(--color-accent)" stroke-width=".8"/></svg><svg style="position:absolute;bottom:70px;left:40px;width:180px;height:180px;opacity:.05;pointer-events:none" viewBox="0 0 180 180"><rect x="10" y="10" width="160" height="160" rx="4" fill="none" stroke="var(--color-secondary)" stroke-width="1.5" stroke-dasharray="8 6"/><line x1="10" y1="90" x2="170" y2="90" stroke="var(--color-secondary)" stroke-width="1"/><line x1="90" y1="10" x2="90" y2="170" stroke="var(--color-secondary)" stroke-width="1"/></svg><div class="s22-header"><div><div class="s22-sec-label">Competitor Benchmarking</div><div class="s22-title">行业标杆对标</div></div><div class="s22-subtitle">对比全国文化型与生态型公厕标杆项目，明确十堰项目差异化竞争方向</div></div><div class="s22-table-wrap"><table class="s22-table"><thead><tr><th style="width:160px">标杆项目</th><th style="width:110px">所在城市</th><th style="width:120px">建筑面积</th><th style="width:200px">功能配置</th><th style="width:200px">文化表达</th><th style="width:210px">节能 / 生态技术</th><th style="width:180px">核心亮点</th></tr></thead><tbody><tr><td class="s22-col-project">大唐不夜城公厕</td><td>西安市</td><td>约 120 ㎡</td><td>第三卫生间、母婴室、无障碍设施、智能导引屏</td><td><span class="s22-tag s22-tag-accent">唐风</span>仿唐建筑立面，斗拱飞檐与灯光演绎盛唐意象</td><td>光伏顶棚、雨水回收冲厕、新风除臭系统</td><td><span class="s22-tag s22-tag-accent">文旅 IP 融合</span></td></tr><tr><td class="s22-col-project">Trado 生态公厕</td><td>深圳市</td><td>约 80 ㎡</td><td>生态堆肥厕位、雨水收集、自然采光天窗</td><td><span class="s22-tag s22-tag-sec">极简</span>清水混凝土 + 竹木格栅，去装饰化</td><td>微生物降解、零排放、太阳能供电、自然通风</td><td><span class="s22-tag s22-tag-green">零碳运营</span></td></tr><tr><td class="s22-col-project">成都锦城绿道驿站</td><td>成都市</td><td>约 150 ㎡</td><td>公厕 + 驿站 + 自助售卖，骑行服务点</td><td><span class="s22-tag s22-tag-sec">川西</span>川西民居坡屋顶，竹编元素融入立面</td><td>屋顶绿化、地源热泵、智能节水器具</td><td><span class="s22-tag s22-tag-accent">复合功能</span></td></tr><tr><td class="s22-col-project">杭州西湖景区公厕</td><td>杭州市</td><td>约 100 ㎡</td><td>人脸识别取纸、实时客流监控、除臭新风</td><td><span class="s22-tag s22-tag-sec">江南</span>粉墙黛瓦，与园林景观一体化</td><td>智能照明、感应节水、AI 保洁调度</td><td><span class="s22-tag s22-tag-accent">智慧管理</span></td></tr><tr class="s22-highlight-row"><td class="s22-col-project" style="color:var(--color-accent)"><span class="s22-arrow">▶</span>十堰文化公厕<br><small style="font-weight:400;font-size:12px;color:var(--color-text-secondary)">(本项目)</small></td><td>十堰市</td><td>待定</td><td>第三卫生间、母婴室、无障碍、智慧管理平台、文化展示区</td><td><span class="s22-tag s22-tag-green">武当</span>武当山水文化 + 汽车工业记忆，在地叙事</td><td>光伏 + 雨水回收 + 微生物除臭 + 装配式建造 + 智能能耗监控</td><td><span class="s22-tag s22-tag-green">文化 × 生态 × 智慧</span></td></tr></tbody></table></div><div class="s22-footer-bar"><div class="s22-footer-item"><div class="s22-dot" style="background:var(--color-accent)"></div>文化型标杆</div><div class="s22-footer-item"><div class="s22-dot" style="background:var(--color-primary)"></div>生态型标杆</div><div class="s22-footer-item"><div class="s22-dot" style="background:var(--color-secondary)"></div>复合型标杆</div><div style="margin-left:auto;font-size:var(--text-caption);color:var(--color-text-secondary);font-style:italic">本项目定位：融合文化表达、生态技术与智慧运维的差异化标杆</div></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>22 / 41</span>
+</div>
+</body>
+</html>

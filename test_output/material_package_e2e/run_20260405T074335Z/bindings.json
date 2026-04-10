@@ -1,0 +1,929 @@
+[
+  {
+    "id": "458deeb8-09bc-43ad-8c86-f1ec488e13f1",
+    "slide_no": 1,
+    "slot_id": "cover",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 1"
+  },
+  {
+    "id": "ae1ee652-6f03-435c-966d-8d15f793950c",
+    "slide_no": 2,
+    "slot_id": "toc",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 2"
+  },
+  {
+    "id": "9a1ec1ff-9595-446f-9faf-81c8c4410f74",
+    "slide_no": 3,
+    "slot_id": "chapter-1-divider",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 3"
+  },
+  {
+    "id": "0539a642-2c3b-4eb8-b4a4-db7017293451",
+    "slide_no": 4,
+    "slot_id": "policy-1",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 4"
+  },
+  {
+    "id": "0acfc30f-e0a5-44d0-a38c-9720a3998d9e",
+    "slide_no": 5,
+    "slot_id": "policy-2",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 5"
+  },
+  {
+    "id": "17298139-ad05-4fb1-83cc-1ce242dc9cb6",
+    "slide_no": 6,
+    "slot_id": "policy-impact",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 6"
+  },
+  {
+    "id": "a38d469d-a29a-4bbb-80df-0e7c78605687",
+    "slide_no": 7,
+    "slot_id": "upper-planning",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 7"
+  },
+  {
+    "id": "6dffd94d-daeb-46e8-8c2e-516cae34e83d",
+    "slide_no": 8,
+    "slot_id": "transport-map",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "d33ca59b-e405-49d6-bcc5-0a4ff0c1ccf8",
+      "5976c23e-35e6-4ae6-9137-38bc2415deff",
+      "30962dff-806c-4f9f-8a4f-5b6976998160",
+      "cf4093c6-6f3f-4ce0-9016-55cb086984ea"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "65eed9f1-6cbd-4a6c-a1bf-1c1b5bc04d69",
+      "13e586fa-ca61-4dbc-b358-2767315bd33b",
+      "d01fe228-929f-4372-8c4a-c00e1a692324",
+      "2286ea70-15a6-4cf3-b64b-6f2bb92da60f"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "周边基础设施建设规划_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "binding_reason": "Matched 4 items and 4 assets for slide 8"
+  },
+  {
+    "id": "d559f1e8-cfbc-4a2d-8272-be952fa742af",
+    "slide_no": 9,
+    "slot_id": "cultural-analysis",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 9"
+  },
+  {
+    "id": "0c705ff6-89d8-4b8d-aa6a-d62f78d0916f",
+    "slide_no": 10,
+    "slot_id": "economic-1",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "4f584d84-1e67-44eb-a2ce-120516f01a4b",
+      "7798a9d0-8b4c-4cdc-9ac9-0fba4a4fc442",
+      "38e7f35a-fa2d-480b-bf95-560db61becff",
+      "03008720-dde8-436c-9e29-abe903fe1126",
+      "735df90c-4c45-4f59-b01d-a9bfe4c39772",
+      "a179e1e0-c869-46cd-980d-86bd7c7faffd",
+      "651050ee-f330-452a-b741-764ff6a1e7f6"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "022e8d22-8e05-482f-8398-30b9ddcd5041",
+      "68a81f79-8df8-4c69-b6cf-29fe2f3c1258",
+      "5b599791-99e6-41e3-a0db-42f73167748f",
+      "540487d9-a87f-4b92-9835-14a54b9df859",
+      "d185279e-af25-4b24-99d6-94f1959c61da",
+      "b24561aa-d9e0-431a-a7ef-674e22acd3f8",
+      "4bc2dea5-ca37-4542-9693-560851003688"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "binding_reason": "Matched 7 items and 7 assets for slide 10"
+  },
+  {
+    "id": "fdcf4846-31b6-4ecf-a6e5-b75b005a732c",
+    "slide_no": 11,
+    "slot_id": "economic-2",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "4f584d84-1e67-44eb-a2ce-120516f01a4b",
+      "7798a9d0-8b4c-4cdc-9ac9-0fba4a4fc442",
+      "38e7f35a-fa2d-480b-bf95-560db61becff",
+      "03008720-dde8-436c-9e29-abe903fe1126",
+      "735df90c-4c45-4f59-b01d-a9bfe4c39772",
+      "a179e1e0-c869-46cd-980d-86bd7c7faffd",
+      "651050ee-f330-452a-b741-764ff6a1e7f6"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "022e8d22-8e05-482f-8398-30b9ddcd5041",
+      "68a81f79-8df8-4c69-b6cf-29fe2f3c1258",
+      "5b599791-99e6-41e3-a0db-42f73167748f",
+      "540487d9-a87f-4b92-9835-14a54b9df859",
+      "d185279e-af25-4b24-99d6-94f1959c61da",
+      "b24561aa-d9e0-431a-a7ef-674e22acd3f8",
+      "4bc2dea5-ca37-4542-9693-560851003688"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "binding_reason": "Matched 7 items and 7 assets for slide 11"
+  },
+  {
+    "id": "3320b925-d098-4921-88d6-ca32c299783a",
+    "slide_no": 12,
+    "slot_id": "economic-3",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "4f584d84-1e67-44eb-a2ce-120516f01a4b",
+      "7798a9d0-8b4c-4cdc-9ac9-0fba4a4fc442",
+      "38e7f35a-fa2d-480b-bf95-560db61becff",
+      "03008720-dde8-436c-9e29-abe903fe1126",
+      "735df90c-4c45-4f59-b01d-a9bfe4c39772",
+      "a179e1e0-c869-46cd-980d-86bd7c7faffd",
+      "651050ee-f330-452a-b741-764ff6a1e7f6"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "022e8d22-8e05-482f-8398-30b9ddcd5041",
+      "68a81f79-8df8-4c69-b6cf-29fe2f3c1258",
+      "5b599791-99e6-41e3-a0db-42f73167748f",
+      "540487d9-a87f-4b92-9835-14a54b9df859",
+      "d185279e-af25-4b24-99d6-94f1959c61da",
+      "b24561aa-d9e0-431a-a7ef-674e22acd3f8",
+      "4bc2dea5-ca37-4542-9693-560851003688"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "binding_reason": "Matched 7 items and 7 assets for slide 12"
+  },
+  {
+    "id": "7c53ec7b-e9ba-49cc-8458-1c519564bd60",
+    "slide_no": 13,
+    "slot_id": "chapter-2-divider",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 13"
+  },
+  {
+    "id": "486ffe8b-15af-4dd0-bd67-ba31dd78e588",
+    "slide_no": 14,
+    "slot_id": "site-location-1",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "197f4594-2717-4e38-bc71-817aed11efb4",
+      "5976c23e-35e6-4ae6-9137-38bc2415deff",
+      "30962dff-806c-4f9f-8a4f-5b6976998160",
+      "cf4093c6-6f3f-4ce0-9016-55cb086984ea"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "350f40bd-157d-449c-a4f1-c0310235bfbf",
+      "13e586fa-ca61-4dbc-b358-2767315bd33b",
+      "d01fe228-929f-4372-8c4a-c00e1a692324",
+      "2286ea70-15a6-4cf3-b64b-6f2bb92da60f"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "binding_reason": "Matched 4 items and 4 assets for slide 14"
+  },
+  {
+    "id": "d5468e56-787f-420b-a948-c73c100918c5",
+    "slide_no": 15,
+    "slot_id": "site-location-2",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "197f4594-2717-4e38-bc71-817aed11efb4",
+      "5976c23e-35e6-4ae6-9137-38bc2415deff",
+      "30962dff-806c-4f9f-8a4f-5b6976998160",
+      "cf4093c6-6f3f-4ce0-9016-55cb086984ea"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "350f40bd-157d-449c-a4f1-c0310235bfbf",
+      "13e586fa-ca61-4dbc-b358-2767315bd33b",
+      "d01fe228-929f-4372-8c4a-c00e1a692324",
+      "2286ea70-15a6-4cf3-b64b-6f2bb92da60f"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "binding_reason": "Matched 4 items and 4 assets for slide 15"
+  },
+  {
+    "id": "4ca812b0-99cb-4f04-82fd-2b5f9603f28d",
+    "slide_no": 16,
+    "slot_id": "site-location-3",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "197f4594-2717-4e38-bc71-817aed11efb4",
+      "5976c23e-35e6-4ae6-9137-38bc2415deff",
+      "30962dff-806c-4f9f-8a4f-5b6976998160",
+      "cf4093c6-6f3f-4ce0-9016-55cb086984ea"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "350f40bd-157d-449c-a4f1-c0310235bfbf",
+      "13e586fa-ca61-4dbc-b358-2767315bd33b",
+      "d01fe228-929f-4372-8c4a-c00e1a692324",
+      "2286ea70-15a6-4cf3-b64b-6f2bb92da60f"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "binding_reason": "Matched 4 items and 4 assets for slide 16"
+  },
+  {
+    "id": "958a8f1f-fbc8-4fe3-9eda-a5240f8d3d7c",
+    "slide_no": 17,
+    "slot_id": "site-location-4",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "197f4594-2717-4e38-bc71-817aed11efb4",
+      "5976c23e-35e6-4ae6-9137-38bc2415deff",
+      "30962dff-806c-4f9f-8a4f-5b6976998160",
+      "cf4093c6-6f3f-4ce0-9016-55cb086984ea"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "350f40bd-157d-449c-a4f1-c0310235bfbf",
+      "13e586fa-ca61-4dbc-b358-2767315bd33b",
+      "d01fe228-929f-4372-8c4a-c00e1a692324",
+      "2286ea70-15a6-4cf3-b64b-6f2bb92da60f"
+    ],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "binding_reason": "Matched 4 items and 4 assets for slide 17"
+  },
+  {
+    "id": "c34d82bb-c228-4968-88a5-85da0224dd97",
+    "slide_no": 18,
+    "slot_id": "poi-analysis",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "b71f789b-7897-4931-8196-f8e4ba87d095"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+    ],
+    "coverage_score": 0.3333,
+    "missing_requirements": [
+      "site.poi.stats",
+      "site.poi.summary"
+    ],
+    "evidence_snippets": [
+      "场地poi_285"
+    ],
+    "binding_reason": "Matched 1 items and 1 assets for slide 18"
+  },
+  {
+    "id": "b5b64c8f-aa58-41b9-9e74-cf9de005a904",
+    "slide_no": 19,
+    "slot_id": "site-summary",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "b71f789b-7897-4931-8196-f8e4ba87d095"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+    ],
+    "coverage_score": 0.3333,
+    "missing_requirements": [
+      "site.poi.stats",
+      "site.poi.summary"
+    ],
+    "evidence_snippets": [
+      "场地poi_285"
+    ],
+    "binding_reason": "Matched 1 items and 1 assets for slide 19"
+  },
+  {
+    "id": "047d8511-d7ce-4373-bdbc-6f327e50815e",
+    "slide_no": 20,
+    "slot_id": "chapter-3-divider",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 20"
+  },
+  {
+    "id": "bda24af3-d3ed-4c68-ac06-286c0fc613c8",
+    "slide_no": 21,
+    "slot_id": "competitor-local",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "b71f789b-7897-4931-8196-f8e4ba87d095",
+      "498a420b-b798-4f38-bcf1-164e5ffe7964"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "0f355880-423b-49c4-bfcc-e9fcddb3d2d2",
+      "fe76666f-642a-42f9-a2bd-99a1cc4ce2d5"
+    ],
+    "coverage_score": 0.5,
+    "missing_requirements": [
+      "site.poi.stats",
+      "site.poi.summary"
+    ],
+    "evidence_snippets": [
+      "场地poi_285",
+      "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+    ],
+    "binding_reason": "Matched 2 items and 2 assets for slide 21"
+  },
+  {
+    "id": "1910b874-7fca-4869-8d99-85895c23fea5",
+    "slide_no": 22,
+    "slot_id": "competitor-web",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 22"
+  },
+  {
+    "id": "723ed3db-60f5-4046-8946-bc43608e967f",
+    "slide_no": 23,
+    "slot_id": "reference-case-1",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "421f7165-e637-4d56-8132-9bdcaa23cbaf",
+      "5f9cad6b-d2ba-4417-be56-8078772a477d",
+      "089c9030-e47f-44f4-b9ae-0f4bc641c9de",
+      "535bf3c9-9e0b-4700-b0d0-c477a7c724bc",
+      "cf44d000-7a88-4649-8697-378aafa8998f",
+      "dba029bc-9104-4613-af25-d5008886fa08",
+      "23a41bec-8c66-4618-96ce-f2ee12b275fd",
+      "49ab6e48-45a2-4648-87f0-8dc9ef2b5963",
+      "28e50856-ea47-4f19-a135-c7a967c76c4e",
+      "13a827bb-1bf1-4eb6-9ce0-020251148b3d",
+      "d34ff743-4d4e-411a-b8d2-d3e27bdff97f",
+      "b00d6087-1ee3-403e-bd18-f821692453c2"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "d993b04e-9947-4e1f-a697-086eb5f8fe87",
+      "568b8806-12e5-4b97-a297-e078bbf113ee",
+      "f6248163-6fd0-45d2-945d-a453a88a66aa",
+      "34a9cb19-b434-408e-b96a-02965330ddf7",
+      "becc3c8f-6947-4cbb-b524-c5f04f29d42d",
+      "cfcd2bff-5e88-4a8d-85c7-b3509b32b101",
+      "401fb4bd-8537-4c4f-8ede-e150b2c7e0ec",
+      "bda24402-4214-4e4b-bf9b-a62fa5cec81d",
+      "5de51ca7-5204-439f-94a3-9c15c6e1d351",
+      "9d2258cc-5d43-477e-9a68-44df2b9ce9f8",
+      "8ff7a762-1f8a-4faa-8396-3144ab0b7354",
+      "ee00c467-cd80-4748-8d0f-10e2c55063b4",
+      "63332487-7f91-4d65-b22f-de622afcb274",
+      "e827bb92-948a-4702-8bd2-f7dd1ca8f1be",
+      "a873054a-e3dc-46e8-9964-71d0a785572a",
+      "acbe0711-7339-4770-b043-7701a0a2f1d7"
+    ],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "reference.case.*.thumbnail",
+      "reference.case.*.analysis",
+      "reference.case.*.card",
+      "reference.case.*.source"
+    ],
+    "evidence_snippets": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "binding_reason": "Matched 12 items and 16 assets for slide 23"
+  },
+  {
+    "id": "556ffaa8-eb54-4312-9f81-7c23390389d2",
+    "slide_no": 24,
+    "slot_id": "reference-case-2",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "421f7165-e637-4d56-8132-9bdcaa23cbaf",
+      "5f9cad6b-d2ba-4417-be56-8078772a477d",
+      "089c9030-e47f-44f4-b9ae-0f4bc641c9de",
+      "535bf3c9-9e0b-4700-b0d0-c477a7c724bc",
+      "cf44d000-7a88-4649-8697-378aafa8998f",
+      "dba029bc-9104-4613-af25-d5008886fa08",
+      "23a41bec-8c66-4618-96ce-f2ee12b275fd",
+      "49ab6e48-45a2-4648-87f0-8dc9ef2b5963",
+      "28e50856-ea47-4f19-a135-c7a967c76c4e",
+      "13a827bb-1bf1-4eb6-9ce0-020251148b3d",
+      "d34ff743-4d4e-411a-b8d2-d3e27bdff97f",
+      "b00d6087-1ee3-403e-bd18-f821692453c2"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "d993b04e-9947-4e1f-a697-086eb5f8fe87",
+      "568b8806-12e5-4b97-a297-e078bbf113ee",
+      "f6248163-6fd0-45d2-945d-a453a88a66aa",
+      "34a9cb19-b434-408e-b96a-02965330ddf7",
+      "becc3c8f-6947-4cbb-b524-c5f04f29d42d",
+      "cfcd2bff-5e88-4a8d-85c7-b3509b32b101",
+      "401fb4bd-8537-4c4f-8ede-e150b2c7e0ec",
+      "bda24402-4214-4e4b-bf9b-a62fa5cec81d",
+      "5de51ca7-5204-439f-94a3-9c15c6e1d351",
+      "9d2258cc-5d43-477e-9a68-44df2b9ce9f8",
+      "8ff7a762-1f8a-4faa-8396-3144ab0b7354",
+      "ee00c467-cd80-4748-8d0f-10e2c55063b4",
+      "63332487-7f91-4d65-b22f-de622afcb274",
+      "e827bb92-948a-4702-8bd2-f7dd1ca8f1be",
+      "a873054a-e3dc-46e8-9964-71d0a785572a",
+      "acbe0711-7339-4770-b043-7701a0a2f1d7"
+    ],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "reference.case.*.thumbnail",
+      "reference.case.*.analysis",
+      "reference.case.*.card",
+      "reference.case.*.source"
+    ],
+    "evidence_snippets": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "binding_reason": "Matched 12 items and 16 assets for slide 24"
+  },
+  {
+    "id": "7dd93faf-d6f8-4a27-89a4-69d9f28477f0",
+    "slide_no": 25,
+    "slot_id": "reference-case-3",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "421f7165-e637-4d56-8132-9bdcaa23cbaf",
+      "5f9cad6b-d2ba-4417-be56-8078772a477d",
+      "089c9030-e47f-44f4-b9ae-0f4bc641c9de",
+      "535bf3c9-9e0b-4700-b0d0-c477a7c724bc",
+      "cf44d000-7a88-4649-8697-378aafa8998f",
+      "dba029bc-9104-4613-af25-d5008886fa08",
+      "23a41bec-8c66-4618-96ce-f2ee12b275fd",
+      "49ab6e48-45a2-4648-87f0-8dc9ef2b5963",
+      "28e50856-ea47-4f19-a135-c7a967c76c4e",
+      "13a827bb-1bf1-4eb6-9ce0-020251148b3d",
+      "d34ff743-4d4e-411a-b8d2-d3e27bdff97f",
+      "b00d6087-1ee3-403e-bd18-f821692453c2"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "d993b04e-9947-4e1f-a697-086eb5f8fe87",
+      "568b8806-12e5-4b97-a297-e078bbf113ee",
+      "f6248163-6fd0-45d2-945d-a453a88a66aa",
+      "34a9cb19-b434-408e-b96a-02965330ddf7",
+      "becc3c8f-6947-4cbb-b524-c5f04f29d42d",
+      "cfcd2bff-5e88-4a8d-85c7-b3509b32b101",
+      "401fb4bd-8537-4c4f-8ede-e150b2c7e0ec",
+      "bda24402-4214-4e4b-bf9b-a62fa5cec81d",
+      "5de51ca7-5204-439f-94a3-9c15c6e1d351",
+      "9d2258cc-5d43-477e-9a68-44df2b9ce9f8",
+      "8ff7a762-1f8a-4faa-8396-3144ab0b7354",
+      "ee00c467-cd80-4748-8d0f-10e2c55063b4",
+      "63332487-7f91-4d65-b22f-de622afcb274",
+      "e827bb92-948a-4702-8bd2-f7dd1ca8f1be",
+      "a873054a-e3dc-46e8-9964-71d0a785572a",
+      "acbe0711-7339-4770-b043-7701a0a2f1d7"
+    ],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "reference.case.*.thumbnail",
+      "reference.case.*.analysis",
+      "reference.case.*.card",
+      "reference.case.*.source"
+    ],
+    "evidence_snippets": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "binding_reason": "Matched 12 items and 16 assets for slide 25"
+  },
+  {
+    "id": "93fd57c8-f2e2-4163-b681-c05f7ad6f328",
+    "slide_no": 26,
+    "slot_id": "reference-case-4",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [
+      "421f7165-e637-4d56-8132-9bdcaa23cbaf",
+      "5f9cad6b-d2ba-4417-be56-8078772a477d",
+      "089c9030-e47f-44f4-b9ae-0f4bc641c9de",
+      "535bf3c9-9e0b-4700-b0d0-c477a7c724bc",
+      "cf44d000-7a88-4649-8697-378aafa8998f",
+      "dba029bc-9104-4613-af25-d5008886fa08",
+      "23a41bec-8c66-4618-96ce-f2ee12b275fd",
+      "49ab6e48-45a2-4648-87f0-8dc9ef2b5963",
+      "28e50856-ea47-4f19-a135-c7a967c76c4e",
+      "13a827bb-1bf1-4eb6-9ce0-020251148b3d",
+      "d34ff743-4d4e-411a-b8d2-d3e27bdff97f",
+      "b00d6087-1ee3-403e-bd18-f821692453c2"
+    ],
+    "optional_item_ids": [],
+    "derived_asset_ids": [
+      "d993b04e-9947-4e1f-a697-086eb5f8fe87",
+      "568b8806-12e5-4b97-a297-e078bbf113ee",
+      "f6248163-6fd0-45d2-945d-a453a88a66aa",
+      "34a9cb19-b434-408e-b96a-02965330ddf7",
+      "becc3c8f-6947-4cbb-b524-c5f04f29d42d",
+      "cfcd2bff-5e88-4a8d-85c7-b3509b32b101",
+      "401fb4bd-8537-4c4f-8ede-e150b2c7e0ec",
+      "bda24402-4214-4e4b-bf9b-a62fa5cec81d",
+      "5de51ca7-5204-439f-94a3-9c15c6e1d351",
+      "9d2258cc-5d43-477e-9a68-44df2b9ce9f8",
+      "8ff7a762-1f8a-4faa-8396-3144ab0b7354",
+      "ee00c467-cd80-4748-8d0f-10e2c55063b4",
+      "63332487-7f91-4d65-b22f-de622afcb274",
+      "e827bb92-948a-4702-8bd2-f7dd1ca8f1be",
+      "a873054a-e3dc-46e8-9964-71d0a785572a",
+      "acbe0711-7339-4770-b043-7701a0a2f1d7"
+    ],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "reference.case.*.thumbnail",
+      "reference.case.*.analysis",
+      "reference.case.*.card",
+      "reference.case.*.source"
+    ],
+    "evidence_snippets": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "binding_reason": "Matched 12 items and 16 assets for slide 26"
+  },
+  {
+    "id": "852be28a-8551-4356-921c-e83af828faed",
+    "slide_no": 27,
+    "slot_id": "project-positioning",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 27"
+  },
+  {
+    "id": "a7cd6c4b-f85b-4b1e-9c0b-f70c06aa8307",
+    "slide_no": 28,
+    "slot_id": "chapter-4-divider",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 28"
+  },
+  {
+    "id": "5876b903-6420-45eb-90de-2cd213d417d3",
+    "slide_no": 29,
+    "slot_id": "design-strategies",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 29"
+  },
+  {
+    "id": "6275b2cd-299f-4049-8085-5475747dfbc8",
+    "slide_no": 30,
+    "slot_id": "concept-intro-1",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 30"
+  },
+  {
+    "id": "eae494ca-eea2-4dab-8d17-66a8543d9c11",
+    "slide_no": 31,
+    "slot_id": "concept-intro-2",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 31"
+  },
+  {
+    "id": "6381a41b-166f-4415-9ca3-f5a6c6e93797",
+    "slide_no": 32,
+    "slot_id": "concept-intro-3",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 32"
+  },
+  {
+    "id": "b5b25ed8-9143-4f66-bd58-95727e61cb8e",
+    "slide_no": 33,
+    "slot_id": "concept-aerial-1",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "concept_description"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 33"
+  },
+  {
+    "id": "98ec7dfc-a426-4307-a353-093bcac1df33",
+    "slide_no": 34,
+    "slot_id": "concept-aerial-2",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "concept_description"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 34"
+  },
+  {
+    "id": "262ed9fe-d937-4ca1-834e-00bdeb70e9f2",
+    "slide_no": 35,
+    "slot_id": "concept-aerial-3",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "concept_description"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 35"
+  },
+  {
+    "id": "94f78f41-12de-43eb-8c3e-7afae0511838",
+    "slide_no": 36,
+    "slot_id": "concept-perspective-1",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "concept_description"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 36"
+  },
+  {
+    "id": "10490851-aa7c-4a0e-843c-e05ff510ae99",
+    "slide_no": 37,
+    "slot_id": "concept-perspective-2",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "concept_description"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 37"
+  },
+  {
+    "id": "4e6202cc-a2fd-44d8-91f7-ec130c8b6953",
+    "slide_no": 38,
+    "slot_id": "concept-perspective-3",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "concept_description"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 38"
+  },
+  {
+    "id": "b5e7dd54-441d-4736-b05f-6a1ff6c03362",
+    "slide_no": 39,
+    "slot_id": "material-economic",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "project_brief_data"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 39"
+  },
+  {
+    "id": "62f92efd-b18d-4ac6-bb8e-1600f41912c3",
+    "slide_no": 40,
+    "slot_id": "design-brief-doc",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "project_brief_data"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 40"
+  },
+  {
+    "id": "322c4aca-c98b-4360-9ce5-101672aebfd6",
+    "slide_no": 41,
+    "slot_id": "closing",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 0.0,
+    "missing_requirements": [
+      "client_name"
+    ],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 41"
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "theme": "cultural",
+  "slides": [
+    {
+      "title": "人民广场生态文化微地标",
+      "purpose": "项目全称'十堰市张湾区人民广场公共厕所建筑方案汇报'，副标题突出'车城·武当·被动节能'关键词，标注甲方及日期。",
+      "section": "封面",
+      "slot_id": "cover",
+      "is_cover": true,
+      "slide_no": 1,
+      "key_message": "项目全称'十堰市张湾区人民广场公共厕所建筑方案汇报'，副标题突出'车城·武当·被动节能'关键词，标注甲方及日期。",
+      "layout_hint": "full-bleed 封面，大字标题居中，底部甲方信息条",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "project_name"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "目录",
+      "purpose": "列出六大章节：背景研究、场地分析、竞品分析、参考案例、项目定位与设计策略、概念方案，标注页码范围。",
+      "section": "目录",
+      "slot_id": "toc",
+      "is_cover": false,
+      "slide_no": 2,
+      "key_message": "列出六大章节：背景研究、场地分析、竞品分析、参考案例、项目定位与设计策略、概念方案，标注页码范围。",
+      "layout_hint": "split-h：左侧大插画，右侧目录列表",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "背景研究",
+      "purpose": "章节编号01，中文'背景研究'英文'Background Research'，配广场或城市意象底图。",
+      "section": "背景研究",
+      "slot_id": "chapter-1-divider",
+      "is_cover": false,
+      "slide_no": 3,
+      "key_message": "章节编号01，中文'背景研究'英文'Background Research'，配广场或城市意象底图。",
+      "layout_hint": "full-bleed，章节编号 + 中英文标题",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": true,
+      "optional_input_keys": [],
+      "required_input_keys": [],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    }
+  ],
+  "sections": [
+    "封面",
+    "目录",
+    "背景研究"
+  ],
+  "deck_title": "十堰市张湾区人民广场公共厕所建筑方案汇报",
+  "outline_id": null,
+  "project_id": "d0d16c58-b88d-4e40-a751-ad7c359ff900",
+  "total_pages": 3
+}

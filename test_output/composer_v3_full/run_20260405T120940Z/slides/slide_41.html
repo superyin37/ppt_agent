@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-cover-bg);display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:var(--font-heading)}.closing-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:36px}.thanks-text{font-size:88px;font-weight:700;letter-spacing:0.12em;color:var(--color-text-primary);line-height:1.2;text-shadow:0 2px 24px rgba(0,0,0,0.06)}.thanks-en{font-family:var(--font-en);font-size:var(--text-h3);font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:var(--color-text-secondary);opacity:0.55;margin-top:-8px}.divider-line{width:120px;height:2px;background:var(--color-accent);opacity:0.7;border-radius:1px;margin:8px 0}.project-name{font-family:var(--font-body);font-size:var(--text-h3);color:var(--color-text-primary);letter-spacing:0.08em;font-weight:500;line-height:1.6}.client-name{font-family:var(--font-body);font-size:var(--text-body);color:var(--color-text-secondary);letter-spacing:0.06em;opacity:0.72;margin-top:-12px}</style><svg style="position:absolute;top:0;left:0;width:1920px;height:1080px;z-index:0;opacity:1" viewBox="0 0 1920 1080" preserveAspectRatio="none"><defs><linearGradient id="bgG1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.07"/><stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0.04"/></linearGradient><linearGradient id="mtnG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.03"/></linearGradient><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feBlend in="SourceGraphic" mode="multiply" result="blend"/><feComponentTransfer><feFuncA type="linear" slope="0.04"/></feComponentTransfer></filter></defs><rect width="1920" height="1080" fill="url(#bgG1)"/><rect width="1920" height="1080" filter="url(#noise)" opacity="0.5"/><path d="M0 780 Q200 680 480 740 T960 700 Q1200 670 1440 720 T1920 690 L1920 1080 L0 1080Z" fill="url(#mtnG)"/><path d="M0 840 Q300 760 600 810 T1200 770 Q1440 750 1680 790 T1920 760 L1920 1080 L0 1080Z" fill="var(--color-primary)" opacity="0.06"/><path d="M0 900 Q240 860 520 880 T1040 850 Q1300 840 1560 870 T1920 845 L1920 1080 L0 1080Z" fill="var(--color-primary)" opacity="0.04"/><line x1="960" y1="920" x2="960" y2="1000" stroke="var(--color-accent)" stroke-width="1" opacity="0.15"/><rect x="940" y="940" width="40" height="55" fill="none" stroke="var(--color-primary)" stroke-width="0.8" opacity="0.1" rx="1"/><line x1="940" y1="960" x2="980" y2="960" stroke="var(--color-primary)" stroke-width="0.5" opacity="0.08"/><circle cx="320" cy="260" r="180" fill="none" stroke="var(--color-accent)" stroke-width="0.8" opacity="0.08"/><circle cx="320" cy="260" r="240" fill="none" stroke="var(--color-accent)" stroke-width="0.5" opacity="0.05"/><circle cx="1620" cy="180" r="140" fill="none" stroke="var(--color-primary)" stroke-width="0.8" opacity="0.07"/><line x1="1500" y1="900" x2="1700" y2="900" stroke="var(--color-border)" stroke-width="0.5" opacity="0.12"/><line x1="220" y1="880" x2="420" y2="880" stroke="var(--color-border)" stroke-width="0.5" opacity="0.12"/></svg><div class="closing-wrap"><span class="thanks-text">感谢聆听</span><span class="thanks-en">Thank You</span><div class="divider-line"></div><span class="project-name">十堰市张湾区人民广场公共厕所</span><span class="client-name">Material Package E2E</span></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>41 / 41</span>
+</div>
+</body>
+</html>

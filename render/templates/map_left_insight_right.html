@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; gap: 0;">
+  <!-- Left: Map image -->
+  <div style="position: relative; overflow: hidden; background: var(--color-bg-secondary, #f8f8f8);">
+    {%- set map_block = blocks.get('map_image') %}
+    {% if map_block and map_block.content %}
+    <img src="{{ map_block.content }}"
+         style="width: 100%; height: 100%; object-fit: cover;">
+    {% else %}
+    <!-- Placeholder when no map asset -->
+    <div style="
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+      color: #9ca3af; font-size: 20px;
+    ">地图资产待生成</div>
+    {% endif %}
+  </div>
+
+  <!-- Right: Insights -->
+  <div style="
+    padding: var(--safe-margin, 64px);
+    display: flex; flex-direction: column;
+    justify-content: center;
+    background: white;
+  ">
+    <div class="section-tag">{{ section }}</div>
+    <h2 class="slide-title">{{ title }}</h2>
+    {% if key_message %}
+    <div class="key-message">{{ key_message }}</div>
+    {% endif %}
+
+    {%- set insights_block = blocks.get('insights') %}
+    {% if insights_block and insights_block.content is iterable and insights_block.content is not string %}
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
+      {% for insight in insights_block.content %}
+      <li style="display: flex; align-items: flex-start; gap: 14px;">
+        <span style="
+          width: 10px; height: 10px; border-radius: 50%;
+          background: var(--color-accent, #e94560);
+          margin-top: 8px; flex-shrink: 0;
+        "></span>
+        <span style="font-size: var(--text-body, 20px); line-height: 1.6; color: var(--color-text-primary, #1a1a2e);">
+          {{ insight }}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <!-- Fallback text blocks -->
+    {% for bid, block in blocks.items() %}
+    {% if block.block_type in ('text', 'bullet') and bid != 'map_image' %}
+    <div style="font-size: var(--text-body, 20px); line-height: 1.6; color: var(--color-text-secondary, #666); margin-bottom: 16px;">
+      {% if block.content is string %}{{ block.content }}
+      {% elif block.content is iterable %}
+        {% for item in block.content %}<p style="margin-bottom: 8px;">{{ item }}</p>{% endfor %}
+      {% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding: var(--safe-margin, 64px); padding-top: 72px; height: 100%;">
+  <div class="section-tag">{{ section }}</div>
+  <h2 class="slide-title">{{ title }}</h2>
+  {% if key_message %}
+  <div class="key-message">{{ key_message }}</div>
+  {% endif %}
+
+  {%- set kpi_block = blocks.get('kpi_items') %}
+  {%- if kpi_block and kpi_block.content is iterable and kpi_block.content is not string %}
+  <!-- KPI Cards Grid -->
+  <div style="
+    display: grid;
+    grid-template-columns: repeat({{ kpi_block.content | length }}, 1fr);
+    gap: var(--space-lg, 40px);
+    margin-top: var(--space-xl, 64px);
+  ">
+    {% for kpi in kpi_block.content %}
+    <div style="
+      background: var(--color-bg-secondary, #f8f8f8);
+      border-radius: var(--radius-lg, 16px);
+      padding: var(--space-lg, 40px) var(--space-md, 24px);
+      border-top: 4px solid var(--color-accent, #e94560);
+      box-shadow: var(--shadow-card, 0 4px 16px rgba(0,0,0,0.08));
+    ">
+      <div style="
+        font-size: 56px; font-family: var(--font-en, 'Inter', sans-serif);
+        font-weight: 700; color: var(--color-primary, #1a1a2e); line-height: 1;
+      ">{{ kpi.value }}</div>
+      {% if kpi.unit %}
+      <div style="font-size: var(--text-caption, 16px); color: var(--color-text-secondary, #666); margin-top: 8px;">
+        {{ kpi.unit }}
+      </div>
+      {% endif %}
+      <div style="
+        font-size: var(--text-body, 20px); color: var(--color-text-primary, #1a1a2e);
+        font-family: var(--font-heading, 'PingFang SC', sans-serif);
+        margin-top: 12px; font-weight: 500;
+      ">{{ kpi.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {%- else %}
+  <!-- Fallback: text blocks -->
+  <div style="margin-top: 32px;">
+    {% for bid, block in blocks.items() %}
+    {% if block.block_type in ('text', 'bullet') %}
+    <div style="margin-bottom: 24px; font-size: var(--text-body, 20px); line-height: 1.6;">
+      {% if block.content is string %}{{ block.content }}
+      {% elif block.content is iterable %}
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+        {% for item in block.content %}
+          <li style="display: flex; align-items: flex-start; gap: 12px;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent, #e94560); margin-top: 10px; flex-shrink: 0;"></span>
+            <span>{{ item }}</span>
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {%- endif %}
+</div>
+{% endblock %}

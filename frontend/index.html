@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPT Agent</title>
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="brand" href="#/">PPT Agent</a>
+    <a class="btn btn-primary" href="#/new">+ 新建项目</a>
+  </nav>
+
+  <main id="app"></main>
+
+  <!-- ── 视图 1：项目列表 ── -->
+  <template id="tpl-project-list">
+    <div class="view">
+      <h2 class="view-title">我的项目</h2>
+      <div id="project-grid" class="project-grid"></div>
+      <p id="empty-hint" class="empty-hint" style="display:none">
+        还没有项目，点击右上角"新建项目"开始。
+      </p>
+    </div>
+  </template>
+
+  <!-- ── 视图 2：新建项目 ── -->
+  <template id="tpl-new-project">
+    <div class="view">
+      <h2 class="view-title">新建项目</h2>
+      <form id="brief-form" class="form-card">
+
+        <div class="form-row">
+          <label>项目名称 <span class="required">*</span></label>
+          <input name="name" type="text" placeholder="苏州工业园区文化中心" required>
+        </div>
+
+        <div class="form-row">
+          <label>建筑类型 <span class="required">*</span></label>
+          <select name="building_type" required>
+            <option value="">请选择</option>
+            <option value="cultural">文化中心</option>
+            <option value="museum">博物馆</option>
+            <option value="office">办公楼</option>
+            <option value="mixed">综合体</option>
+            <option value="residential">住宅</option>
+            <option value="education">教育建筑</option>
+            <option value="commercial">商业建筑</option>
+            <option value="hotel">酒店</option>
+          </select>
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label>委托方 <span class="required">*</span></label>
+            <input name="client_name" type="text" placeholder="苏州工业园区管委会" required>
+          </div>
+          <div>
+            <label>城市</label>
+            <input name="city" type="text" placeholder="苏州">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>场地地址</label>
+          <input name="site_address" type="text" placeholder="星湖街88号">
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label>总建筑面积（㎡）</label>
+            <input name="gross_floor_area" type="number" placeholder="48000" min="0">
+          </div>
+          <div>
+            <label>用地面积（㎡）</label>
+            <input name="site_area" type="number" placeholder="18000" min="0">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>风格偏好</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="style" value="现代主义"> 现代主义</label>
+            <label><input type="checkbox" name="style" value="在地文化"> 在地文化</label>
+            <label><input type="checkbox" name="style" value="绿色低碳"> 绿色低碳</label>
+            <label><input type="checkbox" name="style" value="古典复兴"> 古典复兴</label>
+            <label><input type="checkbox" name="style" value="极简主义"> 极简主义</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>特殊要求</label>
+          <textarea name="special_requirements" rows="3"
+            placeholder="例如：需融入苏州园林元素，地下两层停车"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <a href="#/" class="btn btn-ghost">取消</a>
+          <button type="submit" class="btn btn-primary" id="submit-btn">创建并开始 →</button>
+        </div>
+
+      </form>
+    </div>
+  </template>
+
+  <!-- ── 视图 3：项目详情 ── -->
+  <template id="tpl-project-detail">
+    <div class="view">
+      <div class="detail-header">
+        <a href="#/" class="back-link">← 返回列表</a>
+        <h2 class="view-title" id="detail-title"></h2>
+        <span class="status-badge" id="detail-status"></span>
+      </div>
+
+      <!-- 进度 Stepper -->
+      <div class="stepper">
+        <div class="step" data-step="1"><div class="step-dot"></div><div class="step-label">Brief</div></div>
+        <div class="step-line"></div>
+        <div class="step" data-step="2"><div class="step-dot"></div><div class="step-label">大纲</div></div>
+        <div class="step-line"></div>
+        <div class="step" data-step="3"><div class="step-dot"></div><div class="step-label">排版&渲染</div></div>
+        <div class="step-line"></div>
+        <div class="step" data-step="4"><div class="step-dot"></div><div class="step-label">审查</div></div>
+        <div class="step-line"></div>
+        <div class="step" data-step="5"><div class="step-dot"></div><div class="step-label">导出</div></div>
+      </div>
+
+      <!-- 操作区 -->
+      <div class="action-bar" id="action-bar"></div>
+
+      <!-- 幻灯片网格 -->
+      <section id="slides-section" style="display:none">
+        <h3 class="section-title">幻灯片预览</h3>
+        <div class="slides-grid" id="slides-grid"></div>
+      </section>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" style="display:none">
+        <div class="lightbox-overlay" id="lb-overlay"></div>
+        <img class="lightbox-img" id="lb-img" src="" alt="">
+        <button class="lb-btn lb-prev" id="lb-prev">&#8249;</button>
+        <button class="lb-btn lb-next" id="lb-next">&#8250;</button>
+      </div>
+
+    </div>
+  </template>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>

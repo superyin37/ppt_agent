@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding: var(--safe-margin, 64px); padding-top: 56px; height: 100%;">
+  <div class="section-tag">{{ section }}</div>
+  <h2 class="slide-title">{{ title }}</h2>
+
+  {%- set cases_block = blocks.get('cases') %}
+  {%- if cases_block and cases_block.content is iterable and cases_block.content is not string %}
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg, 40px); margin-top: 24px;">
+    {% for case in cases_block.content[:2] %}
+    <div style="
+      border: 1px solid var(--color-border, #e0e0e0);
+      border-radius: var(--radius-lg, 16px);
+      overflow: hidden;
+      box-shadow: var(--shadow-card, 0 4px 16px rgba(0,0,0,0.08));
+      background: white;
+    ">
+      {% if case.image_url %}
+      <img src="{{ case.image_url }}" style="width: 100%; height: 280px; object-fit: cover;">
+      {% else %}
+      <div style="width: 100%; height: 280px; background: linear-gradient(135deg, #e5e7eb, #d1d5db); display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 18px;">案例图片</div>
+      {% endif %}
+      <div style="padding: 24px;">
+        <h3 style="
+          font-family: var(--font-heading, 'PingFang SC', sans-serif);
+          font-size: var(--text-h3, 28px); font-weight: 700;
+          color: var(--color-text-primary, #1a1a2e);
+        ">{{ case.title }}</h3>
+        {% if case.architect or case.location %}
+        <div style="color: var(--color-text-secondary, #666); font-size: var(--text-caption, 16px); margin: 10px 0;">
+          {% if case.architect %}{{ case.architect }}{% endif %}{% if case.architect and case.location %} | {% endif %}{% if case.location %}{{ case.location }}{% endif %}
+        </div>
+        {% endif %}
+        {% if case.selected_tags %}
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0;">
+          {% for tag in case.selected_tags %}
+          <span style="
+            background: var(--color-bg-secondary, #f8f8f8);
+            border: 1px solid var(--color-border, #e0e0e0);
+            padding: 4px 14px; border-radius: 100px;
+            font-size: var(--text-small, 14px);
+          ">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if case.summary %}
+        <p style="
+          font-size: var(--text-body, 20px);
+          color: var(--color-text-secondary, #666);
+          line-height: 1.6; margin-top: 12px;
+        ">{{ case.summary }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {%- else %}
+  <!-- Fallback: two text columns -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
+    <div style="
+      border: 1px solid var(--color-border, #e0e0e0); border-radius: 16px;
+      padding: 32px; background: var(--color-bg-secondary, #f8f8f8);
+    ">
+      <div style="color: #9ca3af; font-size: 18px;">案例数据加载中</div>
+    </div>
+    <div style="
+      border: 1px solid var(--color-border, #e0e0e0); border-radius: 16px;
+      padding: 32px; background: var(--color-bg-secondary, #f8f8f8);
+    ">
+      <div style="color: #9ca3af; font-size: 18px;">案例数据加载中</div>
+    </div>
+  </div>
+  {%- endif %}
+</div>
+{% endblock %}

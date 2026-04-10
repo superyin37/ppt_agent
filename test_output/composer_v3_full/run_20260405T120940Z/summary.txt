@@ -1,0 +1,13 @@
+project_id: 041b47ef-695e-4a28-bc0c-9d33c94816e7
+package_id: dd1abbc5-22f4-4bcc-9872-2ad213f2f6c6
+mode: real-llm
+output_dir: D:\projects\PPT_Agent\test_output\composer_v3_full\run_20260405T120940Z
+create_project: ok
+ingest_material_package: ok (54 items)
+generate_brief_doc: ok
+generate_visual_theme: ok
+generate_outline: ok (41 pages)
+bind_slides: ok (41 bindings)
+compose_slides: ok (41 slides)
+render_and_review: ok (41 rendered)
+export_pdf: ok (D:\projects\PPT_Agent\test_output\composer_v3_full\run_20260405T120940Z\deck.pdf)

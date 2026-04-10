@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);color:var(--color-text-primary);padding:0;margin:0;box-sizing:border-box;overflow:hidden}.sr-header{position:absolute;top:0;left:0;right:0;height:88px;display:flex;align-items:center;padding:0 var(--safe-margin);gap:16px;border-bottom:1px solid var(--color-border)}.sr-sec-tag{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-primary);letter-spacing:.08em;text-transform:uppercase;opacity:.7}.sr-sec-dot{width:6px;height:6px;border-radius:50%;background:var(--color-primary);opacity:.5}.sr-title{font-family:var(--font-heading);font-size:var(--text-h2);font-weight:700;color:var(--color-text-primary)}.sr-body{position:absolute;top:108px;left:0;right:0;bottom:40px;display:flex;gap:0}.sr-left{flex:0 0 52%;height:100%;padding:var(--safe-margin);padding-top:24px;display:flex;flex-direction:column;gap:24px;box-sizing:border-box}.sr-right{flex:1;height:100%;padding:var(--safe-margin);padding-top:24px;padding-left:0;display:flex;flex-direction:column;gap:20px;box-sizing:border-box}.sr-chart-title{font-family:var(--font-heading);font-size:var(--text-h3);font-weight:600;color:var(--color-text-primary);margin-bottom:4px}.sr-chart-sub{font-size:var(--text-caption);color:var(--color-text-secondary);margin-bottom:8px}.sr-donut-wrap{display:flex;align-items:flex-start;gap:32px;flex:1}.sr-legend{display:flex;flex-direction:column;gap:10px;padding-top:16px}.sr-legend-item{display:flex;align-items:center;gap:10px;font-size:var(--text-body)}.sr-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}.sr-legend-label{color:var(--color-text-secondary);min-width:56px}.sr-legend-val{font-family:var(--font-en);font-weight:700;color:var(--color-text-primary)}.sr-bar-section{flex:0 0 auto}.sr-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}.sr-bar-label{font-size:var(--text-caption);color:var(--color-text-secondary);min-width:56px;text-align:right}.sr-bar-track{flex:1;height:22px;background:var(--color-surface);border-radius:4px;overflow:hidden;position:relative}.sr-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-family:var(--font-en);font-size:var(--text-label);color:#fff;font-weight:600}.sr-insight-card{background:var(--color-surface);border-radius:var(--border-radius);padding:28px 28px 24px;border-left:4px solid var(--color-primary)}.sr-insight-title{font-family:var(--font-heading);font-size:var(--text-h3);font-weight:700;color:var(--color-primary);margin-bottom:14px}.sr-insight-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}.sr-insight-list li{font-size:var(--text-body);line-height:1.7;color:var(--color-text-primary);padding-left:18px;position:relative}.sr-insight-list li::before{content:'';position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;border:2px solid var(--color-accent);box-sizing:border-box}.sr-gap-box{background:var(--color-primary);color:#fff;border-radius:var(--border-radius);padding:20px 24px;display:flex;align-items:center;gap:16px;margin-top:auto}.sr-gap-icon{flex-shrink:0;width:48px;height:48px}.sr-gap-text{font-size:var(--text-body);line-height:1.6;font-weight:600}.sr-footer{position:absolute;bottom:0;left:0;right:0;height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--safe-margin);font-size:var(--text-label);color:var(--color-text-secondary);opacity:.5;border-top:1px solid var(--color-border)}.sr-divider{position:absolute;top:128px;bottom:56px;left:52%;width:1px;background:var(--color-border)}</style><svg style="position:absolute;bottom:60px;left:40px;width:260px;height:260px;opacity:.04;pointer-events:none" viewBox="0 0 260 260"><circle cx="130" cy="130" r="120" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="130" cy="130" r="90" fill="none" stroke="var(--color-primary)" stroke-width="1"/><circle cx="130" cy="130" r="60" fill="none" stroke="var(--color-primary)" stroke-width=".5"/></svg><div class="sr-header"><span class="sr-sec-tag">Site Analysis</span><span class="sr-sec-dot"></span><span class="sr-title">周边业态分析</span></div><div class="sr-divider"></div><div class="sr-body"><div class="sr-left"><div><span class="sr-chart-title">POI 业态分类占比</span><span class="sr-chart-sub"> — 人民广场周边 1km 范围</span></div><div class="sr-donut-wrap"><svg width="220" height="220" viewBox="0 0 220 220" style="flex-shrink:0"><defs><linearGradient id="grd1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--color-primary)"/><stop offset="100%" stop-color="var(--color-accent)"/></linearGradient></defs><circle cx="110" cy="110" r="90" fill="none" stroke="var(--color-surface)" stroke-width="28"/><circle cx="110" cy="110" r="90" fill="none" stroke="var(--color-primary)" stroke-width="28" stroke-dasharray="186 379" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="90" fill="none" stroke="var(--color-accent)" stroke-width="28" stroke-dasharray="113 452" stroke-dashoffset="-186" stroke-linecap="round" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="90" fill="none" stroke="var(--color-secondary)" stroke-width="28" stroke-dasharray="79 486" stroke-dashoffset="-299" stroke-linecap="round" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="90" fill="none" stroke="var(--color-border)" stroke-width="28" stroke-dasharray="45 520" stroke-dashoffset="-378" stroke-linecap="round" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="90" fill="none" stroke="var(--color-text-secondary)" stroke-width="28" stroke-dasharray="34 531" stroke-dashoffset="-423" stroke-linecap="round" transform="rotate(-90 110 110)" opacity=".5"/><circle cx="110" cy="110" r="68" fill="var(--color-bg)"/><text x="110" y="104" text-anchor="middle" font-family="var(--font-en)" font-size="28" font-weight="700" fill="var(--color-text-primary)">285</text><text x="110" y="126" text-anchor="middle" font-family="var(--font-body)" font-size="12" fill="var(--color-text-secondary)">POI 总数</text></svg><div class="sr-legend"><div class="sr-legend-item"><span class="sr-legend-dot" style="background:var(--color-primary)"></span><span class="sr-legend-label">餐饮</span><span class="sr-legend-val">32.9%</span></div><div class="sr-legend-item"><span class="sr-legend-dot" style="background:var(--color-accent)"></span><span class="sr-legend-label">商业</span><span class="sr-legend-val">20.0%</span></div><div class="sr-legend-item"><span class="sr-legend-dot" style="background:var(--color-secondary)"></span><span class="sr-legend-label">教育</span><span class="sr-legend-val">14.0%</span></div><div class="sr-legend-item"><span class="sr-legend-dot" style="background:var(--color-border)"></span><span class="sr-legend-label">医疗</span><span class="sr-legend-val">8.1%</span></div><div class="sr-legend-item"><span class="sr-legend-dot" style="background:var(--color-text-secondary);opacity:.5"></span><span class="sr-legend-label">其他</span><span class="sr-legend-val">25.0%</span></div></div></div><div class="sr-bar-section"><p style="font-size:var(--text-caption);color:var(--color-text-secondary);margin:0 0 10px">主要业态 POI 数量对比</p><div class="sr-bar-row"><span class="sr-bar-label">餐饮</span><div class="sr-bar-track"><div class="sr-bar-fill" style="width:82%;background:var(--color-primary)">94</div></div></div><div class="sr-bar-row"><span class="sr-bar-label">商业</span><div class="sr-bar-track"><div class="sr-bar-fill" style="width:56%;background:var(--color-accent)">57</div></div></div><div class="sr-bar-row"><span class="sr-bar-label">教育</span><div class="sr-bar-track"><div class="sr-bar-fill" style="width:38%;background:var(--color-secondary)">40</div></div></div><div class="sr-bar-row"><span class="sr-bar-label">医疗</span><div class="sr-bar-track"><div class="sr-bar-fill" style="width:22%;background:var(--color-border);color:var(--color-text-primary)">23</div></div></div><div class="sr-bar-row"><span class="sr-bar-label">公共服务</span><div class="sr-bar-track"><div class="sr-bar-fill" style="width:14%;background:var(--color-text-secondary);opacity:.6">15</div></div></div></div></div><div class="sr-right"><div class="sr-insight-card"><h3 class="sr-insight-title">业态结构解读</h3><ul class="sr-insight-list"><li>人民广场周边 1km 范围内共采集 <strong>285 个</strong> POI 点位，业态以<strong>商业餐饮</strong>为绝对主导，合计占比超过 <strong>52.9%</strong></li><li>餐饮类 POI 高度集聚，反映该区域为十堰市核心消费商圈，日均人流量大、停留时间长</li><li>教育与医疗设施分别占 14.0% 和 8.1%，覆盖学校、培训机构及社区诊所，带来稳定的日间人群</li><li>公共服务类 POI 仅 15 处，占比 <strong>5.3%</strong>，其中<strong>公共卫生间仅 2 处</strong>，远低于国家标准（每万人 3～5 座）</li></ul></div><div class="sr-gap-box"><svg class="sr-gap-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#fff" stroke-width="2" opacity=".3"/><path d="M24 14v12M24 30v4" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="sr-gap-text">核心发现：公共如厕设施严重不足，高密度商业餐饮区域的如厕需求缺口显著，亟需补充公共卫生服务设施。</span></div></div></div><div class="sr-footer"><span>场地分析 · 周边业态</span><span>18 / 30</span></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>18 / 41</span>
+</div>
+</body>
+</html>

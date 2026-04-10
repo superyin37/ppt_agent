@@ -1,0 +1,4928 @@
+[
+  {
+    "title": "十堰人民广场生态公厕",
+    "section": "封面",
+    "slot_id": "cover",
+    "is_cover": true,
+    "slide_no": 1,
+    "primitive": {
+      "divider": "none",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "image",
+      "right_content_type": "text"
+    },
+    "binding_id": "a73198d3-ef2b-4b04-b16d-0ff81b13aecc",
+    "source_refs": [],
+    "visual_focus": "right",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": null,
+            "block_id": "cover-bg-accent",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "accent-element",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "建筑设计汇报",
+            "block_id": "cover-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "十堰市张湾区人民广场公共厕所",
+            "block_id": "cover-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "车城武当双文化 · 被动节能示范",
+            "block_id": "cover-subheading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "300 ㎡",
+            "block_id": "cover-kpi",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "业主单位：Material Package E2E",
+            "block_id": "cover-client",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "目录",
+    "section": "目录",
+    "slot_id": "toc",
+    "is_cover": false,
+    "slide_no": 2,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "image",
+      "right_content_type": "text"
+    },
+    "binding_id": "2da95d0d-63f0-492b-8b65-a22dd4e1cd40",
+    "source_refs": [],
+    "visual_focus": "right",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": null,
+            "block_id": "toc-illustration",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "accent-element",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "目录",
+            "block_id": "toc-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "Contents",
+            "block_id": "toc-label-en",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "01  背景研究 — Background Research ···· 03",
+              "02  场地分析 — Site Analysis ···· 09",
+              "03  竞品分析 — Competitive Analysis ···· 15",
+              "04  参考案例 — Reference Cases ···· 21",
+              "05  项目定位与设计策略 — Positioning & Strategy ···· 27",
+              "06  概念方案 — Concept Design ···· 33"
+            ],
+            "block_id": "toc-list",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "背景研究",
+    "section": "背景研究",
+    "slot_id": "chapter-1-divider",
+    "is_cover": false,
+    "slide_no": 3,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": true,
+      "content_anchor": "bottom-left",
+      "background_type": "color",
+      "overlay_direction": "bottom"
+    },
+    "binding_id": "655dbb5f-5f3f-4794-8602-166ff363eb30",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "01",
+            "block_id": "chapter-number",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "背景研究",
+            "block_id": "chapter-title-zh",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "Background Research",
+            "block_id": "chapter-title-en",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "国家政策解读",
+    "section": "背景研究",
+    "slot_id": "policy-1",
+    "is_cover": false,
+    "slide_no": 4,
+    "primitive": {
+      "primitive": "sidebar",
+      "sidebar_ratio": 0.28,
+      "sidebar_position": "right",
+      "main_content_type": "text",
+      "sidebar_content_type": "annotation-list",
+      "sidebar_use_surface_bg": true
+    },
+    "binding_id": "e6ed0e1d-fb2c-4af1-8f15-6c9a50706a0f",
+    "source_refs": [],
+    "visual_focus": "main",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "CJJ 14-2016 强制要求解读",
+            "block_id": "main-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "《城市公共厕所设计标准》对二类及以上公厕的核心约束条款",
+            "block_id": "main-subheading",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "【第三卫生间】二类及以上公厕须设置独立第三卫生间，面积≥6.5㎡，内含成人坐便器、儿童坐便器、婴儿台及安全抓杆，满足家庭陪护及特殊人群需求",
+              "【无障碍设施】须设无障碍厕位（面积≥2.0㎡）、无障碍洗手台（台面高≤0.85m）及无障碍通道，坡道坡度≤1:20，门净宽≥0.90m",
+              "【通风除臭】自然通风换气次数≥5次/h，机械通风换气次数≥10次/h；臭气浓度（无量纲）≤10，氨浓度≤0.5mg/m³，硫化氢浓度≤0.01mg/m³",
+              "【采光照明】室内照度≥75lx，第三卫生间及无障碍厕位照度≥100lx，应急照明持续时间≥30min",
+              "【隔断与私密性】厕位隔断板底部离地高度≤0.15m，隔断板顶部高度≥1.80m，门缝宽度≤0.01m"
+            ],
+            "block_id": "main-policy-list",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "main"
+      },
+      {
+        "blocks": [
+          {
+            "content": "规范来源",
+            "block_id": "sidebar-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "CJJ 14-2016\n《城市公共厕所设计标准》\n住房和城乡建设部\n2016年12月发布\n2017年6月实施",
+            "block_id": "sidebar-source-1",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "本项目约束",
+            "block_id": "sidebar-label-2",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "本项目定位二类公厕，上述条款均为强制性规定，须在功能配置、空间尺寸及设备选型中逐条落实，不可降低标准。",
+            "block_id": "sidebar-impact",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "sidebar"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "湖北十四五规划要求",
+    "section": "背景研究",
+    "slot_id": "policy-2",
+    "is_cover": false,
+    "slide_no": 5,
+    "primitive": {
+      "primitive": "sidebar",
+      "sidebar_ratio": 0.3,
+      "sidebar_position": "right",
+      "main_content_type": "text",
+      "sidebar_content_type": "annotation-list",
+      "sidebar_use_surface_bg": true
+    },
+    "binding_id": "c6f2547a-dd32-422a-a77f-88cffc9ccad7",
+    "source_refs": [],
+    "visual_focus": "main",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "政策机遇：公厕升级的规划支撑",
+            "block_id": "main-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "湖北省十四五城乡人居环境规划 × 十堰市文旅发展目标",
+            "block_id": "main-subheading",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "《湖北省城乡人居环境建设十四五规划》明确提出：到2025年城市公共厕所达标率不低于90%，重点旅游区公厕全面提档升级",
+              "规划要求新建及改造公厕须满足无障碍、第三卫生间、智能化管理三项标准，推动公共设施品质整体跃升",
+              "《十堰市十四五文化和旅游发展规划》将武当山景区及城区旅游公共服务设施列为重点建设项目，公厕升级纳入年度考核指标",
+              "十堰市提出2025年接待游客突破6000万人次目标，公共卫生设施配套能力成为文旅品质短板亟需补齐",
+              "湖北省财政设立城乡人居环境专项资金，符合标准的公厕改造项目可申请30%建设补贴"
+            ],
+            "block_id": "main-policy-list",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "main"
+      },
+      {
+        "blocks": [
+          {
+            "content": "政策来源",
+            "block_id": "sidebar-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "湖北省住建厅\n《城乡人居环境建设十四五规划》\n2021年发布",
+            "block_id": "sidebar-anno-1",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "十堰市文化和旅游局\n《十四五文化和旅游发展规划》\n2022年发布",
+            "block_id": "sidebar-anno-2",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "湖北省财政厅\n城乡人居环境专项资金管理办法\n2022年修订",
+            "block_id": "sidebar-anno-3",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "补贴30%",
+            "block_id": "sidebar-kpi",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "符合标准公厕改造项目可获省级财政补贴",
+            "block_id": "sidebar-kpi-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "sidebar"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "政策影响综述",
+    "section": "背景研究",
+    "slot_id": "policy-impact",
+    "is_cover": false,
+    "slide_no": 6,
+    "primitive": {
+      "primitive": "sidebar",
+      "sidebar_ratio": 0.32,
+      "sidebar_position": "right",
+      "main_content_type": "chart",
+      "sidebar_content_type": "annotation-list",
+      "sidebar_use_surface_bg": true
+    },
+    "binding_id": "1a7a954a-e176-430c-98c4-7a3ae3db1dec",
+    "source_refs": [],
+    "visual_focus": "main",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "国家标准 × 省级规划双重驱动矩阵",
+            "block_id": "matrix-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "| 影响维度 | 国家标准要求 | 省级规划导向 | 对本项目的约束/目标 |\n|---|---|---|---|\n| 功能配置底线 | 《文化馆建设标准》（建标136-2010）：建筑面积分级、功能用房比例≥60% | 《江苏省公共文化设施布局规划》：县级以上文化中心须含展览、培训、演艺三类功能 | 展览+培训+演艺功能面积不低于总建筑面积60%，缺一不可 |\n| 品质提升方向 | 《公共建筑节能设计标准》GB50189：室内环境、声学、采光达标 | 《苏州市城市设计导则》：强调城市界面连续性、公共空间开放共享 | 立面通透、首层公共空间开放，室内声学与采光达国标一级 |\n| 生态节能目标 | 《绿色建筑评价标准》GB/T50378-2019：公共建筑须达绿色二星 | 《江苏省绿色建筑发展条例》：政府投资项目强制执行绿色三星 | 目标绿色三星认证，屋顶光伏+雨水回收+高性能围护结构 |",
+            "block_id": "matrix-table",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "table",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "main"
+      },
+      {
+        "blocks": [
+          {
+            "content": "三条主线结论",
+            "block_id": "sidebar-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "功能底线：展演培训三类功能缺失将不符合国家建设标准，须在方案阶段锁定面积配比",
+              "品质方向：省市两级导则共同指向开放共享界面与高品质室内环境，是设计加分项",
+              "生态目标：省级条例强制绿色三星，节能与可再生能源措施须纳入初步设计"
+            ],
+            "block_id": "sidebar-bullets",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "矩阵横轴为政策层级，纵轴为影响维度；加粗单元格为强制性要求",
+            "block_id": "sidebar-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "sidebar"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "上位规划分析",
+    "section": "背景研究",
+    "slot_id": "upper-planning",
+    "is_cover": false,
+    "slide_no": 7,
+    "primitive": {
+      "v_align": "center",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.7
+    },
+    "binding_id": "1c0c5c18-59cc-44cb-8d93-0c8cba016bd5",
+    "source_refs": [],
+    "visual_focus": "main",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "上位规划控制指标对比",
+            "block_id": "main-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "| 控制指标 | 十堰市总体规划 | 张湾区控规 |\n|---|---|---|\n| 用地性质 | 公共管理与公共服务用地（A类） | 文化设施用地（A2） |\n| 容积率上限 | ≤2.0 | ≤1.8 |\n| 建筑限高 | ≤60m | ≤50m |\n| 绿化率 | ≥30% | ≥35% |\n| 建筑密度 | ≤40% | ≤35% |\n| 停车配比 | 按规范执行 | ≥0.5车位/100㎡ |",
+            "block_id": "main-table",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "table",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "数据来源：十堰市国土空间总体规划（2021-2035）及张湾区控制性详细规划",
+            "block_id": "main-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "main"
+      },
+      {
+        "blocks": [
+          {
+            "content": "规划解读",
+            "block_id": "sidebar-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "控规指标较总规更为严格，绿化率提升5%，建筑密度收紧5%，体现生态优先导向",
+              "用地性质明确为文化设施用地（A2），为本项目文化综合体定位提供合规依据",
+              "50m限高约束下，建筑宜采用水平舒展形态，避免高层塔楼方案",
+              "容积率≤1.8与绿化率≥35%双重约束，要求合理布局地下空间以满足功能需求"
+            ],
+            "block_id": "sidebar-annotations",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "sidebar"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "交通与基础设施",
+    "section": "背景研究",
+    "slot_id": "transport-map",
+    "is_cover": false,
+    "slide_no": 8,
+    "primitive": {
+      "primitive": "triptych",
+      "equal_width": true,
+      "col_content_types": [
+        "image",
+        "image",
+        "image"
+      ],
+      "has_unified_header": true,
+      "use_column_dividers": false
+    },
+    "binding_id": "28b78cc0-727b-4614-8142-256ab83979c7",
+    "source_refs": [
+      "asset:8941189e-9f57-420e-8e61-b2e797e9a654",
+      "asset:fcb16c38-f09a-4517-9a7c-309171ca1040",
+      "asset:d9545c38-a0e5-4437-a67d-0a87e8ddc4ef"
+    ],
+    "visual_focus": "center",
+    "evidence_refs": [
+      "周边基础设施建设规划_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "交通与基础设施",
+            "block_id": "header-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "人民广场周边公交枢纽、主干道及市政基础设施分布，多维度印证场地高可达性优势",
+            "block_id": "header-sub",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "header"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:8941189e-9f57-420e-8e61-b2e797e9a654",
+            "block_id": "col0-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:8941189e-9f57-420e-8e61-b2e797e9a654"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "枢纽站点分布",
+            "block_id": "col0-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "场地500m范围内覆盖多条公交枢纽线路，换乘便捷",
+            "block_id": "col0-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "col-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:fcb16c38-f09a-4517-9a7c-309171ca1040",
+            "block_id": "col1-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:fcb16c38-f09a-4517-9a7c-309171ca1040"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "外部交通主干道",
+            "block_id": "col1-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "紧邻城市主干道，车行可达性强，步行界面连续完整",
+            "block_id": "col1-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "col-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:d9545c38-a0e5-4437-a67d-0a87e8ddc4ef",
+            "block_id": "col2-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:d9545c38-a0e5-4437-a67d-0a87e8ddc4ef"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "市政基础设施规划",
+            "block_id": "col2-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "周边市政管网完善，供水供电及通信配套条件成熟",
+            "block_id": "col2-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "col-2"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "在地文化特征",
+    "section": "背景研究",
+    "slot_id": "cultural-analysis",
+    "is_cover": false,
+    "slide_no": 9,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "text",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "25c05251-13d4-4b81-90b6-7f3ff056aaff",
+    "source_refs": [],
+    "visual_focus": "left",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "两大文化IP：车城工业 × 武当道韵",
+            "block_id": "heading-main",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "车城文化 · 东风工业遗产",
+            "block_id": "label-car",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "东风汽车自1969年扎根十堰，形成独特工业城市记忆，厂区肌理与生产流线构成场地历史底色",
+              "工业美学符号：齿轮、车架、流线型构件，可转化为建筑立面韵律与构件语言",
+              "遗产厂房的钢结构跨度与天窗采光逻辑，为大空间文化展陈提供原型参照"
+            ],
+            "block_id": "bullets-car",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "武当文化 · 道教建筑美学",
+            "block_id": "label-wudang",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "武当山古建筑群（世界遗产）以山水轴线、台地叠进、飞檐翘角为核心空间秩序",
+              "道家「曲径通幽」与「虚实相生」哲学，可转化为建筑游廊、庭院与光影序列",
+              "青灰色调、坡屋面轮廓线与自然材质，提供现代建筑的地域色彩与形态参照"
+            ],
+            "block_id": "bullets-wudang",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:cultural-illustration",
+            "block_id": "image-placeholder",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "左：东风工业遗产厂区肌理；右：武当山古建筑台地轴线",
+            "block_id": "caption-right",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "城市经济概览",
+    "section": "背景研究",
+    "slot_id": "economic-1",
+    "is_cover": false,
+    "slide_no": 10,
+    "primitive": {
+      "rows": 2,
+      "columns": 3,
+      "gap_size": "normal",
+      "primitive": "grid",
+      "has_header_row": false,
+      "cell_content_type": "mixed"
+    },
+    "binding_id": "1dcf8a42-1a15-49de-9f9a-17c875383adf",
+    "source_refs": [
+      "asset:57980847-32b2-4ee4-bde0-01d3e19a233d",
+      "asset:be24ce86-4cef-4ccc-af2a-9d82f254472c",
+      "asset:277f39f1-f929-471e-94ac-4fc6e172a993",
+      "asset:1d4c3cc1-d405-4f45-b490-f3aa99a15b9c",
+      "asset:9deb90ae-941b-46a1-934d-67e778cf885e"
+    ],
+    "visual_focus": "cell-0-0",
+    "evidence_refs": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:57980847-32b2-4ee4-bde0-01d3e19a233d",
+            "block_id": "chart-gdp",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:57980847-32b2-4ee4-bde0-01d3e19a233d"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "GDP 总量及增速趋势",
+            "block_id": "caption-gdp",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:be24ce86-4cef-4ccc-af2a-9d82f254472c",
+            "block_id": "chart-population",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:be24ce86-4cef-4ccc-af2a-9d82f254472c"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "常住人口规模变化",
+            "block_id": "caption-population",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:277f39f1-f929-471e-94ac-4fc6e172a993",
+            "block_id": "chart-urbanization",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:277f39f1-f929-471e-94ac-4fc6e172a993"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "城镇化率持续提升",
+            "block_id": "caption-urbanization",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-2"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:1d4c3cc1-d405-4f45-b490-f3aa99a15b9c",
+            "block_id": "chart-industry",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:1d4c3cc1-d405-4f45-b490-f3aa99a15b9c"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "三次产业结构演变",
+            "block_id": "caption-industry",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:9deb90ae-941b-46a1-934d-67e778cf885e",
+            "block_id": "chart-tertiary",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:9deb90ae-941b-46a1-934d-67e778cf885e"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "第三产业增加值趋势",
+            "block_id": "caption-tertiary",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "经济持续增长，城镇化加速推进",
+            "block_id": "summary-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "十堰市 GDP 稳步扩张，城镇化率逐年攀升，第三产业占比提高，居民消费能力增强——城市发展进入品质升级阶段，对高水平公共文化设施的需求显著提升。",
+            "block_id": "summary-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-2"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "产业结构分析",
+    "section": "背景研究",
+    "slot_id": "economic-2",
+    "is_cover": false,
+    "slide_no": 11,
+    "primitive": {
+      "rows": 3,
+      "columns": 2,
+      "gap_size": "normal",
+      "primitive": "grid",
+      "has_header_row": true,
+      "cell_content_type": "mixed"
+    },
+    "binding_id": "866e12a9-40af-4c70-9f2b-dd1223f4637e",
+    "source_refs": [
+      "asset:1d4c3cc1-d405-4f45-b490-f3aa99a15b9c",
+      "asset:9deb90ae-941b-46a1-934d-67e778cf885e",
+      "asset:57980847-32b2-4ee4-bde0-01d3e19a233d",
+      "asset:be24ce86-4cef-4ccc-af2a-9d82f254472c",
+      "asset:277f39f1-f929-471e-94ac-4fc6e172a993"
+    ],
+    "visual_focus": "cell-0-0",
+    "evidence_refs": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "产业结构分析",
+            "block_id": "page-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "第三产业持续扩张，文旅服务业增长拉动公共配套品质升级",
+            "block_id": "page-subtitle",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "header"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:1d4c3cc1-d405-4f45-b490-f3aa99a15b9c",
+            "block_id": "chart-industry-0",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:1d4c3cc1-d405-4f45-b490-f3aa99a15b9c"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "十堰三次产业增加值占比变化趋势",
+            "block_id": "caption-industry-0",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:9deb90ae-941b-46a1-934d-67e778cf885e",
+            "block_id": "chart-industry-1",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:9deb90ae-941b-46a1-934d-67e778cf885e"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "第三产业内部结构：文旅服务业占比持续提升",
+            "block_id": "caption-industry-1",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:57980847-32b2-4ee4-bde0-01d3e19a233d",
+            "block_id": "chart-economy-0",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:57980847-32b2-4ee4-bde0-01d3e19a233d"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "十堰GDP总量及增速（2018—2023）",
+            "block_id": "caption-economy-0",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:be24ce86-4cef-4ccc-af2a-9d82f254472c",
+            "block_id": "chart-economy-1",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:be24ce86-4cef-4ccc-af2a-9d82f254472c"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "城镇化率与人口规模变化",
+            "block_id": "caption-economy-1",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "核心结论",
+            "block_id": "summary-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "第三产业占GDP比重由2018年约42%升至2023年超50%，服务业成为主导增长极",
+              "文旅消费支出年均增速超8%，带动高品质公共文化设施需求显著扩大",
+              "城镇化率持续提升，居民对综合性文化配套设施的品质诉求同步升级"
+            ],
+            "block_id": "summary-text",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-2-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:277f39f1-f929-471e-94ac-4fc6e172a993",
+            "block_id": "chart-economy-2",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:277f39f1-f929-471e-94ac-4fc6e172a993"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "居民人均可支配收入与消费支出对比",
+            "block_id": "caption-economy-2",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-2-1"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "消费水平分析",
+    "section": "背景研究",
+    "slot_id": "economic-3",
+    "is_cover": false,
+    "slide_no": 12,
+    "primitive": {
+      "rows": 2,
+      "columns": 2,
+      "gap_size": "normal",
+      "primitive": "grid",
+      "has_header_row": false,
+      "cell_content_type": "mixed"
+    },
+    "binding_id": "630d7e96-8dfc-4df4-a810-59c39c507102",
+    "source_refs": [
+      "asset:ea9a9b16-7b50-400c-9e62-79f9b6d53702",
+      "asset:9c48dcf6-ba49-4133-b2f8-94fb507f9ca4"
+    ],
+    "visual_focus": "cell-0-0",
+    "evidence_refs": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:ea9a9b16-7b50-400c-9e62-79f9b6d53702",
+            "block_id": "chart-income",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:ea9a9b16-7b50-400c-9e62-79f9b6d53702"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "十堰居民人均可支配收入逐年稳步增长",
+            "block_id": "caption-income",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:9c48dcf6-ba49-4133-b2f8-94fb507f9ca4",
+            "block_id": "chart-expense",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:9c48dcf6-ba49-4133-b2f8-94fb507f9ca4"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "居民消费支出持续扩大，服务性消费占比提升",
+            "block_id": "caption-expense",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "人均可支配收入年均增速 ≈ 7%",
+            "block_id": "kpi-income",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "收入与消费双线上升，居民生活品质诉求显著增强",
+              "服务性消费比重提升，市民对公共空间品质感知力增强",
+              "消费升级趋势为公厕等公共设施品质化改造提供社会基础"
+            ],
+            "block_id": "summary-text",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-1"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地分析",
+    "section": "场地分析",
+    "slot_id": "chapter-2-divider",
+    "is_cover": false,
+    "slide_no": 13,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": true,
+      "content_anchor": "bottom-left",
+      "background_type": "color",
+      "overlay_direction": "bottom"
+    },
+    "binding_id": "3ce58536-e5bd-457b-ba15-3635e70bd76f",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "02",
+            "block_id": "chapter-number",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "场地分析",
+            "block_id": "chapter-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "Site Analysis",
+            "block_id": "chapter-title-en",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "城市区位分析",
+    "section": "场地分析",
+    "slot_id": "site-location-1",
+    "is_cover": false,
+    "slide_no": 14,
+    "primitive": {
+      "primitive": "overlay-mosaic",
+      "panel_count": 3,
+      "panel_opacity": 0.92,
+      "background_type": "map",
+      "panel_arrangement": "left-stack",
+      "panel_content_type": "text-annotation"
+    },
+    "binding_id": "defc6e3a-0542-417a-ba21-3f54f9b24b75",
+    "source_refs": [
+      "asset:fcb16c38-f09a-4517-9a7c-309171ca1040"
+    ],
+    "visual_focus": "background",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:fcb16c38-f09a-4517-9a7c-309171ca1040",
+            "block_id": "bg-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:fcb16c38-f09a-4517-9a7c-309171ca1040"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "background"
+      },
+      {
+        "blocks": [
+          {
+            "content": "核心区位",
+            "block_id": "panel0-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "人民广场位于张湾区行政与商业核心，辐射半径约3km",
+              "紧邻十堰市政府、张湾区政府，城市展示面价值突出",
+              "地块四至清晰，北接人民路、南望汉江生态廊道"
+            ],
+            "block_id": "panel0-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "对外交通",
+            "block_id": "panel1-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "十堰东站（高铁）：距场地约12km，郑万高铁直达武汉、郑州",
+              "十堰西站（城际）：距场地约8km，连接襄阳、神农架方向",
+              "G209、G316国道交汇于张湾区，区域公路可达性强"
+            ],
+            "block_id": "panel1-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "景区关系",
+            "block_id": "panel2-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "武当山世界文化遗产景区：距场地约75km，车程约1小时",
+              "场地作为城市文化门户，承接武当山旅游客流集散功能",
+              "构建「武当山—十堰城区—人民广场」文旅轴线"
+            ],
+            "block_id": "panel2-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-2"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地四至分析",
+    "section": "场地分析",
+    "slot_id": "site-location-2",
+    "is_cover": false,
+    "slide_no": 15,
+    "primitive": {
+      "primitive": "overlay-mosaic",
+      "panel_count": 3,
+      "panel_opacity": 0.92,
+      "background_type": "map",
+      "panel_arrangement": "left-stack",
+      "panel_content_type": "text-annotation"
+    },
+    "binding_id": "6380e0e4-8e3c-454d-a425-c8cffe572279",
+    "source_refs": [
+      "asset:043d1f16-1f87-4484-977e-4581e0fe56f1"
+    ],
+    "visual_focus": "background",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:043d1f16-1f87-4484-977e-4581e0fe56f1",
+            "block_id": "bg-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:043d1f16-1f87-4484-977e-4581e0fe56f1"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "background"
+      },
+      {
+        "blocks": [
+          {
+            "content": "四至边界",
+            "block_id": "panel0-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "东侧：紧邻城市次干道，退界约3m，需控制噪声与视线遮挡",
+              "西侧：现状居住区围墙，日照间距受限，立面开窗需审慎",
+              "南侧：沿主干道展开，为主要人流界面与形象展示面",
+              "北侧：绿化隔离带，可借景但不可占用"
+            ],
+            "block_id": "panel0-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "用地约束",
+            "block_id": "panel1-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "用地面积约300㎡，属高度紧凑型地块",
+              "建筑密度上限60%，可建基底约180㎡",
+              "限高24m，可利用垂直空间叠层布局",
+              "消防通道需保证4m净宽，环绕可达"
+            ],
+            "block_id": "panel1-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "交通可达",
+            "block_id": "panel2-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "500m范围内覆盖地铁站点，公共交通便利",
+              "南侧主干道设公交站，步行约2分钟可达",
+              "机动车出入口建议设于东侧次干道，避开主界面"
+            ],
+            "block_id": "panel2-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-2"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "交通可达性分析",
+    "section": "场地分析",
+    "slot_id": "site-location-3",
+    "is_cover": false,
+    "slide_no": 16,
+    "primitive": {
+      "primitive": "overlay-mosaic",
+      "panel_count": 3,
+      "panel_opacity": 0.92,
+      "background_type": "map",
+      "panel_arrangement": "left-stack",
+      "panel_content_type": "mixed"
+    },
+    "binding_id": "1cca5218-b7de-4ffd-bd39-ddab7fdaeebb",
+    "source_refs": [
+      "asset:fcb16c38-f09a-4517-9a7c-309171ca1040",
+      "asset:8941189e-9f57-420e-8e61-b2e797e9a654"
+    ],
+    "visual_focus": "background",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:fcb16c38-f09a-4517-9a7c-309171ca1040",
+            "block_id": "bg-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:fcb16c38-f09a-4517-9a7c-309171ca1040"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "background"
+      },
+      {
+        "blocks": [
+          {
+            "content": "交通可达性分析",
+            "block_id": "panel0-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "场地东侧紧邻城市主干道，双向六车道，机动车可达性强",
+              "步行500m范围内覆盖3条公交线路，日均发车频次≥8班/小时",
+              "步行15分钟可达轨道交通枢纽站，辐射全市客流网络"
+            ],
+            "block_id": "panel0-bullets",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "周边枢纽站点分布",
+            "block_id": "panel1-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "asset:8941189e-9f57-420e-8e61-b2e797e9a654",
+            "block_id": "panel1-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:8941189e-9f57-420e-8e61-b2e797e9a654"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "公交站点覆盖范围",
+            "block_id": "panel2-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "日均人流 ≥ 2.4万人次",
+            "block_id": "panel2-kpi1",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "500m步行圈内公交站点共6处，覆盖主要居住及商业片区",
+            "block_id": "panel2-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-2"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "区域开发现状",
+    "section": "场地分析",
+    "slot_id": "site-location-4",
+    "is_cover": false,
+    "slide_no": 17,
+    "primitive": {
+      "primitive": "overlay-mosaic",
+      "panel_count": 3,
+      "panel_opacity": 0.92,
+      "background_type": "map",
+      "panel_arrangement": "left-stack",
+      "panel_content_type": "text-annotation"
+    },
+    "binding_id": "3d0490f9-f298-40f8-beb2-3675bd181c27",
+    "source_refs": [
+      "asset:043d1f16-1f87-4484-977e-4581e0fe56f1"
+    ],
+    "visual_focus": "background",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:043d1f16-1f87-4484-977e-4581e0fe56f1",
+            "block_id": "bg-map",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:043d1f16-1f87-4484-977e-4581e0fe56f1"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "background"
+      },
+      {
+        "blocks": [
+          {
+            "content": "场地四至",
+            "block_id": "panel0-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "北侧：城市主干道，人流量大，公厕需求集中",
+              "东侧：商业综合体及居住区，日常使用频率高",
+              "南侧：公园绿地，休闲人群聚集，需求持续稳定",
+              "西侧：在建住宅组团，未来使用人口增量显著"
+            ],
+            "block_id": "panel0-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "外部交通与站点",
+            "block_id": "panel1-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "场地500m范围内覆盖公交站点3处，日均客流量可观",
+              "枢纽站点位于东北角约800m，换乘人群如厕需求突出",
+              "非机动车道贯通南北，骑行人群停留频率较高"
+            ],
+            "block_id": "panel1-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "开发现状综合研判",
+            "block_id": "panel2-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "周边已建成项目形成稳定客群，公厕基础需求已存在",
+              "在建项目将带来增量人口，近期使用压力将进一步提升",
+              "现状公厕配套不足，本项目选址具有明确必要性"
+            ],
+            "block_id": "panel2-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "panel-2"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "周边业态分析",
+    "section": "场地分析",
+    "slot_id": "poi-analysis",
+    "is_cover": false,
+    "slide_no": 18,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "chart",
+      "right_content_type": "text"
+    },
+    "binding_id": "15a56182-228d-4420-8f61-db2175eeea72",
+    "source_refs": [
+      "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505"
+    ],
+    "visual_focus": "left",
+    "evidence_refs": [
+      "场地poi_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地1km范围内POI业态分布",
+            "block_id": "chart-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505",
+            "block_id": "poi-table",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "数据来源：高德POI开放数据，统计半径1km，共计约285个兴趣点",
+            "block_id": "chart-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "多元业态聚集，如厕需求旺盛",
+            "block_id": "analysis-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "餐饮业态占比最高（约35%），午晚高峰客流密集，如厕需求频次高、时段集中",
+              "商业零售占比约28%，购物人群停留时间长，对公共卫生设施依赖度强",
+              "公共服务设施（学校、医院、政务）占比约18%，使用人群固定且需求刚性",
+              "休闲娱乐（公园、健身、影院）占比约12%，周末及节假日带来峰值如厕压力",
+              "综合来看，场地周边业态多元、人流量大，现有公厕供给存在明显缺口"
+            ],
+            "block_id": "analysis-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地综合研判",
+    "section": "场地分析",
+    "slot_id": "site-summary",
+    "is_cover": false,
+    "slide_no": 19,
+    "primitive": {
+      "primitive": "sidebar",
+      "sidebar_ratio": 0.3,
+      "sidebar_position": "right",
+      "main_content_type": "mixed",
+      "sidebar_content_type": "annotation-list",
+      "sidebar_use_surface_bg": true
+    },
+    "binding_id": "7338b0ee-35fe-47b1-ae87-d03cd2b13aa8",
+    "source_refs": [
+      "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505"
+    ],
+    "visual_focus": "main",
+    "evidence_refs": [
+      "场地poi_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地综合研判 · SWOT 矩阵",
+            "block_id": "swot-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505",
+            "block_id": "swot-table",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505"
+            ],
+            "content_type": "table",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "main"
+      },
+      {
+        "blocks": [
+          {
+            "content": "设计策略方向",
+            "block_id": "strategy-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "立体复合开发：突破紧凑用地限制，向垂直维度延伸功能层叠",
+              "强化城市界面：以高完成度立面回应核心区形象要求",
+              "人流导入设计：利用高客流优势，设置开放底层公共空间激活场地",
+              "政策弹性预留：功能分区保留可变余量，适应政策提标后的功能升级"
+            ],
+            "block_id": "strategy-list",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "数据来源：场地 POI 分析表（500m 辐射圈）",
+            "block_id": "poi-ref",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "sidebar"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "竞品分析",
+    "section": "竞品分析",
+    "slot_id": "chapter-3-divider",
+    "is_cover": false,
+    "slide_no": 20,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": true,
+      "content_anchor": "bottom-left",
+      "background_type": "color",
+      "overlay_direction": "bottom"
+    },
+    "binding_id": "d3ed2e65-9114-47bf-b0f7-528e5b6d2865",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "03",
+            "block_id": "chapter-number",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "竞品分析",
+            "block_id": "chapter-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "Competitor Analysis",
+            "block_id": "chapter-title-en",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "本地公厕现状",
+    "section": "竞品分析",
+    "slot_id": "competitor-local",
+    "is_cover": false,
+    "slide_no": 21,
+    "primitive": {
+      "primitive": "sidebar",
+      "sidebar_ratio": 0.32,
+      "sidebar_position": "right",
+      "main_content_type": "chart",
+      "sidebar_content_type": "annotation-list",
+      "sidebar_use_surface_bg": true
+    },
+    "binding_id": "ffa129a6-43b5-4f38-b953-020e52cfad5b",
+    "source_refs": [
+      "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505"
+    ],
+    "visual_focus": "main",
+    "evidence_refs": [
+      "场地poi_285",
+      "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "人民广场周边公厕现状分布",
+            "block_id": "main-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505",
+            "block_id": "main-table",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:fb41afff-bf26-44ed-8d06-5b6abaa5c505"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "数据来源：人民广场周边 POI 调研（十堰市张湾区，坐标 110.78°E / 32.66°N）",
+            "block_id": "main-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "main"
+      },
+      {
+        "blocks": [
+          {
+            "content": "现状评估",
+            "block_id": "sidebar-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "功能配置基础：周边公厕以蹲位为主，无障碍设施覆盖率低，第三卫生间配置缺失",
+              "设计水平薄弱：外立面多为瓷砖贴面或简易彩钢板，缺乏与城市界面的协调设计",
+              "卫生状况参差：部分设施老旧，通风采光不足，日常维护管理水平有限",
+              "文化表达缺位：现有公厕均未体现车城文化或武当文化等地域特色，标识系统单一"
+            ],
+            "block_id": "sidebar-analysis",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "现状公厕普遍停留于基础功能满足，设计感与文化表达几近空白，存在显著提升空间。",
+            "block_id": "sidebar-conclusion",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "quote",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "sidebar"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "行业标杆对标",
+    "section": "竞品分析",
+    "slot_id": "competitor-web",
+    "is_cover": false,
+    "slide_no": 22,
+    "primitive": {
+      "rows": 2,
+      "columns": 5,
+      "gap_size": "tight",
+      "primitive": "grid",
+      "has_header_row": true,
+      "cell_content_type": "mixed"
+    },
+    "binding_id": "b386b1e0-439c-466f-ae65-d3e408ee5f65",
+    "source_refs": [],
+    "visual_focus": "cell-1-4",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "行业标杆对标分析",
+            "block_id": "page-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "国内文化型 / 生态型公厕标杆项目横向比较",
+            "block_id": "page-sub",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "header"
+      },
+      {
+        "blocks": [
+          {
+            "content": "对比维度",
+            "block_id": "col-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "大唐不夜城公厕",
+            "block_id": "proj-a-name",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "望江亭生态公厕",
+            "block_id": "proj-b-name",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-2"
+      },
+      {
+        "blocks": [
+          {
+            "content": "上海外滩滨水公厕",
+            "block_id": "proj-c-name",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-3"
+      },
+      {
+        "blocks": [
+          {
+            "content": "本项目（目标定位）",
+            "block_id": "proj-d-name",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-4"
+      },
+      {
+        "blocks": [
+          {
+            "content": "建筑面积\n技术配置\n文化策略\n差异化亮点",
+            "block_id": "dim-area",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "约 120㎡，独立单体",
+              "智能感应冲水、除臭系统",
+              "唐风仿古外立面，与景区风貌统一",
+              "强文化符号植入，辨识度高"
+            ],
+            "block_id": "proj-a-detail",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "约 80㎡，嵌入绿地",
+              "雨水回收冲厕、太阳能照明",
+              "竹木结构，融入自然景观",
+              "生态技术领先，但文化表达较弱"
+            ],
+            "block_id": "proj-b-detail",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-2"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "约 150㎡，滨水嵌入式",
+              "无障碍全覆盖、母婴室配套",
+              "现代简约立面，与滨江天际线协调",
+              "服务品质高，文化叙事有限"
+            ],
+            "block_id": "proj-c-detail",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-3"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "目标 100–180㎡，复合功能",
+              "智慧管理 + 绿色节能双轨并行",
+              "地域文化深度叙事 + 当代设计语言",
+              "差异化：文化体验 × 生态技术双强"
+            ],
+            "block_id": "proj-d-detail",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-4"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "大唐不夜城公厕",
+    "section": "参考案例",
+    "slot_id": "reference-case-1",
+    "is_cover": false,
+    "slide_no": 23,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "image",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "a1ff75bc-a978-4aea-99f2-932a03a4a147",
+    "source_refs": [
+      "asset:512108d9-cc45-4f6f-a3ba-e6698631ee06"
+    ],
+    "visual_focus": "left",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:512108d9-cc45-4f6f-a3ba-e6698631ee06",
+            "block_id": "case-image",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:512108d9-cc45-4f6f-a3ba-e6698631ee06"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "西安大唐不夜城「城东」公共卫生间 / 三谷设计，2019，200㎡",
+            "block_id": "case-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "唐风语言融入公共设施",
+            "block_id": "case-heading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "三谷设计 · 西安 · 2019 · 200㎡",
+            "block_id": "case-subheading",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "屋顶采用唐代歇山式坡顶，斗拱构件以现代材料简化再现，文化辨识度极高",
+              "外立面以仿古青砖与暖色灯带结合，夜间形成沉浸式唐风氛围",
+              "功能布局紧凑（200㎡），在严格面积限制下实现文化场景完整表达",
+              "公共设施与街区整体风貌高度统一，成为景区文化叙事的组成节点"
+            ],
+            "block_id": "case-analysis",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "启示：文化符号无需大体量即可产生强烈场所感——本项目可借鉴其「以局部构件承载整体文化叙事」的手法，在细部语言中植入地域文化基因。",
+            "block_id": "case-insight",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "西班牙Trado生态公厕",
+    "section": "参考案例",
+    "slot_id": "reference-case-2",
+    "is_cover": false,
+    "slide_no": 24,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "image",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "62602082-691f-4fba-bc0f-e1f21c9d75aa",
+    "source_refs": [
+      "asset:0d2301f7-a892-4cd3-86e5-d3733fc503a3"
+    ],
+    "visual_focus": "left",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:0d2301f7-a892-4cd3-86e5-d3733fc503a3",
+            "block_id": "case-image",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:0d2301f7-a892-4cd3-86e5-d3733fc503a3"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "Trado生态公厕，MOL Arquitectura，西班牙，2018，56㎡",
+            "block_id": "case-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "小体量·大生态：Trado公厕",
+            "block_id": "case-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "MOL Arquitectura · 西班牙 · 2018 · 56㎡",
+            "block_id": "case-subtitle",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "被动通风设计：利用建筑形体开口引导自然穿堂风，全年无需机械通风",
+              "在地石材围护：采用当地片岩砌筑外墙，降低运输碳排放，与山地景观融合",
+              "雨水收集系统：屋面坡度导流至地下储水槽，用于冲厕及场地灌溉",
+              "紧凑平面布局：56㎡内整合男女厕、无障碍间及设备间，功能效率极高"
+            ],
+            "block_id": "case-strategies",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "启示：极小建筑同样可以成为生态技术的集成示范，在地材料 + 被动策略是低成本绿色建筑的可复制路径",
+            "block_id": "case-insight",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "quote",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "十堰草莓园活动馆",
+    "section": "参考案例",
+    "slot_id": "reference-case-3",
+    "is_cover": false,
+    "slide_no": 25,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "image",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "97f5f2b9-b3ce-47f5-8d40-b361f73b918d",
+    "source_refs": [
+      "asset:d21faa8e-b2ca-4c77-96e1-69dde0f23d0f"
+    ],
+    "visual_focus": "left",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:d21faa8e-b2ca-4c77-96e1-69dde0f23d0f",
+            "block_id": "case-image",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:d21faa8e-b2ca-4c77-96e1-69dde0f23d0f"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "草莓园活动馆，十堰市 · 小写建筑事务所 · 2019 · 620㎡",
+            "block_id": "case-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "十堰草莓园活动馆",
+            "block_id": "case-title",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "小写建筑事务所 · 十堰市 · 2019 · 社区建筑",
+            "block_id": "case-meta",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "体块错落：多个小体量单元高低错落组合，消解大体量压迫感，与农业景观尺度相协调",
+              "灰空间过渡：半室外廊道与檐下空间形成室内外之间的缓冲层，增强场所归属感",
+              "低反射材料：外墙采用哑光砖与原木饰面，避免强反光，与自然环境低调融合"
+            ],
+            "block_id": "case-analysis",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "本案作为十堰在地实践，直接验证了体块组合与材质克制策略在本地气候与乡村语境中的可行性，可为本项目形态生成与外立面材质选型提供直接参照。",
+            "block_id": "case-insight",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "上海望江亭",
+    "section": "参考案例",
+    "slot_id": "reference-case-4",
+    "is_cover": false,
+    "slide_no": 26,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "image",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "5fadc3dd-28cd-412b-a120-c7e49f2dedae",
+    "source_refs": [
+      "asset:30eef14c-ccfa-42f0-a4c0-e6d3cb6e44c2"
+    ],
+    "visual_focus": "left",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:30eef14c-ccfa-42f0-a4c0-e6d3cb6e44c2",
+            "block_id": "case-image",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:30eef14c-ccfa-42f0-a4c0-e6d3cb6e44c2"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "上海望江亭覆土建筑，建筑面积 207㎡，2021年建成",
+            "block_id": "case-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "上海望江亭",
+            "block_id": "case-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "覆土建筑 · 207㎡ · 上海黄浦江滨江",
+            "block_id": "case-meta",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "节能降耗 60%+",
+            "block_id": "case-kpi",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "覆土被动节能：屋顶覆土厚度 600mm，利用土壤热惰性稳定室内温度，全年空调能耗较同规模地上建筑降低 60% 以上",
+              "雨水滞留系统：屋顶植被层结合蓄水模块，年径流削减率超 70%，有效缓解城市内涝压力",
+              "生态修复策略：覆土层种植乡土草本植物，恢复滨江湿地植被群落，建筑消隐于景观之中"
+            ],
+            "block_id": "case-analysis",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "启示①：覆土被动节能技术可直接移植至本项目屋顶花园设计，支撑绿色建筑节能目标",
+              "启示②：雨水滞留模块与本项目海绵城市指标结合，可实现年径流总量控制率≥75%"
+            ],
+            "block_id": "case-insight",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "项目定位",
+    "section": "项目定位",
+    "slot_id": "project-positioning",
+    "is_cover": false,
+    "slide_no": 27,
+    "primitive": {
+      "v_align": "center",
+      "primitive": "single-column",
+      "has_pull_quote": true,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "93fa6413-9bec-4170-8797-6fe8fff93c88",
+    "source_refs": [],
+    "visual_focus": "pull-quote",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "十堰首座融合车城与武当文化的生态节能示范公厕",
+            "block_id": "core-positioning",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "quote",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "pull-quote"
+      },
+      {
+        "blocks": [
+          {
+            "content": "三大核心价值",
+            "block_id": "section-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "文化标识载体 —— 以车城工业基因与武当道家美学为双轴，构建十堰独有的城市文化符号",
+              "被动节能降耗 —— 综合运用自然通风、采光导入、蓄热墙体等被动式技术，较同类设施降耗 60% 以上",
+              "城市形象展示面 —— 选址于城市主要节点，以高完成度公共设施彰显十堰城市建设品质与文明形象"
+            ],
+            "block_id": "value-points",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "设计策略",
+    "section": "设计策略",
+    "slot_id": "chapter-4-divider",
+    "is_cover": false,
+    "slide_no": 28,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": true,
+      "content_anchor": "bottom-left",
+      "background_type": "color",
+      "overlay_direction": "bottom"
+    },
+    "binding_id": "05aaf7d5-c0af-4f85-8c17-897356cc0df0",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "04",
+            "block_id": "chapter-number",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "设计策略",
+            "block_id": "chapter-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "Design Strategy",
+            "block_id": "chapter-title-en",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "以生态技术与文化叙事定义新一代城市公厕",
+            "block_id": "chapter-tagline",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "四大设计策略",
+    "section": "设计策略",
+    "slot_id": "design-strategies",
+    "is_cover": false,
+    "slide_no": 29,
+    "primitive": {
+      "rows": 2,
+      "columns": 2,
+      "gap_size": "normal",
+      "primitive": "grid",
+      "has_header_row": false,
+      "cell_content_type": "mixed"
+    },
+    "binding_id": "ba356c83-fbfe-454b-a434-4b0824f7ce4e",
+    "source_refs": [],
+    "visual_focus": "center",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "文化符号植入",
+            "block_id": "strategy1-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "车城·武当双文化符号融入形态与材料",
+            "block_id": "strategy1-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "以十堰车城工业肌理与武当山道教几何纹样为母题，转译为建筑立面模数分格与屋面折线轮廓，并在内装材料色谱中呼应铁锈橙与青灰石两大地域色系。",
+            "block_id": "strategy1-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "绿色节能",
+            "block_id": "strategy2-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "覆土屋面 + 被动通风，综合降耗 60%+",
+            "block_id": "strategy2-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "南侧覆土坡屋面厚度 800 mm，提供热惰性保温；结合穿堂风导流廊道与高侧窗拔风，全年自然通风时长超 5000 小时，综合能耗较基准值降低 60% 以上。",
+            "block_id": "strategy2-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-0-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "灰空间过渡",
+            "block_id": "strategy3-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "半开放灰空间柔性衔接城市广场",
+            "block_id": "strategy3-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "在建筑首层与市民广场之间设置进深 6–9 m 的半开放檐廊灰空间，消解室内外边界，兼作遮阳避雨的公共活动缓冲带，全天候引导人流自然渗入。",
+            "block_id": "strategy3-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "在地材料",
+            "block_id": "strategy4-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "在地材料 + 低反射饰面，融入自然环境",
+            "block_id": "strategy4-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "外立面主材选用秦巴山区本地青石板与再生砖，光反射率控制在 15% 以下；屋面种植层选用乡土草本，全生命周期碳排放较传统幕墙方案降低约 35%。",
+            "block_id": "strategy4-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "cell-1-1"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "方案一「太和归真」",
+    "section": "概念方案",
+    "slot_id": "concept-intro-1",
+    "is_cover": false,
+    "slide_no": 30,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "9f482d66-0798-462f-8e5d-a531082dcba4",
+    "source_refs": [],
+    "visual_focus": "right",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "方案一 · SCHEME A",
+            "block_id": "scheme-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "太和归真",
+            "block_id": "scheme-title",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "道法自然，曲线即山脊，屋面即大地，建筑归于天地之间。",
+            "block_id": "concept-quote",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "quote",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "形态母题取自武当山太和殿屋脊曲线，以连续起伏的覆土屋面回应山地地貌，建筑消隐于自然之中。被动通风系统沿屋脊走向布置，利用热压差实现自然换气，无需机械驱动。",
+            "block_id": "concept-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "形态母题：太和殿屋脊曲线，连续弧形屋面与山体轮廓融合",
+              "覆土屋面：种植层厚度 600mm，隔热蓄冷，降低建筑能耗约 30%",
+              "被动通风：屋脊设导风槽，热压通风换气次数≥6次/小时",
+              "空间叙事：入口—庭院—殿堂三段式序列，呼应道教礼仪动线"
+            ],
+            "block_id": "design-points",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:concept_scheme_a_render",
+            "block_id": "concept-image",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "方案一概念意向——覆土屋面与武当山脊线呼应",
+            "block_id": "image-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "方案二「车辙印迹」",
+    "section": "概念方案",
+    "slot_id": "concept-intro-2",
+    "is_cover": false,
+    "slide_no": 31,
+    "primitive": {
+      "divider": "line",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "b2182b62-0468-42d6-bd7c-ef9526812749",
+    "source_refs": [],
+    "visual_focus": "right",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "方案二 · SCHEME B",
+            "block_id": "concept-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "车辙印迹",
+            "block_id": "concept-title",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "以车城工业线条为形态母题，让建筑本身成为城市工业记忆的凝固与延续",
+            "block_id": "concept-quote",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "quote",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "形态母题：提取汽车车辙与工业折线语言，形成连续折板屋面轮廓，赋予建筑强烈的方向感与韵律感",
+              "采光策略：折板屋面设置连续天窗，引入漫射自然光，消除眩光，营造均质而富有层次的室内光环境",
+              "空间组织：以折板结构单元为模数，串联展览、演艺、公共休闲等功能区，流线清晰、分区灵活",
+              "材料表达：清水混凝土基座 + 金属折板表皮，强调现代工业美学与功能理性的统一"
+            ],
+            "block_id": "concept-body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "",
+            "block_id": "concept-image",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "折板屋面形态意向 · 工业线条语言演绎",
+            "block_id": "concept-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "方案三「云栖山房」",
+    "section": "概念方案",
+    "slot_id": "concept-intro-3",
+    "is_cover": false,
+    "slide_no": 32,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "e43e9766-2038-4387-ba1e-0b3ad9e9a29a",
+    "source_refs": [],
+    "visual_focus": "right",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "方案三 · SCHEME C",
+            "block_id": "scheme-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "云栖山房",
+            "block_id": "scheme-name",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "云雾氤氲武当岭，钢构诗意栖山房——山水意象与工业语言的诗意共生",
+            "block_id": "concept-quote",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "quote",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "坡屋面覆绿：以连续折叠绿化屋面呼应武当山云雾缭绕的自然轮廓，消解建筑体量感",
+              "半围合灰空间：钢构架廊道围合内庭，形成可渗透的过渡灰空间，引导人流自然流动",
+              "车城钢构语言：裸露钢骨节点与工业质感饰面，致敬十堰汽车工业文化基因",
+              "山水轴线组织：建筑群沿山势展开，主轴对景远山，次轴串联水景与公共广场"
+            ],
+            "block_id": "design-principles",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": null,
+            "block_id": "concept-image",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "概念意向：坡屋面覆绿 + 钢构灰空间 · 山水工业共生意象",
+            "block_id": "image-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "「太和归真」鸟瞰",
+    "section": "概念方案",
+    "slot_id": "concept-aerial-1",
+    "is_cover": false,
+    "slide_no": 33,
+    "primitive": {
+      "primitive": "split-v",
+      "top_ratio": 8,
+      "bottom_ratio": 2,
+      "bottom_style": "info-strip",
+      "top_content_type": "image",
+      "bottom_content_type": "text"
+    },
+    "binding_id": "a0f06f3b-e262-40b8-bd58-730539fb32b4",
+    "source_refs": [],
+    "visual_focus": "top",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:concept_aerial_view_scheme1",
+            "block_id": "aerial-image",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "覆土屋面",
+            "block_id": "label-roof",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "广场衔接界面",
+            "block_id": "label-plaza",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "入口灰空间",
+            "block_id": "label-entrance",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "绿化覆盖范围",
+            "block_id": "label-green",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "top"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "覆土屋面绿化覆盖率 ≥ 60%，与广场标高差 ±0.00 ~ +4.50 m 渐变衔接",
+              "入口灰空间进深 6 m，净高 5.4 m，形成室内外过渡缓冲区",
+              "建筑东西向总长约 180 m，南北向最大进深约 90 m"
+            ],
+            "block_id": "dim-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "bottom"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "「车辙印迹」鸟瞰",
+    "section": "概念方案",
+    "slot_id": "concept-aerial-2",
+    "is_cover": false,
+    "slide_no": 34,
+    "primitive": {
+      "primitive": "split-v",
+      "top_ratio": 8,
+      "bottom_ratio": 2,
+      "bottom_style": "info-strip",
+      "top_content_type": "image",
+      "bottom_content_type": "text"
+    },
+    "binding_id": "0929e6b6-14ec-4516-b0f1-cb204556ebd8",
+    "source_refs": [],
+    "visual_focus": "top",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:concept_aerial_scheme2",
+            "block_id": "aerial-image",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "折板屋面走向",
+            "block_id": "label-roof",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "天窗位置",
+            "block_id": "label-skylight",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "朝阳北路界面",
+            "block_id": "label-street",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "top"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "建筑总长约 180m，沿朝阳北路展开面宽约 120m",
+              "折板屋面最高点 +18.0m，最低檐口 +6.0m，高差 12m",
+              "天窗带宽 3.6m，沿折板脊线连续布置，总长约 95m"
+            ],
+            "block_id": "dimension-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "bottom"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "「云栖山房」鸟瞰",
+    "section": "概念方案",
+    "slot_id": "concept-aerial-3",
+    "is_cover": false,
+    "slide_no": 35,
+    "primitive": {
+      "primitive": "split-v",
+      "top_ratio": 8,
+      "bottom_ratio": 2,
+      "bottom_style": "info-strip",
+      "top_content_type": "image",
+      "bottom_content_type": "text"
+    },
+    "binding_id": "368fc251-e1d6-4633-90bc-43938991f71c",
+    "source_refs": [],
+    "visual_focus": "top",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:concept_aerial_view_scheme3",
+            "block_id": "aerial-image",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "坡屋面覆绿范围",
+            "block_id": "label-green-roof",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "半围合院落空间",
+            "block_id": "label-courtyard",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "与人民广场视线通廊",
+            "block_id": "label-sightline",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "top"
+      },
+      {
+        "blocks": [
+          {
+            "content": [
+              "建筑总长约 180m，最大进深 60m",
+              "坡屋面覆绿面积约 3,200㎡，坡度 15°~30°",
+              "中心院落净尺寸约 45m × 30m，半围合开口朝向人民广场"
+            ],
+            "block_id": "dim-strip",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "bottom"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "「太和归真」人视图",
+    "section": "概念方案",
+    "slot_id": "concept-perspective-1",
+    "is_cover": false,
+    "slide_no": 36,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "image",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "960b35d8-2232-4a07-9d80-2542994ef78a",
+    "source_refs": [],
+    "visual_focus": "left",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:concept_perspective_main_entrance",
+            "block_id": "hero-image",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "方案一「太和归真」主入口灰空间人视效果图",
+            "block_id": "hero-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "立面文化符号解析",
+            "block_id": "section-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "太极八卦纹格栅：铝合金穿孔板镂刻八卦阵列，光影随时辰变化投影于灰空间地面",
+              "悬山坡屋顶意向：屋檐出挑1.8m，以现代钢构演绎武当传统殿宇飞檐轮廓",
+              "玄武石基座：深灰色花岗岩干挂，呼应武当山玄武岩地貌，底部设连续水景",
+              "灰空间过渡廊：宽6m半室外檐廊，以竹钢格栅围合，形成「内外之间」的禅意缓冲"
+            ],
+            "block_id": "symbol-annotations",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "主要材质",
+            "block_id": "material-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "外墙：仿石涂料 + 深灰花岗岩干挂，哑光质感",
+              "格栅：铝合金氟碳喷涂（古铜色），竹钢复合板",
+              "屋面：深灰色金属屋面板，坡度12°"
+            ],
+            "block_id": "material-desc",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "「车辙印迹」人视图",
+    "section": "概念方案",
+    "slot_id": "concept-perspective-2",
+    "is_cover": false,
+    "slide_no": 37,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "mixed",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "fd447206-2489-4ed1-82ea-79f953804bfa",
+    "source_refs": [],
+    "visual_focus": "left",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "沿街界面 · 折板屋面人视效果",
+            "block_id": "left-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "asset:concept-perspective-2-street",
+            "block_id": "left-image-1",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "沿街立面：折板屋面形成连续工业线条韵律，呼应车辙轨迹意象",
+            "block_id": "left-caption-1",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "asset:concept-perspective-2-roof",
+            "block_id": "left-image-2",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "折板天窗：锯齿形开口引入漫射自然光，消除眩光并均匀照亮展陈空间",
+            "block_id": "left-caption-2",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "方案二 · 设计注释",
+            "block_id": "right-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "工业线条语言：折板屋面以 15°–30° 倾角重复叠合，立面形成强烈水平向肌理，致敬工业厂房美学",
+              "天窗采光策略：北向锯齿天窗全天提供稳定漫射光，展厅照度均匀度≥0.7，减少人工照明依赖约40%",
+              "材质体系：主体采用耐候钢板（外立面）+ 清水混凝土（基座）+ 穿孔铝板（遮阳格栅），三层材质形成粗—中—细质感递进",
+              "街道界面：底层局部架空形成灰空间，退让2.5m形成骑楼式檐廊，激活沿街公共活动"
+            ],
+            "block_id": "right-bullets",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "「云栖山房」人视图",
+    "section": "概念方案",
+    "slot_id": "concept-perspective-3",
+    "is_cover": false,
+    "slide_no": 38,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 6,
+      "right_ratio": 4,
+      "dominant_side": "left",
+      "left_content_type": "image",
+      "right_content_type": "mixed"
+    },
+    "binding_id": "ee432f85-5d01-4292-af5d-a3eb5dd6d79e",
+    "source_refs": [],
+    "visual_focus": "left",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "asset:concept_perspective_3_entrance",
+            "block_id": "main-render",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "image",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "方案三 · 半围合院落入口人视效果图",
+            "block_id": "main-caption",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "山水诗意·半围合院落",
+            "block_id": "right-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "坡屋面覆绿 · 钢构轻盈 · 庭院渗透",
+            "block_id": "right-subheading",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "坡屋面覆绿：种植景天科植被，厚度 120mm，实现屋面隔热与视觉融山",
+              "钢构悬挑檐口：热浸镀锌方管桁架，出挑 1.8m，形成轻盈灰空间过渡",
+              "院落铺装：青石板 + 砾石汀步，延续江南园林肌理，引导步行流线",
+              "围合界面：清水混凝土墙体与竹格栅交替，透而不漏，内外借景"
+            ],
+            "block_id": "material-list",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "「半围合之势，藏山水于院中，以坡顶接天，以格栅纳风」",
+            "block_id": "design-quote",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "quote",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "材质与经济指标对比",
+    "section": "深化比选",
+    "slot_id": "material-economic",
+    "is_cover": false,
+    "slide_no": 39,
+    "primitive": {
+      "v_align": "center",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.7
+    },
+    "binding_id": "7f4d466e-604a-4230-99ae-a5d5f1a751e9",
+    "source_refs": [],
+    "visual_focus": "center",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "三方案材质与经济指标对比",
+            "block_id": "header-title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "方案A · 覆土绿化  |  方案B · 折板金属  |  方案C · 坡屋面覆绿",
+            "block_id": "header-sub",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "header"
+      },
+      {
+        "blocks": [
+          {
+            "content": "方案 A — 覆土绿化",
+            "block_id": "col0-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": null,
+            "block_id": "col0-swatch",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "accent-element",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "主材：种植土层 + 防水卷材 + 混凝土结构板",
+              "色调：深绿 / 土褐，与场地自然融合"
+            ],
+            "block_id": "col0-material",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "| 指标 | 数值 |\n|---|---|\n| 单方造价 | ≈ 6,800 元/㎡ |\n| 被动节能降耗率 | 38% |\n| 施工周期 | 28 个月 |",
+            "block_id": "col0-kpi",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "table",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "col-0"
+      },
+      {
+        "blocks": [
+          {
+            "content": "方案 B — 折板金属",
+            "block_id": "col1-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": null,
+            "block_id": "col1-swatch",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "accent-element",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "主材：铝镁锰折板 + 岩棉保温 + 钢结构骨架",
+              "色调：银灰 / 深炭，现代工业感强"
+            ],
+            "block_id": "col1-material",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "| 指标 | 数值 |\n|---|---|\n| 单方造价 | ≈ 5,400 元/㎡ |\n| 被动节能降耗率 | 22% |\n| 施工周期 | 22 个月 |",
+            "block_id": "col1-kpi",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "table",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "col-1"
+      },
+      {
+        "blocks": [
+          {
+            "content": "方案 C — 坡屋面覆绿",
+            "block_id": "col2-label",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": null,
+            "block_id": "col2-swatch",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "accent-element",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "主材：轻质覆绿坡屋面 + GRC 挂板 + 木纹铝型材",
+              "色调：浅绿 / 米白，人文温润气质"
+            ],
+            "block_id": "col2-material",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "| 指标 | 数值 |\n|---|---|\n| 单方造价 | ≈ 6,200 元/㎡ |\n| 被动节能降耗率 | 31% |\n| 施工周期 | 25 个月 |",
+            "block_id": "col2-kpi",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "table",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "col-2"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "设计任务书",
+    "section": "设计任务书",
+    "slot_id": "design-brief-doc",
+    "is_cover": false,
+    "slide_no": 40,
+    "primitive": {
+      "primitive": "sidebar",
+      "sidebar_ratio": 0.3,
+      "sidebar_position": "right",
+      "main_content_type": "text",
+      "sidebar_content_type": "kpi-cards",
+      "sidebar_use_surface_bg": true
+    },
+    "binding_id": "67643432-be70-4e06-8415-f3a8bdc95221",
+    "source_refs": [],
+    "visual_focus": "main",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "设计任务书",
+            "block_id": "main-heading",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "功能要求",
+            "block_id": "section-func",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "设置第三卫生间（家庭卫生间），满足亲子、残障等多元使用需求",
+              "全流线无障碍设计：坡道、扶手、低位洁具、盲道一体化落实",
+              "自然通风除臭系统：利用热压拔风原理，减少机械排风依赖"
+            ],
+            "block_id": "func-list",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "设计目标",
+            "block_id": "section-goal",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": [
+              "被动式节能策略：综合降耗目标 ≥60%，优先采用自然采光、自然通风、蓄热墙体等措施",
+              "双文化表达：在建筑形态与材料语言中同时呈现地域文化特征与现代简约美学",
+              "交付物清单：方案设计说明、总平面图、各层平面图、立面图、剖面图、效果图、节能分析报告"
+            ],
+            "block_id": "goal-list",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "bullet-list",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "main"
+      },
+      {
+        "blocks": [
+          {
+            "content": "300 ㎡",
+            "block_id": "kpi-area",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "建筑总建筑面积",
+            "block_id": "kpi-area-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "FAR 1.0",
+            "block_id": "kpi-far",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "容积率上限",
+            "block_id": "kpi-far-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "≥60%",
+            "block_id": "kpi-energy",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "kpi-value",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "被动节能降耗目标",
+            "block_id": "kpi-energy-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "sidebar"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "感谢聆听",
+    "section": "结尾",
+    "slot_id": "closing",
+    "is_cover": false,
+    "slide_no": 41,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": true,
+      "content_anchor": "center",
+      "background_type": "gradient",
+      "overlay_direction": "radial"
+    },
+    "binding_id": "37e771c0-7573-4a83-9816-a747c4f90387",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "感谢聆听",
+            "block_id": "main-title",
+            "emphasis": "highlight",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "生态·文化·城市新名片",
+            "block_id": "project-label",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "label",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "Material Package E2E",
+            "block_id": "client-label",
+            "emphasis": "muted",
+            "source_refs": [],
+            "content_type": "caption",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  }
+]

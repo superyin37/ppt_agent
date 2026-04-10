@@ -1,0 +1,44 @@
+[
+  {
+    "id": "6320c616-8206-4622-9509-357b7599fc51",
+    "slide_no": 1,
+    "slot_id": "cover",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 1"
+  },
+  {
+    "id": "8d144281-b903-45ba-b0f5-c495c258ccd8",
+    "slide_no": 2,
+    "slot_id": "toc",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 2"
+  },
+  {
+    "id": "f8d213ad-0dd2-4d08-83a0-ceaf31ef4500",
+    "slide_no": 3,
+    "slot_id": "chapter-1-divider",
+    "version": 1,
+    "status": "ready",
+    "must_use_item_ids": [],
+    "optional_item_ids": [],
+    "derived_asset_ids": [],
+    "coverage_score": 1.0,
+    "missing_requirements": [],
+    "evidence_snippets": [],
+    "binding_reason": "Matched 0 items and 0 assets for slide 3"
+  }
+]

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C5545;
+  --color-secondary:      #6B4C3B;
+  --color-accent:         #C4883A;
+  --color-bg:             #F4F1EC;
+  --color-surface:        #EAE5DD;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #5C5C5C;
+  --color-border:         #D1C9BD;
+  --color-overlay:        rgba(44,85,69,0.85);
+  --color-cover-bg:       linear-gradient(155deg, #1B3D30 0%, #2C5545 40%, #3A6B55 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正标雅宋", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.aerial-bg{position:absolute;inset:0;background:linear-gradient(160deg,#2a3a2e 0%,#1e2b22 40%,#263028 100%);z-index:0;}.grain{position:absolute;inset:0;z-index:1;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");}.topo-layer{position:absolute;inset:0;z-index:2;overflow:hidden;}.content-layer{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;}.top-bar{display:flex;align-items:center;justify-content:space-between;padding:var(--safe-margin) var(--safe-margin) 0;}.section-tag{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-accent);letter-spacing:.15em;text-transform:uppercase;opacity:.8;border:1px solid var(--color-accent);padding:4px 16px;border-radius:2px;}.slide-num{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);opacity:.5;}.main-area{flex:1;display:flex;align-items:center;justify-content:center;padding:0 calc(var(--safe-margin) * 0.5);position:relative;}.aerial-placeholder{width:100%;max-width:1800px;height:100%;max-height:860px;border-radius:8px;background:linear-gradient(135deg,rgba(42,68,48,.6) 0%,rgba(30,50,35,.8) 100%);border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(0,0,0,.35);}.inner-grid{position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.3) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.3) 40px);}.bldg-outline{position:relative;z-index:2;}.callout{position:absolute;z-index:5;display:flex;align-items:center;gap:6px;}.callout-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--color-accent);background:rgba(0,0,0,.4);flex-shrink:0;}.callout-line{height:1px;width:48px;background:var(--color-accent);opacity:.6;}.callout-label{font-family:var(--font-body);font-size:13px;color:var(--color-text-primary);background:rgba(0,0,0,.45);padding:3px 10px;border-radius:2px;white-space:nowrap;letter-spacing:.06em;}.callout-1{top:14%;left:42%;}.callout-2{top:34%;left:10%;flex-direction:row-reverse;}.callout-2 .callout-line{order:1;}.callout-2 .callout-label{order:2;}.callout-3{bottom:22%;right:12%;}.callout-4{bottom:14%;left:28%;}.callout-5{top:18%;right:10%;}.callout-6{bottom:36%;left:6%;flex-direction:row-reverse;}.callout-6 .callout-line{order:1;}.callout-6 .callout-label{order:2;}.bottom-strip{display:flex;align-items:center;justify-content:space-between;padding:0 var(--safe-margin) calc(var(--safe-margin) * 0.6);height:80px;}.title-block{display:flex;align-items:baseline;gap:20px;}.page-title{font-family:var(--font-heading);font-size:var(--text-h2);color:var(--color-text-primary);letter-spacing:.08em;}.page-subtitle{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);opacity:.5;letter-spacing:.05em;}.data-pills{display:flex;gap:24px;align-items:center;}.pill{display:flex;align-items:baseline;gap:8px;}.pill-val{font-family:var(--font-en);font-size:var(--text-h3);color:var(--color-accent);font-weight:700;}.pill-unit{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-text-secondary);}.pill-divider{width:1px;height:28px;background:var(--color-border);opacity:.3;}.scheme-badge{position:absolute;top:20px;left:24px;z-index:6;font-family:var(--font-heading);font-size:var(--text-caption);color:var(--color-accent);border:1px solid var(--color-accent);padding:4px 14px;letter-spacing:.12em;background:rgba(0,0,0,.4);border-radius:2px;}.corner-deco{position:absolute;z-index:3;opacity:.12;}.corner-deco.tl{top:0;left:0;}.corner-deco.br{bottom:0;right:0;transform:rotate(180deg);}.corner-deco.tr{top:0;right:0;transform:scaleX(-1);}.corner-deco.bl{bottom:0;left:0;transform:scaleY(-1);}.side-info{position:absolute;z-index:6;display:flex;flex-direction:column;gap:12px;}.side-info-left{left:24px;bottom:80px;}.side-info-right{right:24px;top:80px;text-align:right;}.side-info-item{display:flex;flex-direction:column;gap:2px;}.side-info-label{font-family:var(--font-body);font-size:11px;color:var(--color-text-secondary);opacity:.5;letter-spacing:.1em;}.side-info-value{font-family:var(--font-en);font-size:14px;color:var(--color-text-primary);opacity:.7;letter-spacing:.05em;}.compass{position:absolute;top:24px;right:24px;z-index:6;opacity:.35;}.edge-accent-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent 0%,var(--color-accent) 50%,transparent 100%);opacity:.12;z-index:4;}.edge-accent-bottom{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent 0%,var(--color-accent) 50%,transparent 100%);opacity:.12;z-index:4;}.edge-accent-left{position:absolute;left:0;top:50%;transform:translateY(-50%);height:40%;width:1px;background:linear-gradient(180deg,transparent 0%,var(--color-accent) 50%,transparent 100%);opacity:.1;z-index:4;}.edge-accent-right{position:absolute;right:0;top:50%;transform:translateY(-50%);height:40%;width:1px;background:linear-gradient(180deg,transparent 0%,var(--color-accent) 50%,transparent 100%);opacity:.1;z-index:4;}.scale-bar{position:absolute;bottom:24px;right:24px;z-index:6;display:flex;align-items:center;gap:6px;opacity:.4;}.scale-bar-line{width:60px;height:2px;background:var(--color-text-secondary);position:relative;}.scale-bar-line::before,.scale-bar-line::after{content:'';position:absolute;width:1px;height:6px;background:var(--color-text-secondary);top:-2px;}.scale-bar-line::before{left:0;}.scale-bar-line::after{right:0;}.scale-bar-text{font-family:var(--font-en);font-size:10px;color:var(--color-text-secondary);letter-spacing:.05em;}.coord-info{position:absolute;bottom:24px;left:24px;z-index:6;opacity:.3;font-family:var(--font-en);font-size:10px;color:var(--color-text-secondary);letter-spacing:.08em;}</style><div class="aerial-bg"></div><div class="grain"></div><div class="topo-layer"><svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 600 Q480 520 960 580 T1920 540" stroke="rgba(255,255,255,.04)" stroke-width="1" fill="none"/><path d="M0 650 Q480 570 960 630 T1920 590" stroke="rgba(255,255,255,.03)" stroke-width="1" fill="none"/><path d="M0 700 Q480 620 960 680 T1920 640" stroke="rgba(255,255,255,.025)" stroke-width="1" fill="none"/><path d="M0 750 Q480 670 960 730 T1920 690" stroke="rgba(255,255,255,.02)" stroke-width="1" fill="none"/><circle cx="1680" cy="180" r="260" stroke="rgba(255,255,255,.025)" stroke-width="1" fill="none"/><circle cx="1680" cy="180" r="200" stroke="rgba(255,255,255,.018)" stroke-width="1" fill="none"/><circle cx="200" cy="900" r="180" stroke="rgba(255,255,255,.02)" stroke-width="1" fill="none"/><circle cx="200" cy="900" r="130" stroke="rgba(255,255,255,.015)" stroke-width="1" fill="none"/></svg></div><div class="content-layer"><div class="top-bar"><span class="section-tag">概念方案 · 方案一</span><span class="slide-num">33 / 48</span></div><div class="main-area"><div class="aerial-placeholder"><div class="inner-grid"></div><div class="scheme-badge">方案一 · 武当云台</div><!-- Edge accent lines --><div class="edge-accent-top"></div><div class="edge-accent-bottom"></div><div class="edge-accent-left"></div><div class="edge-accent-right"></div><!-- Corner decorations --><svg class="corner-deco tl" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40 L0 0 L40 0" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="none"/><path d="M0 24 L0 0 L24 0" stroke="rgba(255,255,255,.25)" stroke-width="1" fill="none"/></svg><svg class="corner-deco br" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40 L0 0 L40 0" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="none"/><path d="M0 24 L0 0 L24 0" stroke="rgba(255,255,255,.25)" stroke-width="1" fill="none"/></svg><svg class="corner-deco tr" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40 L0 0 L40 0" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="none"/><path d="M0 24 L0 0 L24 0" stroke="rgba(255,255,255,.25)" stroke-width="1" fill="none"/></svg><svg class="corner-deco bl" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40 L0 0 L40 0" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="none"/><path d="M0 24 L0 0 L24 0" stroke="rgba(255,255,255,.25)" stroke-width="1" fill="none"/></svg><!-- Compass --><svg class="compass" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="22" stroke="rgba(255,255,255,.5)" stroke-width="1" fill="none"/><line x1="24" y1="4" x2="24" y2="18" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><polygon points="24,2 21,12 27,12" fill="rgba(255,255,255,.6)"/><text x="24" y="46" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="var(--font-en)">N</text></svg><!-- Scale bar --><div class="scale-bar"><div class="scale-bar-line"></div><span class="scale-bar-text">10m</span></div><!-- Coordinate info --><div class="coord-info">32°24'N 111°00'E</div><!-- Side info left --><div class="side-info side-info-left"><div class="side-info-item"><span class="side-info-label">场地标高</span><span class="side-info-value">±0.000</span></div><div class="side-info-item"><span class="side-info-label">建筑层数</span><span class="side-info-value">1F / 局部2F</span></div><div class="side-info-item"><span class="side-info-label">结构形式</span><span class="side-info-value">框架结构</span></div><div class="side-info-item"><span class="side-info-label">建筑高度</span><span class="side-info-value">≤12.0m</span></div></div><!-- Side info right --><div class="side-info side-info-right"><div class="side-info-item"><span class="side-info-label">设计理念</span><span class="side-info-value">山水共生</span></div><div class="side-info-item"><span class="side-info-label">屋顶形式</span><span class="side-info-value">覆土绿化</span></div><div class="side-info-item"><span class="side-info-label">景观策略</span><span class="side-info-value">生态修复</span></div></div><svg class="bldg-outline" width="1100" height="600" viewBox="0 0 900 480" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="220" y="120" width="460" height="260" rx="6" fill="rgba(58,90,62,.45)" stroke="rgba(200,185,160,.25)" stroke-width="1.5"/><rect x="240" y="140" width="420" height="220" rx="4" fill="none" stroke="rgba(200,185,160,.12)" stroke-width="1" stroke-dasharray="6 4"/><path d="M220 250 L120 250 L120 310 L220 310" stroke="rgba(200,185,160,.2)" stroke-width="1.2" fill="rgba(58,90,62,.25)"/><ellipse cx="450" cy="420" rx="180" ry="30" fill="rgba(100,140,100,.12)" stroke="rgba(160,200,160,.1)" stroke-width="1"/><rect x="380" y="380" width="140" height="40" rx="3" fill="rgba(80,110,80,.3)" stroke="rgba(200,185,160,.15)" stroke-width="1"/><path d="M260 120 Q450 60 640 120" stroke="rgba(120,170,120,.3)" stroke-width="2" fill="rgba(80,130,80,.08)"/><line x1="680" y1="250" x2="800" y2="320" stroke="rgba(200,185,160,.15)" stroke-width="1" stroke-dasharray="4 3"/><rect x="750" y="320" width="100" height="60" rx="3" fill="rgba(58,90,62,.3)" stroke="rgba(200,185,160,.12)" stroke-width="1"/><text x="450" y="260" text-anchor="middle" font-size="14" fill="rgba(200,185,160,.35)" font-family="var(--font-en)" letter-spacing=".15em">MAIN BUILDING</text><text x="800" y="355" text-anchor="middle" font-size="10" fill="rgba(200,185,160,.25)" font-family="var(--font-en)" letter-spacing=".1em">SERVICE</text><!-- Additional landscape elements --><ellipse cx="120" cy="180" rx="60" ry="20" fill="rgba(80,120,80,.15)" stroke="rgba(160,200,160,.08)" stroke-width="1"/><ellipse cx="780" cy="180" rx="50" ry="16" fill="rgba(80,120,80,.12)" stroke="rgba(160,200,160,.08)" stroke-width="1"/><path d="M50 400 Q150 370 250 400" stroke="rgba(160,200,160,.1)" stroke-width="1" fill="rgba(80,120,80,.06)"/><path d="M650 420 Q750 390 850 420" stroke="rgba(160,200,160,.1)" stroke-width="1" fill="rgba(80,120,80,.06)"/><circle cx="140" cy="160" r="18" fill="rgba(80,130,80,.1)" stroke="rgba(160,200,160,.06)" stroke-width="1"/><circle cx="760" cy="160" r="14" fill="rgba(80,130,80,.08)" stroke="rgba(160,200,160,.06)" stroke-width="1"/><!-- Extra landscape to fill space --><ellipse cx="60" cy="300" rx="40" ry="14" fill="rgba(80,120,80,.1)" stroke="rgba(160,200,160,.06)" stroke-width="1"/><ellipse cx="850" cy="250" rx="35" ry="12" fill="rgba(80,120,80,.08)" stroke="rgba(160,200,160,.06)" stroke-width="1"/><circle cx="80" cy="80" r="22" fill="rgba(80,130,80,.06)" stroke="rgba(160,200,160,.05)" stroke-width="1"/><circle cx="820" cy="80" r="18" fill="rgba(80,130,80,.06)" stroke="rgba(160,200,160,.05)" stroke-width="1"/><path d="M30 450 Q100 430 170 450 Q240 470 310 450" stroke="rgba(160,200,160,.08)" stroke-width="1" fill="none"/><path d="M590 450 Q660 430 730 450 Q800 470 870 450" stroke="rgba(160,200,160,.08)" stroke-width="1" fill="none"/><rect x="40" y="350" width="60" height="35" rx="2" fill="rgba(58,90,62,.2)" stroke="rgba(200,185,160,.08)" stroke-width="1"/><text x="70" y="372" text-anchor="middle" font-size="8" fill="rgba(200,185,160,.2)" font-family="var(--font-en)">PARKING</text></svg><div class="callout callout-1"><div class="callout-dot"></div><div class="callout-line"></div><div class="callout-label">覆土绿化屋顶</div></div><div class="callout callout-2"><div class="callout-dot"></div><div class="callout-line"></div><div class="callout-label">无障碍坡道</div></div><div class="callout callout-3"><div class="callout-dot"></div><div class="callout-line"></div><div class="callout-label">配套服务用房</div></div><div class="callout callout-4"><div class="callout-dot"></div><div class="callout-line"></div><div class="callout-label">入口广场</div></div><div class="callout callout-5"><div class="callout-dot"></div><div class="callout-line"></div><div class="callout-label">景观绿化带</div></div><div class="callout callout-6"><div class="callout-dot"></div><div class="callout-line"></div><div class="callout-label">生态停车区</div></div></div></div><div class="bottom-strip"><div class="title-block"><span class="page-title">「武当云台」鸟瞰总图</span><span class="page-subtitle">Aerial View — Scheme A</span></div><div class="data-pills"><div class="pill"><span class="pill-val">300</span><span class="pill-unit">m² 总建筑面积</span></div><div class="pill-divider"></div><div class="pill"><span class="pill-val">≥40%</span><span class="pill-unit">绿化覆盖率</span></div><div class="pill-divider"></div><div class="pill"><span class="pill-val">100%</span><span class="pill-unit">无障碍通达</span></div></div></div></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>33 / 41</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E3A;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C87941;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E2A26;
+  --color-text-secondary: #6B7D75;
+  --color-border:         #D2CEC6;
+  --color-overlay:        rgba(44,62,58,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #1E2A26 0%, #2C3E3A 40%, #3D5A4E 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.toc-container{display:grid;grid-template-columns:480px 1fr;width:100%;height:100%;}.toc-left{position:relative;background:var(--color-primary);overflow:hidden;display:flex;align-items:center;justify-content:center;}.toc-left svg{width:100%;height:100%;position:absolute;top:0;left:0;}.toc-right{display:flex;flex-direction:column;justify-content:center;padding:80px 100px 80px 90px;}.toc-header{margin-bottom:12px;}.toc-header h2{font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);letter-spacing:0.08em;margin:0;}.toc-header-en{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:40px;}.toc-divider{width:48px;height:3px;background:var(--color-accent);margin-bottom:48px;border-radius:2px;}.toc-list{list-style:none;padding:0;margin:0;}.toc-item{display:grid;grid-template-columns:44px 1fr auto;align-items:center;padding:24px 0;border-bottom:1px solid var(--color-border);transition:all .2s;gap:8px;}.toc-item:last-child{border-bottom:none;}.toc-num{font-family:var(--font-en);font-size:var(--text-h2);color:var(--color-accent);font-weight:700;line-height:1;}.toc-label{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-text-primary);padding-left:16px;letter-spacing:0.06em;}.toc-page{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);letter-spacing:0.05em;text-align:right;}.toc-desc{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-text-secondary);padding-left:16px;margin-top:4px;letter-spacing:0.03em;line-height:1.5;grid-column:2/3;}.toc-footer{margin-top:56px;display:flex;align-items:center;gap:16px;}.toc-footer-line{width:32px;height:2px;background:var(--color-border);border-radius:1px;}.toc-footer-text{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);letter-spacing:0.12em;text-transform:uppercase;opacity:0.6;}.toc-corner-deco{position:absolute;bottom:40px;right:40px;width:80px;height:80px;opacity:0.08;}.toc-corner-deco svg{width:100%;height:100%;}</style><div class="toc-container"><div class="toc-left"><svg viewBox="0 0 480 1080" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="mist1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-surface)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--color-surface)" stop-opacity="0.02"/></linearGradient><linearGradient id="mist2" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="var(--color-surface)" stop-opacity="0.15"/><stop offset="100%" stop-color="var(--color-surface)" stop-opacity="0"/></linearGradient></defs><rect width="480" height="1080" fill="var(--color-primary)" opacity="1"/><path d="M0 750 Q80 680 160 720 Q240 760 320 700 Q400 640 480 690 L480 1080 L0 1080Z" fill="var(--color-surface)" opacity="0.08"/><path d="M0 820 Q120 770 240 800 Q360 830 480 780 L480 1080 L0 1080Z" fill="var(--color-surface)" opacity="0.06"/><path d="M0 900 Q100 870 200 890 Q340 920 480 870 L480 1080 L0 1080Z" fill="var(--color-surface)" opacity="0.05"/><path d="M60 520 L62 400 Q80 350 100 380 L100 520Z" fill="var(--color-surface)" opacity="0.07" /><path d="M130 540 L132 360 Q160 300 180 340 L178 540Z" fill="var(--color-surface)" opacity="0.06" /><path d="M220 530 L222 410 Q240 370 255 395 L253 530Z" fill="var(--color-surface)" opacity="0.05" /><circle cx="340" cy="280" r="80" fill="none" stroke="var(--color-surface)" stroke-width="0.8" opacity="0.12"/><circle cx="340" cy="280" r="60" fill="none" stroke="var(--color-surface)" stroke-width="0.5" opacity="0.08"/><path d="M50 620 Q140 580 240 610 Q340 640 430 600" fill="none" stroke="var(--color-surface)" stroke-width="1" opacity="0.1"/><path d="M0 670 Q100 640 200 660 Q320 690 420 650 L480 660" fill="none" stroke="var(--color-surface)" stroke-width="0.7" opacity="0.08"/><path d="M280 480 Q300 440 320 460 Q340 480 360 450 Q380 420 400 455 L400 540 L280 540Z" fill="var(--color-surface)" opacity="0.06"/><path d="M100 580 L140 560 L180 575 L180 620 L100 620Z" fill="var(--color-surface)" opacity="0.05"/><g opacity="0.1"><line x1="380" y1="180" x2="380" y2="200" stroke="var(--color-accent)" stroke-width="1.2"/><line x1="370" y1="190" x2="390" y2="190" stroke="var(--color-accent)" stroke-width="1.2"/></g><text x="240" y="980" text-anchor="middle" font-family="var(--font-heading)" font-size="18" fill="var(--color-surface)" opacity="0.2" letter-spacing="0.4em">武当山水</text></svg></div><div class="toc-right" style="position:relative;"><div class="toc-header"><h2>目录</h2></div><div class="toc-header-en">Contents</div><div class="toc-divider"></div><ul class="toc-list"><li class="toc-item"><span class="toc-num">01</span><span class="toc-label">背景研究</span><span class="toc-page">03 – 08</span><span class="toc-desc">区域文脉梳理与项目背景解读</span></li><li class="toc-item"><span class="toc-num">02</span><span class="toc-label">场地分析</span><span class="toc-page">09 – 16</span><span class="toc-desc">地形地貌、交通流线与生态资源</span></li><li class="toc-item"><span class="toc-num">03</span><span class="toc-label">竞品分析</span><span class="toc-page">17 – 22</span><span class="toc-desc">同类文化建筑对标与差异化研判</span></li><li class="toc-item"><span class="toc-num">04</span><span class="toc-label">参考案例</span><span class="toc-page">23 – 30</span><span class="toc-desc">国内外优秀文化建筑案例借鉴</span></li><li class="toc-item"><span class="toc-num">05</span><span class="toc-label">项目定位与设计策略</span><span class="toc-page">31 – 40</span><span class="toc-desc">功能定位、空间策略与设计愿景</span></li><li class="toc-item"><span class="toc-num">06</span><span class="toc-label">概念方案</span><span class="toc-page">41 – 52</span><span class="toc-desc">总体布局、建筑形态与景观体系</span></li></ul><div class="toc-footer"><div class="toc-footer-line"></div><span class="toc-footer-text">Total 52 Pages</span></div><div class="toc-corner-deco" style="position:absolute;bottom:40px;right:40px;"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="36" fill="none" stroke="var(--color-primary)" stroke-width="1"/><circle cx="40" cy="40" r="24" fill="none" stroke="var(--color-primary)" stroke-width="0.6"/><line x1="40" y1="4" x2="40" y2="76" stroke="var(--color-primary)" stroke-width="0.4"/><line x1="4" y1="40" x2="76" y2="40" stroke="var(--color-primary)" stroke-width="0.4"/></svg></div></div></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场生态示范公厕 建筑方案汇报</span>
+  <span>2 / 3</span>
+</div>
+</body>
+</html>

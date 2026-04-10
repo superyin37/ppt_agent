@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);color:var(--color-text-primary);padding:0;margin:0}.s6-header{position:absolute;top:60px;left:var(--safe-margin);right:var(--safe-margin);display:flex;align-items:baseline;gap:16px}.s6-tag{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-accent);letter-spacing:2px;text-transform:uppercase;opacity:.7}.s6-title{font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);font-weight:700;line-height:1.2}.s6-subtitle{font-size:var(--text-caption);color:var(--color-text-secondary);margin-left:auto}.s6-body{position:absolute;top:140px;left:var(--safe-margin);right:var(--safe-margin);bottom:80px;display:grid;grid-template-columns:1fr 380px;gap:var(--section-gap)}.s6-matrix-area{display:flex;flex-direction:column;gap:var(--element-gap)}.s6-matrix{display:grid;grid-template-columns:180px 1fr 1fr 1fr 1fr;grid-template-rows:auto;gap:0;border-radius:var(--border-radius);overflow:hidden;border:1px solid var(--color-border)}.s6-cell{padding:14px 16px;font-size:var(--text-body);line-height:1.5;border-bottom:1px solid var(--color-border);border-right:1px solid var(--color-border);display:flex;align-items:center}.s6-cell:nth-child(5n){border-right:none}.s6-cell-header{background:var(--color-primary);color:#fff;font-family:var(--font-heading);font-weight:600;font-size:var(--text-caption);letter-spacing:1px;text-align:center;justify-content:center;padding:16px 12px}.s6-cell-level{background:var(--color-surface);font-family:var(--font-heading);font-weight:600;font-size:var(--text-body);color:var(--color-primary)}.s6-cell-content{background:var(--color-bg);font-size:13.5px;color:var(--color-text-primary);line-height:1.55}.s6-cell-active{position:relative}.s6-cell-active::after{content:'';position:absolute;top:6px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--color-accent);opacity:.7}.s6-arrow-row{display:flex;align-items:center;justify-content:center;padding:12px 0;gap:8px}.s6-arrow-row svg{flex-shrink:0}.s6-arrow-label{font-size:var(--text-caption);color:var(--color-text-secondary);font-family:var(--font-heading)}.s6-result-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--element-gap)}.s6-result-card{background:var(--color-surface);border-radius:var(--border-radius);padding:20px 18px;text-align:center;border-left:3px solid var(--color-accent);position:relative}.s6-result-icon{font-size:28px;margin-bottom:8px;display:block}.s6-result-name{font-family:var(--font-heading);font-size:var(--text-body);font-weight:700;color:var(--color-primary);margin-bottom:4px}.s6-result-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5}.s6-analysis{display:flex;flex-direction:column;gap:var(--element-gap)}.s6-analysis-title{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-primary);font-weight:600;border-bottom:2px solid var(--color-accent);padding-bottom:8px;margin-bottom:4px}.s6-analysis-block{background:var(--color-surface);border-radius:var(--border-radius);padding:20px;flex:1}.s6-analysis-block h4{font-family:var(--font-heading);font-size:var(--text-body);color:var(--color-accent);margin:0 0 8px 0;font-weight:600}.s6-analysis-block p{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin:0 0 10px 0}.s6-analysis-block ul{margin:0;padding-left:16px;list-style:none}.s6-analysis-block ul li{font-size:13px;color:var(--color-text-primary);line-height:1.8;position:relative;padding-left:12px}.s6-analysis-block ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--color-accent)}.s6-footer-line{position:absolute;bottom:40px;left:var(--safe-margin);right:var(--safe-margin);height:1px;background:var(--color-border);opacity:.5}.s6-footer-text{position:absolute;bottom:16px;right:var(--safe-margin);font-size:var(--text-label);color:var(--color-text-secondary);opacity:.5;font-family:var(--font-en)}</style><svg style="position:absolute;top:0;right:0;width:500px;height:500px;opacity:.04;pointer-events:none" viewBox="0 0 500 500"><circle cx="500" cy="0" r="420" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="500" cy="0" r="340" fill="none" stroke="var(--color-accent)" stroke-width="1"/><circle cx="500" cy="0" r="260" fill="none" stroke="var(--color-primary)" stroke-width=".5"/></svg><svg style="position:absolute;bottom:60px;left:40px;width:200px;height:200px;opacity:.03;pointer-events:none" viewBox="0 0 200 200"><rect x="20" y="20" width="160" height="160" fill="none" stroke="var(--color-accent)" stroke-width="1" rx="4"/><rect x="50" y="50" width="100" height="100" fill="none" stroke="var(--color-primary)" stroke-width=".8" rx="2"/></svg><div class="s6-header"><span class="s6-tag">Policy Matrix</span><span class="s6-title">政策影响总结</span><span class="s6-subtitle">三级政策叠加效应与核心指标推导</span></div><div class="s6-body"><div class="s6-matrix-area"><div class="s6-matrix"><div class="s6-cell s6-cell-header">政策层级</div><div class="s6-cell s6-cell-header">第三卫生间</div><div class="s6-cell s6-cell-header">无障碍设计</div><div class="s6-cell s6-cell-header">被动节能</div><div class="s6-cell s6-cell-header">文化表达</div><div class="s6-cell s6-cell-level">国家提标</div><div class="s6-cell s6-cell-content s6-cell-active">GB 19095-2023 新标准强制要求一类公厕设置第三卫生间</div><div class="s6-cell s6-cell-content s6-cell-active">《无障碍环境建设法》2023 年实施，公共设施全覆盖</div><div class="s6-cell s6-cell-content s6-cell-active">《绿色建筑评价标准》被动优先策略，能耗降低 30%</div><div class="s6-cell s6-cell-content">鼓励地域文化融入公共建筑，非强制</div><div class="s6-cell s6-cell-level">省级人居</div><div class="s6-cell s6-cell-content s6-cell-active">湖北省城镇公厕提质行动：二类以上全配置</div><div class="s6-cell s6-cell-content s6-cell-active">省级无障碍示范城市创建，十堰列入试点</div><div class="s6-cell s6-cell-content">绿色建筑占比目标 70%，鼓励被动技术</div><div class="s6-cell s6-cell-content s6-cell-active">荆楚派建筑风格导则，公共建筑需体现地域特色</div><div class="s6-cell s6-cell-level">市级文旅</div><div class="s6-cell s6-cell-content s6-cell-active">十堰市旅游厕所革命三年计划，景区全覆盖</div><div class="s6-cell s6-cell-content s6-cell-active">武当山旅游区无障碍提升专项</div><div class="s6-cell s6-cell-content s6-cell-active">十堰市绿色低碳示范项目申报优先</div><div class="s6-cell s6-cell-content s6-cell-active">武当文化 IP 融入城市公共空间设计导则</div></div><div class="s6-arrow-row"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v12m0 0l-4-4m4 4l4-4" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="s6-arrow-label">三级政策叠加 → 推导本项目核心指标</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v12m0 0l-4-4m4 4l4-4" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="s6-result-strip"><div class="s6-result-card"><span class="s6-result-icon">◎</span><div class="s6-result-name">第三卫生间</div><div class="s6-result-desc">三级政策均强制或重点要求，优先级最高</div></div><div class="s6-result-card"><span class="s6-result-icon">⟡</span><div class="s6-result-name">无障碍设计</div><div class="s6-result-desc">国家立法+省级试点双重驱动，全流程贯穿</div></div><div class="s6-result-card"><span class="s6-result-icon">△</span><div class="s6-result-name">被动节能</div><div class="s6-result-desc">国标硬约束叠加市级示范激励，降耗≥30%</div></div><div class="s6-result-card"><span class="s6-result-icon">◇</span><div class="s6-result-name">文化表达</div><div class="s6-result-desc">省级导则+武当文化IP，地域性设计不可缺</div></div></div></div><div class="s6-analysis"><div class="s6-analysis-title">叠加效应分析</div><div class="s6-analysis-block"><h4>覆盖度判定</h4><p>矩阵中绿色标记（●）表示该层级对此指标有明确要求或重点推动。四项核心指标均获得至少两级政策覆盖：</p><ul><li>第三卫生间 — 三级全覆盖</li><li>无障碍设计 — 三级全覆盖</li><li>被动节能 — 国家+市级强驱动</li><li>文化表达 — 省级+市级双驱动</li></ul></div><div class="s6-analysis-block"><h4>对本项目的启示</h4><ul><li>作为十堰市文化类公共建筑，四项指标缺一不可</li><li>第三卫生间与无障碍为合规底线，须在方案阶段前置</li><li>被动节能策略结合鄂西北气候特征，优先自然通风与遮阳</li><li>武当山水文化元素应贯穿建筑形态、材料与空间叙事</li></ul></div></div></div><div class="s6-footer-line"></div><span class="s6-footer-text">06 / Policy Impact Summary</span></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>6 / 41</span>
+</div>
+</body>
+</html>

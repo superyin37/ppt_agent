@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C5545;
+  --color-secondary:      #6B4C3B;
+  --color-accent:         #C4883A;
+  --color-bg:             #F4F1EC;
+  --color-surface:        #EAE5DD;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #5C5C5C;
+  --color-border:         #D1C9BD;
+  --color-overlay:        rgba(44,85,69,0.85);
+  --color-cover-bg:       linear-gradient(155deg, #1B3D30 0%, #2C5545 40%, #3A6B55 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正标雅宋", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.s16-bg-map{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;}.s16-bg-map img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35) saturate(0.5) blur(2px);}.s16-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(30,45,35,0.92) 0%,rgba(30,45,35,0.78) 40%,rgba(30,45,35,0.55) 100%);z-index:2;}.s16-header{position:absolute;top:48px;left:var(--safe-margin);z-index:10;display:flex;align-items:center;gap:16px;}.s16-section-tag{display:inline-block;padding:6px 18px;background:var(--color-accent);color:var(--color-bg);font-family:var(--font-en);font-size:var(--text-caption);letter-spacing:2px;text-transform:uppercase;border-radius:2px;}.s16-title{font-family:var(--font-heading);font-size:var(--text-h1);color:#fff;font-weight:700;letter-spacing:2px;}.s16-action-title{position:absolute;top:120px;left:var(--safe-margin);z-index:10;font-family:var(--font-heading);font-size:var(--text-h2);color:var(--color-accent);max-width:560px;line-height:1.5;font-weight:600;}.s16-main-map{position:absolute;top:60px;right:40px;width:540px;height:480px;z-index:5;border-radius:var(--border-radius);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.35);border:2px solid var(--color-accent);}.s16-main-map img{width:100%;height:100%;object-fit:cover;image-rendering:auto;filter:none;}.s16-map-label{position:absolute;bottom:0;left:0;right:0;padding:8px 16px;background:rgba(30,45,35,0.85);color:#fff;font-size:var(--text-caption);font-family:var(--font-body);text-align:center;letter-spacing:1px;}.s16-left-panel{position:absolute;top:200px;left:var(--safe-margin);width:480px;z-index:10;display:flex;flex-direction:column;gap:18px;}.s16-left-panel-bg{position:absolute;top:185px;left:calc(var(--safe-margin) - 16px);width:520px;bottom:220px;z-index:9;background:rgba(30,45,35,0.88);backdrop-filter:blur(12px);border-radius:var(--border-radius);border:1px solid rgba(255,255,255,0.06);}.s16-insight-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-left:4px solid var(--color-accent);border-radius:var(--border-radius);padding:18px 22px;}.s16-insight-card h3{font-family:var(--font-heading);font-size:var(--text-h3);color:#fff;margin:0 0 6px 0;}.s16-insight-card p{font-size:var(--text-body);color:rgba(255,255,255,0.85);margin:0;line-height:1.7;}.s16-kpi-row{display:flex;gap:14px;}.s16-kpi{flex:1;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12);border-radius:var(--border-radius);padding:14px;text-align:center;}.s16-kpi .num{font-family:var(--font-en);font-size:var(--text-h1);color:var(--color-accent);font-weight:700;line-height:1.2;}.s16-kpi .unit{font-size:var(--text-caption);color:rgba(255,255,255,0.7);margin-top:4px;}.s16-bottom-strip{position:absolute;bottom:0;left:0;right:0;height:180px;z-index:6;display:flex;gap:0;}.s16-thumb{flex:1;position:relative;overflow:hidden;border-top:2px solid var(--color-bg);}.s16-thumb img{width:100%;height:100%;object-fit:cover;image-rendering:auto;filter:brightness(0.85);transition:filter 0.3s;}.s16-thumb-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(30,45,35,0.9));color:#fff;font-size:var(--text-caption);font-family:var(--font-body);}.s16-thumb:first-child{border-left:none;}.s16-thumb+.s16-thumb{border-left:2px solid var(--color-bg);}.s16-deco-arc{position:absolute;top:0;left:0;width:300px;height:300px;z-index:3;opacity:0.1;}.s16-page-no{position:absolute;bottom:190px;right:var(--safe-margin);z-index:12;font-family:var(--font-en);font-size:var(--text-caption);color:rgba(255,255,255,0.4);}</style><div class="s16-bg-map"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A_285.png" alt="外部交通底图"></div><div class="s16-overlay"></div><svg class="s16-deco-arc" viewBox="0 0 300 300"><circle cx="0" cy="0" r="260" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/><circle cx="0" cy="0" r="200" fill="none" stroke="var(--color-accent)" stroke-width="1"/><circle cx="0" cy="0" r="140" fill="none" stroke="var(--color-accent)" stroke-width="0.5"/></svg><div class="s16-header"><span class="s16-section-tag">Site Analysis</span><span class="s16-title">周边交通枢纽</span></div><div class="s16-action-title">三大公交枢纽环绕，日均客流超万人次，精准导入高频使用人群</div><div class="s16-left-panel-bg"></div><div class="s16-left-panel"><div class="s16-kpi-row"><div class="s16-kpi"><div class="num">3</div><div class="unit">周边公交枢纽站</div></div><div class="s16-kpi"><div class="num">12</div><div class="unit">公交线路覆盖</div></div><div class="s16-kpi"><div class="num">1.2w+</div><div class="unit">日均客流（人次）</div></div></div><div class="s16-insight-card"><h3>枢纽人流导入效应</h3><p>项目场地500米半径内覆盖十堰市火车站广场公交枢纽、人民路换乘中心及六堰停车场三大交通节点，公交线路12条，日均换乘客流超1.2万人次。</p></div><div class="s16-insight-card"><h3>停车场辐射带动</h3><p>六堰商圈地下停车场及路侧停车带日均车流约3800辆次，驾乘人员步行至场地仅需3分钟，是公厕服务的重要潜在使用人群。</p></div></div><div class="s16-main-map"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E6%9E%A2%E7%BA%BD%E7%AB%99%E7%82%B9_285.png" alt="枢纽站点分析图"><div class="s16-map-label">枢纽站点分布与辐射范围分析</div></div><div class="s16-bottom-strip"><div class="s16-thumb"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%9C%BA%E5%9C%B0%E5%9B%9B%E8%87%B3%E5%88%86%E6%9E%90_285.png" alt="场地四至分析"><div class="s16-thumb-label">场地四至分析</div></div><div class="s16-thumb"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A%E7%AB%99%E7%82%B9_285.png" alt="外部交通站点"><div class="s16-thumb-label">外部交通站点分布</div></div><div class="s16-thumb"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%A4%96%E9%83%A8%E4%BA%A4%E9%80%9A_285.png" alt="外部交通"><div class="s16-thumb-label">外部交通路网</div></div></div><div class="s16-page-no">16 / 30</div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>16 / 41</span>
+</div>
+</body>
+</html>

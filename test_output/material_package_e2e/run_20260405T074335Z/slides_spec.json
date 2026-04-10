@@ -1,0 +1,2382 @@
+[
+  {
+    "title": "封面",
+    "section": "封面",
+    "slot_id": "cover",
+    "is_cover": true,
+    "slide_no": 1,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": true,
+      "content_anchor": "bottom-left",
+      "background_type": "gradient",
+      "overlay_direction": "bottom"
+    },
+    "binding_id": "458deeb8-09bc-43ad-8c86-f1ec488e13f1",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "封面",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 生成封面。① 生成汇报标题、slogan（一句话点题）、英文翻译。② 调用 Nanobanana 生成项目 logo：简洁抽象线条画，与整体 PPT 风格统一。标题应简洁有力，英文翻译字面准确且有设计感。",
+            "block_id": "msg",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "目录",
+    "section": "目录",
+    "slot_id": "toc",
+    "is_cover": false,
+    "slide_no": 2,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "ae1ee652-6f03-435c-966d-8d15f793950c",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "目录",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 生成目录页。① 调用 Nanobanana 生成目录插画：高度抽象概括设计意向，与设计主题呼应，具有艺术感。② 生成目录标题列表（章节名 + 页码）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "背景研究",
+    "section": "背景研究",
+    "slot_id": "chapter-1-divider",
+    "is_cover": false,
+    "slide_no": 3,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": false,
+      "content_anchor": "center",
+      "background_type": "color",
+      "overlay_direction": null
+    },
+    "binding_id": "9a1ec1ff-9595-446f-9faf-81c8c4410f74",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "背景研究",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "背景研究",
+            "block_id": "subtitle",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "政策分析 1/2",
+    "section": "背景研究",
+    "slot_id": "policy-1",
+    "is_cover": false,
+    "slide_no": 4,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "0539a642-2c3b-4eb8-b4a4-db7017293451",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "政策分析 1/2",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 分析设计建议书大纲中相关政策信息，筛选时效性强、与项目匹配度高的政策条目。每条提供：政策名称、发布时间、核心要点、与项目的关联说明。提供政策来源网页链接。内容按发布时间倒序排列。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "政策分析 2/2",
+    "section": "背景研究",
+    "slot_id": "policy-2",
+    "is_cover": false,
+    "slide_no": 5,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "0acfc30f-e0a5-44d0-a38c-9720a3998d9e",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "政策分析 2/2",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 分析设计建议书大纲中相关政策信息，筛选时效性强、与项目匹配度高的政策条目。每条提供：政策名称、发布时间、核心要点、与项目的关联说明。提供政策来源网页链接。内容按发布时间倒序排列。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "政策影响分析",
+    "section": "背景研究",
+    "slot_id": "policy-impact",
+    "is_cover": false,
+    "slide_no": 6,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "17298139-ad05-4fb1-83cc-1ce242dc9cb6",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "政策影响分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 统筹政策分析内容，分析这些政策对项目的综合影响。绘制政策影响可视化图表（影响矩阵、雷达图或分类气泡图）。图表需清晰标注政策名称与影响维度（用地、业态、指标、运营等）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "上位规划分析",
+    "section": "背景研究",
+    "slot_id": "upper-planning",
+    "is_cover": false,
+    "slide_no": 7,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "a38d469d-a29a-4bbb-80df-0e7c78605687",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "上位规划分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 分析设计建议书大纲中的上位规划信息（城市总规、控规、专项规划等）。注意规划时效性及与项目的匹配程度。分析上位规划对项目的影响并绘制对比表格（规划名称 / 核心要求 / 对项目影响）。提供规划文件来源链接。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "交通与基础设施",
+    "section": "背景研究",
+    "slot_id": "transport-map",
+    "is_cover": false,
+    "slide_no": 8,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "6dffd94d-daeb-46e8-8c2e-516cae34e83d",
+    "source_refs": [
+      "asset:65eed9f1-6cbd-4a6c-a1bf-1c1b5bc04d69"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "周边基础设施建设规划_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "交通与基础设施",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示三张地图资产：枢纽站点分布图、外部交通站点图、周边基础设施建设规划图。标注各图的关键交通节点及其距离项目的步行/车行时间。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:65eed9f1-6cbd-4a6c-a1bf-1c1b5bc04d69",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:65eed9f1-6cbd-4a6c-a1bf-1c1b5bc04d69"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "周边基础设施建设规划_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "文化特征分析",
+    "section": "背景研究",
+    "slot_id": "cultural-analysis",
+    "is_cover": false,
+    "slide_no": 9,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "d559f1e8-cfbc-4a2d-8272-be952fa742af",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "文化特征分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 分析设计建议书大纲中的文化特征信息（历史文脉、地域文化、人文特色）。提炼核心文化意向词（3~5 个），阐述对项目设计的影响。调用 Nanobanana 生成描述本地文化的插画（风格与 VisualTheme 协调）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "经济背景分析 1/3",
+    "section": "背景研究",
+    "slot_id": "economic-1",
+    "is_cover": false,
+    "slide_no": 10,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "chart"
+    },
+    "binding_id": "0c705ff6-89d8-4b8d-aa6a-d62f78d0916f",
+    "source_refs": [
+      "asset:022e8d22-8e05-482f-8398-30b9ddcd5041"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "经济背景分析 1/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示城市经济图表资产（GDP 及增速、常驻人口及增速、城镇化率、第三产业发展情况及增速、产业结构、消费品零售总额、城镇居民人均收支）。简要分析数据，总结城市经济背景及对项目的机遇与挑战。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:022e8d22-8e05-482f-8398-30b9ddcd5041",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:022e8d22-8e05-482f-8398-30b9ddcd5041"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "经济背景分析 2/3",
+    "section": "背景研究",
+    "slot_id": "economic-2",
+    "is_cover": false,
+    "slide_no": 11,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "chart"
+    },
+    "binding_id": "fdcf4846-31b6-4ecf-a6e5-b75b005a732c",
+    "source_refs": [
+      "asset:022e8d22-8e05-482f-8398-30b9ddcd5041"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "经济背景分析 2/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示城市经济图表资产（GDP 及增速、常驻人口及增速、城镇化率、第三产业发展情况及增速、产业结构、消费品零售总额、城镇居民人均收支）。简要分析数据，总结城市经济背景及对项目的机遇与挑战。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:022e8d22-8e05-482f-8398-30b9ddcd5041",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:022e8d22-8e05-482f-8398-30b9ddcd5041"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "经济背景分析 3/3",
+    "section": "背景研究",
+    "slot_id": "economic-3",
+    "is_cover": false,
+    "slide_no": 12,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "chart"
+    },
+    "binding_id": "3320b925-d098-4921-88d6-ca32c299783a",
+    "source_refs": [
+      "asset:022e8d22-8e05-482f-8398-30b9ddcd5041"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "经济背景 - 产业发展_chart_0_285",
+      "经济背景 - 产业发展_chart_1_285",
+      "经济背景 - 城市经济_chart_0_285",
+      "经济背景 - 城市经济_chart_1_285",
+      "经济背景 - 城市经济_chart_2_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "经济背景分析 3/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示城市经济图表资产（GDP 及增速、常驻人口及增速、城镇化率、第三产业发展情况及增速、产业结构、消费品零售总额、城镇居民人均收支）。简要分析数据，总结城市经济背景及对项目的机遇与挑战。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:022e8d22-8e05-482f-8398-30b9ddcd5041",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:022e8d22-8e05-482f-8398-30b9ddcd5041"
+            ],
+            "content_type": "chart",
+            "evidence_refs": [
+              "经济背景 - 产业发展_chart_0_285",
+              "经济背景 - 产业发展_chart_1_285",
+              "经济背景 - 城市经济_chart_0_285",
+              "经济背景 - 城市经济_chart_1_285",
+              "经济背景 - 城市经济_chart_2_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地分析",
+    "section": "场地分析",
+    "slot_id": "chapter-2-divider",
+    "is_cover": false,
+    "slide_no": 13,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": false,
+      "content_anchor": "center",
+      "background_type": "color",
+      "overlay_direction": null
+    },
+    "binding_id": "7c53ec7b-e9ba-49cc-8458-1c519564bd60",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "场地分析",
+            "block_id": "subtitle",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "场地区位与四至分析 1/4",
+    "section": "场地分析",
+    "slot_id": "site-location-1",
+    "is_cover": false,
+    "slide_no": 14,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "486ffe8b-15af-4dd0-bd67-ba31dd78e588",
+    "source_refs": [
+      "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地区位与四至分析 1/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示场地区位地图资产（周边基础设施规划、外部交通站点、枢纽站点、场地四至）。进行项目四至分析：地块优劣势、区位优势、设计注意事项（简洁条目式）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:350f40bd-157d-449c-a4f1-c0310235bfbf",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地区位与四至分析 2/4",
+    "section": "场地分析",
+    "slot_id": "site-location-2",
+    "is_cover": false,
+    "slide_no": 15,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "d5468e56-787f-420b-a948-c73c100918c5",
+    "source_refs": [
+      "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地区位与四至分析 2/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示场地区位地图资产（周边基础设施规划、外部交通站点、枢纽站点、场地四至）。进行项目四至分析：地块优劣势、区位优势、设计注意事项（简洁条目式）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:350f40bd-157d-449c-a4f1-c0310235bfbf",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地区位与四至分析 3/4",
+    "section": "场地分析",
+    "slot_id": "site-location-3",
+    "is_cover": false,
+    "slide_no": 16,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "4ca812b0-99cb-4f04-82fd-2b5f9603f28d",
+    "source_refs": [
+      "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地区位与四至分析 3/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示场地区位地图资产（周边基础设施规划、外部交通站点、枢纽站点、场地四至）。进行项目四至分析：地块优劣势、区位优势、设计注意事项（简洁条目式）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:350f40bd-157d-449c-a4f1-c0310235bfbf",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地区位与四至分析 4/4",
+    "section": "场地分析",
+    "slot_id": "site-location-4",
+    "is_cover": false,
+    "slide_no": 17,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "958a8f1f-fbc8-4fe3-9eda-a5240f8d3d7c",
+    "source_refs": [
+      "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "场地四至分析_285",
+      "外部交通_285",
+      "外部交通站点_285",
+      "枢纽站点_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地区位与四至分析 4/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示场地区位地图资产（周边基础设施规划、外部交通站点、枢纽站点、场地四至）。进行项目四至分析：地块优劣势、区位优势、设计注意事项（简洁条目式）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:350f40bd-157d-449c-a4f1-c0310235bfbf",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:350f40bd-157d-449c-a4f1-c0310235bfbf"
+            ],
+            "content_type": "map",
+            "evidence_refs": [
+              "场地四至分析_285",
+              "外部交通_285",
+              "外部交通站点_285",
+              "枢纽站点_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地 POI 业态分析",
+    "section": "场地分析",
+    "slot_id": "poi-analysis",
+    "is_cover": false,
+    "slide_no": 18,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "text"
+    },
+    "binding_id": "c34d82bb-c228-4968-88a5-85da0224dd97",
+    "source_refs": [
+      "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "场地poi_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地 POI 业态分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 分析场地 POI 数据，分析周边业态情况（餐饮、零售、文化、教育、交通等类型占比）。绘制业态可视化图表（饼图、环形图或气泡图）。提出 3~5 条设计注意事项（精简条目式）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+            ],
+            "content_type": "table",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "场地综合分析",
+    "section": "场地分析",
+    "slot_id": "site-summary",
+    "is_cover": false,
+    "slide_no": 19,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "text"
+    },
+    "binding_id": "b5b64c8f-aa58-41b9-9e74-cf9de005a904",
+    "source_refs": [
+      "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "场地poi_285"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "场地综合分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 总结场地所有分析内容，从宏观（城市/区域）和微观（地块/周边）两个视角综合分析。以 SWOT 矩阵或结构化要点形式提出设计注意事项。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+            ],
+            "content_type": "table",
+            "evidence_refs": [
+              "场地poi_285"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "竞品分析",
+    "section": "竞品分析",
+    "slot_id": "chapter-3-divider",
+    "is_cover": false,
+    "slide_no": 20,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": false,
+      "content_anchor": "center",
+      "background_type": "color",
+      "overlay_direction": null
+    },
+    "binding_id": "047d8511-d7ce-4373-bdbc-6f327e50815e",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "竞品分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "竞品分析",
+            "block_id": "subtitle",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "本地竞品分析",
+    "section": "竞品分析",
+    "slot_id": "competitor-local",
+    "is_cover": false,
+    "slide_no": 21,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "text"
+    },
+    "binding_id": "bda24af3-d3ed-4c68-ac06-286c0fc613c8",
+    "source_refs": [
+      "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "场地poi_285",
+      "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "本地竞品分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 基于场地 POI 数据和场地坐标，分析附近同类或相关产品（竞品项目）。绘制竞品对比表格（名称、距离、规模、特色、竞争关系）。给出 2~3 条对本项目的启示。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:0f355880-423b-49c4-bfcc-e9fcddb3d2d2"
+            ],
+            "content_type": "table",
+            "evidence_refs": [
+              "场地poi_285",
+              "# 项目信息\n\n## 基本参数\n\n| 参数 | 值 |\n|------|-----|\n| 建筑类型 | 公共厕所 |\n| 总建筑面积 | 300 m² |\n| 用地面积 | 300 m² |\n| 容积率 | 1 |\n| 设计风格 | 现代、车城文化、武当文化 |\n\n## 场地坐标\n\n- 经度: 110.782743\n- 纬度: 32.655619\n- 地址: 湖北省十堰市张湾区车城路街道朝阳北路人民广场\n- 城市: 十堰市"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "行业竞品搜索分析",
+    "section": "竞品分析",
+    "slot_id": "competitor-web",
+    "is_cover": false,
+    "slide_no": 22,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "1910b874-7fca-4869-8d99-85895c23fea5",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "行业竞品搜索分析",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 联网搜索同类或相关产品（国内外标杆案例），分析特点、定位、市场表现。绘制对比表格（项目名称、地区、规模、特色亮点、对本项目的启示）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "参考案例 1/4",
+    "section": "参考案例",
+    "slot_id": "reference-case-1",
+    "is_cover": false,
+    "slide_no": 23,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "723ed3db-60f5-4046-8946-bc43608e967f",
+    "source_refs": [
+      "asset:63332487-7f91-4d65-b22f-de622afcb274"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "参考案例 1/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示参考案例缩略图。分析案例核心特点（设计理念、空间特色、材质策略、建成效果）。基于设计建议书大纲，提出该案例对待建项目的具体启示（2~4 条）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:63332487-7f91-4d65-b22f-de622afcb274",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:63332487-7f91-4d65-b22f-de622afcb274"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "参考案例 2/4",
+    "section": "参考案例",
+    "slot_id": "reference-case-2",
+    "is_cover": false,
+    "slide_no": 24,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "556ffaa8-eb54-4312-9f81-7c23390389d2",
+    "source_refs": [
+      "asset:63332487-7f91-4d65-b22f-de622afcb274"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "参考案例 2/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示参考案例缩略图。分析案例核心特点（设计理念、空间特色、材质策略、建成效果）。基于设计建议书大纲，提出该案例对待建项目的具体启示（2~4 条）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:63332487-7f91-4d65-b22f-de622afcb274",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:63332487-7f91-4d65-b22f-de622afcb274"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "参考案例 3/4",
+    "section": "参考案例",
+    "slot_id": "reference-case-3",
+    "is_cover": false,
+    "slide_no": 25,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "7dd93faf-d6f8-4a27-89a4-69d9f28477f0",
+    "source_refs": [
+      "asset:63332487-7f91-4d65-b22f-de622afcb274"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "参考案例 3/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示参考案例缩略图。分析案例核心特点（设计理念、空间特色、材质策略、建成效果）。基于设计建议书大纲，提出该案例对待建项目的具体启示（2~4 条）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:63332487-7f91-4d65-b22f-de622afcb274",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:63332487-7f91-4d65-b22f-de622afcb274"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "参考案例 4/4",
+    "section": "参考案例",
+    "slot_id": "reference-case-4",
+    "is_cover": false,
+    "slide_no": 26,
+    "primitive": {
+      "divider": "gap",
+      "primitive": "split-h",
+      "left_ratio": 5,
+      "right_ratio": 5,
+      "dominant_side": "right",
+      "left_content_type": "text",
+      "right_content_type": "image"
+    },
+    "binding_id": "93fd57c8-f2e2-4163-b681-c05f7ad6f328",
+    "source_refs": [
+      "asset:63332487-7f91-4d65-b22f-de622afcb274"
+    ],
+    "visual_focus": "right",
+    "evidence_refs": [
+      "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+      "参考案例1_缩略图_285",
+      "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+      "参考案例2_缩略图_285",
+      "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+    ],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "参考案例 4/4",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 展示参考案例缩略图。分析案例核心特点（设计理念、空间特色、材质策略、建成效果）。基于设计建议书大纲，提出该案例对待建项目的具体启示（2~4 条）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "left"
+      },
+      {
+        "blocks": [
+          {
+            "content": "asset:63332487-7f91-4d65-b22f-de622afcb274",
+            "block_id": "visual",
+            "emphasis": "normal",
+            "source_refs": [
+              "asset:63332487-7f91-4d65-b22f-de622afcb274"
+            ],
+            "content_type": "image",
+            "evidence_refs": [
+              "# 西安大唐不夜城旁公共卫生间‘城东’ / 三谷设计\n\n**原文链接**: https://www.archdaily.cn/cn/924572/xi-an-da-tang-bu-ye-cheng-pang-gong-gong-wei-sheng-jian-cheng-dong-san-gu-she-ji?ad_source=search&ad_medium=projects_tab\n**地点**: XIAN, 中国,中国\n**年份**: 2019\n**面积**: 200.0",
+              "参考案例1_缩略图_285",
+              "# 西班牙生态公共厕所Trado / MOL Arquitectura\n\n**原文链接**: https://www.archdaily.cn/cn/933887/xi-ban-ya-sheng-tai-gong-gong-ce-suo-trado-mol-arquitectura?ad_source=search&ad_medium=projects_tab\n**地点**: TRADO, 西班牙,西班牙\n**年份**: 2018\n**面积**: 56.00 m²\n**建筑师",
+              "参考案例2_缩略图_285",
+              "# 草莓园活动馆 / 小写建筑事务所\n\n**原文链接**: https://www.archdaily.cn/cn/961632/cao-mei-yuan-huo-dong-guan-xiao-xie-jian-zhu-shi-wu-suo?ad_source=search&ad_medium=projects_tab\n**地点**: 十堰市, 中国,中国\n**年份**: 2019\n**面积**: 620.00 m²\n**建筑师**: 小写建筑事务所\n**类别**: 社区建筑"
+            ],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "right"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "项目定位",
+    "section": "项目定位",
+    "slot_id": "project-positioning",
+    "is_cover": false,
+    "slide_no": 27,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "852be28a-8551-4356-921c-e83af828faed",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "项目定位",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 综合前述所有分析，总结概括项目定位（一句话定位 + 展开说明）。从社会价值（城市贡献、文化价值、公共性）和经济价值（商业潜力、运营模式）分别说明。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "设计策略",
+    "section": "设计策略",
+    "slot_id": "chapter-4-divider",
+    "is_cover": false,
+    "slide_no": 28,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": false,
+      "content_anchor": "center",
+      "background_type": "color",
+      "overlay_direction": null
+    },
+    "binding_id": "a7cd6c4b-f85b-4b1e-9c0b-f70c06aa8307",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "设计策略",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "设计策略",
+            "block_id": "subtitle",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  },
+  {
+    "title": "设计策略",
+    "section": "设计策略",
+    "slot_id": "design-strategies",
+    "is_cover": false,
+    "slide_no": 29,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "5876b903-6420-45eb-90de-2cd213d417d3",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "设计策略",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 分析设计建议书大纲中的设计策略内容。既有概括性的策略标题（每条一句话），又有详细分项说明。设计策略需与场地分析、文化分析、项目定位形成逻辑呼应（3~5 条策略）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案介绍 1/3",
+    "section": "概念方案",
+    "slot_id": "concept-intro-1",
+    "is_cover": false,
+    "slide_no": 30,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "6275b2cd-299f-4049-8085-5475747dfbc8",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案介绍 1/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 生成概念方案介绍页（3 个方案之一）。包含：方案名称、一句设计理念（≤20字）、一段理念解析（100~150字）、两张支撑图（资产引用或分析示意图）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案介绍 2/3",
+    "section": "概念方案",
+    "slot_id": "concept-intro-2",
+    "is_cover": false,
+    "slide_no": 31,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "eae494ca-eea2-4dab-8d17-66a8543d9c11",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案介绍 2/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 生成概念方案介绍页（3 个方案之一）。包含：方案名称、一句设计理念（≤20字）、一段理念解析（100~150字）、两张支撑图（资产引用或分析示意图）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案介绍 3/3",
+    "section": "概念方案",
+    "slot_id": "concept-intro-3",
+    "is_cover": false,
+    "slide_no": 32,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "6381a41b-166f-4415-9ca3-f5a6c6e93797",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案介绍 3/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 生成概念方案介绍页（3 个方案之一）。包含：方案名称、一句设计理念（≤20字）、一段理念解析（100~150字）、两张支撑图（资产引用或分析示意图）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案鸟瞰图 1/3",
+    "section": "概念方案",
+    "slot_id": "concept-aerial-1",
+    "is_cover": false,
+    "slide_no": 33,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "b5b25ed8-9143-4f66-bd58-95727e61cb8e",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案鸟瞰图 1/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 调用 Nanobanana 生成该概念方案的精致建筑渲染鸟瞰图。要求：精致的建筑渲染表现图，展现建筑体量和场地关系。图片下方添加简短图注（≤30字）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案鸟瞰图 2/3",
+    "section": "概念方案",
+    "slot_id": "concept-aerial-2",
+    "is_cover": false,
+    "slide_no": 34,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "98ec7dfc-a426-4307-a353-093bcac1df33",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案鸟瞰图 2/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 调用 Nanobanana 生成该概念方案的精致建筑渲染鸟瞰图。要求：精致的建筑渲染表现图，展现建筑体量和场地关系。图片下方添加简短图注（≤30字）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案鸟瞰图 3/3",
+    "section": "概念方案",
+    "slot_id": "concept-aerial-3",
+    "is_cover": false,
+    "slide_no": 35,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "262ed9fe-d937-4ca1-834e-00bdeb70e9f2",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案鸟瞰图 3/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 调用 Nanobanana 生成该概念方案的精致建筑渲染鸟瞰图。要求：精致的建筑渲染表现图，展现建筑体量和场地关系。图片下方添加简短图注（≤30字）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案人视图 1/3",
+    "section": "概念方案",
+    "slot_id": "concept-perspective-1",
+    "is_cover": false,
+    "slide_no": 36,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "94f78f41-12de-43eb-8c3e-7afae0511838",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案人视图 1/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 调用 Nanobanana 生成室外人视图和室内人视图各一张（共两张）。要求：精致建筑摄影风格，光影真实，构图美感强。图片旁添加设计亮点注释（2~3 条，每条≤25字）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案人视图 2/3",
+    "section": "概念方案",
+    "slot_id": "concept-perspective-2",
+    "is_cover": false,
+    "slide_no": 37,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "10490851-aa7c-4a0e-843c-e05ff510ae99",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案人视图 2/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 调用 Nanobanana 生成室外人视图和室内人视图各一张（共两张）。要求：精致建筑摄影风格，光影真实，构图美感强。图片旁添加设计亮点注释（2~3 条，每条≤25字）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "概念方案人视图 3/3",
+    "section": "概念方案",
+    "slot_id": "concept-perspective-3",
+    "is_cover": false,
+    "slide_no": 38,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "4e6202cc-a2fd-44d8-91f7-ec130c8b6953",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "概念方案人视图 3/3",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 调用 Nanobanana 生成室外人视图和室内人视图各一张（共两张）。要求：精致建筑摄影风格，光影真实，构图美感强。图片旁添加设计亮点注释（2~3 条，每条≤25字）。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "材质分析与经济技术指标",
+    "section": "深化比选",
+    "slot_id": "material-economic",
+    "is_cover": false,
+    "slide_no": 39,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "b5e7dd54-441d-4736-b05f-6a1ff6c03362",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "材质分析与经济技术指标",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 生成三个概念方案各自的材质分析（外立面、内装、景观，各方案 2~3 条）。生成三个概念方案各自的经济技术指标（用地面积、总建筑面积、容积率、建筑密度、绿化率、建筑高度、停车位）。以三列对比表格呈现差异，清晰标注各方案优劣。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "设计任务书",
+    "section": "设计任务书",
+    "slot_id": "design-brief-doc",
+    "is_cover": false,
+    "slide_no": 40,
+    "primitive": {
+      "v_align": "top",
+      "primitive": "single-column",
+      "has_pull_quote": false,
+      "max_width_ratio": 0.72
+    },
+    "binding_id": "62f92efd-b18d-4ac6-bb8e-1600f41912c3",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "设计任务书",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "[Material Package E2E cultural] 基于所有前述内容，拟定正式设计任务书。包含：项目概述、设计目标、功能需求（分类列表）、技术要求、时间节点、注意事项。语言正式规范，结构清晰。",
+            "block_id": "body",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "body-text",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": false
+  },
+  {
+    "title": "结尾",
+    "section": "结尾",
+    "slot_id": "closing",
+    "is_cover": false,
+    "slide_no": 41,
+    "primitive": {
+      "primitive": "full-bleed",
+      "use_overlay": false,
+      "content_anchor": "center",
+      "background_type": "color",
+      "overlay_direction": null
+    },
+    "binding_id": "322c4aca-c98b-4360-9ce5-101672aebfd6",
+    "source_refs": [],
+    "visual_focus": "content",
+    "evidence_refs": [],
+    "region_bindings": [
+      {
+        "blocks": [
+          {
+            "content": "结尾",
+            "block_id": "title",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "heading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          },
+          {
+            "content": "结尾",
+            "block_id": "subtitle",
+            "emphasis": "normal",
+            "source_refs": [],
+            "content_type": "subheading",
+            "evidence_refs": [],
+            "style_overrides": {}
+          }
+        ],
+        "region_id": "content"
+      }
+    ],
+    "is_chapter_divider": true
+  }
+]

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);}.s26-top-bar{position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent));}.s26-section-label{position:absolute;top:40px;left:var(--safe-margin);font-family:var(--font-en);font-size:var(--text-label);color:var(--color-text-secondary);letter-spacing:3px;text-transform:uppercase;}.s26-page-no{position:absolute;top:40px;right:var(--safe-margin);font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);}.s26-img-wrap{position:absolute;top:90px;left:var(--safe-margin);width:820px;height:860px;border-radius:var(--border-radius);overflow:hidden;background:var(--color-surface);}.s26-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}.s26-img-tag{position:absolute;bottom:0;left:0;width:100%;padding:14px 20px;background:var(--color-overlay);display:flex;justify-content:space-between;align-items:center;}.s26-img-tag span{font-size:var(--text-caption);color:#fff;font-family:var(--font-body);}.s26-right{position:absolute;top:90px;left:900px;right:var(--safe-margin);height:860px;display:flex;flex-direction:column;gap:var(--element-gap);}.s26-title{font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);line-height:1.2;margin:0 0 4px 0;}.s26-subtitle{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);letter-spacing:1px;margin:0 0 8px 0;}.s26-divider{width:60px;height:3px;background:var(--color-primary);border-radius:2px;margin-bottom:4px;}.s26-card{background:var(--color-surface);border-radius:var(--border-radius);padding:22px 26px;border-left:4px solid var(--color-primary);}.s26-card-title{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-primary);margin:0 0 10px 0;}.s26-card p{font-size:var(--text-body);color:var(--color-text-primary);line-height:1.7;margin:0;}.s26-card-accent{border-left-color:var(--color-accent);}.s26-card-accent .s26-card-title{color:var(--color-accent);}.s26-kpi-row{display:flex;gap:16px;}.s26-kpi{flex:1;background:var(--color-surface);border-radius:var(--border-radius);padding:18px 20px;text-align:center;}.s26-kpi-val{font-family:var(--font-en);font-size:var(--text-h2);color:var(--color-primary);font-weight:700;line-height:1.1;}.s26-kpi-label{font-size:var(--text-caption);color:var(--color-text-secondary);margin-top:6px;}.s26-insight{background:var(--color-primary);border-radius:var(--border-radius);padding:22px 26px;margin-top:auto;}.s26-insight-title{font-family:var(--font-heading);font-size:var(--text-h3);color:#fff;margin:0 0 8px 0;}.s26-insight p{font-size:var(--text-body);color:rgba(255,255,255,0.9);line-height:1.7;margin:0;}</style><div class="s26-top-bar"></div><span class="s26-section-label">Reference Case 04</span><span class="s26-page-no">26</span><svg style="position:absolute;bottom:0;right:0;width:360px;height:360px;opacity:0.06;pointer-events:none" viewBox="0 0 360 360"><circle cx="360" cy="360" r="300" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="360" cy="360" r="220" fill="none" stroke="var(--color-accent)" stroke-width="1"/></svg><div class="s26-img-wrap"><img src="file:///D:/projects/PPT_Agent/test_material/project1/%E5%8F%82%E8%80%83%E6%A1%88%E4%BE%8B4_%E7%BC%A9%E7%95%A5%E5%9B%BE_285.png" alt="浦东望江亭"><div class="s26-img-tag"><span>浦东望江亭 · 上海</span><span>207 m² / 2020</span></div></div><div class="s26-right"><div><h2 class="s26-title">浦东望江亭</h2><p class="s26-subtitle">Pudong Wangjiang Pavilion — Earth-Sheltered Architecture</p><div class="s26-divider"></div></div><div class="s26-kpi-row"><div class="s26-kpi"><div class="s26-kpi-val">>60%</div><div class="s26-kpi-label">采暖制冷能耗降低</div></div><div class="s26-kpi"><div class="s26-kpi-val">207m²</div><div class="s26-kpi-label">建筑面积</div></div><div class="s26-kpi"><div class="s26-kpi-val">覆土</div><div class="s26-kpi-label">核心被动策略</div></div></div><div class="s26-card"><h4 class="s26-card-title">被动节能核心</h4><p>建筑采用覆土形式嵌入场地，利用土壤的高热惰性实现冬暖夏凉的被动调温效果，全年采暖与制冷能耗较常规建筑降低60%以上。屋面覆土层兼作雨水滞留与植被基质，形成完整的微气候调节系统。</p></div><div class="s26-card s26-card-accent"><h4 class="s26-card-title">生态修复策略</h4><p>覆土屋面恢复原有地表植被生态，与周边滨江绿地无缝衔接，建筑体量消隐于景观之中。本土草本与灌木组合种植方案降低后期养护成本，同时为场地提供生物栖息空间。</p></div><div class="s26-insight"><h4 class="s26-insight-title">对本项目的启示</h4><p>十堰文化建筑可借鉴覆土绿化策略，将屋面与场地景观一体化设计，在实现显著节能的同时让建筑融入自然山水环境，达成节能性能与景观品质的双重目标。</p></div></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>26 / 41</span>
+</div>
+</body>
+</html>

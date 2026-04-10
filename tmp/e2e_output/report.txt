@@ -1,0 +1,23 @@
+✅  DB 连接: ok
+✅  Project created: 159c5127-163a-46d5-a004-08f4ae18e7fb
+✅  ProjectBrief created: building_type=cultural_center, GFA=48000㎡
+✅  种子资产: 植入 6 条
+✅  BriefDoc 生成耗时: 27.8s
+✅  定位主张: 园区首个面向30万科技白领的日常复合文化客厅，填补星湖街文化轴线体验型设施空白。
+✅  叙事脉络: 从国家政策与园区规划的双重机遇出发，揭示科技园区文化配套缺口，锚定日常复合文化客厅定位，以在地性与开放性并重的设计策略回应场地与人群需求。
+✅  设计原则数: 4
+✅  Outline 生成耗时: 99.4s
+✅  总页数: 40
+✅  Deck Title: 苏州工业园区文化中心 建筑方案设计汇报
+✅  章节数: 12
+✅  Composer 耗时: 616.3s
+✅  生成 Slide 数: 5
+✅  Visual Theme: primary=#1C3A5F, font=思源黑体
+✅  Slide 01 [苏州工业园区文化中心]: HTML=4862B  PNG=61975B  14.9s
+✅  Slide 02 [目录]: HTML=5707B  PNG=75315B  2.6s
+✅  Slide 03 [背景研究]: HTML=5258B  PNG=553070B  3.0s
+✅  Slide 04 [国家政策导向]: HTML=5018B  PNG=53371B  2.7s
+✅  Slide 05 [地方政策支撑]: HTML=4893B  PNG=13050B  2.6s
+✅  平均渲染耗时: 5.1s/页
+✅  总耗时: 770.1s
+✅  输出目录: D:\projects\PPT_Agent\tmp\e2e_output

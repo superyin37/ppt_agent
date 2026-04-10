@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C5545;
+  --color-secondary:      #6B4C3B;
+  --color-accent:         #C4883A;
+  --color-bg:             #F4F1EC;
+  --color-surface:        #EAE5DD;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #5C5C5C;
+  --color-border:         #D1C9BD;
+  --color-overlay:        rgba(44,85,69,0.85);
+  --color-cover-bg:       linear-gradient(155deg, #1B3D30 0%, #2C5545 40%, #3A6B55 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正标雅宋", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);color:var(--color-text-primary);padding:0;margin:0}.s39-header{position:absolute;top:48px;left:var(--safe-margin);right:var(--safe-margin);display:flex;align-items:flex-end;justify-content:space-between}.s39-title{font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);line-height:1.2;font-weight:700}.s39-subtitle{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);letter-spacing:2px;text-transform:uppercase}.s39-action{font-family:var(--font-heading);font-size:var(--text-h3);color:var(--color-primary);margin-top:8px;font-weight:600}.s39-swatches{position:absolute;top:155px;left:var(--safe-margin);right:var(--safe-margin);display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}.s39-swatch-group{display:flex;flex-direction:column;align-items:center;gap:10px}.s39-swatch-label{font-family:var(--font-heading);font-size:var(--text-body);color:var(--color-text-primary);font-weight:600;margin-bottom:2px}.s39-colors{display:flex;gap:8px;justify-content:center}.s39-chip{width:52px;height:36px;border-radius:6px;border:1.5px solid var(--color-border);position:relative}.s39-chip-name{font-size:10px;color:var(--color-text-secondary);text-align:center;margin-top:3px;font-family:var(--font-body)}.s39-table-wrap{position:absolute;top:340px;left:var(--safe-margin);right:var(--safe-margin)}.s39-table{width:100%;border-collapse:separate;border-spacing:0;font-size:var(--text-body)}.s39-table thead th{background:var(--color-primary);color:#fff;font-family:var(--font-heading);font-weight:600;padding:14px 18px;text-align:center;font-size:var(--text-body)}.s39-table thead th:first-child{background:var(--color-surface);color:var(--color-text-secondary);border-radius:8px 0 0 0;text-align:left}.s39-table thead th:nth-child(2){border-radius:0}.s39-table thead th:last-child{border-radius:0 8px 0 0}.s39-table tbody td{padding:14px 18px;text-align:center;border-bottom:1px solid var(--color-border);font-family:var(--font-body);line-height:1.5}.s39-table tbody td:first-child{text-align:left;font-weight:600;color:var(--color-text-primary);background:var(--color-surface);font-family:var(--font-heading);width:180px}.s39-table tbody tr:last-child td{border-bottom:none}.s39-table tbody tr:last-child td:first-child{border-radius:0 0 0 8px}.s39-table tbody tr:last-child td:last-child{border-radius:0 0 8px 0}.s39-highlight{color:var(--color-accent);font-weight:700}.s39-tag{display:inline-block;padding:2px 10px;border-radius:10px;font-size:var(--text-label);font-weight:600}.s39-tag-a{background:rgba(139,90,43,0.12);color:#8b5a2b}.s39-tag-b{background:rgba(180,95,50,0.12);color:#b45f32}.s39-tag-c{background:rgba(80,130,80,0.12);color:#508250}.s39-bar{height:8px;border-radius:4px;background:var(--color-border)}.s39-bar-fill{height:100%;border-radius:4px}.s39-summary-strip{position:absolute;bottom:60px;left:var(--safe-margin);right:var(--safe-margin);display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}.s39-summary-card{background:var(--color-surface);border-radius:10px;padding:16px 20px;display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid var(--color-border)}.s39-summary-card-label{font-family:var(--font-heading);font-size:var(--text-caption);color:var(--color-text-secondary);font-weight:600}.s39-summary-card-value{font-family:var(--font-heading);font-size:var(--text-h2);color:var(--color-primary);font-weight:700;line-height:1.2}.s39-summary-card-desc{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-text-secondary);text-align:center}.s39-footer-line{position:absolute;bottom:44px;left:var(--safe-margin);right:var(--safe-margin);height:1px;background:var(--color-border)}.s39-footer{position:absolute;bottom:16px;left:var(--safe-margin);font-size:var(--text-caption);color:var(--color-text-secondary);font-family:var(--font-body);background:var(--color-bg);padding:0 4px;z-index:2}.s39-page{position:absolute;bottom:16px;right:var(--safe-margin);font-size:var(--text-caption);color:var(--color-text-secondary);font-family:var(--font-en);background:var(--color-bg);padding:0 4px;z-index:2}</style><svg style="position:absolute;top:0;right:0;width:480px;height:480px;opacity:0.06;pointer-events:none" viewBox="0 0 480 480"><circle cx="480" cy="0" r="420" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="480" cy="0" r="340" fill="none" stroke="var(--color-accent)" stroke-width="1"/><circle cx="480" cy="0" r="260" fill="none" stroke="var(--color-primary)" stroke-width="0.8"/></svg><svg style="position:absolute;bottom:0;left:0;width:300px;height:200px;opacity:0.04;pointer-events:none" viewBox="0 0 300 200"><rect x="0" y="50" width="300" height="150" fill="none" stroke="var(--color-secondary)" stroke-width="1"/><line x1="0" y1="100" x2="300" y2="100" stroke="var(--color-secondary)" stroke-width="0.5"/><line x1="0" y1="150" x2="300" y2="150" stroke="var(--color-secondary)" stroke-width="0.5"/><line x1="100" y1="50" x2="100" y2="200" stroke="var(--color-secondary)" stroke-width="0.5"/><line x1="200" y1="50" x2="200" y2="200" stroke="var(--color-secondary)" stroke-width="0.5"/></svg><div class="s39-header"><div><div class="s39-subtitle">Material &amp; Economic Comparison</div><div class="s39-title">材质与经济指标对比</div><div class="s39-action">方案C竹木体系综合性价比最优，兼顾生态与经济</div></div></div><div class="s39-swatches"><div class="s39-swatch-group"><div class="s39-swatch-label"><span class="s39-tag s39-tag-a">方案A</span> 石材体系</div><div class="s39-colors"><div><div class="s39-chip" style="background:#c4b5a0"></div><div class="s39-chip-name">米灰石</div></div><div><div class="s39-chip" style="background:#8a7d6b"></div><div class="s39-chip-name">青砂岩</div></div><div><div class="s39-chip" style="background:#d6cfc4"></div><div class="s39-chip-name">白麻花岗</div></div><div><div class="s39-chip" style="background:#5c5347"></div><div class="s39-chip-name">深褐饰面</div></div></div></div><div class="s39-swatch-group"><div class="s39-swatch-label"><span class="s39-tag s39-tag-b">方案B</span> 耐候钢体系</div><div class="s39-colors"><div><div class="s39-chip" style="background:#a0522d"></div><div class="s39-chip-name">锈红钢</div></div><div><div class="s39-chip" style="background:#c87533"></div><div class="s39-chip-name">暖铜面</div></div><div><div class="s39-chip" style="background:#6b4226"></div><div class="s39-chip-name">深赭板</div></div><div><div class="s39-chip" style="background:#3e3e3e"></div><div class="s39-chip-name">碳灰钢</div></div></div></div><div class="s39-swatch-group"><div class="s39-swatch-label"><span class="s39-tag s39-tag-c">方案C</span> 竹木体系</div><div class="s39-colors"><div><div class="s39-chip" style="background:#b5935a"></div><div class="s39-chip-name">原竹色</div></div><div><div class="s39-chip" style="background:#7a9a5a"></div><div class="s39-chip-name">苔绿木</div></div><div><div class="s39-chip" style="background:#d4c09e"></div><div class="s39-chip-name">浅杉木</div></div><div><div class="s39-chip" style="background:#5a4a3a"></div><div class="s39-chip-name">炭化竹</div></div></div></div></div><div class="s39-table-wrap"><table class="s39-table"><thead><tr><th>对比指标</th><th>方案A · 石材体系</th><th>方案B · 耐候钢体系</th><th style="position:relative"><span>方案C · 竹木体系</span><span style="background:var(--color-accent);color:#fff;font-size:10px;padding:2px 8px;border-radius:8px;margin-left:8px">★ 推荐</span></th></tr></thead><tbody><tr><td>主要材质</td><td>花岗岩干挂 + 青砂岩贴面<br><small style="color:var(--color-text-secondary)">局部铝板收口</small></td><td>耐候钢板幕墙 + 铜色铝板<br><small style="color:var(--color-text-secondary)">玻璃幕墙穿插</small></td><td>重组竹结构 + 防腐杉木格栅<br><small style="color:var(--color-text-secondary)">竹钢复合楼板</small></td></tr><tr><td>单方造价估算</td><td><span class="s39-highlight">¥6,800</span> /m²</td><td><span class="s39-highlight">¥5,200</span> /m²</td><td><span class="s39-highlight" style="color:var(--color-primary)">¥4,500</span> /m²</td></tr><tr><td>年运维能耗</td><td>38 kWh/m²·年<div class="s39-bar" style="width:180px;margin-top:4px"><div class="s39-bar-fill" style="width:95%;background:#8a7d6b"></div></div></td><td>32 kWh/m²·年<div class="s39-bar" style="width:180px;margin-top:4px"><div class="s39-bar-fill" style="width:80%;background:#a0522d"></div></div></td><td>24 kWh/m²·年<div class="s39-bar" style="width:180px;margin-top:4px"><div class="s39-bar-fill" style="width:60%;background:var(--color-primary)"></div></div></td></tr><tr><td>绿化覆盖率</td><td>28%</td><td>32%</td><td style="font-weight:700;color:var(--color-primary)">45%</td></tr><tr><td>无障碍达标项</td><td>12 / 15 项<br><small style="color:var(--color-text-secondary)">坡道坡度偏大</small></td><td>13 / 15 项<br><small style="color:var(--color-text-secondary)">触感标识待补</small></td><td style="font-weight:700;color:var(--color-primary)">15 / 15 项<br><small style="color:var(--color-text-secondary)">全项达标</small></td></tr><tr><td>施工周期</td><td>约 18 个月</td><td>约 14 个月</td><td style="font-weight:700;color:var(--color-primary)">约 12 个月</td></tr><tr><td>碳排放评估</td><td>高（石材开采运输）</td><td>中（钢材冶炼能耗）</td><td style="font-weight:700;color:var(--color-primary)">低（竹木固碳优势）</td></tr></tbody></table></div><div class="s39-summary-strip"><div class="s39-summary-card"><div class="s39-summary-card-label">造价节省</div><div class="s39-summary-card-value">34%</div><div class="s39-summary-card-desc">方案C较方案A节省</div></div><div class="s39-summary-card"><div class="s39-summary-card-label">能耗降低</div><div class="s39-summary-card-value">37%</div><div class="s39-summary-card-desc">年运维能耗对比方案A</div></div><div class="s39-summary-card"><div class="s39-summary-card-label">工期缩短</div><div class="s39-summary-card-value">6个月</div><div class="s39-summary-card-desc">较方案A缩短三分之一</div></div></div><div class="s39-footer-line"></div><div class="s39-footer">十堰市文化建筑项目 · 深化比选阶段 ｜ 数据基于初步设计估算，最终以施工图为准</div><div class="s39-page">39</div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>39 / 41</span>
+</div>
+</body>
+</html>

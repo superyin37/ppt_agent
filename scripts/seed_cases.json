@@ -1,0 +1,287 @@
+[
+  {
+    "title": "苏州博物馆新馆",
+    "architect": "贝聿铭",
+    "location": "江苏省苏州市",
+    "country": "中国",
+    "building_type": "museum",
+    "style_tags": ["modern", "cultural", "minimal"],
+    "feature_tags": ["造型", "材质", "光线", "在地性"],
+    "scale_category": "medium",
+    "gfa_sqm": 19000,
+    "year_completed": 2006,
+    "images": [
+      {"url": "", "caption": "中央庭院", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "几何天窗", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "平面图", "image_type": "plan", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "贝聿铭以苏州传统园林为设计原型，将白墙黑瓦的建筑语言转化为现代几何形式。中央庭院引入水面和假山，室内天窗系统将自然光以精确角度投射于展厅，创造出随时间变化的光影体验。建筑面积19000㎡，是其晚期最重要的文化建筑作品之一。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "上海博物馆东馆",
+    "architect": "同济大学建筑设计研究院",
+    "location": "上海市浦东新区",
+    "country": "中国",
+    "building_type": "museum",
+    "style_tags": ["modern", "cultural", "parametric"],
+    "feature_tags": ["造型", "立面", "公共空间", "在地性"],
+    "scale_category": "large",
+    "gfa_sqm": 113200,
+    "year_completed": 2024,
+    "images": [
+      {"url": "", "caption": "东立面", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "大厅中庭", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "鸟瞰", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "以「收藏器」为核心概念，外立面铸铜网格纹样呼应青铜器纹饰。内部以贯通五层的中央大厅为核心，各展厅围绕其布置，空间序列清晰。建筑体量11.3万㎡，是中国规模最大的博物馆之一，将文物保护与公众开放完美结合。",
+    "source": "谷德"
+  },
+  {
+    "title": "北京民生现代美术馆",
+    "architect": "马岩松/MAD建筑事务所",
+    "location": "北京市朝阳区",
+    "country": "中国",
+    "building_type": "museum",
+    "style_tags": ["futuristic", "modern", "parametric"],
+    "feature_tags": ["造型", "材质", "结构表现", "公共空间"],
+    "scale_category": "medium",
+    "gfa_sqm": 22000,
+    "year_completed": 2022,
+    "images": [
+      {"url": "", "caption": "外立面曲面", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "展厅空间", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "入口广场", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "流动的白色曲面外壳包裹着灵活的展览空间，立面采用GRC纤维混凝土预制板，实现无缝连续的有机形态。内部展厅可灵活分隔，顶部天窗引入散射自然光。建筑与城市广场之间以平缓坡道过渡，创造公共性城市界面。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "Louvre Abu Dhabi",
+    "architect": "Jean Nouvel",
+    "location": "阿布扎比",
+    "country": "阿联酋",
+    "building_type": "museum",
+    "style_tags": ["modern", "cultural", "parametric"],
+    "feature_tags": ["造型", "光线", "材质", "城市关系"],
+    "scale_category": "large",
+    "gfa_sqm": 64000,
+    "year_completed": 2017,
+    "images": [
+      {"url": "", "caption": "穹顶光影", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "水上广场", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "内部展廊", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "直径180米的穿孔钢铝网格穹顶覆盖55栋建筑群，产生「光雨」效果，隐喻阿拉伯棕榈叶遮阳。建筑群漂浮于波斯湾水面之上，通过桥和通廊连接。将西方博物馆模式与伊斯兰建筑传统融合，是当代最重要的博物馆建筑之一。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "Oslo National Museum",
+    "architect": "Kleihues + Schuwerk",
+    "location": "奥斯陆",
+    "country": "挪威",
+    "building_type": "museum",
+    "style_tags": ["modern", "minimal", "brutalist"],
+    "feature_tags": ["光线", "立面", "材质", "公共空间"],
+    "scale_category": "large",
+    "gfa_sqm": 54600,
+    "year_completed": 2022,
+    "images": [
+      {"url": "", "caption": "石材立面", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "光厅", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "轴测图", "image_type": "plan", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "挪威最大博物馆，立面采用当地斑岩石材与白色铝板对比，构成严谨的网格图案。核心为三层通高的「光厅」，通过格栅天窗将北欧漫射光引入室内。展厅围绕内庭院布置，流线清晰，无障碍设计完善。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "深圳科技馆（新馆）",
+    "architect": "Zaha Hadid Architects",
+    "location": "广东省深圳市光明区",
+    "country": "中国",
+    "building_type": "museum",
+    "style_tags": ["futuristic", "parametric", "modern"],
+    "feature_tags": ["造型", "结构表现", "数字建造", "公共空间"],
+    "scale_category": "large",
+    "gfa_sqm": 128000,
+    "year_completed": 2024,
+    "images": [
+      {"url": "", "caption": "外立面", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "中庭", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "鸟瞰夜景", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "扎哈事务所在中国的重要落地作品，建筑形态如同流动的液态金属，GRC和ETFE结合的复合立面系统实现了大尺度的参数化形态。内部四条「知识通廊」将各展区串联，形成连续探索路径，呼应科技馆对探索精神的象征。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "腾讯滨海大厦",
+    "architect": "NBBJ",
+    "location": "广东省深圳市南山区",
+    "country": "中国",
+    "building_type": "office",
+    "style_tags": ["modern", "biophilic", "futuristic"],
+    "feature_tags": ["公共空间", "绿色可持续", "景观融合", "垂直动线"],
+    "scale_category": "large",
+    "gfa_sqm": 340000,
+    "year_completed": 2017,
+    "images": [
+      {"url": "", "caption": "双塔空中连桥", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "空中花园", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "夜景鸟瞰", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "双塔通过三座空中连桥相连，每座连桥内置运动场、游泳池、会议室等公共功能，打破传统办公楼的单一使用模式。立面采用绿化阳台系统，在垂直方向引入景观，实现建筑与自然的融合。获LEED金级认证，是互联网企业总部办公的标志性案例。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "阿里巴巴杭州总部园区",
+    "architect": "Hassell + 阿里巴巴设计团队",
+    "location": "浙江省杭州市余杭区",
+    "country": "中国",
+    "building_type": "office",
+    "style_tags": ["modern", "biophilic", "minimal"],
+    "feature_tags": ["景观融合", "功能配比", "公共空间", "绿色可持续"],
+    "scale_category": "large",
+    "gfa_sqm": 480000,
+    "year_completed": 2019,
+    "images": [
+      {"url": "", "caption": "园区鸟瞰", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "滨水步道", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "食堂中庭", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "以西溪湿地为背景，园区规划围绕水系展开，建筑单体以低矮体量分散布置，保持视线通透。各楼之间由连廊和廊桥相连，形成连续的公共活动网络。屋顶绿化面积超过3万㎡，提供员工休闲、会议、餐饮等配套空间，是科技园区与自然环境共生的优秀案例。",
+    "source": "谷德"
+  },
+  {
+    "title": "One Canada Square（金丝雀码头）",
+    "architect": "Cesar Pelli",
+    "location": "伦敦",
+    "country": "英国",
+    "building_type": "office",
+    "style_tags": ["modern", "minimal"],
+    "feature_tags": ["造型", "结构表现", "城市关系", "垂直动线"],
+    "scale_category": "large",
+    "gfa_sqm": 111480,
+    "year_completed": 1991,
+    "images": [
+      {"url": "", "caption": "金字塔顶", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "大堂中庭", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "城市背景", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "50层高的不锈钢立面办公塔楼，顶部标志性金字塔造型成为伦敦天际线新地标。模块化幕墙系统在当时属于技术创新，超高层结构通过核心筒+外框架实现高效传力。与金丝雀码头区域整体开发密切配合，重塑了伦敦东区城市格局。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "广州文化馆新馆",
+    "architect": "何镜堂院士工作室",
+    "location": "广东省广州市白云区",
+    "country": "中国",
+    "building_type": "cultural",
+    "style_tags": ["modern", "cultural", "vernacular"],
+    "feature_tags": ["在地性", "公共空间", "景观融合", "功能配比"],
+    "scale_category": "large",
+    "gfa_sqm": 105000,
+    "year_completed": 2021,
+    "images": [
+      {"url": "", "caption": "水庭鸟瞰", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "岭南庭院", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "演艺大厅", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "以岭南传统聚落为规划原型，功能体量分散布置于水庭之间，通过廊道相连。建筑外墙采用陶砖和石材，呼应岭南材料文化。整体规划顺应地形，保留大量古树，形成人工与自然共生的文化园区。演艺中心、非遗展示、公共图书馆等多功能复合，是新时代文化场馆的创新实践。",
+    "source": "谷德"
+  },
+  {
+    "title": "上海天文馆",
+    "architect": "Ennead Architects",
+    "location": "上海市浦东新区",
+    "country": "中国",
+    "building_type": "cultural",
+    "style_tags": ["futuristic", "modern", "parametric"],
+    "feature_tags": ["造型", "光线", "结构表现", "在地性"],
+    "scale_category": "large",
+    "gfa_sqm": 38000,
+    "year_completed": 2021,
+    "images": [
+      {"url": "", "caption": "圆洞天窗", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "球幕影院", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "鸟瞰全景", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "建筑形体以天体运行轨道为灵感，三个圆形元素——倒置的圆顶、球幕影院球体、圆形天窗——构成空间叙事。主体以悬臂曲线勾勒出天文望远镜的优雅意象，顶部环形天桥可观测天文现象。是世界上最大的天文馆之一，建筑本身即成为天文学的教育媒介。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "武汉自然博物馆·贝林大自然展览馆",
+    "architect": "中信建筑设计研究总院",
+    "location": "湖北省武汉市江岸区",
+    "country": "中国",
+    "building_type": "museum",
+    "style_tags": ["biophilic", "modern", "cultural"],
+    "feature_tags": ["景观融合", "造型", "公共空间", "屋顶"],
+    "scale_category": "large",
+    "gfa_sqm": 55000,
+    "year_completed": 2022,
+    "images": [
+      {"url": "", "caption": "绿坡屋顶", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "热带雨林展厅", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "滨江立面", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "建筑形态模拟山丘地形，绿化屋顶自然延续滨江绿地，使建筑消隐于自然之中。室内以热带雨林、草原等生态主题组织展览，将真实植被引入室内，实现建筑与展陈的高度融合。外立面采用GRC仿石材面板，与武汉石质历史建筑形成呼应。",
+    "source": "谷德"
+  },
+  {
+    "title": "深圳国际交流学院",
+    "architect": "Aedas",
+    "location": "广东省深圳市龙华区",
+    "country": "中国",
+    "building_type": "education",
+    "style_tags": ["modern", "biophilic", "minimal"],
+    "feature_tags": ["景观融合", "屋顶", "公共空间", "功能配比"],
+    "scale_category": "medium",
+    "gfa_sqm": 55000,
+    "year_completed": 2020,
+    "images": [
+      {"url": "", "caption": "围合庭院", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "绿化屋顶", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "图书馆", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "以多个围合庭院为核心组织校园功能，各庭院尺度各异，营造不同的学习氛围。绿化屋顶连通各楼，学生可在屋顶漫步，形成立体的绿色校园体验。外立面采用温润竹钢格栅，既提供遮阳又创造变化光影，与深圳亚热带气候相适应。",
+    "source": "ArchDaily"
+  },
+  {
+    "title": "苏州湾文化中心",
+    "architect": "PES建筑设计事务所",
+    "location": "江苏省苏州市吴江区",
+    "country": "中国",
+    "building_type": "cultural",
+    "style_tags": ["modern", "cultural", "minimal"],
+    "feature_tags": ["造型", "公共空间", "城市关系", "功能配比"],
+    "scale_category": "large",
+    "gfa_sqm": 75000,
+    "year_completed": 2021,
+    "images": [
+      {"url": "", "caption": "滨水立面", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "大剧院内厅", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "夜景倒影", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "由大剧院、音乐厅、展览馆和配套商业组成的滨水文化综合体。建筑群以倾斜铝板幕墙覆盖，在苏州湾水面上形成壮观倒影。各功能体通过共享大厅联通，形成活跃的公共文化界面。大剧院主厅可容纳1600人，音响设计达国际一流水准。",
+    "source": "谷德"
+  },
+  {
+    "title": "Elbphilharmonie Hamburg",
+    "architect": "Herzog & de Meuron",
+    "location": "汉堡",
+    "country": "德国",
+    "building_type": "cultural",
+    "style_tags": ["parametric", "modern", "futuristic"],
+    "feature_tags": ["造型", "材质", "城市关系", "结构表现"],
+    "scale_category": "large",
+    "gfa_sqm": 120000,
+    "year_completed": 2017,
+    "images": [
+      {"url": "", "caption": "玻璃波浪屋顶", "image_type": "exterior", "width_px": 1920, "height_px": 1080, "is_primary": true},
+      {"url": "", "caption": "大厅音乐空间", "image_type": "interior", "width_px": 1920, "height_px": 1080, "is_primary": false},
+      {"url": "", "caption": "港口全景", "image_type": "aerial", "width_px": 1920, "height_px": 1080, "is_primary": false}
+    ],
+    "summary": "在旧仓库砖石基座之上，以2200块单独弯曲的玻璃幕墙板构成的波浪屋顶冠顶，新旧对话极具戏剧张力。音乐厅的'葡萄园式'座位布局将观众席围绕舞台360度环绕，创造卓越的声学体验。中间公共广场层通过弧形坡道引导，向公众开放，实现城市观景平台功能。",
+    "source": "ArchDaily"
+  }
+]

@@ -1,0 +1,147 @@
+[
+  {
+    "slide_no": 1,
+    "dimensions": [
+      {
+        "dimension": "color",
+        "score": 7.5,
+        "comment": "主标题与深绿背景对比强烈，视觉清晰；但底部次要信息（委托方等）文字颜色过暗，对比度略显不足。"
+      },
+      {
+        "dimension": "typography",
+        "score": 8.5,
+        "comment": "字阶层次分明，主标题、副标题及标签大小比例合适，字体选择现代专业，阅读体验良好。"
+      },
+      {
+        "dimension": "layout",
+        "score": 6.0,
+        "comment": "视觉重心严重偏向左下角，右上角大面积留白且装饰元素过弱，导致整体画面失衡，缺乏封面应有的稳重感。"
+      },
+      {
+        "dimension": "focal_point",
+        "score": 8.5,
+        "comment": "主标题作为第一视觉焦点非常明确，信息层级传达清晰，视线引导自然。"
+      },
+      {
+        "dimension": "polish",
+        "score": 6.5,
+        "comment": "右上角建筑轮廓线过细过暗，未能起到良好的装饰和平衡作用，左上角细线略显突兀，整体精致度可进一步提升。"
+      }
+    ],
+    "overall_score": 7.4,
+    "grade": "B",
+    "suggestions": [
+      {
+        "code": "D005",
+        "category": "layout",
+        "severity": "critical",
+        "message": "画面左下重右上轻，建议增强右上角建筑轮廓线的视觉比重（加粗线条或提高亮度），或在右侧增加其他相关图形元素以平衡构图。",
+        "css_hint": "opacity: 0.3; stroke-width: 1.5px;",
+        "target_selector": "svg.background-lines"
+      },
+      {
+        "code": "D001",
+        "category": "color",
+        "severity": "recommended",
+        "message": "底部'委托方'等次要信息文字颜色过暗，建议适当提亮文字颜色（如使用浅灰或半透明白色），以提升可读性。",
+        "css_hint": "color: rgba(255, 255, 255, 0.6);",
+        "target_selector": ".bottom-info-text"
+      },
+      {
+        "code": "D009",
+        "category": "polish",
+        "severity": "recommended",
+        "message": "右上角线框图作为装饰过于隐蔽，建议增加线条粗细或使用与主色调呼应的浅金色/浅绿色，提升页面精致度。",
+        "css_hint": "stroke: #D4AF37;",
+        "target_selector": ".architectural-outline"
+      }
+    ],
+    "one_liner": "文字排版层次清晰，但构图严重左倾，需增强右侧背景装饰以平衡画面。"
+  },
+  {
+    "slide_no": 2,
+    "dimensions": [
+      {
+        "dimension": "color",
+        "score": 8.0,
+        "comment": "深绿与米白搭配专业沉稳，主次文字色彩对比清晰。但左下角项目名称文字与背景对比度过低，难以辨认。"
+      },
+      {
+        "dimension": "typography",
+        "score": 9.0,
+        "comment": "字阶层次极其分明，序号、主标题、副标题、页码通过大小、粗细和颜色形成了完美的视觉层级。"
+      },
+      {
+        "dimension": "layout",
+        "score": 9.0,
+        "comment": "经典的非对称左右分割布局，右侧列表上下留白均匀，整体空间平衡感极佳，网格对齐严格。"
+      },
+      {
+        "dimension": "focal_point",
+        "score": 9.0,
+        "comment": "左侧巨大的'目录'二字形成强烈的视觉焦点，随后视线自然引导至右侧的序号和标题，阅读路径顺畅。"
+      },
+      {
+        "dimension": "polish",
+        "score": 9.0,
+        "comment": "细节处理极佳，左侧深色背景中的暗纹（网格、同心圆）增加了质感而不喧宾夺主，整体呈现出高度专业的成品感。"
+      }
+    ],
+    "overall_score": 8.8,
+    "grade": "A",
+    "suggestions": [
+      {
+        "code": "D001",
+        "category": "color",
+        "severity": "recommended",
+        "message": "左下角的项目名称文字颜色过暗，与深绿色背景对比度极低，几乎无法辨认。建议适当提高文字亮度或不透明度以保证基本的可读性。",
+        "css_hint": "color: rgba(255, 255, 255, 0.4);",
+        "target_selector": ".bottom-left-text"
+      }
+    ],
+    "one_liner": "极其优秀的目录页设计，排版严谨、层次分明、细节精致，仅需微调局部文字对比度。"
+  },
+  {
+    "slide_no": 3,
+    "dimensions": [
+      {
+        "dimension": "color",
+        "score": 9.0,
+        "comment": "深绿色背景与白色主标题对比强烈，橙黄色作为强调色使用克制且精准，背景暗纹和线条的色彩层次非常丰富。"
+      },
+      {
+        "dimension": "typography",
+        "score": 9.0,
+        "comment": "字阶对比极其清晰，主次分明。中英文搭配合理，背景的巨大暗色数字 '01' 极大地丰富了排版细节。"
+      },
+      {
+        "dimension": "layout",
+        "score": 9.0,
+        "comment": "经典的左重右轻不对称平衡构图。左侧文本锚定视觉，右侧大面积留白配合精细的点阵和线条装饰，营造出极强的高级感和呼吸感。"
+      },
+      {
+        "dimension": "focal_point",
+        "score": 9.5,
+        "comment": "视觉焦点毫无疑问落在高对比度的白色主标题上，随后自然过渡到橙色小标题和英文副标题，层级引导非常完美。"
+      },
+      {
+        "dimension": "polish",
+        "score": 9.5,
+        "comment": "点阵网格、极细的分割线、右下角的同心圆弧以及左下角的短线装饰极其精致，整体呈现出极高的专业设计水准。"
+      }
+    ],
+    "overall_score": 9.2,
+    "grade": "A",
+    "suggestions": [
+      {
+        "code": "D001",
+        "category": "color",
+        "severity": "optional",
+        "message": "左下角和右下角的辅助信息文字颜色与背景对比度极低，虽然符合极简风格，但在对比度较差的投影设备上可能完全不可见，建议稍微提亮文字颜色以保证最低限度的可读性。",
+        "css_hint": "color: rgba(255, 255, 255, 0.4);",
+        "target_selector": ".footer-text"
+      }
+    ],
+    "one_liner": "极具专业感和高级感的章节过渡页，排版、配色与细节装饰均属上乘，视觉冲击力强。"
+  }
+]

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C5545;
+  --color-secondary:      #6B4C3B;
+  --color-accent:         #C4883A;
+  --color-bg:             #F4F1EC;
+  --color-surface:        #EAE5DD;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #5C5C5C;
+  --color-border:         #D1C9BD;
+  --color-overlay:        rgba(44,85,69,0.85);
+  --color-cover-bg:       linear-gradient(155deg, #1B3D30 0%, #2C5545 40%, #3A6B55 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正标雅宋", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-cover-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-heading);overflow:hidden}.closing-bg-svg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}.mountain-layer{opacity:.12}.mist-layer{opacity:.08}.center-block{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}.main-thanks{font-family:var(--font-heading);font-size:96px;font-weight:700;color:var(--color-text-primary);letter-spacing:16px;line-height:1.2;margin:0}.main-thanks-en{font-family:var(--font-en);font-size:36px;font-weight:300;color:var(--color-text-secondary);letter-spacing:12px;text-transform:uppercase;margin:0;opacity:.7}.divider-line{width:120px;height:2px;background:var(--color-accent);margin:12px 0;border-radius:1px;opacity:.6}.project-info{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px}.project-name{font-family:var(--font-body);font-size:var(--text-body);color:var(--color-text-secondary);letter-spacing:4px;margin:0;opacity:.8}.client-name{font-family:var(--font-body);font-size:var(--text-caption);color:var(--color-text-secondary);letter-spacing:3px;margin:0;opacity:.55}.corner-deco{position:absolute;z-index:1;opacity:.1}.corner-tl{top:40px;left:40px}.corner-br{bottom:40px;right:40px;transform:rotate(180deg)}</style><svg class="closing-bg-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none"><defs><linearGradient id="mist-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.06"/><stop offset="60%" stop-color="var(--color-bg)" stop-opacity="0"/><stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.04"/></linearGradient><linearGradient id="mt-g" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.18"/><stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#mist-g)"/><g class="mountain-layer"><path d="M0 1080 L0 780 Q120 680 280 740 Q400 620 520 700 Q640 560 760 650 Q880 520 960 580 Q1080 480 1200 560 Q1320 440 1440 530 Q1560 460 1680 540 Q1800 480 1920 520 L1920 1080Z" fill="url(#mt-g)"/><path d="M0 1080 L0 860 Q200 780 400 830 Q600 720 800 790 Q1000 680 1200 750 Q1400 660 1600 730 Q1800 670 1920 700 L1920 1080Z" fill="var(--color-primary)" opacity=".08"/></g><g class="mist-layer"><ellipse cx="400" cy="700" rx="500" ry="60" fill="var(--color-surface)" opacity=".3"/><ellipse cx="1400" cy="650" rx="600" ry="50" fill="var(--color-surface)" opacity=".2"/><ellipse cx="960" cy="750" rx="800" ry="40" fill="var(--color-surface)" opacity=".15"/></g></svg><svg class="corner-deco corner-tl" width="120" height="120" viewBox="0 0 120 120"><line x1="0" y1="0" x2="60" y2="0" stroke="var(--color-accent)" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="60" stroke="var(--color-accent)" stroke-width="2"/><line x1="10" y1="10" x2="40" y2="10" stroke="var(--color-accent)" stroke-width="1"/><line x1="10" y1="10" x2="10" y2="40" stroke="var(--color-accent)" stroke-width="1"/></svg><svg class="corner-deco corner-br" width="120" height="120" viewBox="0 0 120 120"><line x1="0" y1="0" x2="60" y2="0" stroke="var(--color-accent)" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="60" stroke="var(--color-accent)" stroke-width="2"/><line x1="10" y1="10" x2="40" y2="10" stroke="var(--color-accent)" stroke-width="1"/><line x1="10" y1="10" x2="10" y2="40" stroke="var(--color-accent)" stroke-width="1"/></svg><div class="center-block"><p class="main-thanks">谢 谢</p><p class="main-thanks-en">Thank You</p><div class="divider-line"></div><div class="project-info"><p class="project-name">十堰市文化建筑项目</p><p class="client-name">Material Package E2E</p></div></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>41 / 41</span>
+</div>
+</body>
+</html>

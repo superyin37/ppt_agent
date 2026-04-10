@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding: var(--safe-margin, 64px); padding-top: 64px; height: 100%;">
+  <div class="section-tag">{{ section }}</div>
+  <h2 class="slide-title">{{ title }}</h2>
+  {% if key_message %}
+  <div class="key-message">{{ key_message }}</div>
+  {% endif %}
+
+  {%- set table_block = blocks.get('table') %}
+  {%- set rows_block = blocks.get('rows') %}
+  {%- set data = (table_block.content if table_block else (rows_block.content if rows_block else none)) %}
+
+  {% if data and data is iterable and data is not string %}
+  <!-- Data table -->
+  <div style="overflow: hidden; border-radius: var(--radius-md, 8px); border: 1px solid var(--color-border, #e0e0e0); margin-top: 8px;">
+    <table style="width: 100%; border-collapse: collapse; font-size: var(--text-body, 20px);">
+      <!-- Header row (first row treated as header) -->
+      {%- set header = data[0] if data else {} %}
+      {%- set body_rows = data[1:] %}
+      {% if header %}
+      <thead>
+        <tr style="background: var(--color-primary, #1a1a2e);">
+          {% if header is mapping %}
+            {% for col, val in header.items() %}
+            <th style="padding: 16px 20px; text-align: left; color: white; font-weight: 600; font-family: var(--font-heading, 'PingFang SC', sans-serif);">{{ col }}</th>
+            {% endfor %}
+          {% elif header is iterable %}
+            {% for cell in header %}
+            <th style="padding: 16px 20px; text-align: left; color: white; font-weight: 600;">{{ cell }}</th>
+            {% endfor %}
+          {% endif %}
+        </tr>
+      </thead>
+      {% endif %}
+      <tbody>
+        {% for row in body_rows %}
+        <tr style="border-bottom: 1px solid var(--color-border, #e0e0e0); background: {{ 'white' if loop.index % 2 == 1 else 'var(--color-bg-secondary, #f8f8f8)' }};">
+          {% if row is mapping %}
+            {% for col, val in row.items() %}
+            <td style="padding: 14px 20px; color: var(--color-text-primary, #1a1a2e);">{{ val }}</td>
+            {% endfor %}
+          {% elif row is iterable %}
+            {% for cell in row %}
+            <td style="padding: 14px 20px; color: var(--color-text-primary, #1a1a2e);">{{ cell }}</td>
+            {% endfor %}
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <!-- Fallback: bullet list summary -->
+  <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+    {% for bid, block in blocks.items() %}
+    {% if block.block_type in ('text', 'bullet') %}
+    <div style="
+      background: var(--color-bg-secondary, #f8f8f8);
+      border-radius: var(--radius-md, 8px);
+      padding: 24px;
+      border-left: 4px solid var(--color-accent, #e94560);
+    ">
+      {% if block.content is string %}
+      <p style="font-size: var(--text-body, 20px); line-height: 1.6; color: var(--color-text-primary, #1a1a2e);">{{ block.content }}</p>
+      {% elif block.content is iterable %}
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+        {% for item in block.content %}
+        <li style="font-size: var(--text-body, 20px); color: var(--color-text-primary, #1a1a2e); line-height: 1.5;">• {{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

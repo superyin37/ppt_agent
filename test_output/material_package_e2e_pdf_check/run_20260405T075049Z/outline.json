@@ -1,0 +1,54 @@
+{
+  "theme": "cultural",
+  "slides": [
+    {
+      "title": "封面",
+      "purpose": "[Material Package E2E cultural] 生成封面。① 生成汇报标题、slogan（一句话点题）、英文翻译。② 调用 Nanobanana 生成项目 logo：简洁抽象线条画，与整体 PPT 风格统一。标题应简洁有力，",
+      "section": "封面",
+      "slot_id": "cover",
+      "is_cover": true,
+      "slide_no": 1,
+      "key_message": "[Material Package E2E cultural] 生成封面。① 生成汇报标题、slogan（一句话点题）、英文翻译。② 调用 Nanobanana 生成项目 logo：简洁抽象线条画，与整体 PPT 风格统一。标题应简洁有力，英文翻译字面准确且有设计感。",
+      "layout_hint": "full-bleed 或 split 封面，呼应 CoverStyle.layout_mood",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "project_name"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "目录",
+      "purpose": "[Material Package E2E cultural] 生成目录页。① 调用 Nanobanana 生成目录插画：高度抽象概括设计意向，与设计主题呼应，具有艺术感。② 生成目录标题列表（章节名 + 页码）。",
+      "section": "目录",
+      "slot_id": "toc",
+      "is_cover": false,
+      "slide_no": 2,
+      "key_message": "[Material Package E2E cultural] 生成目录页。① 调用 Nanobanana 生成目录插画：高度抽象概括设计意向，与设计主题呼应，具有艺术感。② 生成目录标题列表（章节名 + 页码）。",
+      "layout_hint": "split-h：左侧大插画，右侧目录列表",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    }
+  ],
+  "sections": [
+    "封面",
+    "目录"
+  ],
+  "deck_title": "Material Package E2E Cultural 设计建议书",
+  "outline_id": null,
+  "project_id": "b51c2d6a-9616-4cfc-8fd8-4c7ccc93976f",
+  "total_pages": 2
+}

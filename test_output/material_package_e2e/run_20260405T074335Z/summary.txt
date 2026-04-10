@@ -1,0 +1,11 @@
+project_id: 4712409a-b204-4460-ba2e-5fc49f04c9e6
+package_id: fca71807-1869-4799-bd62-15385fc121d3
+mode: mock-llm
+output_dir: D:\projects\PPT_Agent\test_output\material_package_e2e\run_20260405T074335Z
+create_project: ok
+ingest_material_package: ok (54 items)
+generate_brief_doc: ok
+generate_outline: ok (41 pages)
+bind_slides: ok (41 bindings)
+compose_slides: ok (41 slides)
+render_and_review: ok (41 rendered)

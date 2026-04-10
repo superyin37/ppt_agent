@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+{%- set hero = blocks.get('hero_image') %}
+{%- set bg_url = hero.content if hero else '' %}
+<!-- Full-bleed hero background -->
+<div style="
+  position: absolute; inset: 0;
+  {% if bg_url %}background-image: url('{{ bg_url }}');{% else %}background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);{% endif %}
+  background-size: cover; background-position: center;
+">
+  <!-- Gradient overlay -->
+  <div style="
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg,
+      rgba(26,26,46,0.88) 0%,
+      rgba(26,26,46,0.50) 55%,
+      rgba(26,26,46,0.20) 100%);
+  "></div>
+</div>
+
+<!-- Text content -->
+<div style="
+  position: relative; z-index: 1;
+  height: 100%; display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--safe-margin, 64px);
+  padding-bottom: 120px;
+">
+  <div style="
+    color: var(--color-accent, #e94560);
+    font-family: var(--font-en, 'Inter', sans-serif);
+    font-size: var(--text-caption, 16px);
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 24px;
+  ">{{ section }}</div>
+
+  <h1 style="
+    color: white;
+    font-size: var(--text-display, 64px);
+    font-family: var(--font-heading, 'PingFang SC', sans-serif);
+    font-weight: 700; line-height: 1.1;
+    max-width: 960px; margin-bottom: 32px;
+  ">{{ title }}</h1>
+
+  {% if key_message %}
+  <p style="
+    color: rgba(255,255,255,0.75);
+    font-size: var(--text-body, 20px);
+    max-width: 720px; line-height: 1.6;
+    margin-bottom: 40px;
+  ">{{ key_message }}</p>
+  {% endif %}
+
+  <div style="
+    display: flex; gap: 48px;
+    color: rgba(255,255,255,0.6);
+    font-size: var(--text-body, 20px);
+    font-family: var(--font-en, 'Inter', sans-serif);
+  ">
+    {%- set cn_block = blocks.get('client_name') %}
+    {%- set dt_block = blocks.get('project_date') %}
+    {% if cn_block %}<span>{{ cn_block.content }}</span>{% elif client_name %}<span>{{ client_name }}</span>{% endif %}
+    {% if dt_block %}<span>{{ dt_block.content }}</span>{% endif %}
+  </div>
+</div>
+{% endblock %}

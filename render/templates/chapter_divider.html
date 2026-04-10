@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="
+  background: var(--color-bg-dark, #1a1a2e);
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  padding: var(--safe-margin, 64px);
+">
+  <!-- Accent line -->
+  <div style="
+    position: absolute;
+    left: var(--safe-margin, 64px);
+    top: 50%; transform: translateY(-50%);
+    width: 6px; height: 140px;
+    background: var(--color-accent, #e94560);
+    border-radius: 3px;
+  "></div>
+
+  <div style="padding-left: 56px;">
+    {%- set ch_block = blocks.get('chapter_number') %}
+    <div style="
+      font-family: var(--font-en, 'Inter', sans-serif);
+      font-size: var(--text-caption, 16px);
+      color: var(--color-accent, #e94560);
+      letter-spacing: 0.25em; text-transform: uppercase;
+      margin-bottom: 24px;
+    ">{{ ch_block.content if ch_block else section }}</div>
+
+    <h1 style="
+      font-family: var(--font-heading, 'PingFang SC', sans-serif);
+      font-size: var(--text-h1, 48px);
+      color: white; font-weight: 700; line-height: 1.15;
+      max-width: 760px;
+    ">{{ title }}</h1>
+
+    {% if key_message %}
+    <p style="
+      color: rgba(255,255,255,0.6);
+      font-size: var(--text-body, 20px);
+      margin-top: var(--space-lg, 40px);
+      max-width: 620px; line-height: 1.6;
+    ">{{ key_message }}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+[
+  {
+    "review_id": null,
+    "target_type": "slide",
+    "target_id": "00000000-0000-0000-0000-000000000000",
+    "review_layer": "rule,semantic,vision",
+    "severity": "P2",
+    "issues": [
+      {
+        "issue_id": "R008_key_message",
+        "rule_code": "KEY_MESSAGE_MISSING",
+        "layer": "rule",
+        "severity": "P2",
+        "message": "key_message is empty",
+        "location": "key_message",
+        "suggested_fix": "Add a concise key message for the slide.",
+        "auto_fixable": false
+      }
+    ],
+    "final_decision": "repair_required",
+    "repair_plan": []
+  },
+  {
+    "review_id": null,
+    "target_type": "slide",
+    "target_id": "00000000-0000-0000-0000-000000000000",
+    "review_layer": "rule,semantic,vision",
+    "severity": "P1",
+    "issues": [
+      {
+        "issue_id": "R002_toc-list",
+        "rule_code": "BULLET_OVERFLOW",
+        "layer": "rule",
+        "severity": "P1",
+        "message": "bullet block toc-list has 6 items",
+        "location": "toc-list",
+        "suggested_fix": "Reduce to at most 5 bullet points.",
+        "auto_fixable": true
+      },
+      {
+        "issue_id": "R008_key_message",
+        "rule_code": "KEY_MESSAGE_MISSING",
+        "layer": "rule",
+        "severity": "P2",
+        "message": "key_message is empty",
+        "location": "key_message",
+        "suggested_fix": "Add a concise key message for the slide.",
+        "auto_fixable": false
+      }
+    ],
+    "final_decision": "repair_required",
+    "repair_plan": [
+      {
+        "action_type": "truncate_bullets",
+        "target_block_id": "toc-list",
+        "params": {
+          "max_bullets": 5
+        }
+      }
+    ]
+  }
+]

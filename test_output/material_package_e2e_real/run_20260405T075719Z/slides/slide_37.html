@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #1C3A5F;
+  --color-secondary:      #2D6A8F;
+  --color-accent:         #E8A020;
+  --color-bg:             #F8F6F1;
+  --color-surface:        #EDEAE3;
+  --color-text-primary:   #1C1C1C;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D4D0C8;
+  --color-overlay:        rgba(0,0,0,0.55);
+  --color-cover-bg:       linear-gradient(135deg, #1C3A5F 0%, #2D6A8F 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 49px;
+  --text-h1:      39px;
+  --text-h2:      31px;
+  --text-h3:      25px;
+  --text-body:    20px;
+  --text-caption: 16px;
+  --text-label:   13px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.6;
+  --line-height-heading: 1.15;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   80px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+
+</head>
+<body>
+
+<div class="layout-split-h slide-root" style="display:flex;width:100%;height:100%;">
+  <div class="region-left" style="width:60.0%;height:100%;overflow:hidden;margin-right:var(--section-gap);padding:var(--safe-margin);display:flex;flex-direction:column;justify-content:center;gap:var(--element-gap);">
+    <h2 class="block-subheading">沿街界面 · 折板屋面人视效果</h2>
+<div class="block-image" style="background:#e8e8e8;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;">图片加载中</div>
+<p class="block-caption emphasis-muted">沿街立面：折板屋面形成连续工业线条韵律，呼应车辙轨迹意象</p>
+<div class="block-image" style="background:#e8e8e8;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;">图片加载中</div>
+<p class="block-caption emphasis-muted">折板天窗：锯齿形开口引入漫射自然光，消除眩光并均匀照亮展陈空间</p>
+  </div>
+  <div class="region-right" style="width:40.0%;height:100%;overflow:hidden;padding:var(--safe-margin);display:flex;flex-direction:column;justify-content:center;gap:var(--element-gap);">
+    <span class="block-label emphasis-highlight">方案二 · 设计注释</span>
+<ul class="block-bullet-list"><li>工业线条语言：折板屋面以 15°–30° 倾角重复叠合，立面形成强烈水平向肌理，致敬工业厂房美学</li><li>天窗采光策略：北向锯齿天窗全天提供稳定漫射光，展厅照度均匀度≥0.7，减少人工照明依赖约40%</li><li>材质体系：主体采用耐候钢板（外立面）+ 清水混凝土（基座）+ 穿孔铝板（遮阳格栅），三层材质形成粗—中—细质感递进</li><li>街道界面：底层局部架空形成灰空间，退让2.5m形成骑楼式檐廊，激活沿街公共活动</li></ul>
+  </div>
+</div>
+
+<div style="
+  position:fixed;bottom:0;left:0;right:0;height:40px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--safe-margin);
+  border-top:1px solid #D4D0C8;
+  font-family:var(--font-en);font-size:var(--text-label);
+  color:#6B6B6B;
+  background:#F8F6F1;
+  z-index:100;">
+  <span>Material Package E2E</span>
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>37 / 41</span>
+</div>
+</body>
+</html>

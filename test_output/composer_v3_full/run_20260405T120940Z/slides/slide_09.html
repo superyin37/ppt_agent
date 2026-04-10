@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C3E2D;
+  --color-secondary:      #5A7A6B;
+  --color-accent:         #C4854C;
+  --color-bg:             #F4F2EE;
+  --color-surface:        #EAE7E1;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #6B6B6B;
+  --color-border:         #D1CCC4;
+  --color-overlay:        rgba(44,62,45,0.72);
+  --color-cover-bg:       linear-gradient(155deg, #2C3E2D 0%, #3D5A47 40%, #5A7A6B 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源宋体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   20px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background-color:var(--color-bg);font-family:var(--font-body);}.s9-header{position:absolute;top:60px;left:var(--safe-margin);display:flex;align-items:center;gap:12px;}.s9-section-tag{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-text-secondary);letter-spacing:2px;text-transform:uppercase;}.s9-divider-dot{width:6px;height:6px;border-radius:50%;background:var(--color-accent);}.s9-title{font-family:var(--font-heading);font-size:var(--text-h1);color:var(--color-text-primary);font-weight:700;}.s9-left{position:absolute;top:140px;left:var(--safe-margin);width:52%;bottom:var(--safe-margin);display:flex;flex-direction:column;gap:var(--section-gap);}.s9-subtitle{font-family:var(--font-heading);font-size:var(--text-h2);color:var(--color-primary);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:10px;}.s9-subtitle-icon{width:28px;height:28px;flex-shrink:0;}.s9-desc{font-size:var(--text-body);color:var(--color-text-primary);line-height:1.8;margin-bottom:6px;}.s9-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}.s9-tag{font-size:var(--text-caption);color:var(--color-primary);border:1px solid var(--color-border);border-radius:var(--border-radius);padding:4px 14px;background:var(--color-surface);}.s9-right{position:absolute;top:120px;right:var(--safe-margin);width:38%;bottom:var(--safe-margin);display:flex;align-items:center;justify-content:center;}.s9-card{width:100%;height:100%;border-radius:var(--border-radius);overflow:hidden;position:relative;}</style><div class="s9-header"><span class="s9-section-tag">Background Research</span><span class="s9-divider-dot"></span><span class="s9-title">在地文化特征</span></div><div class="s9-left"><div><div class="s9-subtitle"><svg class="s9-subtitle-icon" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/><path d="M8 14h12M14 8v12M10 10l8 8M18 10l-8 8" stroke="var(--color-primary)" stroke-width="1" opacity="0.6"/></svg>车城工业文化</div><p class="s9-desc">十堰因车而建、因车而兴，作为东风汽车的发源地，半个世纪的造车历史赋予城市深厚的工业基因。机械齿轮、装配线韵律、钢铁构件等符号构成独特的机械美学语言，为建筑设计提供了结构表达与材料叙事的丰富素材。</p><div class="s9-tags"><span class="s9-tag">东风汽车发源地</span><span class="s9-tag">机械美学符号</span><span class="s9-tag">钢铁构件语言</span><span class="s9-tag">装配线韵律</span></div></div><div><div class="s9-subtitle"><svg class="s9-subtitle-icon" viewBox="0 0 28 28"><path d="M4 20 Q10 8 14 16 Q18 24 24 10" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/><circle cx="14" cy="6" r="3" fill="none" stroke="var(--color-accent)" stroke-width="1"/></svg>武当山水文化</div><p class="s9-desc">武当山道教文化崇尚"道法自然"，强调天人合一的空间哲学。曲水流觞的山水意象、云雾缭绕的层峦叠嶂，赋予建筑以柔性曲线与自然呼吸感。设计可从太极阴阳、五行流转中提取空间秩序与场所精神。</p><div class="s9-tags"><span class="s9-tag">道法自然</span><span class="s9-tag">曲水流觞意象</span><span class="s9-tag">天人合一哲学</span><span class="s9-tag">太极空间秩序</span></div></div></div><div class="s9-right"><div class="s9-card"><svg width="100%" height="100%" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="s9g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0.08"/></linearGradient><linearGradient id="s9g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.25"/><stop offset="100%" stop-color="var(--color-secondary)" stop-opacity="0.1"/></linearGradient></defs><rect width="600" height="700" fill="url(#s9g1)" rx="8"/><path d="M0 480 Q80 400 160 440 Q240 480 320 420 Q400 360 480 400 Q560 440 600 380 L600 700 L0 700Z" fill="var(--color-primary)" opacity="0.08"/><path d="M0 520 Q100 460 200 500 Q300 540 400 480 Q500 420 600 460 L600 700 L0 700Z" fill="var(--color-accent)" opacity="0.06"/><circle cx="460" cy="100" r="60" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.3"/><circle cx="460" cy="100" r="40" fill="none" stroke="var(--color-accent)" stroke-width="1" opacity="0.2"/><path d="M60 320 L90 280 L120 300 L160 240 L200 260 L230 220 L260 250 L280 230" fill="none" stroke="var(--color-primary)" stroke-width="2" opacity="0.35"/><path d="M280 230 L320 260 L360 220 L400 250 L440 200 L470 230 L500 210 L540 240" fill="none" stroke="var(--color-primary)" stroke-width="2" opacity="0.35"/><circle cx="140" cy="180" r="50" fill="none" stroke="var(--color-primary)" stroke-width="1" stroke-dasharray="4 4" opacity="0.2"/><g transform="translate(250,340)" opacity="0.2"><rect x="0" y="0" width="100" height="80" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.5" rx="2"/><line x1="20" y1="0" x2="20" y2="-30" stroke="var(--color-text-secondary)" stroke-width="1.5"/><line x1="50" y1="0" x2="50" y2="-20" stroke="var(--color-text-secondary)" stroke-width="1.5"/><line x1="80" y1="0" x2="80" y2="-25" stroke="var(--color-text-secondary)" stroke-width="1.5"/><circle cx="50" cy="40" r="15" fill="none" stroke="var(--color-text-secondary)" stroke-width="1"/></g><g transform="translate(80,440)" opacity="0.15"><circle cx="30" cy="30" r="28" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/><path d="M30 8 A22 22 0 0 1 52 30" fill="none" stroke="var(--color-accent)" stroke-width="3"/><path d="M30 52 A22 22 0 0 1 8 30" fill="none" stroke="var(--color-primary)" stroke-width="3"/></g><text x="300" y="640" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)" opacity="0.5" font-family="var(--font-body)">工业齿轮 × 山水曲线 · 双重在地意象</text></svg></div></div><svg style="position:absolute;bottom:0;left:0;width:100%;height:4px;"><rect width="60%" height="4" fill="var(--color-primary)" opacity="0.4"/><rect x="60%" width="40%" height="4" fill="var(--color-accent)" opacity="0.3"/></svg></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>9 / 41</span>
+</div>
+</body>
+</html>

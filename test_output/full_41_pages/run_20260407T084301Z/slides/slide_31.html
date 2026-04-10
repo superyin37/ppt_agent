@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+:root {
+  /* ── 色彩系统 ── */
+  --color-primary:        #2C5545;
+  --color-secondary:      #6B4C3B;
+  --color-accent:         #C4883A;
+  --color-bg:             #F4F1EC;
+  --color-surface:        #EAE5DD;
+  --color-text-primary:   #1E1E1E;
+  --color-text-secondary: #5C5C5C;
+  --color-border:         #D1C9BD;
+  --color-overlay:        rgba(44,85,69,0.85);
+  --color-cover-bg:       linear-gradient(155deg, #1B3D30 0%, #2C5545 40%, #3A6B55 100%);
+
+  /* ── 字体系统 ── */
+  --font-heading: "方正标雅宋", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "思源黑体", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-en:      "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── 字阶 ── */
+  --text-display: 51px;
+  --text-h1:      38px;
+  --text-h2:      28px;
+  --text-h3:      21px;
+  --text-body:    16px;
+  --text-caption: 12px;
+  --text-label:   9px;
+
+  /* ── 字重 / 行高 ── */
+  --font-weight-heading: 700;
+  --font-weight-body:    400;
+  --line-height-body:    1.75;
+  --line-height-heading: 1.25;
+  --letter-spacing-label:0.08em;
+
+  /* ── 空间系统 ── */
+  --safe-margin:   64px;
+  --section-gap:   48px;
+  --element-gap:   24px;
+  --base-unit:     8px;
+
+  /* ── 装饰 ── */
+  --border-radius: 4px;
+
+  /* ── 幻灯片尺寸 ── */
+  --slide-width:  1920px;
+  --slide-height: 1080px;
+}
+
+/* ── 全局 Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.slide-root {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 通用内容块样式 ── */
+.block-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+.block-body-text {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+.block-bullet-list { list-style: none; }
+.block-bullet-list li { padding: 6px 0; padding-left: 1.2em; position: relative; }
+.block-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.block-kpi-value {
+  font-family: var(--font-en);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.block-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.block-label {
+  font-family: var(--font-en);
+  font-size: var(--text-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.block-quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-style: italic;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1em;
+}
+
+/* emphasis 修饰 */
+.emphasis-highlight { color: var(--color-accent); }
+.emphasis-muted { color: var(--color-text-secondary); opacity: 0.7; }
+
+/* ── 分隔线 ── */
+.divider-hairline { border: none; border-top: 0.5px solid var(--color-border); }
+.divider-thin     { border: none; border-top: 1px solid var(--color-border); }
+.divider-medium   { border: none; border-top: 2px solid var(--color-accent); }
+
+/* ── 表面色背景 ── */
+.surface-bg { background-color: var(--color-surface); }
+.primary-bg { background-color: var(--color-primary); color: #fff; }
+.accent-bg  { background-color: var(--color-accent); color: #fff; }
+
+</style>
+</head>
+<body>
+<div class="slide-root"><style>.slide-root{background:var(--color-bg);font-family:var(--font-body);overflow:hidden}.gear-bg{position:absolute;top:-120px;right:-120px;width:700px;height:700px;opacity:.06}.gear-bg-bl{position:absolute;bottom:-200px;left:-180px;width:600px;height:600px;opacity:.04;transform:rotate(15deg)}.left-panel{position:absolute;left:0;top:0;width:58%;height:100%;padding:calc(var(--safe-margin)*1.2) calc(var(--safe-margin)*1.5);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;z-index:2}.right-panel{position:absolute;right:0;top:0;width:42%;height:100%;background:linear-gradient(160deg,rgba(120,80,40,.08) 0%,rgba(60,60,60,.12) 100%);display:flex;align-items:center;justify-content:center;z-index:1}.scheme-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}.scheme-tag .num{font-family:var(--font-en);font-size:var(--text-caption);color:var(--color-text-secondary);letter-spacing:2px;text-transform:uppercase;border:1px solid var(--color-border);border-radius:4px;padding:4px 14px}.scheme-tag .label{font-size:var(--text-caption);color:var(--color-accent);font-weight:600;letter-spacing:3px}.main-title{font-family:var(--font-heading);font-size:var(--text-display);color:var(--color-text-primary);line-height:1.2;margin:0 0 10px 0;letter-spacing:4px}.sub-en{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-text-secondary);letter-spacing:3px;margin-bottom:32px;text-transform:uppercase;opacity:.7}.divider-line{width:64px;height:3px;background:var(--color-accent);border-radius:2px;margin-bottom:28px}.action-title{font-family:var(--font-heading);font-size:var(--text-h2);color:var(--color-primary);line-height:1.5;margin-bottom:24px;font-weight:700}.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}.feature-item{display:flex;align-items:flex-start;gap:10px}.feature-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--color-primary);display:flex;align-items:center;justify-content:center;margin-top:2px}.feature-icon svg{width:14px;height:14px}.feature-text .ft-label{font-family:var(--font-heading);font-size:var(--text-body);color:var(--color-text-primary);font-weight:700;margin-bottom:2px}.feature-text .ft-desc{font-size:var(--text-caption);color:var(--color-text-secondary);line-height:1.6}.concept-diagram{width:320px;height:320px;position:relative}.ring-outer{position:absolute;top:0;left:0;width:100%;height:100%}.ring-label{position:absolute;width:100%;text-align:center;font-family:var(--font-heading);color:var(--color-text-primary)}.ring-label.center-label{top:50%;left:50%;transform:translate(-50%,-50%);font-size:var(--text-h3);letter-spacing:3px;line-height:1.4}.ring-label .small-text{display:block;font-family:var(--font-en);font-size:var(--text-label);color:var(--color-text-secondary);letter-spacing:2px;margin-top:4px}.orbit-tags{position:absolute;width:100%;height:100%;top:0;left:0}.otag{position:absolute;font-size:var(--text-label);color:var(--color-surface);background:var(--color-primary);padding:5px 14px;border-radius:20px;white-space:nowrap;font-weight:600;letter-spacing:1px}.otag.t1{top:8%;left:50%;transform:translateX(-50%)}.otag.t2{top:42%;right:-8px}.otag.t3{bottom:8%;left:50%;transform:translateX(-50%)}.otag.t4{top:42%;left:-12px}.vert-stripe{position:absolute;right:58%;top:0;width:4px;height:100%;background:linear-gradient(180deg,transparent 0%,var(--color-accent) 30%,var(--color-accent) 70%,transparent 100%);opacity:.18;z-index:3}.bottom-bar{position:absolute;bottom:0;left:0;width:100%;height:48px;background:var(--color-primary);display:flex;align-items:center;padding:0 calc(var(--safe-margin)*1.5);box-sizing:border-box;z-index:5}.bottom-bar span{font-family:var(--font-en);font-size:var(--text-label);color:var(--color-surface);opacity:.7;letter-spacing:2px}</style><svg class="gear-bg" viewBox="0 0 700 700"><g fill="none" stroke="var(--color-primary)" stroke-width="2.5"><circle cx="350" cy="350" r="180"/><circle cx="350" cy="350" r="240"/><circle cx="350" cy="350" r="130" stroke-dasharray="18 12"/><line x1="350" y1="80" x2="350" y2="620" opacity=".3"/><line x1="80" y1="350" x2="620" y2="350" opacity=".3"/><line x1="160" y1="160" x2="540" y2="540" opacity=".2"/><line x1="540" y1="160" x2="160" y2="540" opacity=".2"/><path d="M350 110 L370 80 L390 110" /><path d="M350 590 L330 620 L310 590" /><path d="M110 350 L80 330 L110 310" /><path d="M590 350 L620 370 L590 390" /><rect x="290" y="290" width="120" height="120" rx="8" stroke-dasharray="8 6" opacity=".4"/></g></svg><svg class="gear-bg-bl" viewBox="0 0 600 600"><g fill="none" stroke="var(--color-accent)" stroke-width="1.5"><circle cx="300" cy="300" r="200"/><circle cx="300" cy="300" r="260" stroke-dasharray="14 10"/><circle cx="300" cy="300" r="140"/></g></svg><div class="vert-stripe"></div><div class="left-panel"><div class="scheme-tag"><span class="num">Scheme 02</span><span class="label">概念方案</span></div><h1 class="main-title">车城齿轮</h1><p class="sub-en">Gear of Motor City</p><div class="divider-line"></div><p class="action-title">以东风工业齿轮为母题，体块咬合错动<br>重构机械美学与智慧节能的建筑表达</p><div class="feature-grid"><div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="var(--color-surface)" stroke-width="1.5"/></svg></div><div class="feature-text"><div class="ft-label">耐候钢板立面</div><div class="ft-desc">锈蚀肌理致敬十堰汽车工业记忆，随时间演变呈现自然色泽</div></div></div><div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="var(--color-surface)" stroke-width="1.5"/></svg></div><div class="feature-text"><div class="ft-label">工业玻璃砖</div><div class="ft-desc">半透明光影渗透，兼顾隐私与采光，呼应厂房窗格的工业语汇</div></div></div><div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 14 14" fill="none"><polygon points="7,1 13,7 7,13 1,7" stroke="var(--color-surface)" stroke-width="1.5"/></svg></div><div class="feature-text"><div class="ft-label">齿轮咬合体块</div><div class="ft-desc">功能体量交错咬合，形成丰富灰空间与多层次公共界面</div></div></div><div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M2 10 L7 3 L12 10" stroke="var(--color-surface)" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="feature-text"><div class="ft-label">光伏+雨水一体化</div><div class="ft-desc">屋顶光伏年发电约12万kWh，雨水收集系统覆盖景观灌溉需求</div></div></div></div></div><div class="right-panel"><div class="concept-diagram"><svg class="ring-outer" viewBox="0 0 320 320"><defs><linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--color-primary)" stop-opacity=".25"/><stop offset="100%" stop-color="var(--color-accent)" stop-opacity=".08"/></linearGradient></defs><circle cx="160" cy="160" r="145" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="6 4"/><circle cx="160" cy="160" r="105" fill="url(#rg1)" stroke="var(--color-primary)" stroke-width="1.5"/><circle cx="160" cy="160" r="60" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="2"/><g stroke="var(--color-primary)" stroke-width="1" opacity=".3"><line x1="160" y1="15" x2="160" y2="55"/><line x1="160" y1="265" x2="160" y2="305"/><line x1="15" y1="160" x2="55" y2="160"/><line x1="265" y1="160" x2="305" y2="160"/></g></svg><div class="ring-label center-label">齿轮<br>母题<span class="small-text">GEAR MOTIF</span></div><div class="orbit-tags"><span class="otag t1">工业遗产</span><span class="otag t2">智慧节能</span><span class="otag t3">机械美学</span><span class="otag t4">生态循环</span></div></div></div><div class="bottom-bar"><span>SHIYAN CULTURAL CENTER — CONCEPT DESIGN — SCHEME 02</span></div></div>
+
+<div style="position:absolute;bottom:20px;left:var(--safe-margin);right:var(--safe-margin);
+display:flex;justify-content:space-between;font-size:var(--text-caption);
+color:var(--color-text-secondary);opacity:0.6;">
+  <span>十堰市张湾区人民广场公共厕所建筑方案汇报</span>
+  <span>31 / 41</span>
+</div>
+</body>
+</html>

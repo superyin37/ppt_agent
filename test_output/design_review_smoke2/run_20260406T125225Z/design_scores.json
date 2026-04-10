@@ -1,0 +1,147 @@
+[
+  {
+    "slide_no": 1,
+    "dimensions": [
+      {
+        "dimension": "color",
+        "score": 9.0,
+        "comment": "深苔绿背景搭配白色主标题和橙色强调色，对比强烈且配色高级，符合建筑专业调性。"
+      },
+      {
+        "dimension": "typography",
+        "score": 9.0,
+        "comment": "字阶层次极其清晰，主次分明，无衬线字体选择得当，力量感与现代感兼具。"
+      },
+      {
+        "dimension": "layout",
+        "score": 8.5,
+        "comment": "经典的居中对称构图，留白充足，空间感极佳，底部信息处理低调。"
+      },
+      {
+        "dimension": "focal_point",
+        "score": 9.5,
+        "comment": "视觉焦点绝对集中在主标题上，阅读路径自然向下延伸至副标题。"
+      },
+      {
+        "dimension": "polish",
+        "score": 9.0,
+        "comment": "背景点阵、同心圆、六边形线框等暗纹装饰非常精致，整体完成度极高。"
+      }
+    ],
+    "overall_score": 9.0,
+    "grade": "A",
+    "suggestions": [
+      {
+        "code": "D001",
+        "category": "color",
+        "severity": "minor",
+        "message": "顶部英文小字和中心六边形线框的对比度较低，作为暗纹在高质量屏幕上效果极佳，但在普通投影仪上可能丢失细节。建议根据实际演示设备酌情微调其不透明度。",
+        "css_hint": "opacity: 0.3;",
+        "target_selector": ".sub-text-english, .hexagon-border"
+      }
+    ],
+    "one_liner": "极具专业感和高级感的封面设计，排版稳重，细节精致，是一份优秀的视觉作品。"
+  },
+  {
+    "slide_no": 2,
+    "dimensions": [
+      {
+        "dimension": "color",
+        "score": 8.5,
+        "comment": "深苔绿与米白色的搭配极具高级感，橙色数字作为强调色恰到好处。但部分次级灰色文字对比度偏低。"
+      },
+      {
+        "dimension": "typography",
+        "score": 8.5,
+        "comment": "中英文搭配与字号层级非常清晰，主次分明。右侧列表的行距和段间距设置得非常舒适。"
+      },
+      {
+        "dimension": "layout",
+        "score": 9.0,
+        "comment": "经典的 1:3 左右分割版式，右侧列表利用细线进行分割，留白充足且富有节奏感，整体非常平衡。"
+      },
+      {
+        "dimension": "focal_point",
+        "score": 8.5,
+        "comment": "左侧巨大的“目录”二字牢牢抓住第一视觉，随后视线自然过渡到右侧带有高亮数字的章节列表，引导顺畅。"
+      },
+      {
+        "dimension": "polish",
+        "score": 9.0,
+        "comment": "左侧深色背景中的点阵、同心圆和十字线等暗纹装饰极大地提升了页面的精致度，具备专业定制级水准。"
+      }
+    ],
+    "overall_score": 8.7,
+    "grade": "A",
+    "suggestions": [
+      {
+        "code": "D001",
+        "category": "color",
+        "severity": "recommended",
+        "message": "右侧的英文副标题（如 BACKGROUND RESEARCH）和右侧页码的灰色较浅，在米色背景上对比度略显不足，建议稍微加深灰色以保证投影或远距离观看的清晰度。",
+        "css_hint": "color: #757575;",
+        "target_selector": ".english-subtitle, .page-number"
+      },
+      {
+        "code": "D001",
+        "category": "color",
+        "severity": "minor",
+        "message": "左下角的项目名称（十堰市张湾区...）颜色过暗，几乎融入深色背景中，建议改为与上方 CONTENTS 相同的浅灰色或半透明白色。",
+        "css_hint": "color: rgba(255, 255, 255, 0.4);",
+        "target_selector": ".bottom-left-footer"
+      }
+    ],
+    "one_liner": "整体设计极具专业感与呼吸感，版式优雅细节丰富，仅需微调次级文字的对比度即可完美。"
+  },
+  {
+    "slide_no": 3,
+    "dimensions": [
+      {
+        "dimension": "color",
+        "score": 8.5,
+        "comment": "深色渐变背景与白色主标题、橙色点缀色搭配极佳，质感高级，对比度良好。唯左下角页脚文字对比度过低。"
+      },
+      {
+        "dimension": "typography",
+        "score": 9.0,
+        "comment": "字阶层次非常清晰，中英文搭配合理，英文全大写加宽字距（Tracking）有效提升了设计感和呼吸感。"
+      },
+      {
+        "dimension": "layout",
+        "score": 8.5,
+        "comment": "经典的左侧对齐排版，留白充足且有节奏，符合章节页的极简预期。右侧的几何暗纹起到了很好的视觉平衡作用。"
+      },
+      {
+        "dimension": "focal_point",
+        "score": 9.0,
+        "comment": "视觉焦点极其明确，高对比度的“背景研究”瞬间抓住眼球，阅读路径顺畅自然。"
+      },
+      {
+        "dimension": "polish",
+        "score": 8.5,
+        "comment": "整体完成度很高，背景的同心圆、折线暗纹以及左侧的渐变修饰线等细节处理得非常精致，具备专业成品水准。"
+      }
+    ],
+    "overall_score": 8.7,
+    "grade": "A",
+    "suggestions": [
+      {
+        "code": "D001",
+        "category": "color",
+        "severity": "minor",
+        "message": "左下角的项目名称和右下角的页码文字颜色过暗，与深色背景对比度不足，建议适当提高文字明度（如改为 30%-40% 透明度的白色），以保证基本的可读性。",
+        "css_hint": "color: rgba(255, 255, 255, 0.35);",
+        "target_selector": ".footer-text"
+      },
+      {
+        "code": "D005",
+        "category": "layout",
+        "severity": "minor",
+        "message": "右下角的折线暗纹透明度过低，在当前背景下几乎不可见，导致画面右下角略显空旷。建议稍微提高该装饰线条的透明度，以更好地平衡左侧文字和数字水印的重量感。",
+        "css_hint": "opacity: 0.15;",
+        "target_selector": ".bg-decoration-line"
+      }
+    ],
+    "one_liner": "非常出色的章节过渡页，排版高级、层次分明，仅需微调页脚文字对比度和右侧暗纹透明度即可完美。"
+  }
+]

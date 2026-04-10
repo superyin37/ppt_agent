@@ -1,0 +1,190 @@
+{
+  "theme": "cultural",
+  "slides": [
+    {
+      "title": "车城武当·生态公厕",
+      "purpose": "项目全称「十堰市张湾区人民广场公共厕所」，副标题突出「融合车城工业美学与武当山水意境」定位，标注300㎡/被动节能降耗60%+关键数据。",
+      "section": "封面",
+      "slot_id": "cover",
+      "is_cover": true,
+      "slide_no": 1,
+      "key_message": "项目全称「十堰市张湾区人民广场公共厕所」，副标题突出「融合车城工业美学与武当山水意境」定位，标注300㎡/被动节能降耗60%+关键数据。",
+      "layout_hint": "full-bleed 封面，工业与山水意象叠合背景",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "project_name"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "目录",
+      "purpose": "列出六大章节：背景研究、场地分析、竞品分析、参考案例、项目定位与设计策略、概念方案，左侧配武当山水意象插画。",
+      "section": "目录",
+      "slot_id": "toc",
+      "is_cover": false,
+      "slide_no": 2,
+      "key_message": "列出六大章节：背景研究、场地分析、竞品分析、参考案例、项目定位与设计策略、概念方案，左侧配武当山水意象插画。",
+      "layout_hint": "split-h：左侧大插画，右侧目录列表",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "背景研究",
+      "purpose": "章节编号01，中文「背景研究」英文「Background Research」，配十堰城市天际线或武当山远景底图。",
+      "section": "背景研究",
+      "slot_id": "chapter-1-divider",
+      "is_cover": false,
+      "slide_no": 3,
+      "key_message": "章节编号01，中文「背景研究」英文「Background Research」，配十堰城市天际线或武当山远景底图。",
+      "layout_hint": "full-bleed，章节编号 + 中英文标题",
+      "coverage_status": "not_applicable",
+      "required_assets": [],
+      "is_chapter_divider": true,
+      "optional_input_keys": [],
+      "required_input_keys": [],
+      "recommended_template": null,
+      "estimated_content_density": "low",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "国家政策解读",
+      "purpose": "重点解读CJJ14-2016对二类以上公厕的刚性要求：第三卫生间、无障碍设施、通风除臭系统，以条目+来源链接呈现对本项目的约束。",
+      "section": "背景研究",
+      "slot_id": "policy-1",
+      "is_cover": false,
+      "slide_no": 4,
+      "key_message": "重点解读CJJ14-2016对二类以上公厕的刚性要求：第三卫生间、无障碍设施、通风除臭系统，以条目+来源链接呈现对本项目的约束。",
+      "layout_hint": "sidebar：政策条目列表 + 来源链接",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "web_search_policy"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "省市政策机遇",
+      "purpose": "解读湖北省十四五城乡人居环境规划对公共设施品质提升的要求，结合十堰市厕所革命专项行动，说明政策红利对项目的直接推动。",
+      "section": "背景研究",
+      "slot_id": "policy-2",
+      "is_cover": false,
+      "slide_no": 5,
+      "key_message": "解读湖北省十四五城乡人居环境规划对公共设施品质提升的要求，结合十堰市厕所革命专项行动，说明政策红利对项目的直接推动。",
+      "layout_hint": "sidebar：政策条目列表 + 来源链接",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "web_search_policy"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "政策影响总结",
+      "purpose": "以矩阵图呈现国家标准（功能底线）与省市规划（品质升级）双重驱动逻辑，推导出本项目需同时满足功能合规与文化生态升级两大方向。",
+      "section": "背景研究",
+      "slot_id": "policy-impact",
+      "is_cover": false,
+      "slide_no": 6,
+      "key_message": "以矩阵图呈现国家标准（功能底线）与省市规划（品质升级）双重驱动逻辑，推导出本项目需同时满足功能合规与文化生态升级两大方向。",
+      "layout_hint": "split-h：大图表 + 文字分析",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "上位规划分析",
+      "purpose": "对比十堰市总规与张湾区控规对人民广场片区的定位要求，以表格呈现用地性质、建筑限高、绿化率等控制指标对公厕选址与形态的约束。",
+      "section": "背景研究",
+      "slot_id": "upper-planning",
+      "is_cover": false,
+      "slide_no": 7,
+      "key_message": "对比十堰市总规与张湾区控规对人民广场片区的定位要求，以表格呈现用地性质、建筑限高、绿化率等控制指标对公厕选址与形态的约束。",
+      "layout_hint": "sidebar：规划对比表格 + 文字说明",
+      "coverage_status": "not_applicable",
+      "required_assets": [
+        "brief.design_outline"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "brief_doc",
+        "web_search_planning"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "high",
+      "recommended_binding_scope": []
+    },
+    {
+      "title": "交通与基础设施",
+      "purpose": "三图并排展示：枢纽站点分布、外部交通网络、周边基础设施规划，下方说明场地公交密集、可达性强的交通优势。",
+      "section": "背景研究",
+      "slot_id": "transport-map",
+      "is_cover": false,
+      "slide_no": 8,
+      "key_message": "三图并排展示：枢纽站点分布、外部交通网络、周边基础设施规划，下方说明场地公交密集、可达性强的交通优势。",
+      "layout_hint": "triptych：三图并排，下方简要说明条",
+      "coverage_status": "complete",
+      "required_assets": [
+        "site.transport.hub.image",
+        "site.transport.external.image",
+        "site.infrastructure.plan.image"
+      ],
+      "is_chapter_divider": false,
+      "optional_input_keys": [],
+      "required_input_keys": [
+        "map_hub_stations",
+        "map_transport_nodes",
+        "map_infra_plan"
+      ],
+      "recommended_template": null,
+      "estimated_content_density": "medium",
+      "recommended_binding_scope": []
+    }
+  ],
+  "sections": [
+    "封面",
+    "目录",
+    "背景研究"
+  ],
+  "deck_title": "十堰市张湾区人民广场公共厕所建筑方案汇报",
+  "outline_id": null,
+  "project_id": "0eb77dd2-83e7-4383-a29e-2edd1f15897c",
+  "total_pages": 8
+}

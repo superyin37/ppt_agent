@@ -1,0 +1,47 @@
+{
+  "material_path": "D:\\projects\\PPT_Agent\\test_material\\project1",
+  "output_dir": "D:\\projects\\PPT_Agent\\test_output\\material_package_e2e_real\\run_20260405T075719Z",
+  "mode": "real-llm",
+  "steps": [
+    {
+      "step": "create_project",
+      "status": "ok"
+    },
+    {
+      "step": "ingest_material_package",
+      "status": "ok",
+      "item_count": 54
+    },
+    {
+      "step": "generate_brief_doc",
+      "status": "ok"
+    },
+    {
+      "step": "generate_outline",
+      "status": "ok",
+      "total_pages": 42
+    },
+    {
+      "step": "bind_slides",
+      "status": "ok",
+      "binding_count": 41
+    },
+    {
+      "step": "compose_slides",
+      "status": "ok",
+      "slide_count": 41
+    },
+    {
+      "step": "render_and_review",
+      "status": "ok",
+      "rendered_slide_count": 41
+    },
+    {
+      "step": "export_pdf",
+      "status": "ok",
+      "pdf_path": "D:\\projects\\PPT_Agent\\test_output\\material_package_e2e_real\\run_20260405T075719Z\\deck.pdf"
+    }
+  ],
+  "project_id": "a38c3c0a-431f-4e31-a93a-fa7549b9ac01",
+  "package_id": "1308be33-3706-4f2b-bd03-afabc48d754e"
+}

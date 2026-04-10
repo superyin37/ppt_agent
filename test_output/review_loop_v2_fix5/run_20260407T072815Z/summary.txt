@@ -1,0 +1,13 @@
+project_id: 373019e2-9091-42a8-9abd-af4061059044
+package_id: d55f7761-c066-4b8a-9fb4-e8d0cd547636
+mode: real-llm
+output_dir: D:\projects\PPT_Agent\test_output\review_loop_v2_fix5\run_20260407T072815Z
+create_project: ok
+ingest_material_package: ok (54 items)
+generate_brief_doc: ok
+generate_visual_theme: ok
+generate_outline: ok (3 pages)
+bind_slides: ok (3 bindings)
+compose_slides: ok (3 slides)
+render_and_review: ok (3 rendered)
+export_pdf: ok (D:\projects\PPT_Agent\test_output\review_loop_v2_fix5\run_20260407T072815Z\deck.pdf)
