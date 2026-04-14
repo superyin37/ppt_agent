@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l d:/projects/PPT_Agent/schema/*.py)",
+      "Bash(wc -l d:/projects/PPT_Agent/db/*.py)"
+    ]
+  }
+}
