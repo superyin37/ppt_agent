@@ -254,6 +254,41 @@ flowchart TD
 
 ## 6. Agent 职责划分
 
+### 6.0 Agent 协作网络图
+
+```mermaid
+flowchart LR
+    Intake[Intake Agent] --> Brief[ProjectBrief]
+    Ref[Reference Agent] --> ThemeIn[VisualThemeInput]
+
+    Brief --> BD[BriefDoc Agent]
+    BD --> BriefDoc[BriefDoc]
+
+    Brief --> OL[Outline Agent]
+    BriefDoc --> OL
+    OL --> Outline[OutlineSpec]
+
+    Outline --> Bind[MaterialBinding Agent]
+    Bind --> Binding[SlideMaterialBinding]
+
+    ThemeIn --> VT[VisualTheme Agent]
+    VT --> Theme[VisualTheme]
+
+    Outline --> Composer[Composer Agent]
+    Binding --> Composer
+    Theme --> Composer
+    Composer --> Layout[LayoutSpec]
+
+    Layout --> Render[Render Engine]
+    Render --> PNG[PNG Screenshots]
+
+    PNG --> Critic[Critic / Review]
+    Critic --> Repair[Repair / Recompose]
+    Repair --> Render
+
+    PNG --> PDF[PDF Export]
+```
+
 ### 6.1 Intake Agent
 
 职责：
@@ -333,6 +368,36 @@ flowchart TD
 ---
 
 ## 7. 核心数据模型
+
+### 7.0 数据模型流转图
+
+```mermaid
+flowchart LR
+    MP[MaterialPackage] --> MI[MaterialItem]
+    MP --> A[Asset]
+    MP --> PB[ProjectBrief]
+
+    PB --> BD[BriefDoc]
+    PB --> O[Outline]
+    MP --> O
+    BD --> O
+
+    O --> SMB[SlideMaterialBinding]
+    MI --> SMB
+    A --> SMB
+
+    PB --> VT[VisualTheme]
+    MP --> VT
+
+    O --> S[Slide]
+    SMB --> S
+    VT --> S
+
+    S --> LS[LayoutSpec in spec_json]
+    LS --> HTML[html_content]
+    HTML --> PNG[screenshot_url]
+    PNG --> EX[Export Artifact PDF]
+```
 
 ### 7.1 项目与输入层
 
@@ -429,6 +494,3 @@ flowchart TD
 当前 PPT Agent 的主架构可以概括为：
 
 **一个以素材包为事实源、以 `LayoutSpec` 为页面协议、以 HTML 渲染和 PDF 导出为主线、通过 FastAPI + 后台线程 + Celery 串联多 Agent 的建筑汇报生成流水线。**
-
-
-## 6.5 大纲与页面类 Tool
