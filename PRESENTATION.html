@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPT Agent — 建筑方案 AI 汇报生成系统</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --border: #e5e3dd;
+    --accent: #b85c38;
+    --accent-soft: #f7ede5;
+    --code-bg: #f4f1ec;
+    --code-text: #2d2d2d;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Sidebar */
+  nav.toc {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 40px 24px;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  nav.toc h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 4px;
+    letter-spacing: 0.02em;
+  }
+
+  nav.toc .subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  nav.toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: section;
+  }
+
+  nav.toc li {
+    counter-increment: section;
+    margin: 0;
+  }
+
+  nav.toc a {
+    display: block;
+    padding: 7px 12px 7px 28px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    position: relative;
+    transition: all 0.15s ease;
+  }
+
+  nav.toc a::before {
+    content: counter(section, decimal-leading-zero);
+    position: absolute;
+    left: 8px;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #c5c0b6;
+  }
+
+  nav.toc a:hover {
+    color: var(--text);
+    background: var(--accent-soft);
+  }
+
+  /* Main */
+  main {
+    padding: 48px 64px 96px;
+    max-width: 920px;
+  }
+
+  .hero {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero .eyebrow {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero .lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  section {
+    margin-bottom: 64px;
+    scroll-margin-top: 24px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--text);
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 12px;
+    color: var(--text);
+  }
+
+  p { margin: 0 0 16px; }
+
+  ul, ol {
+    margin: 0 0 16px;
+    padding-left: 24px;
+  }
+
+  li { margin-bottom: 6px; }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  code {
+    font-family: "SF Mono", Monaco, Consolas, "Courier New", monospace;
+    font-size: 13.5px;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 16px 0;
+    line-height: 1.5;
+    font-size: 13.5px;
+    color: var(--code-text);
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+  }
+
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout-title {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14.5px;
+    background: var(--surface);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  thead { background: #f0ede6; }
+
+  th, td {
+    padding: 11px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  th {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #faf7f2; }
+
+  /* Q&A blocks */
+  .qa {
+    margin: 20px 0;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .qa h3 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 16px;
+  }
+
+  .qa p:last-child { margin-bottom: 0; }
+  .qa ul:last-child { margin-bottom: 0; }
+
+  /* Highlight cards */
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .highlight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .highlight-card .num {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .highlight-card h4 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .highlight-card p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { display: none; }
+    main { padding: 32px 24px; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="toc">
+  <h1>PPT Agent</h1>
+  <div class="subtitle">建筑方案 AI 汇报生成系统</div>
+  <ol>
+    <li><a href="#intro">项目定位</a></li>
+    <li><a href="#background">业务背景</a></li>
+    <li><a href="#overview">系统全景</a></li>
+    <li><a href="#pipeline">素材包流水线</a></li>
+    <li><a href="#highlights">设计亮点</a></li>
+    <li><a href="#critic">审查闭环</a></li>
+    <li><a href="#rag">参考案例 RAG</a></li>
+    <li><a href="#stack">技术栈</a></li>
+    <li><a href="#tradeoffs">设计取舍</a></li>
+    <li><a href="#challenges">工程难点</a></li>
+    <li><a href="#future">未来演进</a></li>
+    <li><a href="#takeaways">核心理念</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="hero" id="intro">
+  <div class="eyebrow">PROJECT WALKTHROUGH</div>
+  <h1>PPT Agent — 建筑方案 AI 汇报生成系统</h1>
+  <p class="lead">
+    面向建筑师的 AI 汇报材料生成系统。把零散的建筑策划素材（图纸、效果图、调研文字、参考案例），
+    通过一条<strong>可追踪、可重试、可审查</strong>的多 Agent 流水线，自动组织成一份风格一致、
+    有叙事逻辑的方案汇报 PDF。
+  </p>
+</section>
+
+<section id="background">
+  <h2>1. 业务背景</h2>
+  <p><strong>用户场景</strong>：建筑师在方案投标 / 中期汇报阶段，需要把几十上百份零散素材
+    整理成 30-60 页、风格统一、有叙事逻辑的汇报 PPT。这件事在事务所里通常占用一名实习生整整 1-2 周。</p>
+
+  <p><strong>核心痛点</strong>：</p>
+  <ul>
+    <li>素材种类繁多、命名混乱，难以"按页"组织</li>
+    <li>写文案、做版式、配图三件事互相耦合，反复返工</li>
+    <li>让 LLM 直出 PPT 不可控：要么编造数据，要么版式崩坏，错了无法局部修复</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">设计哲学</div>
+    <p><strong>Workflow First, Agent Second</strong> —— 系统首先是一个"有明确状态、中间结果可存档、
+      失败可重试、每页内容可追溯到原始素材"的工作流；LLM 只在确定性节点之间做"内容加工"，
+      不让它接管控制流。</p>
+  </div>
+</section>
+
+<section id="overview">
+  <h2>2. 系统全景</h2>
+
+<pre><code>┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ 前端 SPA     │───▶│  FastAPI     │───▶│ PostgreSQL   │
+│ (流程驱动)   │    │  Routers     │    │ + pgvector   │
+└──────────────┘    └──────┬───────┘    └──────────────┘
+                           │
+                  ┌────────┼────────┐
+                  ▼        ▼        ▼
+              ┌───────┐ ┌──────┐ ┌────────┐
+              │ Agent │ │Celery│ │ Render │
+              │  层   │ │Tasks │ │Engine  │
+              └───┬───┘ └──┬───┘ └───┬────┘
+                  │        │         │
+                  └────────┼─────────┘
+                           ▼
+                    ┌──────────────┐
+                    │ HTML→PNG→PDF │
+                    └──────────────┘</code></pre>
+
+  <p><strong>关键架构决策</strong>：</p>
+  <ul>
+    <li>编排不是单一 Orchestrator Agent，而是 <strong>FastAPI 路由后台线程 + Celery 任务</strong>显式串联</li>
+    <li>状态机直接落在数据库 <code>Project.status</code> 字段，断点续跑靠"读库 → 从对应阶段重入"</li>
+    <li>LLM 调用统一走 OpenRouter，自建轻量封装实现 schema 校验 / 重试 / 并发限流</li>
+  </ul>
+</section>
+
+<section id="pipeline">
+  <h2>3. 核心流程：素材包流水线</h2>
+
+<pre><code>本地素材目录
+    │
+    ▼  ① ingest（确定性扫描 + 分类 + 去重）
+MaterialPackage
+  ├── MaterialItem    (原始文件单元)
+  ├── Asset           (派生资产：图表、地图、案例卡)
+  └── ProjectBrief    (从素材中抽取的项目元信息)
+    │
+    ▼  ② BriefDoc Agent (LLM)
+BriefDoc (叙事主线 / 章节框架)
+    │
+    ▼  ③ Outline Agent (Claude Opus 强模型)
+OutlineSpec (8-12 页规划：每页目的、所需素材类型)
+    │
+    ▼  ④ MaterialBinding (确定性匹配，无 LLM)
+SlideMaterialBinding (每页绑定的素材项 + 派生资产 + 证据)
+    │
+    ▼  ⑤ VisualTheme Agent
+项目级字体 / 配色 / 装饰规则
+    │
+    ▼  ⑥ Composer Agent (Claude Haiku 快模型 + asyncio 并发)
+LayoutSpec × N (每页结构化布局描述)
+    │
+    ▼  ⑦ Jinja2 + Playwright
+HTML → PNG 截图
+    │
+    ▼  ⑧ Critic Agent (3 层审查 + 自动修复 ≤3 次)
+    │
+    ▼  ⑨ Export
+PDF</code></pre>
+</section>
+
+<section id="highlights">
+  <h2>4. 设计亮点</h2>
+
+  <h3>4.1 素材包：消灭幻觉的根本办法</h3>
+  <p><strong>问题</strong>：早期版本让 LLM 直接从自由对话生成 PPT —— 数据靠编、引用无法追溯、
+    改一页要重生成全套。</p>
+  <p><strong>方案</strong>：把"用户的所有素材"先固化成 <code>MaterialPackage</code>，
+    作为整个流水线的<strong>唯一事实源</strong>。后续所有 Agent 只能消费 MaterialPackage 里有的内容，
+    不能自己想象。</p>
+
+  <table>
+    <thead><tr><th>牺牲</th><th>换来</th></tr></thead>
+    <tbody>
+      <tr><td>用户灵活度（必须先准备素材包）</td><td>每页内容可追溯到具体素材文件</td></tr>
+      <tr><td>不能直接对话生成</td><td>修改单页不影响其他页</td></tr>
+      <tr><td>—</td><td>失败可从任意阶段重入</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.2 素材绑定:确定性匹配 vs LLM 决策</h3>
+  <p><strong>问题</strong>:让 LLM 决定"第 5 页用哪几张图、配哪段文字"会产生幻觉 ——
+    引用不存在的图、把案例 A 的图配到案例 B 的文字旁。</p>
+  <p><strong>方案</strong>:<code>MaterialBinding</code> 是纯 Python 确定性逻辑,
+    按 <code>Outline</code> 中声明的"所需素材类型 + tag"去 MaterialPackage 检索匹配。
+    LLM 不参与这一步。</p>
+  <div class="callout">
+    <div class="callout-title">收益</div>
+    <p>少了一些"创意搭配"的空间,但<strong>消除了图文错位的整类故障</strong>。</p>
+  </div>
+
+  <h3>4.3 强弱模型混用</h3>
+  <table>
+    <thead><tr><th>阶段</th><th>模型</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>Outline 生成</td><td>Claude Opus 4.6（强）</td><td>全局叙事结构只生成 1 次,质量优先</td></tr>
+      <tr><td>Composer 单页合成</td><td>Claude Haiku 4.5（快）</td><td>每页一次,N 页并发,延迟与成本敏感</td></tr>
+      <tr><td>Critic 语义审查</td><td>Claude Haiku 4.5（快）</td><td>轻量校验,时效优先</td></tr>
+    </tbody>
+  </table>
+  <p><strong>收益</strong>:单页合成靠 <code>asyncio.gather</code> 8 路并发,端到端延迟可控;
+    Critic 语义层兜底快模型可能丢失的细节。</p>
+</section>
+
+<section id="critic">
+  <h2>5. 审查闭环（Critic）</h2>
+  <p>LLM 输出的不可控性靠<strong>三层审查 + 局部修复</strong>收敛。</p>
+
+  <table>
+    <thead><tr><th>层</th><th>实现</th><th>LLM</th><th>代表规则</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>L1 规则审查</strong></td>
+        <td><code>tool/review/layout_lint.py</code></td>
+        <td>纯 Python</td>
+        <td>文字溢出 / 缺必需块 / 模板未知 / 内容密度超标</td>
+      </tr>
+      <tr>
+        <td><strong>L2 语义审查</strong></td>
+        <td><code>tool/review/semantic_check.py</code></td>
+        <td>快模型</td>
+        <td>数值与 brief 不一致 / 无支撑断言 / 风格词矛盾 / 甲方名称错误</td>
+      </tr>
+      <tr>
+        <td><strong>L3 视觉审查</strong></td>
+        <td>Composer 多模态 LLM</td>
+        <td>快模型</td>
+        <td>视觉杂乱 / 留白浪费 / 图片模糊</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>决策树</h3>
+<pre><code>P0 不可修       ──▶  ESCALATE_HUMAN  （标记失败,等人工介入）
+P0/P1 可自动修  ──▶  REPAIR_REQUIRED （自动修复,最多重试 3 次）
+仅 P2          ──▶  REPAIR_REQUIRED （修复但不阻断导出）
+无问题          ──▶  PASS</code></pre>
+
+  <div class="callout">
+    <div class="callout-title">为什么这么分层</div>
+    <p>把"能用规则判的"和"必须看语义的"分开,<strong>节省 LLM 调用 70%+</strong> ——
+      大部分版式问题（文字溢出、缺标题）根本不需要 LLM。</p>
+  </div>
+</section>
+
+<section id="rag">
+  <h2>6. 参考案例 RAG（pgvector）</h2>
+  <p>从案例库召回与项目调性相近的参考案例,供 Outline / VisualTheme Agent 借鉴。</p>
+
+  <h3>数据流</h3>
+<pre><code>ProjectBrief (建筑类型 / 风格偏好 / 规模)
+    │
+    ▼  build_query_text()  → 字段拼接为检索文本
+    ▼  get_embedding()     → 1536 维向量
+pgvector 余弦距离检索 (IVFFlat 索引)
+    │
+    ▼  rerank_cases()      → 业务规则重排
+    ▼  preference_summary  → 偏好摘要 → 喂给 VisualTheme Agent</code></pre>
+
+  <h3>关键 SQL</h3>
+<pre><code>SELECT ..., 1 - (embedding &lt;=&gt; CAST(:vec AS vector)) AS similarity
+FROM reference_cases
+WHERE building_type = :building_type
+ORDER BY embedding &lt;=&gt; CAST(:vec AS vector)
+LIMIT :top_k</code></pre>
+
+  <h3>工程亮点</h3>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <div class="num">01</div>
+      <h4>多 provider embedding</h4>
+      <p>通过 <code>EMBEDDING_PROVIDER</code> 切换 openai / voyage / qwen / mock,无需改业务代码。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">02</div>
+      <h4>mock 实现</h4>
+      <p>SHA256 → LCG → L2 normalize 产生确定性伪向量,本地开发完全脱离外部 API。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">03</div>
+      <h4>降级机制</h4>
+      <p>pgvector 不可用时自动回退到 building_type + style_tags 标签过滤,功能不中断。</p>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <h2>7. 技术栈</h2>
+  <table>
+    <thead><tr><th>层</th><th>选型</th><th>选型理由</th></tr></thead>
+    <tbody>
+      <tr><td>Web 框架</td><td>FastAPI + Pydantic v2</td><td>异步原生、Schema 跨层共用</td></tr>
+      <tr><td>数据库</td><td>PostgreSQL 16 + pgvector</td><td>关系数据 + 向量检索同库,避免双写</td></tr>
+      <tr><td>ORM / 迁移</td><td>SQLAlchemy 2.0 + Alembic</td><td>pgvector 通过 raw SQL 落地</td></tr>
+      <tr><td>任务队列</td><td>Celery 5.4 + Redis 7</td><td>三队列(default / render / export)资源隔离</td></tr>
+      <tr><td>LLM</td><td>Claude Opus 4.6 / Haiku 4.5(OpenRouter)</td><td>强弱混用控成本</td></tr>
+      <tr><td>LLM 封装</td><td>自建轻量封装</td><td>不引入 LangChain,控制权与依赖体积</td></tr>
+      <tr><td>渲染</td><td>Jinja2 + Playwright Headless Chromium</td><td>设计师熟悉 HTML/CSS、截图保真</td></tr>
+      <tr><td>图表</td><td>matplotlib</td><td>数据驱动图表(bar/line/pie/radar)</td></tr>
+      <tr><td>部署</td><td>docker-compose</td><td>6 容器开箱即用:api / worker / renderer / flower / db / redis</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="tradeoffs">
+  <h2>8. 关键设计取舍</h2>
+
+  <div class="qa">
+    <h3>Q1：为什么不用 LangChain / LangGraph？</h3>
+    <p>依赖里有但代码零引用 —— 早期 LangGraph StateGraph 已被移除。原因：</p>
+    <ul>
+      <li><strong>业务是确定性流水线,不是 Agent 自主决策</strong>:状态机已在 DB 里
+        (<code>ProjectStatus</code> 枚举),Celery 已做了重试 / 持久化,
+        再叠 LangGraph Checkpointer 是双写</li>
+      <li><strong>跨进程异步边界</strong>(FastAPI 后台线程 + Celery worker + 渲染 worker)
+        很难塞进单一 StateGraph 运行时</li>
+      <li>自建的轻量封装已覆盖:schema 校验、JSON 解析重试、Semaphore 并发限流、错误分类,
+        <strong>可控性远高于 LangChain 抽象</strong></li>
+    </ul>
+  </div>
+
+  <div class="qa">
+    <h3>Q2：为什么是 PDF-first 而不是 PPTX？</h3>
+    <ul>
+      <li>HTML/CSS 在版式精确度、字体表现、图文混排上<strong>全面优于 python-pptx</strong></li>
+      <li>客户最终交付物本来就是 PDF,没有"现场再编辑"的诉求</li>
+      <li>python-pptx 已在依赖中,未来若需要可补,但不是当前主线</li>
+    </ul>
+  </div>
+
+  <div class="qa">
+    <h3>Q3：为什么把审查拆成 L1/L2/L3 三层？</h3>
+    <ul>
+      <li><strong>成本</strong>:L1 纯规则零成本能挡掉 70% 问题,避免无意义的 LLM 调用</li>
+      <li><strong>可解释性</strong>:规则审查的报错码(R001 / R002…)可以直接告诉用户"标题超长了",
+        而不是让 LLM 编一段解释</li>
+      <li><strong>可修复性</strong>:规则层错误能直接由 <code>repair_plan.py</code> 自动修,
+        不需要 LLM 参与</li>
+    </ul>
+  </div>
+
+  <div class="qa">
+    <h3>Q4：单 Agent 编排 vs 分布式编排？</h3>
+    <p>实际编排逻辑分布在:</p>
+    <ul>
+      <li><code>api/routers/material_packages.py</code> —— 摄入触发</li>
+      <li><code>api/routers/outlines.py</code> —— 后台线程串联生成链</li>
+      <li><code>tasks/*.py</code> —— Celery 异步重任务</li>
+    </ul>
+    <p><strong>理由</strong>:每个阶段的资源画像差异极大(Outline 是 LLM bound、
+      Render 是 CPU/IO bound、Export 是 IO bound),用 Celery 队列天然做资源隔离比塞进单
+      Agent 进程更直接。</p>
+  </div>
+</section>
+
+<section id="challenges">
+  <h2>9. 工程难点</h2>
+  <table>
+    <thead><tr><th>难点</th><th>解法</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>LLM 输出格式不稳定</td>
+        <td>自建 <code>call_llm_structured</code>:Pydantic JSON Schema 拼进 system prompt + 失败重试 +
+          用错误信息引导模型修正</td>
+      </tr>
+      <tr>
+        <td>Playwright 在 Celery worker 冷启动慢</td>
+        <td>拆出独立 <code>renderer</code> 队列,单独维护浏览器实例</td>
+      </tr>
+      <tr>
+        <td>Reference Agent 召回质量</td>
+        <td>query 文本只拼"判别性强"的字段(建筑类型、风格、规模),并对空字段做过滤</td>
+      </tr>
+      <tr>
+        <td>本地开发依赖外部 API</td>
+        <td>mock embedding:SHA256 → LCG → L2 normalize,相同文本得到相同向量,跑通端到端测试</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="future">
+  <h2>10. 未来演进</h2>
+  <ul>
+    <li><strong>PPTX 导出</strong>:补齐 python-pptx 链路,支持设计师二次编辑</li>
+    <li><strong>视觉审查闭环</strong>:L3 视觉审查目前只标记问题,未自动修复 →
+      让 Critic 输出修复指令再回到 Composer</li>
+    <li><strong>素材包级 RAG</strong>:当前 RAG 只在参考案例库;未来想把项目自身素材也建索引,
+      支持"按语义找素材"</li>
+    <li><strong>从 Workflow 走向 Agent</strong>:现阶段是确定性流水线;如果后续需要"用户对结果不满
+      → 自主决定改哪几页 → 多轮重生成",可考虑引入 LangGraph 做局部 Agent 化</li>
+  </ul>
+</section>
+
+<section id="takeaways">
+  <h2>11. 如果只能记住三件事</h2>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <div class="num">01</div>
+      <h4>Workflow First, Agent Second</h4>
+      <p>不让 LLM 接管控制流,状态明确、可重试、可追溯。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">02</div>
+      <h4>素材包是唯一事实源</h4>
+      <p>消灭幻觉的根本办法是让 LLM 没有"想象空间"。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">03</div>
+      <h4>强弱模型混用 + 三层审查</h4>
+      <p>用最便宜的方式拿到可接受的质量,贵模型只用在刀刃上。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+</body>
+</html>

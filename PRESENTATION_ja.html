@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPT Agent — 建築提案向けAIプレゼン資料生成システム</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --border: #e5e3dd;
+    --accent: #b85c38;
+    --accent-soft: #f7ede5;
+    --code-bg: #f4f1ec;
+    --code-text: #2d2d2d;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+      "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 40px 24px;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  nav.toc h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 4px;
+    letter-spacing: 0.02em;
+  }
+
+  nav.toc .subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  nav.toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: section;
+  }
+
+  nav.toc li {
+    counter-increment: section;
+    margin: 0;
+  }
+
+  nav.toc a {
+    display: block;
+    padding: 7px 12px 7px 28px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    position: relative;
+    transition: all 0.15s ease;
+  }
+
+  nav.toc a::before {
+    content: counter(section, decimal-leading-zero);
+    position: absolute;
+    left: 8px;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #c5c0b6;
+  }
+
+  nav.toc a:hover {
+    color: var(--text);
+    background: var(--accent-soft);
+  }
+
+  main {
+    padding: 48px 64px 96px;
+    max-width: 920px;
+  }
+
+  .hero {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero .eyebrow {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero .lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  section {
+    margin-bottom: 64px;
+    scroll-margin-top: 24px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--text);
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 12px;
+    color: var(--text);
+  }
+
+  p { margin: 0 0 16px; }
+
+  ul, ol {
+    margin: 0 0 16px;
+    padding-left: 24px;
+  }
+
+  li { margin-bottom: 6px; }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  code {
+    font-family: "SF Mono", Monaco, Consolas, "Courier New", monospace;
+    font-size: 13.5px;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 16px 0;
+    line-height: 1.5;
+    font-size: 13.5px;
+    color: var(--code-text);
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+  }
+
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout-title {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14.5px;
+    background: var(--surface);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  thead { background: #f0ede6; }
+
+  th, td {
+    padding: 11px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  th {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #faf7f2; }
+
+  .qa {
+    margin: 20px 0;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .qa h3 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 16px;
+  }
+
+  .qa p:last-child { margin-bottom: 0; }
+  .qa ul:last-child { margin-bottom: 0; }
+
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .highlight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .highlight-card .num {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .highlight-card h4 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .highlight-card p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { display: none; }
+    main { padding: 32px 24px; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="toc">
+  <h1>PPT Agent</h1>
+  <div class="subtitle">建築提案向けAIプレゼン資料生成システム</div>
+  <ol>
+    <li><a href="#intro">プロジェクト概要</a></li>
+    <li><a href="#background">業務背景</a></li>
+    <li><a href="#overview">システム全体像</a></li>
+    <li><a href="#pipeline">素材パッケージのパイプライン</a></li>
+    <li><a href="#highlights">設計上のポイント</a></li>
+    <li><a href="#critic">レビューと修正の仕組み</a></li>
+    <li><a href="#rag">参考事例RAG</a></li>
+    <li><a href="#stack">技術スタック</a></li>
+    <li><a href="#tradeoffs">設計判断</a></li>
+    <li><a href="#challenges">実装上の難所</a></li>
+    <li><a href="#future">今後の拡張</a></li>
+    <li><a href="#takeaways">大事なポイント</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="hero" id="intro">
+  <div class="eyebrow">プロジェクト概要</div>
+  <h1>PPT Agent — 建築提案向けAIプレゼン資料生成システム</h1>
+  <p class="lead">
+    建築家向けのAIプレゼン資料生成システムです。散在する建築企画の素材（図面、パース、調査メモ、参考事例）を、
+    <strong>追跡でき、再実行でき、レビューできる</strong>複数Agentのパイプラインで整理し、
+    トーンがそろい、話の流れが通った提案資料PDFに自動でまとめます。
+  </p>
+</section>
+
+<section id="background">
+  <h2>1. 業務背景</h2>
+  <p><strong>利用シーン</strong>：建築家はコンペ提案や中間報告の段階で、数十から数百点のばらばらな素材を
+    30〜60ページほどの、統一感があり、話の流れが通ったプレゼン資料にまとめる必要があります。
+    設計事務所では、この作業にインターン1人が丸ごと1〜2週間かかることも珍しくありません。</p>
+
+  <p><strong>主な課題</strong>：</p>
+  <ul>
+    <li>素材の種類が多く、名前の付け方もばらばらで、ページ単位で整理しにくい</li>
+    <li>文章作成、レイアウト、図版選びが互いに絡み、何度も手戻りが起きる</li>
+    <li>LLMにそのままスライドを作らせると制御しづらい。数字を作ってしまうか、レイアウトが崩れるかのどちらかで、一部分だけ直すのも難しい</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">設計方針</div>
+    <p><strong>Workflow First, Agent Second</strong>。システムの本体は、状態が明確で、
+      中間結果を保存でき、失敗時に再実行でき、各ページの内容を元素材までたどれるワークフローです。
+      LLMは、決まった処理のあいだで内容を整える役に限定し、制御フローは任せません。</p>
+  </div>
+</section>
+
+<section id="overview">
+  <h2>2. システム全体像</h2>
+
+<pre><code>┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ フロントSPA  │───▶│   FastAPI    │───▶│ PostgreSQL   │
+│ (フロー駆動) │    │   Routers    │    │ + pgvector   │
+└──────────────┘    └──────┬───────┘    └──────────────┘
+                           │
+                  ┌────────┼────────┐
+                  ▼        ▼        ▼
+              ┌───────┐ ┌──────┐ ┌────────┐
+              │ Agent │ │Celery│ │ Render │
+              │  層   │ │Tasks │ │Engine  │
+              └───┬───┘ └──┬───┘ └───┬────┘
+                  │        │         │
+                  └────────┼─────────┘
+                           ▼
+                    ┌──────────────┐
+                    │ HTML→PNG→PDF │
+                    └──────────────┘</code></pre>
+
+  <p><strong>重要な設計判断</strong>：</p>
+  <ul>
+    <li>1つの Orchestrator Agent で全体を回すのではなく、<strong>FastAPI のバックグラウンドスレッド + Celery タスク</strong>を明示的につないでいます</li>
+    <li>状態管理はデータベースの <code>Project.status</code> に直接持たせ、途中再開は「DB を読む → 該当ステージから入り直す」で実現しています</li>
+    <li>LLM 呼び出しは OpenRouter に統一し、自前の薄いラッパーでスキーマ検証、リトライ、同時実行数の制御を行います</li>
+  </ul>
+</section>
+
+<section id="pipeline">
+  <h2>3. 中核フロー：素材パッケージのパイプライン</h2>
+
+<pre><code>ローカル素材フォルダ
+    │
+    ▼  ① ingest（ルールベースの走査 + 分類 + 重複排除）
+MaterialPackage
+  ├── MaterialItem    (元ファイル単位)
+  ├── Asset           (派生アセット: グラフ、地図、事例カード)
+  └── ProjectBrief    (素材から抽出した案件の基本情報)
+    │
+    ▼  ② BriefDoc Agent (LLM)
+BriefDoc (ストーリーライン / 章構成)
+    │
+    ▼  ③ Outline Agent (Claude Opus 高性能モデル)
+OutlineSpec (8〜12ページ設計: 各ページの目的と必要な素材タイプ)
+    │
+    ▼  ④ MaterialBinding (ルールベースの照合、LLMなし)
+SlideMaterialBinding (各ページにひもづく素材 + 派生アセット + 根拠)
+    │
+    ▼  ⑤ VisualTheme Agent
+案件全体のフォント / 配色 / 装飾ルール
+    │
+    ▼  ⑥ Composer Agent (Claude Haiku 高速モデル + asyncio 並列)
+LayoutSpec × N (各ページの構造化レイアウト記述)
+    │
+    ▼  ⑦ Jinja2 + Playwright
+HTML → PNG スクリーンショット
+    │
+    ▼  ⑧ Critic Agent (3段階レビュー + 自動修正 最大3回)
+    │
+    ▼  ⑨ Export
+PDF</code></pre>
+</section>
+
+<section id="highlights">
+  <h2>4. 設計上のポイント</h2>
+
+  <h3>4.1 素材パッケージ：幻覚を防ぐいちばん確実な方法</h3>
+  <p><strong>課題</strong>：初期版では、LLM に自由対話からそのままスライドを生成させていたため、
+    数字は作り物になり、引用元は追えず、1ページ直すだけでも全体を作り直す必要がありました。</p>
+  <p><strong>対応</strong>：ユーザーの素材をまず <code>MaterialPackage</code> として固定し、
+    パイプライン全体の<strong>唯一の信頼できる情報源</strong>にします。以降の Agent は、
+    MaterialPackage にある内容しか使えず、勝手に補えません。</p>
+
+  <table>
+    <thead><tr><th>失うもの</th><th>得られるもの</th></tr></thead>
+    <tbody>
+      <tr><td>柔軟さ（先に素材パッケージを準備する必要がある）</td><td>各ページの内容を具体的な素材ファイルまで追える</td></tr>
+      <tr><td>対話だけで即座に生成する使い方</td><td>1ページだけ直しても他ページに影響しない</td></tr>
+      <tr><td>—</td><td>失敗しても任意の段階から再開できる</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.2 素材の対応付け：ルールベースの照合 vs LLM の判断</h3>
+  <p><strong>課題</strong>：LLM に「5ページ目にどの画像を置き、どの文章を添えるか」を決めさせると、
+    存在しない画像を参照したり、事例Aの画像を事例Bの文章の横に置いたりします。</p>
+  <p><strong>対応</strong>：<code>MaterialBinding</code> は純粋な Python のルールベース処理です。
+    <code>Outline</code> で宣言された「必要な素材タイプ + tag」に沿って MaterialPackage から一致候補を探します。
+    LLM はこの段階に関与しません。</p>
+  <div class="callout">
+    <div class="callout-title">効果</div>
+    <p>多少の「気の利いた組み合わせ」の余地は減りますが、<strong>画像と文章の取り違えをまとめて防げます</strong>。</p>
+  </div>
+
+  <h3>4.3 高性能モデルと高速モデルの使い分け</h3>
+  <table>
+    <thead><tr><th>段階</th><th>モデル</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>Outline 生成</td><td>Claude Opus 4.6（高性能）</td><td>全体のストーリー構成は1回だけなので品質優先</td></tr>
+      <tr><td>Composer の単ページ生成</td><td>Claude Haiku 4.5（高速）</td><td>各ページごとに呼び出し、Nページ並列なので遅延とコストに敏感</td></tr>
+      <tr><td>Critic の意味レビュー</td><td>Claude Haiku 4.5（高速）</td><td>軽量なチェックなので速度優先</td></tr>
+    </tbody>
+  </table>
+  <p><strong>効果</strong>：単ページ生成は <code>asyncio.gather</code> で8並列にし、全体の待ち時間を抑えています。
+    さらに Critic の意味レビューで、高速モデルが落としがちな細部を補います。</p>
+</section>
+
+<section id="critic">
+  <h2>5. レビューと修正の仕組み（Critic）</h2>
+  <p>LLM 出力の不安定さは、<strong>3段階のレビュー + 局所修正</strong>で収束させます。</p>
+
+  <table>
+    <thead><tr><th>層</th><th>実装</th><th>LLM</th><th>代表ルール</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>L1 ルールレビュー</strong></td>
+        <td><code>tool/review/layout_lint.py</code></td>
+        <td>純 Python</td>
+        <td>文字あふれ / 必須ブロック欠落 / 未知テンプレート / 情報量過多</td>
+      </tr>
+      <tr>
+        <td><strong>L2 意味レビュー</strong></td>
+        <td><code>tool/review/semantic_check.py</code></td>
+        <td>高速モデル</td>
+        <td>数値が brief と不一致 / 根拠のない断定 / スタイル語の矛盾 / 顧客名の誤り</td>
+      </tr>
+      <tr>
+        <td><strong>L3 見た目レビュー</strong></td>
+        <td>Composer のマルチモーダル LLM</td>
+        <td>高速モデル</td>
+        <td>見た目が雑然としている / 余白の無駄が多い / 画像がぼやけている</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>判定フロー</h3>
+<pre><code>P0 修復不可       ──▶  ESCALATE_HUMAN  （失敗として扱い、人の対応を待つ）
+P0/P1 自動修復可  ──▶  REPAIR_REQUIRED （自動修復、最大3回まで再試行）
+P2 のみ           ──▶  REPAIR_REQUIRED （修復するが書き出しは止めない）
+問題なし          ──▶  PASS</code></pre>
+
+  <div class="callout">
+    <div class="callout-title">なぜ分けるのか</div>
+    <p>ルールで判定できるものと、意味を見ないと分からないものを分けることで、
+      <strong>LLM 呼び出しを70%以上減らせます</strong>。文字あふれやタイトル欠落のような問題に LLM は不要です。</p>
+  </div>
+</section>
+
+<section id="rag">
+  <h2>6. 参考事例RAG（pgvector）</h2>
+  <p>案件の雰囲気に近い参考事例を事例庫から呼び出し、Outline / VisualTheme Agent の参考にします。</p>
+
+  <h3>データフロー</h3>
+<pre><code>ProjectBrief (建物種別 / スタイルの好み / 規模)
+    │
+    ▼  build_query_text()  → フィールドをつないで検索文を作る
+    ▼  get_embedding()     → 1536 次元ベクトル
+pgvector のコサイン距離検索 (IVFFlat インデックス)
+    │
+    ▼  rerank_cases()      → 業務ルールで並べ替え
+    ▼  preference_summary  → 好みの要約 → VisualTheme Agent に渡す</code></pre>
+
+  <h3>主要 SQL</h3>
+<pre><code>SELECT ..., 1 - (embedding &lt;=&gt; CAST(:vec AS vector)) AS similarity
+FROM reference_cases
+WHERE building_type = :building_type
+ORDER BY embedding &lt;=&gt; CAST(:vec AS vector)
+LIMIT :top_k</code></pre>
+
+  <h3>実装上の工夫</h3>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <div class="num">01</div>
+      <h4>複数の embedding provider</h4>
+      <p><code>EMBEDDING_PROVIDER</code> で <code>openai</code> / <code>voyage</code> / <code>qwen</code> / <code>mock</code> を切り替え、業務コードを変えずに使い分けます。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">02</div>
+      <h4>mock 実装</h4>
+      <p><code>SHA256 → LCG → L2 normalize</code> で決定論的な疑似ベクトルを作り、ローカル開発を外部APIなしで進められます。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">03</div>
+      <h4>フォールバック</h4>
+      <p>pgvector が使えないときは、自動で <code>building_type + style_tags</code> のタグ絞り込みに切り替え、機能停止を避けます。</p>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <h2>7. 技術スタック</h2>
+  <table>
+    <thead><tr><th>層</th><th>採用技術</th><th>採用理由</th></tr></thead>
+    <tbody>
+      <tr><td>Web フレームワーク</td><td>FastAPI + Pydantic v2</td><td>非同期が標準で、Schema を層をまたいで共有できる</td></tr>
+      <tr><td>データベース</td><td>PostgreSQL 16 + pgvector</td><td>リレーショナルデータとベクトル検索を同じDBに置けるため二重書き込みを避けられる</td></tr>
+      <tr><td>ORM / マイグレーション</td><td>SQLAlchemy 2.0 + Alembic</td><td>pgvector は raw SQL で確実に扱う</td></tr>
+      <tr><td>タスクキュー</td><td>Celery 5.4 + Redis 7</td><td>3キュー（default / render / export）でリソースを分離できる</td></tr>
+      <tr><td>LLM</td><td>Claude Opus 4.6 / Haiku 4.5（OpenRouter）</td><td>高性能モデルと高速モデルを使い分けてコストを抑える</td></tr>
+      <tr><td>LLM ラッパー</td><td>自前の薄いラッパー</td><td>LangChain を入れず、制御性と依存サイズを保つ</td></tr>
+      <tr><td>レンダリング</td><td>Jinja2 + Playwright Headless Chromium</td><td>HTML/CSS に慣れたデザイナーが扱いやすく、画像化の再現性も高い</td></tr>
+      <tr><td>グラフ</td><td>matplotlib</td><td>データ駆動のグラフ（bar/line/pie/radar）を出せる</td></tr>
+      <tr><td>デプロイ</td><td>docker-compose</td><td>6コンテナをそのまま起動できる: api / worker / renderer / flower / db / redis</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="tradeoffs">
+  <h2>8. 主な設計判断</h2>
+
+  <div class="qa">
+    <h3>Q1：なぜ LangChain / LangGraph を使わないのか</h3>
+    <p>依存関係にはありますが、コードからは参照されていません。初期に試した LangGraph StateGraph は削除済みで、理由は次の通りです。</p>
+    <ul>
+      <li><strong>この業務は決まったパイプラインであり、Agent の自律判断ではない</strong>。状態機械はすでに DB 内
+        （<code>ProjectStatus</code> 列挙）にあり、Celery がリトライと永続化も担っています。ここに LangGraph Checkpointer を重ねると二重管理になります</li>
+      <li><strong>プロセスをまたぐ非同期境界が多い</strong>。FastAPI のバックグラウンドスレッド、Celery worker、render worker を
+        1つの StateGraph 実行基盤に収めにくいです</li>
+      <li>自前ラッパーで、スキーマ検証、JSON 解析の再試行、Semaphore による同時実行数制御、エラー分類までカバーできており、
+        <strong>LangChain より制御しやすい</strong>状態です</li>
+    </ul>
+  </div>
+
+  <div class="qa">
+    <h3>Q2：なぜ PDF-first で PPTX ではないのか</h3>
+    <ul>
+      <li>レイアウト精度、フォント表現、図文の混在は <strong>HTML/CSS のほうが python-pptx より明らかに強い</strong>です</li>
+      <li>最終納品物がもともと PDF なので、その場で再編集する要件がありません</li>
+      <li>python-pptx は依存に入っているため、必要になれば後から足せますが、現時点の主線ではありません</li>
+    </ul>
+  </div>
+
+  <div class="qa">
+    <h3>Q3：なぜレビューを L1 / L2 / L3 に分けるのか</h3>
+    <ul>
+      <li><strong>コスト</strong>：L1 はゼロコストで 70% ほどの問題を止められるため、無意味な LLM 呼び出しを減らせます</li>
+      <li><strong>説明しやすさ</strong>：ルールレビューのエラーコード（R001 / R002...）は、そのままユーザーへの説明に使えます</li>
+      <li><strong>直しやすさ</strong>：ルール層のエラーは <code>repair_plan.py</code> が直接修正でき、LLM を通す必要がありません</li>
+    </ul>
+  </div>
+
+  <div class="qa">
+    <h3>Q4：単一 Agent 編成ではなく分散編成なのはなぜか</h3>
+    <p>実際の編成ロジックは次に分かれています。</p>
+    <ul>
+      <li><code>api/routers/material_packages.py</code>：取り込みの開始</li>
+      <li><code>api/routers/outlines.py</code>：バックグラウンドスレッドで生成チェーンを接続</li>
+      <li><code>tasks/*.py</code>：Celery で重い非同期処理を担当</li>
+    </ul>
+    <p><strong>理由</strong>：各ステージで使うリソースの性質が大きく違うからです。Outline は LLM bound、
+      Render は CPU/IO bound、Export は IO bound なので、Celery のキューで分離したほうが、
+      1つの Agent プロセスに詰め込むより素直です。</p>
+  </div>
+</section>
+
+<section id="challenges">
+  <h2>9. 実装上の難所</h2>
+  <table>
+    <thead><tr><th>難所</th><th>対応</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>LLM の出力形式が安定しない</td>
+        <td>自前の <code>call_llm_structured</code> を用意し、Pydantic JSON Schema を system prompt に埋め込み、失敗時はリトライし、エラー内容でモデルに修正を促す</td>
+      </tr>
+      <tr>
+        <td>Playwright の Celery worker でのコールドスタートが遅い</td>
+        <td>独立した <code>renderer</code> キューを切り出し、ブラウザインスタンスを専用で維持する</td>
+      </tr>
+      <tr>
+        <td>Reference Agent の検索精度</td>
+        <td>クエリ文には建物種別、スタイル、規模など、見分けに効く項目だけを使い、空欄は除外する</td>
+      </tr>
+      <tr>
+        <td>ローカル開発が外部APIに依存する</td>
+        <td>mock embedding として <code>SHA256 → LCG → L2 normalize</code> を使い、同じテキストなら同じベクトルを返すようにしてエンドツーエンドテストを回せるようにする</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="future">
+  <h2>10. 今後の拡張</h2>
+  <ul>
+    <li><strong>PPTX 出力</strong>：python-pptx の経路を補い、デザイナーが二次編集できるようにする</li>
+    <li><strong>見た目レビューの閉ループ化</strong>：L3 の見た目レビューは今は問題を付けるだけで自動修正しないため、
+      Critic が修正指示を出し、Composer に戻す形にしたい</li>
+    <li><strong>素材パッケージ単位の RAG</strong>：今は参考事例庫だけを対象にしているが、将来は案件自身の素材も索引化し、
+      「意味で素材を探す」を可能にしたい</li>
+    <li><strong>Workflow から Agent へ</strong>：現状は決まったパイプラインだが、「結果が気に入らない →
+      どのページを直すかを自律判断 → 複数回再生成」のような要件が出たら、LangGraph で部分的な Agent 化を検討する</li>
+  </ul>
+</section>
+
+<section id="takeaways">
+  <h2>11. 覚えてほしい3つのポイント</h2>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <div class="num">01</div>
+      <h4>Workflow First, Agent Second</h4>
+      <p>LLM に制御フローを渡さず、状態を明確にし、再実行と追跡を可能にします。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">02</div>
+      <h4>素材パッケージが唯一の信頼できる情報源</h4>
+      <p>幻覚を防ぐには、LLM に勝手に補う余地を与えないことが重要です。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="num">03</div>
+      <h4>高性能モデルと高速モデルの併用 + 3段階レビュー</h4>
+      <p>納得できる品質を最小コストで得て、高価なモデルは本当に必要なところだけに使います。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+</body>
+</html>
