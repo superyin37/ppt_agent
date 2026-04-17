@@ -91,7 +91,21 @@ HTML → PNG 截图
 PDF
 ```
 
-### 3.2 设计决策（这是面试可深挖的点）
+### 3.2 各阶段说明
+
+| 阶段 | 名称 | 是否 LLM | 做什么 / 产物 |
+|---|---|---|---|
+| ① | **Ingest** | ❌ | 确定性扫描本地素材目录，按文件类型自动分类（图片/图表/文档/文本），去重并生成 `MaterialItem`；同时从素材中抽取项目元信息（建筑类型、面积、地点等）生成 `ProjectBrief`，并派生图表、地图、案例卡等 `Asset` |
+| ② | **BriefDoc Agent** | ✅ | 汇总素材包中的文本摘录、素材摘要和 ProjectBrief，由 LLM 提炼叙事主线 —— 包含章节框架、定位语和叙事弧线。产物 `BriefDoc` 为后续 Outline 提供"讲什么故事"的语义锚点 |
+| ③ | **Outline Agent** | ✅ 强模型 | 以 ProjectBrief + BriefDoc + PPT 蓝图为输入，由 Claude Opus 生成 8-12 页的 `OutlineSpec`。每页定义页面目的、所需素材类型、关键信息点。这是**全局叙事结构的唯一决策点**，因此使用强模型 |
+| ④ | **MaterialBinding** | ❌ | 纯 Python 确定性匹配。按 Outline 中每页声明的素材类型 + tag，从 MaterialPackage 检索匹配的 MaterialItem 和 Asset，产出 `SlideMaterialBinding`（含绑定素材、证据摘要、覆盖率和缺失项） |
+| ⑤ | **VisualTheme Agent** | ✅ | 基于 ProjectBrief 和参考案例偏好，生成项目级视觉主题 —— 字体组合、主色/辅色配色、间距规则和装饰元素。`VisualTheme` 作为全局样式约束传递给 Composer 和渲染层 |
+| ⑥ | **Composer Agent** | ✅ 快模型 | 逐页将 OutlineSlideEntry + Binding + Theme 转为结构化 `LayoutSpec`。使用 Haiku + `asyncio.gather` 8 路并发，控制文字密度、图文关系和版式骨架。`LayoutSpec` 是**页面级核心协议**，定义区块类型、内容、位置 |
+| ⑦ | **Render Engine** | ❌ | Jinja2 模板将 LayoutSpec 渲染为自包含 HTML（Design Token CSS 内联），解析 `asset:{id}` 引用为实际路径。Playwright Headless Chromium 截图生成 PNG。9 套模板覆盖封面、概览、章节、地图、案例对比、图表等版式 |
+| ⑧ | **Critic Agent** | 部分 | 三层审查（L1 纯规则 / L2 语义 LLM / L3 视觉 LLM），详见下文。不通过时触发 Composer 局部重生成 → 重渲染 → 重审查，最多循环 3 次 |
+| ⑨ | **Export** | ❌ | 将全部 PNG 截图按页序合成 PDF 文件 |
+
+### 3.3 设计决策（这是面试可深挖的点）
 
 #### 决策一：为什么要"素材包"这一层？
 

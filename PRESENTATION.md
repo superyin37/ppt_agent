@@ -29,7 +29,7 @@
 ```
 ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
 │ 前端 SPA     │───▶│  FastAPI     │───▶│ PostgreSQL   │
-│ (流程驱动)   │    │  Routers     │    │ + pgvector   │
+│ (流程驱动)   │    │  Routers     │    │              │
 └──────────────┘    └──────┬───────┘    └──────────────┘
                            │
                   ┌────────┼────────┐
@@ -87,6 +87,20 @@ HTML → PNG 截图
     ▼  ⑨ Export
 PDF
 ```
+
+### 各阶段说明
+
+| 阶段 | 名称 | 是否 LLM | 做什么 / 产物 |
+|---|---|---|---|
+| ① | **Ingest** | ❌ | 确定性扫描本地素材目录，按文件类型自动分类（图片/图表/文档/文本），去重并生成 `MaterialItem`；同时从素材中抽取项目元信息（建筑类型、面积、地点等）生成 `ProjectBrief`，并派生图表、地图、案例卡等 `Asset` |
+| ② | **BriefDoc Agent** | ✅ | 汇总素材包中的文本摘录、素材摘要和 ProjectBrief，由 LLM 提炼叙事主线 —— 包含章节框架、定位语和叙事弧线。产物 `BriefDoc` 为后续 Outline 提供"讲什么故事"的语义锚点 |
+| ③ | **Outline Agent** | ✅ 强模型 | 以 ProjectBrief + BriefDoc + PPT 蓝图为输入，由 Claude Opus 生成 8-12 页的 `OutlineSpec`。每页定义页面目的、所需素材类型、关键信息点。这是**全局叙事结构的唯一决策点**，因此使用强模型 |
+| ④ | **MaterialBinding** | ❌ | 纯 Python 确定性匹配。按 Outline 中每页声明的素材类型 + tag，从 MaterialPackage 检索匹配的 MaterialItem 和 Asset，产出 `SlideMaterialBinding`（含绑定素材、证据摘要、覆盖率和缺失项） |
+| ⑤ | **VisualTheme Agent** | ✅ | 基于 ProjectBrief 和参考案例偏好，生成项目级视觉主题 —— 字体组合、主色/辅色配色、间距规则和装饰元素。`VisualTheme` 作为全局样式约束传递给 Composer 和渲染层 |
+| ⑥ | **Composer Agent** | ✅ 快模型 | 逐页将 OutlineSlideEntry + Binding + Theme 转为结构化 `LayoutSpec`。使用 Haiku + `asyncio.gather` 8 路并发，控制文字密度、图文关系和版式骨架。`LayoutSpec` 是**页面级核心协议**，定义区块类型、内容、位置 |
+| ⑦ | **Render Engine** | ❌ | Jinja2 模板将 LayoutSpec 渲染为自包含 HTML（Design Token CSS 内联），解析 `asset:{id}` 引用为实际路径。Playwright Headless Chromium 截图生成 PNG。9 套模板覆盖封面、概览、章节、地图、案例对比、图表等版式 |
+| ⑧ | **Critic Agent** | 部分 | 三层审查（L1 纯规则 / L2 语义 LLM / L3 视觉 LLM），详见下文。不通过时触发 Composer 局部重生成 → 重渲染 → 重审查，最多循环 3 次 |
+| ⑨ | **Export** | ❌ | 将全部 PNG 截图按页序合成 PDF 文件 |
 
 ---
 
@@ -148,38 +162,26 @@ P0/P1 可自动修  ──▶  REPAIR_REQUIRED （自动修复，最多重试 3 
 
 ---
 
-## 6. 参考案例 RAG（pgvector）
+## 6. 参考案例作为素材输入
 
-从案例库召回与项目调性相近的参考案例，供 Outline / VisualTheme Agent 借鉴。
+当前链路不单独做向量检索。参考案例默认以图片、文字说明、案例卡等形式随 `MaterialPackage` 一起进入系统，并在 Outline / VisualTheme / MaterialBinding 阶段直接使用。
 
 ### 数据流
 
 ```
-ProjectBrief (建筑类型 / 风格偏好 / 规模)
-    │
-    ▼  build_query_text()  → 字段拼接为检索文本
-    ▼  get_embedding()     → 1536 维向量
-pgvector 余弦距离检索 (IVFFlat 索引)
-    │
-    ▼  rerank_cases()      → 业务规则重排
-    ▼  preference_summary  → 偏好摘要 → 喂给 VisualTheme Agent
+MaterialPackage
+    ├── MaterialItem（案例图片 / 文字说明 / 来源信息）
+    ├── Asset（案例卡 / 对比图 / 引用摘要）
+    └── ProjectBrief
+            │
+            ▼  Outline / VisualTheme / MaterialBinding 直接消费
 ```
 
-### 关键 SQL
+### 当前做法
 
-```sql
-SELECT ..., 1 - (embedding <=> CAST(:vec AS vector)) AS similarity
-FROM reference_cases
-WHERE building_type = :building_type
-ORDER BY embedding <=> CAST(:vec AS vector)
-LIMIT :top_k
-```
-
-### 工程亮点
-
-- **多 provider embedding**：通过 `EMBEDDING_PROVIDER` 切换 `openai` / `voyage` / `qwen` / `mock`
-- **mock 实现**：`SHA256 → LCG → L2 normalize` 产生确定性伪向量，本地开发完全脱离外部 API
-- **降级机制**：pgvector 不可用时自动回退到 `building_type + style_tags` 标签过滤
+- **统一入口**：参考案例和其他设计素材走同一条素材包链路，不再单独推荐或检索
+- **统一事实源**：页面里使用的案例内容直接来自素材包文件与派生资产，不会出现“检索结果”和“实际引用素材”不一致
+- **统一复用**：同一份案例素材既能参与叙事，也能直接生成案例卡、对比图等页面资产
 
 ---
 
@@ -188,8 +190,8 @@ LIMIT :top_k
 | 层 | 选型 | 选型理由 |
 |---|---|---|
 | Web 框架 | FastAPI + Pydantic v2 | 异步原生、Schema 跨层共用 |
-| 数据库 | PostgreSQL 16 + pgvector | 关系数据 + 向量检索同库，避免双写 |
-| ORM / 迁移 | SQLAlchemy 2.0 + Alembic | pgvector 通过 raw SQL 落地 |
+| 数据库 | PostgreSQL 16 | 保存项目、素材、提纲、页面与审查记录 |
+| ORM / 迁移 | SQLAlchemy 2.0 + Alembic | 常规关系模型与迁移管理 |
 | 任务队列 | Celery 5.4 + Redis 7 | 三队列（default / render / export）资源隔离 |
 | LLM | Claude Opus 4.6 / Haiku 4.5（OpenRouter） | 强弱混用控成本 |
 | LLM 封装 | 自建轻量封装 | 不引入 LangChain，控制权与依赖体积 |
@@ -239,7 +241,7 @@ LIMIT :top_k
 | LLM 输出格式不稳定 | 自建 `call_llm_structured`：Pydantic JSON Schema 拼进 system prompt + 失败重试 + 用错误信息引导模型修正 |
 | Playwright 在 Celery worker 冷启动慢 | 拆出独立 `renderer` 队列，单独维护浏览器实例 |
 | Reference Agent 召回质量 | query 文本只拼"判别性强"的字段（建筑类型、风格、规模），并对空字段做过滤 |
-| 本地开发依赖外部 API | mock embedding：`SHA256 → LCG → L2 normalize`，相同文本得到相同向量，跑通端到端测试 |
+| 参考案例链路与主流程一致性 | 参考案例默认通过 `MaterialPackage` 进入，避免额外检索链路与主链路维护两套事实源 |
 
 ---
 
@@ -247,7 +249,7 @@ LIMIT :top_k
 
 - **PPTX 导出**：补齐 python-pptx 链路，支持设计师二次编辑
 - **视觉审查闭环**：L3 视觉审查目前只标记问题，未自动修复 → 让 Critic 输出修复指令再回到 Composer
-- **素材包级 RAG**：当前 RAG 只在参考案例库；未来想把项目自身素材也建索引，支持"按语义找素材"
+- **素材包利用增强**：未来可在素材包内部补充更细的标签和语义组织，支持更快定位已有素材，但当前主链路不依赖额外检索阶段
 - **从 Workflow 走向 Agent**：现阶段是确定性流水线；如果后续需要"用户对结果不满 → 自主决定改哪几页 → 多轮重生成"，可考虑引入 LangGraph 做局部 Agent 化
 
 ---

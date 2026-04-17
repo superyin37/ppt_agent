@@ -88,6 +88,20 @@ HTML → PNG スクリーンショット
 PDF
 ```
 
+### 各ステージの説明
+
+| ステージ | 名称 | LLM | 内容 / 成果物 |
+|---|---|---|---|
+| ① | **Ingest** | ❌ | ローカル素材フォルダをルールベースで走査し、ファイル種別ごとに自動分類（画像/グラフ/文書/テキスト）、重複排除して `MaterialItem` を生成。同時に素材から案件の基本情報（建物種別、面積、所在地など）を抽出して `ProjectBrief` を作り、グラフ、地図、事例カードなどの `Asset` を派生させる |
+| ② | **BriefDoc Agent** | ✅ | 素材パッケージ内のテキスト摘録、素材要約、ProjectBrief をもとに、LLM がストーリーラインを整理 —— 章構成、ポジショニング、物語の流れを含む。成果物 `BriefDoc` は、後続の Outline に「何の話をするか」の意味的な起点を与える |
+| ③ | **Outline Agent** | ✅ 高性能 | ProjectBrief + BriefDoc + PPT ブループリントを入力とし、Claude Opus が 8〜12 ページの `OutlineSpec` を生成。各ページに目的、必要な素材タイプ、主要情報ポイントを定義する。**全体の構成を決める唯一の判断ポイント**なので、高性能モデルを使う |
+| ④ | **MaterialBinding** | ❌ | 純粋な Python のルールベース照合。Outline で各ページが宣言した「必要な素材タイプ + tag」に沿って MaterialPackage から一致する MaterialItem と Asset を検索し、`SlideMaterialBinding`（ひもづけた素材、根拠要約、カバー率、不足項目）を出力する |
+| ⑤ | **VisualTheme Agent** | ✅ | ProjectBrief と参考事例の好みに基づき、案件全体のビジュアルテーマ —— フォントの組み合わせ、メイン/サブの配色、余白ルール、装飾要素 —— を LLM で生成する。`VisualTheme` はグローバルなスタイル制約として Composer とレンダリング層に渡される |
+| ⑥ | **Composer Agent** | ✅ 高速 | ページごとに OutlineSlideEntry + Binding + Theme を構造化した `LayoutSpec` に変換する。Haiku + `asyncio.gather` 8 並列で、テキスト密度、図文バランス、レイアウト骨格を制御する。`LayoutSpec` は**ページレベルの中核プロトコル**で、ブロック種別、内容、配置を定義する |
+| ⑦ | **Render Engine** | ❌ | Jinja2 テンプレートが LayoutSpec を自己完結型 HTML（Design Token CSS インライン）にレンダリングし、`asset:{id}` 形式のリソース参照を実パスに解決する。Playwright Headless Chromium でスクリーンショットを撮り PNG を生成する。カバー、概要、章区切り、地図、事例比較、グラフなど 9 種のテンプレートを用意 |
+| ⑧ | **Critic Agent** | 一部 | 3 段階レビュー（L1 ルールベース / L2 意味 LLM / L3 見た目 LLM）、詳細は下記。不合格時は Composer の局所再生成 → 再レンダリング → 再レビューを最大 3 回まで繰り返す |
+| ⑨ | **Export** | ❌ | 全ページの PNG スクリーンショットをページ順に結合し、PDF ファイルを生成する |
+
 ---
 
 ## 4. 設計上のポイント
