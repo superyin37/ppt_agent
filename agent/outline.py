@@ -24,6 +24,7 @@ from db.models.material_package import MaterialPackage
 from db.models.outline import Outline
 from db.models.project import Project, ProjectBrief
 from schema.common import ProjectStatus
+from schema.concept_proposal import ConceptProposal
 from schema.outline import OutlineSlideEntry, OutlineSpec
 from schema.page_slot import PageSlot, PageSlotGroup, SlotAssignment, normalize_slot_id
 from tool.material_resolver import expand_requirement, find_matching_items
@@ -50,6 +51,7 @@ class _OutlineLLMOutput(BaseModel):
     deck_title: str
     total_pages: int
     assignments: list[_SlotAssignmentLLM]
+    concept_proposals: list[ConceptProposal] = []
 
 
 def _slot_map() -> dict[str, PageSlot]:
@@ -297,6 +299,11 @@ async def generate_outline(project_id: UUID, db: Session) -> Outline:
     )
     new_version = (existing.version + 1) if existing else 1
 
+    spec_json = spec.model_dump(mode="json")
+    spec_json["concept_proposals"] = [
+        proposal.model_dump(mode="json") for proposal in result.concept_proposals
+    ]
+
     outline = Outline(
         project_id=project_id,
         package_id=package.id if package else None,
@@ -305,7 +312,7 @@ async def generate_outline(project_id: UUID, db: Session) -> Outline:
         deck_title=spec.deck_title,
         theme=spec.theme,
         total_pages=spec.total_pages,
-        spec_json=spec.model_dump(mode="json"),
+        spec_json=spec_json,
         coverage_json=coverage_by_slide,
         slot_binding_hints_json=slot_binding_hints,
     )
@@ -355,4 +362,48 @@ def _fallback_outline(brief: ProjectBrief, reference_count: int) -> _OutlineLLMO
         deck_title=f"{client} {building_type.title()} 设计建议书",
         total_pages=len(assignments),
         assignments=assignments,
+        concept_proposals=_fallback_concept_proposals(building_type),
     )
+
+
+def _fallback_concept_proposals(building_type: str) -> list[ConceptProposal]:
+    """LLM 失败时的概念方案兜底 — 生成 3 个通用占位方案,保证下游 concept_render 有输入。"""
+    presets = [
+        {
+            "name": "循序渐进",
+            "design_idea": "阶梯式空间组织",
+            "narrative": (
+                f"以渐进式台地组织{building_type}体量,由低至高形成视觉引导;"
+                "退台平台兼做景观露台,模糊室内外边界,为使用者创造层次丰富的空间体验。"
+            ),
+            "design_keywords": ["terraced", "progression", "layered", "landscape"],
+            "massing_hint": "阶梯式退台 + 屋顶花园",
+            "material_hint": "浅色石材 + 木质格栅 + 大面玻璃",
+            "mood_hint": "温润通透",
+        },
+        {
+            "name": "云上之城",
+            "design_idea": "轻盈漂浮的空中体量",
+            "narrative": (
+                f"将{building_type}主体抬升,底层释放为公共广场,上部体量以连桥串联,"
+                "立面采用白色穿孔金属板营造云朵意象,夜间发光如浮云,成为城市新地标。"
+            ),
+            "design_keywords": ["floating", "airy", "perforated metal", "skybridge"],
+            "massing_hint": "抬升主体 + 连桥串联",
+            "material_hint": "白色穿孔金属 + 低辐射玻璃",
+            "mood_hint": "轻盈未来",
+        },
+        {
+            "name": "编织城市",
+            "design_idea": "多向网络融入肌理",
+            "narrative": (
+                f"以网格与斜向路径编织{building_type}内外部空间,将城市人流自然引入场地,"
+                "建筑体量消解为若干院落,每个院落匹配不同功能与尺度,形成开放多元的社区场所。"
+            ),
+            "design_keywords": ["woven", "grid", "courtyards", "urban fabric"],
+            "massing_hint": "网格院落 + 连廊串联",
+            "material_hint": "清水混凝土 + 陶砖 + 竹格栅",
+            "mood_hint": "沉稳人文",
+        },
+    ]
+    return [ConceptProposal(index=idx, **preset) for idx, preset in enumerate(presets, start=1)]

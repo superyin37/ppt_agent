@@ -54,6 +54,7 @@ owner: <谁拍板的>
 | [ADR-002](ADR-002-celery-over-langgraph.md) | Celery 链替代 LangGraph,删除 graph.py | Accepted | 2026-04-06 |
 | [ADR-003](ADR-003-composer-dual-mode.md) | Composer 双模式共存(v2 结构化 + v3 HTML 直出) | Accepted | 2026-04-05 |
 | [ADR-004](ADR-004-html-mode-vision-only.md) | HTML 模式审查只用 vision 层 | Accepted | 2026-04-07 |
+| [ADR-005](ADR-005-concept-render-via-outline.md) | 概念方案由 Outline 输出结构化字段 + runninghub 生图 | Accepted | 2026-04-20 |
 
 ---
 

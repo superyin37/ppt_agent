@@ -3,10 +3,21 @@
     "allow": [
       "Bash(wc -l d:/projects/PPT_Agent/schema/*.py)",
       "Bash(wc -l d:/projects/PPT_Agent/db/*.py)",
-      "Bash(wc -l d:/projects/PPT_Agent/agent/*.py d:/projects/PPT_Agent/api/routers/outlines.py d:/projects/PPT_Agent/tasks/*.py)"
+      "Bash(wc -l d:/projects/PPT_Agent/agent/*.py d:/projects/PPT_Agent/api/routers/outlines.py d:/projects/PPT_Agent/tasks/*.py)",
+      "WebFetch(domain:www.runninghub.ai)",
+      "WebFetch(domain:www.runninghub.cn)",
+      "WebFetch(domain:gold-spleen-bf1.notion.site)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/unit/test_runninghub.py -x -q)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/integration/test_concept_render.py -x -q)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/integration/test_project_flow.py -x -q --co)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/integration/test_concept_render.py --co -q)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/unit/test_runninghub.py -q)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/unit/test_runninghub.py tests/integration/test_concept_render.py --co -q)",
+      "Bash(.venv/Scripts/python.exe -c \"from config.settings import settings; print\\('running_hub_key=', repr\\(settings.running_hub_key[:8] + '...' if settings.running_hub_key else ''\\)\\); print\\('workflow_id=', repr\\(settings.running_hub_workflow_id\\)\\)\")"
     ],
     "additionalDirectories": [
-      "d:\\projects\\PPT_Agent\\docs\\ops"
+      "d:\\projects\\PPT_Agent\\docs\\ops",
+      "d:\\tmp"
     ]
   }
 }

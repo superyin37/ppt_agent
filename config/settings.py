@@ -58,5 +58,18 @@ class Settings(BaseSettings):
     max_slides_per_deck: int = 30
     case_library_min_size: int = 30
 
+    # 图像生成 (runninghub) — env 变量约定 RUNNING_HUB_*
+    concept_render_enabled: bool = True
+    running_hub_key: str = ""
+    running_hub_base_url: str = "https://www.runninghub.cn"
+    running_hub_workflow_id: str = ""
+    running_hub_prompt_node_id: str = "6"
+    running_hub_negative_prompt_node_id: str = "7"
+    running_hub_init_image_node_id: str = "10"
+    running_hub_seed_node_id: str = ""
+    running_hub_poll_interval_seconds: float = 3.0
+    running_hub_poll_timeout_seconds: float = 180.0
+    running_hub_asset_dir: str = "D:/tmp/assets"
+
 
 settings = Settings()

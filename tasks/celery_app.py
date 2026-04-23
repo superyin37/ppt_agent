@@ -8,6 +8,7 @@ app = Celery(
     include=[
         "tasks.asset_tasks",
         "tasks.outline_tasks",
+        "tasks.concept_render_tasks",
         "tasks.render_tasks",
         "tasks.review_tasks",
         "tasks.export_tasks",
@@ -26,6 +27,7 @@ app.conf.update(
         "tasks.export_tasks.*": {"queue": "export"},
         "tasks.asset_tasks.*": {"queue": "default"},
         "tasks.outline_tasks.*": {"queue": "default"},
+        "tasks.concept_render_tasks.*": {"queue": "concept_render"},
         "tasks.review_tasks.*": {"queue": "default"},
     },
     worker_prefetch_multiplier=1,

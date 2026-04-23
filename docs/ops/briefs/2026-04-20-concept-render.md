@@ -1,6 +1,7 @@
 ---
 date: 2026-04-20
-status: Draft
+status: Done
+completed_on: 2026-04-21
 owner: superxiaoyin
 assignee: Claude Code (Opus 4.7)
 ---
@@ -53,7 +54,7 @@ assignee: Claude Code (Opus 4.7)
 - 记录新的 rule code `V008=CONCEPT_IMAGE_MISSING`(P2)由 Critic 视觉层识别
 
 ### 环境
-- `.env` 新增 `RUNNINGHUB_API_KEY`、`RUNNINGHUB_ENDPOINT`、`RUNNINGHUB_WORKFLOW_ID`(具体字段由 runninghub API 决定)
+- `.env` 已有 `RUNNING_HUB_KEY`;新增 `RUNNING_HUB_WORKFLOW_ID`、`RUNNING_HUB_BASE_URL`、`RUNNING_HUB_*_NODE_ID`(全部 `RUNNING_HUB_*` 前缀,保持与既有命名一致)
 - 本地跑 E2E 默认**开启** concept_render;通过 `settings.CONCEPT_RENDER_ENABLED=false` 可关闭(smoke test 用)
 
 ---
@@ -227,4 +228,21 @@ concept.3.int_perspective
 
 ## 9. Updates
 
-_(Agent 开工后追加)_
+### 2026-04-21 — 开发完成
+
+**实际落地与 brief 一致的部分**:
+- Outline Agent 输出 `concept_proposals`(方案 B)✅
+- 串行链式一致性(aerial 0.75 → ext 0.60 → int 0.50)✅
+- 鸟瞰参考图用 `site.boundary.image` ✅
+- 失败降级纯灰 + "生成失败" 水印 ✅
+- 新 Celery 队列 `concept_render` + `concept_render_tasks.py` ✅
+
+**与 brief 假设偏差/补充**:
+- runninghub 鉴权是 JSON body `apiKey`(不是 HTTP header),且 workflow 参数通过 `nodeInfoList` 覆盖而非扁平字段。凭 ComfyUI_RH_APICall 源码对齐,实际节点 id(`RUNNING_HUB_*_NODE_ID`)做成可配置,不同 workflow 可换
+- image-to-image 若没有 ref 图(项目缺 `site.boundary.image`),不退化成 text-to-image,而是直接落降级占位 — 简化逻辑,保证管线不抖
+- 已新增 `CONCEPT_RENDER_ENABLED=false` 开关,smoke / dev 可跳过烧钱
+
+**产出**:见 [CHANGELOG 2026-04-21](../CHANGELOG.md#2026-04-21--concept-render-管线adr-005) 完整清单。决策记录见 [ADR-005](../decisions/ADR-005-concept-render-via-outline.md)。
+
+**遗留**:
+- 真机 workflow_id / api_key 尚未申请;本地只验证 placeholder 降级路径 + 单元 mock,真机一次端到端列入 [TODO P0-2](../TODO.md)

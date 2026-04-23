@@ -1,7 +1,7 @@
 ---
 name: 变更日志
 description: 按时间倒序记录用户/开发者可见的变更 — 追加式,不删除旧条目
-last_updated: 2026-04-20
+last_updated: 2026-04-21
 owner: superxiaoyin
 ---
 
@@ -16,6 +16,32 @@ owner: superxiaoyin
 
 ### In Progress
 - 41 页 real-LLM 全量回归验证
+- runninghub 真机 workflow 验证(本地仅覆盖 placeholder fallback 路径)
+
+---
+
+## 2026-04-21 — Concept Render 管线(ADR-005)
+
+### Added
+- **Concept Render 管线步骤**:Outline 之后、Material Binding 之前,产出 9 张概念建筑表现图(3 方案 × 鸟瞰/外视/内视)
+- `schema/concept_proposal.py` — `ConceptProposal` 结构化方案描述 + `ConceptViewKind` 枚举 + `concept_logical_key(index, view)`
+- `agent/concept_render.py` — 编排器,方案间并行、视图间串行链式(denoise 0.75→0.60→0.50,前图做下一视图的参考)
+- `tool/image_gen/runninghub.py` — runninghub 异步 REST 客户端(upload / create / poll / outputs / download)
+- `tool/image_gen/concept_prompts.py` — 3 视图 prompt 模板 + 共享 NEGATIVE_PROMPT + `denoise_for(view)`
+- `tool/image_gen/placeholder.py` — 纯灰底 + "生成失败" 水印降级图
+- `tasks/concept_render_tasks.py` + `concept_render` 专用 Celery 队列
+- Outline 输出扩展 `concept_proposals`(`agent/outline.py`,`prompts/outline_system_v2.md`)
+- `tests/unit/test_runninghub.py`(10 个用例,httpx MockTransport)
+- `tests/integration/test_concept_render.py`(3 个用例:成功 / 全降级 / disabled)
+- `.env.example` — 环境变量模板
+- `docs/ops/decisions/ADR-005-concept-render-via-outline.md` — 架构决策
+
+### Changed
+- `config/ppt_blueprint.py` — 概念方案鸟瞰/人视图的 `required_inputs` 增加 `concept_aerial` / `concept_ext_perspective` / `concept_int_perspective`
+- `tool/material_resolver.py` — `INPUT_ALIAS_PATTERNS` 增加 `concept_*` → `concept.*.{view}` 映射
+- `scripts/material_package_e2e.py` — 在 Outline 之后调用 `run_concept_render`,新增 `--skip-concept-render` 开关
+- `config/settings.py` — 新增 `concept_render_enabled` + `running_hub_*` 配置块(匹配 `.env` 既有命名约定 `RUNNING_HUB_*`)
+- `tasks/celery_app.py` — 注册 `concept_render` 队列并 include `tasks.concept_render_tasks`
 
 ---
 

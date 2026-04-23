@@ -352,7 +352,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
                 "要求：精致的建筑渲染表现图，展现建筑体量和场地关系。"
                 "图片下方添加简短图注（≤30字）。"
             ),
-            required_inputs=["brief_doc", "concept_description"],
+            required_inputs=["brief_doc", "concept_description", "concept_aerial"],
             generation_methods=[M.NANOBANANA],
             layout_hint="full-bleed 或 split-v：大鸟瞰图 + 底部图注条",
         ),
@@ -372,7 +372,12 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
                 "要求：精致建筑摄影风格，光影真实，构图美感强。"
                 "图片旁添加设计亮点注释（2~3 条，每条≤25字）。"
             ),
-            required_inputs=["brief_doc", "concept_description"],
+            required_inputs=[
+                "brief_doc",
+                "concept_description",
+                "concept_ext_perspective",
+                "concept_int_perspective",
+            ],
             generation_methods=[M.NANOBANANA, M.LLM_TEXT],
             layout_hint="split-h 或 triptych：两张效果图 + 注释文字",
         ),

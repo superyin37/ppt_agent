@@ -1,7 +1,7 @@
 ---
 name: 待办清单
 description: P0/P1/P2 分级 TODO,带验收标准 — 覆写式,完成后删除或移入 CHANGELOG
-last_updated: 2026-04-20
+last_updated: 2026-04-21
 owner: superxiaoyin
 ---
 
@@ -14,15 +14,15 @@ owner: superxiaoyin
 
 ## P0 — 必须做
 
-- [ ] **[P0-1] 跑一次 41 页 real-LLM 全量验证** — 距上次成功运行(2026-04-05)已 15 天,且 review 回环 v2 修复后仅做过 smoke,需确认全链路仍稳定
+- [ ] **[P0-1] 跑一次 41 页 real-LLM 全量验证** — 距上次成功运行(2026-04-05)已 16 天,review 回环 v2 + 新增 concept_render 后未做全量跑,需确认全链路仍稳定
   - 验收:`test_output/` 下产出完整 `deck.pdf` + 所有 slide PASS(或记录合理 SKIPPED)
+- [ ] **[P0-2] 获取 runninghub workflow_id + api_key 并做真机 concept_render 验证** — 本地只验证了 placeholder fallback,真机链路未验证
+  - 验收:9 张概念图全部 `status="ready"`,来源 `runninghub`,Asset.image_url 指向本地已下载的 PNG
 
 ## P1 — 质量关键
 
 - [ ] **[P1-1] 验证 BUG-010(Bug 5 修复后回环收敛)** — HTML 模式 vision-only 审查,3 slide 跑通且 PASS,非 ESCALATE_HUMAN
   - 验收:`review_loop_v2_check` 级别的 smoke 跑完,所有 slide 状态为 PASS 或 REVIEW_PASSED
-- [ ] **[P1-2] 接入 Nanobanana 图像生成** — 蓝图中"概念方案"章节 9 页依赖它,当前是占位
-  - 验收:`tool/image_gen/nanobanana.py` 可从 prompt 生成图像并存入 `Asset`
 - [ ] **[P1-3] 接入联网搜索** — 蓝图"背景研究(11 页)"+ "竞品分析(3 页)"依赖它
   - 验收:`tool/search/web_search.py` 可检索并返回结构化结果供 Composer 消费
 - [ ] **[P1-4] 修 BUG-007 中文引号 JSON 解析** — Prompt 强制要求内引号转义,或使用宽松 JSON 修复

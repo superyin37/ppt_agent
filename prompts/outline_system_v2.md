@@ -46,10 +46,23 @@
 
 参考案例组（`reference-case-pages`）的实际数量等于项目已选择的案例数量（见 `<reference_count>`）。
 
-## 概念方案命名
+## 概念方案命名与结构化描述
 
 三个概念方案应有各自的名称和差异化方向（见 `<brief_doc>` 中的设计策略）。
 方案名称应简洁有诗意（如「循序渐进」「云上之城」「编织城市」）。
+
+**同时必须在 `concept_proposals` 字段输出 3 个方案的结构化描述**，供后续概念图生成使用。
+每个方案字段要求：
+- `index`：1 / 2 / 3
+- `name`：≤20 字，与页面 title 一致
+- `design_idea`：≤20 字的一句设计理念
+- `narrative`：100~150 字的理念解析（与 `concept-intro-{N}` 页 content_directive 对齐）
+- `design_keywords`：3~5 个关键词（中英文均可），用于图像模型 prompt
+- `massing_hint`：体量 / 空间结构的简洁描述（如「L 形退台 + 中庭」）
+- `material_hint`：主要材质组合（如「玻璃 + 素水泥 + 金属格栅」）
+- `mood_hint`：氛围倾向（如「温润」「冷峻」「未来感」）
+
+三个方案的 `massing_hint` / `material_hint` / `mood_hint` 应**彼此差异化**，避免雷同。
 
 ---
 
@@ -75,6 +88,20 @@
       "estimated_content_density": "low"
     },
     ...
+  ],
+  "concept_proposals": [
+    {
+      "index": 1,
+      "name": "循序渐进",
+      "design_idea": "阶梯式空间组织",
+      "narrative": "以渐进式台地组织建筑体量……（100~150 字）",
+      "design_keywords": ["terraced", "progression", "layered"],
+      "massing_hint": "阶梯式退台 + 屋顶花园",
+      "material_hint": "浅色石材 + 木质格栅 + 大面玻璃",
+      "mood_hint": "温润通透"
+    },
+    { "index": 2, "name": "...", ... },
+    { "index": 3, "name": "...", ... }
   ]
 }
 ```

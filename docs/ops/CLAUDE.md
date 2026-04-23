@@ -1,7 +1,7 @@
 ---
 name: Agent 冷启动包
 description: Coding Agent 进入项目必读的最小上下文:规范、禁区、常用命令、常见陷阱
-last_updated: 2026-04-20
+last_updated: 2026-04-21
 owner: superxiaoyin
 ---
 
@@ -15,7 +15,7 @@ owner: superxiaoyin
 
 **建筑方案 PPT 自动生成系统**:输入素材包(图片/图表/设计大纲),经 LangGraph 多 Agent 流水线,输出 40 页建筑汇报 PDF。
 
-主管线:`MaterialPackage → BriefDoc → Outline → Binding → Compose → Render → Review → PDF`
+主管线:`MaterialPackage → BriefDoc → Outline → ConceptRender → Binding → Compose → Render → Review → PDF`
 
 ---
 
@@ -29,6 +29,7 @@ owner: superxiaoyin
 | LLM | OpenRouter 代理,统一经 [config/llm.py](../../config/llm.py) |
 | 数据库 | PostgreSQL 16 + pgvector |
 | 渲染 | Jinja2 / LLM 直出 HTML → Playwright 截图 → PDF |
+| 概念图生成 | runninghub ComfyUI 工作流(image-to-image),见 [decisions/ADR-005](decisions/ADR-005-concept-render-via-outline.md) |
 
 **当前模型配置**(见 [.env](../../.env)):
 - `LLM_STRONG_MODEL=claude-opus-4-6` — BriefDoc / Outline / Composer
@@ -61,6 +62,8 @@ E2E 脚本通过 `--composer-mode html|structured` 切换。默认 HTML。
 | 在 docker 外直接跑脚本 | 需先启动 db/redis,且 host override `DATABASE_URL=...@localhost:5432/...` |
 | 建筑类型硬编码 | 所有类型走 `building_type` 参数注入,不加 if-else |
 | 把 API key / OSS secret 写进文档或提交 | `.env` 已 gitignore,文档中用占位符 |
+| concept_render 失败时阻塞管线 | 任何 runninghub 异常都必须降级为占位图并 `status="fallback"`,不能抛出(见 [decisions/ADR-005](decisions/ADR-005-concept-render-via-outline.md)) |
+| 直接 HTTP 调用 runninghub API | 统一走 `tool/image_gen/runninghub.RunningHubClient`,重试/终止状态/超时逻辑已封装 |
 
 ---
 
@@ -95,7 +98,7 @@ python scripts/material_package_e2e.py test_material/project1 --real-llm --max-s
 
 ### Celery Worker(Windows 必须 --pool=solo)
 ```bash
-celery -A tasks.celery_app worker --pool=solo -Q default,outline,render,export --loglevel=info
+celery -A tasks.celery_app worker --pool=solo -Q default,outline,render,export,concept_render --loglevel=info
 ```
 
 ---

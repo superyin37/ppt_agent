@@ -1,7 +1,7 @@
 ---
 name: 项目当前状态
 description: 当前能跑什么/不能跑什么/本周焦点/阻塞点 — 覆写式,只保留最新真相
-last_updated: 2026-04-20
+last_updated: 2026-04-21
 owner: superxiaoyin
 ---
 
@@ -32,9 +32,10 @@ owner: superxiaoyin
 | PDF 拼装 | ✅ | `render.exporter.compile_pdf()` |
 | Review v2 回环(HTML 模式) | ✅ | recompose → re-render → re-review,最多 2 轮 |
 | Design Advisor(5 维度评分) | ✅ | vision review mode B |
-| Celery 异步管线 | ✅ | 4 队列:default / outline / render / export |
-| 单元测试 | ✅ | 96 test functions × 11 files |
-| 集成测试 | ✅ | 6 test functions × 1 file(需 DB) |
+| Celery 异步管线 | ✅ | 5 队列:default / outline / render / export / concept_render |
+| **Concept Render(概念渲染)** | ✅ | ADR-005,runninghub 9 图生成,失败降级占位图 |
+| 单元测试 | ✅ | 96+10 test functions × 12 files |
+| 集成测试 | ✅ | 6+3 test functions × 2 files(需 DB) |
 
 ---
 
@@ -42,7 +43,6 @@ owner: superxiaoyin
 
 | 缺口 | 严重度 | 指向 |
 |------|-------|------|
-| **Nanobanana 图像生成**未接入 | P1 | `tool/image_gen/` 目录缺 `nanobanana.py` |
 | **联网搜索**未接入 | P1 | `tool/search/` 目录缺 `web_search.py`,蓝图中"背景研究""竞品分析"章节依赖它 |
 | **PPTX 导出**未实现 | P2 | `python-pptx` 已在依赖中,无代码 |
 | **真实 OSS 存储**未配置 | P2 | 开发走 `D:\tmp\` mock |
@@ -56,8 +56,8 @@ owner: superxiaoyin
 
 | 指标 | 值 | 来源 |
 |------|-----|-----|
-| 单元测试数 | **96 test functions × 11 files** | `tests/unit/` 实际代码,2026-04-10 |
-| 集成测试数 | **6 test functions × 1 file** | `tests/integration/test_project_flow.py` |
+| 单元测试数 | **96+10 test functions × 12 files** | `tests/unit/` 实际代码,2026-04-21 新增 `test_runninghub.py` |
+| 集成测试数 | **6+3 test functions × 2 files** | `test_project_flow.py` + 2026-04-21 新增 `test_concept_render.py` |
 | pytest 实际运行数 | 因 parametrize 展开可能更多 | 以 `pytest --collect-only -q` 为准 |
 | 蓝图总页数 | **40 页**(可变章节实际 41) | [config/ppt_blueprint.py](../../config/ppt_blueprint.py) |
 | 布局原语数 | **11 种** | [schema/visual_theme.py](../../schema/visual_theme.py) |
@@ -69,8 +69,9 @@ owner: superxiaoyin
 
 ## 本周焦点
 
-- [ ] **端到端再跑一次全量 real-LLM 41 页** — 距上次成功运行(2026-04-05)已 15 天,需确认 review 回环 v2 修复后依然稳定
-- [ ] 补 Nanobanana 或 web_search 任一外部工具,解锁蓝图中占位章节
+- [ ] **端到端再跑一次全量 real-LLM 41 页** — 距上次成功运行(2026-04-05)已 16 天,需确认 review 回环 v2 + 新增 concept_render 依然稳定
+- [ ] 补 web_search 外部工具,解锁蓝图中"背景研究""竞品分析"占位章节
+- [ ] 申请 runninghub 正式 workflow_id / api_key,跑一次真机概念渲染端到端
 
 ## 阻塞点(Blockers)
 

@@ -25,6 +25,7 @@ sys.path.insert(0, str(ROOT))
 
 from agent.brief_doc import generate_brief_doc
 from agent.composer import ComposerMode, _default_theme, compose_all_slides, recompose_slide_html
+from agent.concept_render import run_concept_render
 from agent.critic import review_slide
 from agent.material_binding import bind_outline_slides
 from agent.outline import generate_outline
@@ -77,6 +78,11 @@ def _parse_args() -> argparse.Namespace:
         "--design-review",
         action="store_true",
         help="Enable design advisor review (scores + improvement suggestions for each slide).",
+    )
+    parser.add_argument(
+        "--skip-concept-render",
+        action="store_true",
+        help="Skip the concept render step (useful when runninghub is unreachable).",
     )
     return parser.parse_args()
 
@@ -551,6 +557,26 @@ async def run_validation(args: argparse.Namespace) -> int:
             }
         )
         _write_json(output_dir / "outline.json", outline.spec_json)
+
+        if args.skip_concept_render:
+            summary["steps"].append({"step": "concept_render", "status": "skipped"})
+        else:
+            try:
+                cr_stats = await run_concept_render(project.id, db)
+                db.commit()
+                summary["steps"].append(
+                    {
+                        "step": "concept_render",
+                        "status": "ok",
+                        "total": cr_stats.total,
+                        "generated": cr_stats.generated,
+                        "placeholders": cr_stats.placeholders,
+                    }
+                )
+            except Exception as exc:
+                db.rollback()
+                LOGGER.warning("concept_render failed, continuing without images: %s", exc)
+                summary["steps"].append({"step": "concept_render", "status": "failed", "error": str(exc)})
 
         bindings = bind_outline_slides(project.id, outline.id, db)
         db.commit()

@@ -11,6 +11,8 @@ from schema.page_slot import InputRequirement
 INPUT_ALIAS_PATTERNS: dict[str, list[str]] = {
     "brief_doc": [],
     "project_name": [],
+    "project_brief_data": [],
+    "concept_description": [],
     "web_search_policy": [],
     "web_search_planning": [],
     "web_search_competitors": [],
@@ -29,6 +31,11 @@ INPUT_ALIAS_PATTERNS: dict[str, list[str]] = {
     "chart_industry_structure": ["economy.industry.chart.*"],
     "chart_retail": ["economy.consumption.chart.*"],
     "chart_income_expense": ["economy.consumption.chart.*"],
+    # Concept render outputs (see ADR-005)
+    "concept_aerial": ["concept.*.aerial"],
+    "concept_ext_perspective": ["concept.*.ext_perspective"],
+    "concept_int_perspective": ["concept.*.int_perspective"],
+    "concept_image": ["concept.*.aerial", "concept.*.ext_perspective", "concept.*.int_perspective"],
 }
 
 

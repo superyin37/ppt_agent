@@ -1,7 +1,7 @@
 ---
 name: 项目术语表
 description: 项目黑话 / 缩写 / 关键概念定义 —— Agent 遇到陌生词汇先查这里
-last_updated: 2026-04-20
+last_updated: 2026-04-21
 owner: superxiaoyin
 ---
 
@@ -26,6 +26,11 @@ owner: superxiaoyin
 | **LayoutSpec(布局规格)** | Composer v2 结构化模式产出,含 `primitive`(布局原语)+ `region_bindings`(区域 → 内容块) | `schema/visual_theme.py` |
 | **ContentBlock(内容块)** | LayoutSpec 的最小内容单元,有 13 种 `content_type`(heading / body-text / chart / kpi-card 等) | `schema/visual_theme.py` |
 | **body_html** | Composer v3 HTML 模式的产出,LLM 直接输出的 `<body>` 内部内容,由引擎注入 theme CSS | `agent/composer.py` |
+| **ConceptProposal(概念方案)** | Outline 产出的结构化方案描述:`name` / `design_idea` / `narrative` / `massing_hint` / `material_hint` / `mood_hint`,固定 3 个 | `schema/concept_proposal.py` |
+| **Concept Render(概念渲染)** | ADR-005 引入的管线步骤,为每个 ConceptProposal 生成 3 张建筑表现图(鸟瞰 + 外人视 + 内人视 = 9 张),`logical_key = concept.{N}.{view}` | `agent/concept_render.py` |
+| **runninghub** | ComfyUI 云端工作流服务,用于调用 `rhart-image-n-g31-flash-official/image-to-image` 模型做概念渲染;接入详见 [decisions/ADR-005](decisions/ADR-005-concept-render-via-outline.md) | `tool/image_gen/runninghub.py` |
+| **串行链式一致性** | 概念渲染保证同一方案 3 张图一致的策略:鸟瞰(denoise=0.75, ref=场地卫星图) → 外人视(0.60, ref=鸟瞰) → 内人视(0.50, ref=外人视) | `agent/concept_render.py` |
+| **placeholder(占位图)** | runninghub 不可达时的降级图:纯灰底 + "生成失败" 水印,Asset 以 `status="fallback"` 写入 | `tool/image_gen/placeholder.py` |
 
 ---
 
@@ -36,7 +41,8 @@ owner: superxiaoyin
 | **Intake Agent** | 自然语言 → `ProjectBriefData` 的多轮对话 Agent |
 | **Reference Agent** | pgvector 向量检索 + 案例重排序 + 偏好摘要生成 |
 | **Brief Doc Agent** | 读素材包 → 生成 BriefDoc(设计建议书大纲) |
-| **Outline Agent** | 读 BriefDoc + 蓝图 → 生成每页 content_directive |
+| **Outline Agent** | 读 BriefDoc + 蓝图 → 生成每页 content_directive,并输出 3 个 ConceptProposal |
+| **Concept Render Agent** | 读 ConceptProposal + 场地卫星图 → 通过 runninghub 产出 9 张概念图 Asset,失败降级占位图 |
 | **Material Binding** | 逐页将 required_input_keys 匹配到 MaterialItem / Asset |
 | **Composer Agent** | 读 SlideMaterialBinding + VisualTheme → 生成 LayoutSpec(v2)或 body_html(v3) |
 | **Critic Agent** | 3 层审查:rule lint / semantic check / vision review + 设计顾问评分 |
@@ -110,6 +116,9 @@ SlideStatus:`PENDING` / `COMPOSED` / `RENDERED` / `REVIEW_PASSED` / `REPAIR_NEED
 | **LLM_STRONG_MODEL** | 强模型,用于 BriefDoc/Outline/Composer(当前 claude-opus-4-6) |
 | **LLM_FAST_MODEL** | 快模型,用于降级 fallback(当前 claude-sonnet-4-6) |
 | **LLM_CRITIC_MODEL** | 审查模型,用于 semantic/vision review(当前 google/gemini-3.1-pro-preview) |
+| **RUNNING_HUB_KEY** | runninghub API 鉴权 key(放 JSON body,不是 HTTP header) |
+| **RUNNING_HUB_WORKFLOW_ID** | runninghub 上发布的 ComfyUI 工作流 id,概念渲染调用的目标 |
+| **RUNNING_HUB_*_NODE_ID** | 工作流中待覆写节点的 id(prompt / negative / init_image / seed) |
 
 ---
 
