@@ -8,7 +8,14 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from schema.slide import SlideSpec, BlockContent, SlideConstraints, StyleTokens
 from schema.common import LayoutTemplate, ReviewSeverity, ReviewDecision
-from schema.review import ReviewIssue, ReviewReport, RepairAction
+from schema.review import (
+    DesignAdvice,
+    DesignDimension,
+    DesignSuggestion,
+    ReviewIssue,
+    ReviewReport,
+    RepairAction,
+)
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -308,7 +315,10 @@ async def test_semantic_check_returns_empty_on_llm_failure():
                side_effect=RuntimeError("timeout")):
         result = await semantic_check(inp)
 
-    assert result.issues == []
+    assert len(result.issues) == 1
+    assert result.issues[0].rule_code == "SEMANTIC_SKIPPED"
+    assert result.issues[0].severity == ReviewSeverity.P2
+    assert result.issues[0].auto_fixable is False
     assert result.repair_actions == []
 
 
@@ -446,3 +456,45 @@ async def test_review_slide_caps_issues_at_5():
         _, report = await review_slide(spec, {}, layers=["rule", "semantic"])
 
     assert len(report.issues) <= 5
+
+
+# ── design advisor gate tests ─────────────────────────────────────────────────
+
+def test_design_advice_to_issues_triggers_repair_gate():
+    from agent.critic import _design_advice_to_issues
+
+    advice = DesignAdvice(
+        slide_no=3,
+        dimensions=[
+            DesignDimension(dimension="focal_point", score=5.8, comment="焦点弱"),
+            DesignDimension(dimension="polish", score=5.9, comment="完成度不足"),
+        ],
+        overall_score=6.2,
+        suggestions=[
+            DesignSuggestion(
+                code="D012",
+                category="focal_point",
+                severity="recommended",
+                message="重点页冲击力不足",
+            ),
+        ],
+    )
+
+    issues = _design_advice_to_issues(advice, page_type="cover")
+    codes = {issue.rule_code for issue in issues}
+
+    assert "D000_DESIGN_SCORE_LOW" in codes
+    assert "D007" in codes
+    assert "D009" in codes
+    assert "D012" in codes
+    assert all(issue.auto_fixable for issue in issues)
+
+
+def test_design_advice_gate_can_be_disabled(monkeypatch):
+    from agent.critic import _design_advice_to_issues
+    from config.settings import settings
+
+    monkeypatch.setattr(settings, "design_review_gate_enabled", False)
+    advice = DesignAdvice(slide_no=1, overall_score=1.0)
+
+    assert _design_advice_to_issues(advice, page_type="cover") == []

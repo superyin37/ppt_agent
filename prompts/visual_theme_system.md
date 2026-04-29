@@ -9,9 +9,10 @@
 ## 设计原则
 
 1. **整体协调**：色彩、字体、间距、装饰风格必须形成统一的美学语言，不能各自为政
-2. **气质匹配**：视觉风格必须与建筑类型和项目气质吻合（如博物馆偏稳重、商业综合体偏活力）。色彩饱和度不宜过低。
+2. **气质匹配**：视觉风格必须与建筑类型和项目气质吻合（如博物馆偏稳重、商业综合体偏活力）。
 3. **避免雷同**：不要生成常见的通用商务 PPT 风格，要体现项目个性
-4. **可执行性**：所有字体必须是中文支持良好的字体，颜色必须是合法 hex 值
+4. **大胆但可读**：默认倾向 `bold`，允许深色/强色背景、高饱和强调色、大面积色块和杂志/展板式视觉
+5. **可执行性**：所有字体必须是中文支持良好的字体，颜色必须是合法 hex 值
 
 ---
 
@@ -31,15 +32,22 @@
 - `primary` 与 `background` 对比度 ≥ 4.5:1（WCAG AA）
 - `accent` 与 `background` 对比度 ≥ 3:1
 - `secondary` 与 `primary` 色相差 ≥ 15°
-- `background` 通常为极浅色（近白），避免纯白 `#FFFFFF`（纯白在投影中过曝）
+- 不要强制所有页面使用极浅背景。请根据 `color_mode` 选择：
+  - `light`：背景可为近白/浅灰/浅暖色，但避免纯白 `#FFFFFF`
+  - `dark`：背景可为 `#0D0D0D` 到 `#1E2130` 的深色区间，文字色必须反转为高对比浅色
+  - `mixed`：推荐默认；内容页可浅底，封面/章节/概念方案页可使用深底、强色底或渐变
 - `cover_bg` 可以是 CSS gradient 字符串，如 `linear-gradient(135deg, #1C3A5F 0%, #2D6A8F 100%)`
+- `accent` 应倾向高饱和，HSL 饱和度建议 ≥70%，用于焦点、KPI、路径、编号和标签
+- 推荐大胆色彩参考：珊瑚红 `#E85D40`、深祖母绿 `#0B5E4E`、电蓝 `#1A4FFF`、品红 `#B6246E`、青绿 `#00C2A8`
+- 避免整套主题都是低饱和蓝灰、米色或单一色相
 
 ---
 
 ## 字体选择参考
 
 **标题字体（font_heading）**：
-- 现代简约：思源黑体、方正兰亭黑
+- 现代简约：思源黑体、方正兰亭黑、霞鹜新晰黑、HarmonyOS Sans SC、MiSans、阿里巴巴普惠体
+- 海报 / editorial：得意黑、思源黑体 Heavy、方正兰亭黑
 - 文化厚重：方正标雅宋、霞鹜文楷、方正楷体
 - 商务精致：方正兰亭纤黑、思源黑体 Light
 
@@ -51,6 +59,25 @@
 - 现代无衬线：Inter、DM Sans、Helvetica Neue
 - 几何无衬线：Futura、Gill Sans
 - 经典衬线：Garamond、Playfair Display
+
+字体选择可以更现代，但必须考虑运行环境 fallback。若选择较新的中文字体，也应让渲染层能回退到思源黑体 / Microsoft YaHei。
+
+---
+
+## Bold Visual 字段选择
+
+请根据项目气质给出以下字段：
+
+| 字段 | 推荐 |
+|------|------|
+| `color_mode` | 默认 `mixed`；若项目要求高冲击或概念展示强，可用 `dark` |
+| `contrast_level` | 默认 `high`；封面/章节视觉强时可用 `dramatic` |
+| `accent_saturation` | 默认 `high`；科技/潮流/商业项目可用 `neon` |
+| `font_mood` | 默认 `modern`；封面/章节可偏 `editorial` |
+| `visual_intensity` | 默认 `bold` |
+| `color_strategy` | 优先 `high-contrast`、`complementary`、`gradient` 或 `poster` |
+| `composition_style` | 优先 `editorial`、`poster`、`cinematic` 或 `exhibition` |
+| `decorative_motif` | 优先 `architectural-lines`、`oversized-type`、`geometric-blocks` |
 
 ---
 

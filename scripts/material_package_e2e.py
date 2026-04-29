@@ -425,8 +425,8 @@ async def _render_and_review(project_id, outline, output_dir: Path, db, *, desig
 
             repair_round += 1
 
-        # Also run design_advisor if we passed on the first try and flag is set
-        if design_review and repair_round == 0 and report and not report.design_advice:
+        # Ensure the final accepted screenshot gets a design score when requested.
+        if design_review and report and not report.design_advice:
             _, da_report = await review_slide(
                 spec=fallback_spec if is_html_mode else LayoutSpec.model_validate(slide.spec_json),
                 brief=brief,

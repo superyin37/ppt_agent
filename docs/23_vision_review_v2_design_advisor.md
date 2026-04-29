@@ -48,12 +48,14 @@ compose_slide() → render_slide_html_direct() → screenshot_slide()
 | `sample` | 每章抽 1 页 + 封面 + 末页（快速全局感知） |
 | `cover_only` | 只对封面/章节页跑（这些页面设计权重最高） |
 
-### 2.3 不引入自动重写闭环（Phase 1）
+### 2.3 自动重写闭环状态
 
 Phase 1 只输出建议，**不自动修改 HTML**。原因：
 - 设计改善涉及大幅重写 HTML，单次 LLM 调用无法可靠完成
 - 自动修改可能引入新问题，需要 re-render + re-review 循环
 - Phase 1 先验证建议质量，Phase 2 再考虑闭环
+
+**2026-04-25 更新（ADR-006）**：Bold Visual Design 升级将把 Design Advisor 从“建议报告”提升为返工 gate。低分或关键建议码会触发 `recompose_slide_html()`，再进入 re-render + re-review。structured 模式仍以 rule/semantic 修复为主,HTML 模式以 vision/design review 反馈为主。
 
 ---
 
@@ -257,13 +259,23 @@ Context:
 | 5 | `scripts/material_package_e2e.py` | `--design-review` 开关；输出 `design_scores.json` 汇总 |
 | 6 | Smoke test | 用现有截图验证评分 + 建议输出 |
 
-### Phase 2：闭环迭代（未来）
+### Phase 2：闭环迭代（ADR-006 计划推进）
 
 | 步骤 | 说明 |
 |---|---|
 | 2a | 根据 `DesignAdvice.suggestions` 生成修改指令，回传 Composer 重写 HTML |
 | 2b | Re-render + Re-review 循环（最多 2 轮） |
 | 2c | 评分低于阈值（如 C 级）自动触发 redesign |
+
+建议 gate:
+
+| 条件 | 动作 |
+|---|---|
+| `overall_score < 7.0` | recompose HTML |
+| `focal_point < 6.5` | 强化视觉焦点和阅读路径 |
+| `polish < 6.5` | 增加装饰层次和完成度 |
+| `D009` | 增强视觉语言,避免纯文字草稿感 |
+| `D012` 且页面为封面/章节/概念方案 | 重做重点页冲击力 |
 
 ### Phase 3：全局一致性审查（未来）
 
@@ -392,4 +404,4 @@ Strongest slides:
 - `target_selector` 基于 `.slide-root` 内部结构
 - `message` 引用 Composer 的设计规范用语
 
-这为 Phase 2 的自动修改奠定基础：Composer 可以直接理解设计顾问的建议并应用到 HTML 中。
+这为 Phase 2 的自动修改奠定基础：Composer 可以直接理解设计顾问的建议并应用到 HTML 中。ADR-006 后,这些建议会进入 `recompose_slide_html()` 的输入,作为低分页面自动返工的主要依据。

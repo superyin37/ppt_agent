@@ -248,6 +248,22 @@ async def _review_one_slide(slide, brief_dict: dict, layers: list[str]):
     # HTML 模式：跳过 rule/semantic lint（fallback_spec 是假数据），只用 vision
     effective_layers = ["vision"] if is_html_mode else layers
     screenshot_url = slide.screenshot_url if "vision" in effective_layers else None
+    page_type = "content"
+    if spec_json.get("is_cover") or (slide.slide_no or 0) == 1:
+        page_type = "cover"
+    elif spec_json.get("is_chapter_divider"):
+        page_type = "chapter_divider"
+    else:
+        page_hint = " ".join([
+            str(spec_json.get("page_type") or ""),
+            str(spec_json.get("slot_id") or ""),
+            slide.title or "",
+            slide.section or "",
+        ]).lower()
+        if "concept" in page_hint or "概念" in page_hint:
+            page_type = "concept"
+
+    content_summary = spec_json.get("content_summary") or slide.title or ""
 
     repaired_spec, report = await review_slide(
         spec=spec,
@@ -255,6 +271,9 @@ async def _review_one_slide(slide, brief_dict: dict, layers: list[str]):
         layers=effective_layers,
         screenshot_url=screenshot_url,
         max_repairs=MAX_REPAIR_ATTEMPTS,
+        design_advisor=is_html_mode,
+        page_type=page_type,
+        content_summary=content_summary,
     )
     return repaired_spec, report, is_html_mode
 

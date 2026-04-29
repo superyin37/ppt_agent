@@ -57,7 +57,14 @@ def render_slides_task(
             # Load assets for this project
             assets_orm = db.query(Asset).filter(Asset.project_id == project_id).all()
             assets_dict = {
-                str(a.id): {"image_url": a.image_url, "data_json": a.data_json}
+                str(a.id): {
+                    "image_url": a.image_url,
+                    "data_json": a.data_json,
+                    "config_json": a.config_json,
+                    "source_info": a.source_info,
+                    "logical_key": a.logical_key,
+                    "variant": a.variant,
+                }
                 for a in assets_orm
             }
 

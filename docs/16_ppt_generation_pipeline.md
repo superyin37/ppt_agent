@@ -8,7 +8,9 @@
 > （MaterialPackage）提供全部输入素材，替代了原先的逐项数据采集（POI/交通/经济/
 > 地图/网搜）环节。本文档同时保留两条路径的说明。
 >
-> 最后更新：2026-04-10
+> 最后更新：2026-04-25
+>
+> **2026-04-25 视觉升级口径**：ADR-006 已提出将 Composer v3 HTML 模式统一为产品主流程，structured 模式保留为 fallback/debug。本文档中的 LayoutSpec 说明仍作为 v2 结构化模式参考。
 
 ---
 
@@ -38,11 +40,11 @@
   ↓
 [ Composer Agent（逐页并发）]
   输入：OutlineSlideEntry + SlideMaterialBinding + VisualTheme
-  输出：Slide（LayoutSpec 或 HTML + 资产引用）
+  输出：Slide（主流程：HTML/body_html；fallback/debug：LayoutSpec）
   ↓
 [ 渲染器 ]
   VisualTheme → 动态 CSS
-  LayoutSpec + ContentBlocks → HTML
+  HTML 直出或 LayoutSpec 渲染 → 完整 HTML
   Playwright 截图 → PNG
   ↓
 [ Review Agent（可选）]
@@ -741,7 +743,7 @@ class _BriefDocLLMOutput(BaseModel):
 
 ### 4.5 Composer Agent（`agent/composer.py`）
 
-**职责**：逐页生成 `LayoutSpec`（结构化模式）或直接输出 HTML（HTML 模式）。
+**职责**：逐页生成 HTML 模式的 `body_html`，或在 fallback/debug 场景生成 `LayoutSpec`（结构化模式）。
 
 **两种工作模式**：
 
@@ -751,13 +753,26 @@ class ComposerMode(str, enum.Enum):
     HTML = "html"               # v3: 输出 body_html
 ```
 
+**当前产品口径（ADR-006）**：
+- 主流程应显式使用 `ComposerMode.HTML`
+- `structured` 保留为稳定回退、调试和结构化测试路径
+- 若代码入口未显式传 mode,需检查是否仍落回 `ComposerMode.STRUCTURED`
+- HTML 模式输出存储为 `{"html_mode": true, "body_html": "...", "asset_refs": [...]}`
+
 **输入**：
 - `OutlineSlideEntry`：当前页的大纲条目
 - `SlideMaterialBinding`：素材绑定信息（derived_asset_ids、evidence_snippets）
 - `VisualTheme`：视觉参数
 - 已过滤的 `Asset` 列表：仅包含绑定中的资产
 
-**LayoutSpec 生成规则**：
+**HTML 模式设计规则**：
+- Composer v3 直接输出 `<div class="slide-root">...</div>` 内部页面结构
+- 必须使用 VisualTheme 注入的 CSS 变量,如 `var(--color-primary)`、`var(--text-h1)`、`var(--safe-margin)`
+- 允许使用 CSS Grid/Flexbox/SVG 做非对称构图、满版图、强色块和注释层
+- 图片只使用 `asset:{id}` 引用,由渲染器替换为真实 URL
+- 设计目标从“信息排版”升级为“有明确视觉焦点的建筑汇报页面”
+
+**LayoutSpec 生成规则（structured fallback/debug）**：
 - `is_cover=True` → 使用 `CoverStyle.layout_mood` 对应的原语
 - `is_chapter_divider=True` → 强制 `full-bleed`，`density=spacious`
 - 其余页面：Composer LLM 根据 `layout_hint` + `VisualTheme` 自由选择最合适的原语

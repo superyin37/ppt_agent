@@ -57,6 +57,11 @@ class Settings(BaseSettings):
     max_repair_attempts: int = 3
     max_slides_per_deck: int = 30
     case_library_min_size: int = 30
+    composer_mode: str = "html"  # html / structured
+    design_review_gate_enabled: bool = True
+    design_review_min_score: float = 7.0
+    design_review_min_focal_point: float = 6.5
+    design_review_min_polish: float = 6.5
 
     # 图像生成 (runninghub) — env 变量约定 RUNNING_HUB_*
     concept_render_enabled: bool = True

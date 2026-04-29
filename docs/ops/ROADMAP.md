@@ -1,7 +1,7 @@
 ---
 name: 项目路线图
 description: 按里程碑粒度的大方向规划 — 月度更新,不记录具体任务(那在 TODO.md)
-last_updated: 2026-04-20
+last_updated: 2026-04-25
 owner: superxiaoyin
 ---
 
@@ -14,12 +14,13 @@ owner: superxiaoyin
 ## 当前阶段:M3 — 功能补全与稳定化
 
 **周期**:2026-04 ~ 2026-05
-**目标**:让 40 页蓝图所有章节都有真实内容产出(不是占位),并稳定通过 review 回环。
+**目标**:让 40 页蓝图所有章节都有真实内容产出(不是占位),稳定通过 review 回环,并把 PPT 视觉质量从"可用"提升到"有明确设计感"。
 
 ### 关键指标
 - 41 页全量 real-LLM 连续 3 次跑通,全部 slide PASS 或合理 SKIPPED
 - 所有 P0/P1 bug 清零(见 [BUGS.md](BUGS.md))
 - Nanobanana + web_search 至少二选一接入
+- HTML 模式成为产品主流程,Design Advisor 平均分 ≥ 7.0,重点页无 D012 冲击力不足
 
 ---
 
@@ -46,6 +47,7 @@ owner: superxiaoyin
 - 真实 OSS 存储
 - 前端可视化流程(候选技术:React + FastAPI WebSocket)
 - 增量/差异化再生成(用户只改部分内容,不全量重跑)
+- HTML Bold Visual Design 稳定化:设计强度参数、低分自动返工、重点页专项 prompt
 - 多用户 / 多项目并发
 - 监控与可观测性(Flower 现有,可加 Prometheus/Grafana)
 

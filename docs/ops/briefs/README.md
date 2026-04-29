@@ -1,7 +1,7 @@
 ---
 name: Task Briefs 目录说明
 description: 启动大任务前写给 Coding Agent 的任务简报 —— 给 Agent 对齐的快照上下文
-last_updated: 2026-04-20
+last_updated: 2026-04-25
 owner: superxiaoyin
 ---
 
@@ -94,6 +94,7 @@ Agent 开干后追加笔记:
 | 日期 | 状态 | 主题 | 对应 TODO |
 |------|------|------|----------|
 | [2026-04-20](2026-04-20-concept-render.md) | Draft | 概念方案建筑渲染图生成(runninghub image-to-image) | P1-2 |
+| [2026-04-25](2026-04-25-html-bold-design-upgrade.md) | In Progress | HTML 默认化与 Bold Visual Design 升级 | P1-6 |
 
 示例可用场景:
 - 接入联网搜索(对应 TODO `P1-3`)

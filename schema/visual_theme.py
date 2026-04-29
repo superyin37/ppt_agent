@@ -78,6 +78,15 @@ class VisualTheme(BaseModel):
 
     style_keywords: list[str]       # 如 ["水墨留白", "现代简约"]
     generation_prompt_hint: str     # LLM 生成时的核心指令摘要
+    color_mode: Literal["light", "dark", "mixed"] = "mixed"
+    contrast_level: Literal["standard", "high", "dramatic"] = "high"
+    accent_saturation: Literal["normal", "high", "neon"] = "high"
+    font_mood: Literal["classic", "modern", "editorial", "experimental"] = "modern"
+    visual_intensity: Literal["standard", "bold", "experimental"] = "bold"
+    color_strategy: Literal["muted", "high-contrast", "complementary", "gradient", "poster"] = "high-contrast"
+    composition_style: Literal["editorial", "poster", "swiss", "cinematic", "exhibition"] = "editorial"
+    decorative_motif: Literal["grid-lines", "architectural-lines", "oversized-type", "geometric-blocks"] = "architectural-lines"
+    image_treatment: Literal["natural", "duotone", "high-contrast", "masked", "full-bleed"] = "natural"
 
 
 # ─────────────────────────────────────────────

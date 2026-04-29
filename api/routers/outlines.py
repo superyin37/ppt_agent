@@ -9,7 +9,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from agent.brief_doc import generate_brief_doc
-from agent.composer import _default_theme, compose_all_slides
+from agent.composer import ComposerMode, _default_theme, compose_all_slides
 from agent.material_binding import bind_outline_slides
 from agent.outline import generate_outline
 from agent.visual_theme import get_latest_theme
@@ -21,7 +21,7 @@ from db.models.material_package import MaterialPackage
 from db.models.outline import Outline
 from db.models.project import Project, ProjectBrief
 from db.models.slide import Slide
-from render.engine import render_slide_html
+from render.engine import render_slide_html, render_slide_html_direct
 from schema.common import ProjectStatus, SlideStatus
 from schema.outline import OutlineRead
 from schema.visual_theme import LayoutSpec
@@ -75,7 +75,7 @@ def _compose_render_worker(project_id: str):
                 db.flush()
                 bind_outline_slides(pid, outline.id, db)
 
-            asyncio.run(compose_all_slides(pid, db))
+            asyncio.run(compose_all_slides(pid, db, mode=ComposerMode.HTML))
 
         with get_db_context() as db:
             slides = (
@@ -118,8 +118,19 @@ def _compose_render_worker(project_id: str):
             html_map: dict[int, str] = {}
             for slide in slides:
                 try:
-                    spec = LayoutSpec.model_validate(slide.spec_json)
-                    html = render_slide_html(spec, theme=theme, assets=assets_dict, deck_meta=deck_meta)
+                    spec_json = slide.spec_json or {}
+                    if spec_json.get("html_mode"):
+                        html = render_slide_html_direct(
+                            body_html=spec_json.get("body_html", ""),
+                            theme=theme,
+                            assets=assets_dict,
+                            deck_meta=deck_meta,
+                            slide_no=slide.slide_no or 0,
+                            total_slides=len(slides),
+                        )
+                    else:
+                        spec = LayoutSpec.model_validate(spec_json)
+                        html = render_slide_html(spec, theme=theme, assets=assets_dict, deck_meta=deck_meta)
                     slide.html_content = html[:65535]
                     html_map[slide.slide_no] = html
                 except Exception as exc:
@@ -148,7 +159,7 @@ def _compose_render_worker(project_id: str):
 
         from tasks.review_tasks import review_slides
 
-        review_slides.delay(project_id, layers=["rule", "semantic"])
+            review_slides.delay(project_id, layers=["rule", "semantic", "vision"])
         logger.info("_compose_render_worker done: project=%s", project_id)
     except Exception as exc:
         logger.exception("_compose_render_worker failed: %s", exc)

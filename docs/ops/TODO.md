@@ -1,7 +1,7 @@
 ---
 name: 待办清单
 description: P0/P1/P2 分级 TODO,带验收标准 — 覆写式,完成后删除或移入 CHANGELOG
-last_updated: 2026-04-21
+last_updated: 2026-04-25
 owner: superxiaoyin
 ---
 
@@ -28,6 +28,8 @@ owner: superxiaoyin
 - [ ] **[P1-4] 修 BUG-007 中文引号 JSON 解析** — Prompt 强制要求内引号转义,或使用宽松 JSON 修复
   - 验收:semantic review 在含中文引号的 slide 上不再抛 `JSONDecodeError`
 - [ ] **[P1-5] 串联 `tasks/outline_tasks.py` 的 brief_doc→outline 两步** — 当前仅 E2E 脚本手动串联,API 路径不完整
+- [ ] **[P1-6] HTML 默认化 + Bold Visual Design smoke 加固** — 代码已接入且 3 页 real-LLM 基础 smoke 成功;剩余 Design Advisor 稳定性和 residual issue 收敛
+  - 验收:`--real-llm --max-slides 3 --design-review` 对 3 页均产出设计评分;所有 slide 最终 `final_decision=pass`;低分可触发 HTML recompose
 
 ## P2 — 打磨/增强
 

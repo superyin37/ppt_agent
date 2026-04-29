@@ -41,9 +41,9 @@ def compose_slides_task(self, project_id: str):
     """
     import asyncio
     try:
-        from agent.composer import compose_all_slides
+        from agent.composer import ComposerMode, compose_all_slides
         with get_db_context() as db:
-            slides = asyncio.run(compose_all_slides(uuid.UUID(project_id), db))
+            slides = asyncio.run(compose_all_slides(uuid.UUID(project_id), db, mode=ComposerMode.HTML))
         logger.info(f"compose_slides_task: composed {len(slides)} slides for project {project_id}")
 
         # Trigger rendering

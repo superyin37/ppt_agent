@@ -2,6 +2,8 @@
 
 > 本文档详细说明 PPT Agent 从接收素材包到输出 PDF 的完整 9 阶段流水线。
 > 每个阶段包含：触发方式、关键文件与函数、LLM 调用说明、数据模型产出、项目状态变更。
+>
+> **2026-04-25 更新**：ADR-006 计划将 Composer v3 HTML 模式统一为产品主流程。本文中 structured/LayoutSpec 内容保留为 fallback/debug 说明。
 
 ---
 
@@ -41,7 +43,7 @@ Outline（每页 slot / title / directive / asset_keys）
 SlideMaterialBinding（每页绑定具体素材与资产）
   │
   ▼  ⑤ compose_all_slides()                      [LLM × N 页并发]
-Slide（LayoutSpec / HTML + 资产引用）
+Slide（主流程 HTML/body_html；fallback LayoutSpec）
   │
   ▼  ⑥ generate_visual_theme()                   [LLM，可选]
 VisualTheme（配色 / 字体 / 间距 / 装饰）
@@ -332,6 +334,7 @@ Project.status → BINDING
 |------|------|------|------|
 | `compose_all_slides()` | `agent/composer.py` | 492 | 并发编排所有页面 |
 | `_compose_slide_structured()` | `agent/composer.py` | 351 | 结构化模式（v2） |
+| `_compose_slide_html()` | `agent/composer.py` | 381 | HTML 直出模式（v3，ADR-006 主流程） |
 | `_html_fallback()` | `agent/composer.py` | 438 | HTML 降级模式 |
 | `_fallback_layout_spec()` | `agent/composer.py` | 228 | LLM 失败时的兜底布局 |
 
@@ -343,7 +346,34 @@ Project.status → BINDING
 - 全部 `Asset` 记录：构建 asset_summary 列表
 - 每页的 `SlideMaterialBinding`：绑定信息
 
-### LLM 调用 — 结构化模式（v2）
+### LLM 调用 — HTML 模式（v3，目标主流程）
+
+**System Prompt：** `prompts/composer_system_v3.md`
+
+**User Message 与 v2 共用核心上下文：**
+
+| XML 标签 | 内容 |
+|----------|------|
+| `<visual_theme>` | style_keywords / cover_layout_mood / density / color_fill / generation_hint |
+| `<outline_entry>` | 当前页需求 |
+| `<project_brief>` | 项目上下文 |
+| `<slide_material_binding>` | binding_id / derived_asset_ids / evidence_snippets / missing_requirements |
+| `<available_assets>` | 已过滤的资产摘要（仅绑定中的 derived_asset_ids） |
+
+**输出 Schema — `_ComposerHTMLOutput`：**
+
+```json
+{
+  "slide_no": 5,
+  "body_html": "<div class=\"slide-root\">...</div>",
+  "asset_refs": ["asset:550e8400-e29b-41d4-a716-446655440000"],
+  "content_summary": "区位交通分析页，左侧地图主视觉，右侧关键结论"
+}
+```
+
+ADR-006 后,主流程应显式传 `ComposerMode.HTML`。HTML 模式允许 Composer 直接使用 CSS Grid/Flexbox/SVG、满版图、几何色块和浮层注释来增强视觉设计。
+
+### LLM 调用 — 结构化模式（v2 fallback/debug）
 
 **System Prompt：** `prompts/composer_system_v2.md`
 
@@ -542,12 +572,15 @@ Project.status → SLIDE_PLANNING
 对每个 Slide：
 
 1. **CSS 生成** — `generate_theme_css()` 将 VisualTheme 转为 CSS 自定义属性
-2. **布局渲染** — `_render_layout()` 根据 `primitive_type` 生成对应 HTML 结构：
+2. **模式分支**：
+   - HTML 模式：`render_slide_html_direct()` sanitize `body_html`,替换 `asset:{id}`,注入 theme CSS
+   - structured 模式：`render_slide_html()` 调用 `_render_layout()` 根据 `primitive_type` 生成 HTML 结构
+3. **structured 布局渲染** — `_render_layout()` 支持：
    - `full-bleed`：背景图 + 文字覆盖层
    - `split-h`：左右两区域 flex 布局
    - `grid`：CSS Grid 多列
    - 其他共 11 种布局（见阶段五表格）
-3. **内容块渲染** — `_render_block()` 处理每个 ContentBlock：
+4. **内容块渲染** — structured 模式下 `_render_block()` 处理每个 ContentBlock：
 
    | content_type | HTML 输出 |
    |-------------|-----------|
@@ -559,8 +592,8 @@ Project.status → SLIDE_PLANNING
    | bullet-list | `<ul><li>` + accent 圆点 |
    | kpi-value | 大号数字展示 |
 
-4. **资产注入** — 将 `asset:uuid` 引用解析为实际的 `image_url`
-5. **输出** — 完整 HTML 页面，视口 1920×1080
+5. **资产注入** — 将 `asset:uuid` 引用解析为实际的 `image_url`
+6. **输出** — 完整 HTML 页面，视口 1920×1080
 
 ### 截图批处理
 
@@ -607,18 +640,21 @@ Project.status → REVIEWING
 |----|------|---------|
 | `rule` | 布局规则 | 文字溢出、图片宽高比、间距合规 |
 | `semantic` | 内容语义 | 信息清晰度、视觉层次、一致性 |
+| `vision` | 截图视觉缺陷 | 杂乱、模糊、文字压背景、空白浪费 |
+| `design_advisor` | 设计评分 | 配色、排版、布局、视觉焦点、完成度 |
 
 ### 修复流程
 
 ```
 发现问题
   → 标记 Slide.status = REPAIR_NEEDED
-  → 重新调用 compose_slide()（生成新 LayoutSpec）
-  → 重新调用 render_slide_html() + screenshot()
+  → HTML 模式:recompose_slide_html() 改写 body_html
+  → structured 模式:修复 LayoutSpec
+  → 重新调用 render + screenshot()
   → 再次 review
 ```
 
-审查规则详见 `docs/11_review_rules.md`。
+ADR-006 后,Design Advisor 低分也可触发返工:例如 `overall_score < 7.0`、`focal_point < 6.5`、重点页出现 `D012`。审查规则详见 `docs/11_review_rules.md` 和 `docs/23_vision_review_v2_design_advisor.md`。
 
 ---
 

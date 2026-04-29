@@ -1,7 +1,7 @@
 ---
 name: 项目术语表
 description: 项目黑话 / 缩写 / 关键概念定义 —— Agent 遇到陌生词汇先查这里
-last_updated: 2026-04-21
+last_updated: 2026-04-25
 owner: superxiaoyin
 ---
 
@@ -26,6 +26,8 @@ owner: superxiaoyin
 | **LayoutSpec(布局规格)** | Composer v2 结构化模式产出,含 `primitive`(布局原语)+ `region_bindings`(区域 → 内容块) | `schema/visual_theme.py` |
 | **ContentBlock(内容块)** | LayoutSpec 的最小内容单元,有 13 种 `content_type`(heading / body-text / chart / kpi-card 等) | `schema/visual_theme.py` |
 | **body_html** | Composer v3 HTML 模式的产出,LLM 直接输出的 `<body>` 内部内容,由引擎注入 theme CSS | `agent/composer.py` |
+| **Bold Visual Design** | ADR-006 推进的视觉升级方向:HTML 主流程 + 高对比/高饱和主题 + 强视觉焦点 + Design Advisor gate | `docs/ops/decisions/ADR-006-html-mode-bold-visual-design.md` |
+| **Visual Intensity(视觉强度)** | VisualTheme 的主题/生成参数,如 `standard / bold / experimental`,用于控制页面视觉冲击力 | `schema/visual_theme.py` |
 | **ConceptProposal(概念方案)** | Outline 产出的结构化方案描述:`name` / `design_idea` / `narrative` / `massing_hint` / `material_hint` / `mood_hint`,固定 3 个 | `schema/concept_proposal.py` |
 | **Concept Render(概念渲染)** | ADR-005 引入的管线步骤,为每个 ConceptProposal 生成 3 张建筑表现图(鸟瞰 + 外人视 + 内人视 = 9 张),`logical_key = concept.{N}.{view}` | `agent/concept_render.py` |
 | **runninghub** | ComfyUI 云端工作流服务,用于调用 `rhart-image-n-g31-flash-official/image-to-image` 模型做概念渲染;接入详见 [decisions/ADR-005](decisions/ADR-005-concept-render-via-outline.md) | `tool/image_gen/runninghub.py` |
@@ -47,7 +49,7 @@ owner: superxiaoyin
 | **Composer Agent** | 读 SlideMaterialBinding + VisualTheme → 生成 LayoutSpec(v2)或 body_html(v3) |
 | **Critic Agent** | 3 层审查:rule lint / semantic check / vision review + 设计顾问评分 |
 | **recompose** | Composer v3 的回环修复入口,根据 issues 修 body_html | 
-| **Design Advisor** | Vision Review Mode B:5 维度评分 + D001~D012 改善建议 |
+| **Design Advisor** | Vision Review Mode B:5 维度评分 + D001~D012 改善建议;ADR-006 后作为低分返工 gate |
 
 ---
 
@@ -127,7 +129,7 @@ SlideStatus:`PENDING` / `COMPOSED` / `RENDERED` / `REVIEW_PASSED` / `REPAIR_NEED
 | 名称 | 含义 |
 |------|------|
 | **Composer v2 / Structured mode** | LLM → LayoutSpec JSON → 固定 HTML 模板 |
-| **Composer v3 / HTML mode(默认)** | LLM → body_html → 安全过滤 + theme CSS 注入 |
+| **Composer v3 / HTML mode** | LLM → body_html → 安全过滤 + theme CSS 注入;ADR-006 后作为产品主流程 |
 | **Review v2** | 2026-04-07 修复后的 review 回环,含 HTML 模式 recompose |
 | **Vision Review Mode A** | 缺陷检测(V001~V007) |
 | **Vision Review Mode B / Design Advisor** | 5 维度评分 + 改善建议 |

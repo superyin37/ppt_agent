@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from pathlib import Path
 
+from config.settings import settings
 from schema.common import ReviewSeverity
 from schema.review import (
     DesignAdvice,
@@ -59,6 +60,85 @@ class _VisionOutput(BaseModel):
 def _is_invalid_model_error(exc: Exception) -> bool:
     message = str(exc).lower()
     return "not a valid model id" in message or "invalid model" in message
+
+
+def _get_design_dimension_score(advice: DesignAdvice, dimension: str) -> float | None:
+    for item in advice.dimensions:
+        if item.dimension == dimension:
+            return item.score
+    return None
+
+
+def _design_advice_to_issues(advice: DesignAdvice, page_type: str) -> list[ReviewIssue]:
+    """Convert design advisor scores into repair-triggering issues."""
+    if not settings.design_review_gate_enabled:
+        return []
+
+    issues: list[ReviewIssue] = []
+    seen_codes: set[str] = set()
+    slide_no = advice.slide_no or 0
+    page_type_key = (page_type or "content").lower()
+
+    def append_issue(
+        rule_code: str,
+        message: str,
+        suggested_fix: str,
+        severity: ReviewSeverity = ReviewSeverity.P1,
+    ) -> None:
+        if rule_code in seen_codes:
+            return
+        seen_codes.add(rule_code)
+        issues.append(ReviewIssue(
+            issue_id=f"{rule_code}_{slide_no}_{len(issues)}",
+            rule_code=rule_code,
+            layer="design",
+            severity=severity,
+            message=message,
+            suggested_fix=suggested_fix,
+            auto_fixable=True,
+        ))
+
+    if advice.overall_score < settings.design_review_min_score:
+        append_issue(
+            "D000_DESIGN_SCORE_LOW",
+            f"Design Advisor overall_score={advice.overall_score} below threshold {settings.design_review_min_score}.",
+            "Recompose the slide with a stronger visual anchor, clearer hierarchy, richer color contrast, and higher polish while preserving facts and asset references.",
+        )
+
+    focal_score = _get_design_dimension_score(advice, "focal_point")
+    if focal_score is not None and focal_score < settings.design_review_min_focal_point:
+        append_issue(
+            "D007",
+            f"Focal point score={focal_score} below threshold {settings.design_review_min_focal_point}.",
+            "Create one dominant visual center using a large image, key number, chart, diagram, or high-contrast color block.",
+        )
+
+    polish_score = _get_design_dimension_score(advice, "polish")
+    if polish_score is not None and polish_score < settings.design_review_min_polish:
+        append_issue(
+            "D009",
+            f"Polish score={polish_score} below threshold {settings.design_review_min_polish}.",
+            "Add restrained SVG lines, geometric blocks, labels, overlays, or texture details to improve finish without reducing readability.",
+        )
+
+    emphasis_pages = {"cover", "chapter", "chapter_divider", "concept", "concept_scheme"}
+    for suggestion in advice.suggestions:
+        code = suggestion.code.upper()
+        suggestion_severity = (suggestion.severity or "").lower()
+        if code == "D012" and (page_type_key in emphasis_pages or suggestion_severity == "critical"):
+            append_issue(
+                "D012",
+                suggestion.message or "Key slide lacks visual impact.",
+                suggestion.css_hint or "Rebuild the page as a bolder cover/chapter/concept composition with stronger contrast and oversized focal elements.",
+            )
+        elif code == "D010" and suggestion_severity == "critical":
+            append_issue(
+                "D010",
+                suggestion.message or "Image/text proportion is visually weak.",
+                suggestion.css_hint or "Rebalance the main visual and supporting text; avoid equal low-impact columns.",
+            )
+
+    return issues[:4]
 
 
 async def review_slide(
@@ -150,6 +230,7 @@ async def review_slide(
                 content_summary,
                 theme_colors or {},
             )
+            all_issues.extend(_design_advice_to_issues(design_advice, page_type))
         except Exception as exc:
             logger.warning("Design review failed for slide %s: %s", spec.slide_no, exc)
 

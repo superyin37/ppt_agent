@@ -20,6 +20,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from config.llm import STRONG_MODEL, call_llm_with_limit
+from config.settings import settings
 from schema.visual_theme import (
     VisualTheme,
     LayoutSpec, ContentBlock, RegionBinding,
@@ -49,6 +50,16 @@ _REPAIR_PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "composer_repai
 class ComposerMode(str, enum.Enum):
     STRUCTURED = "structured"   # v2: 输出 LayoutSpec JSON
     HTML = "html"               # v3: 输出 body_html
+
+
+def resolve_composer_mode(mode: ComposerMode | str | None = None) -> ComposerMode:
+    """Resolve configured Composer mode, defaulting to HTML for product flow."""
+    raw = mode.value if isinstance(mode, ComposerMode) else (mode or settings.composer_mode)
+    try:
+        return ComposerMode(str(raw).lower())
+    except ValueError:
+        logger.warning("Unknown composer_mode '%s', falling back to html", raw)
+        return ComposerMode.HTML
 
 
 def _load_system_prompt() -> str:
@@ -334,6 +345,14 @@ def _build_user_message(
     """构建 composer 的 user message（两种模式共用大部分上下文）。"""
     theme_context = {
         "style_keywords": theme.style_keywords,
+        "color_mode": getattr(theme, "color_mode", "mixed"),
+        "contrast_level": getattr(theme, "contrast_level", "high"),
+        "accent_saturation": getattr(theme, "accent_saturation", "high"),
+        "font_mood": getattr(theme, "font_mood", "modern"),
+        "visual_intensity": getattr(theme, "visual_intensity", "bold"),
+        "color_strategy": getattr(theme, "color_strategy", "high-contrast"),
+        "composition_style": getattr(theme, "composition_style", "editorial"),
+        "decorative_motif": getattr(theme, "decorative_motif", "architectural-lines"),
         "cover_layout_mood": theme.cover.layout_mood,
         "density": theme.spacing.density,
         "color_fill_usage": theme.decoration.color_fill_usage,
@@ -413,6 +432,14 @@ async def recompose_slide_html(
     )
     theme_context = {
         "style_keywords": theme.style_keywords,
+        "color_mode": getattr(theme, "color_mode", "mixed"),
+        "contrast_level": getattr(theme, "contrast_level", "high"),
+        "accent_saturation": getattr(theme, "accent_saturation", "high"),
+        "font_mood": getattr(theme, "font_mood", "modern"),
+        "visual_intensity": getattr(theme, "visual_intensity", "bold"),
+        "color_strategy": getattr(theme, "color_strategy", "high-contrast"),
+        "composition_style": getattr(theme, "composition_style", "editorial"),
+        "decorative_motif": getattr(theme, "decorative_motif", "architectural-lines"),
         "density": theme.spacing.density,
         "color_fill_usage": theme.decoration.color_fill_usage,
         "generation_hint": theme.generation_prompt_hint,
@@ -423,7 +450,7 @@ async def recompose_slide_html(
         f"<outline_entry>\n{entry.model_dump_json(indent=2)}\n</outline_entry>\n\n"
         f"<visual_theme>\n{json.dumps(theme_context, ensure_ascii=False)}\n</visual_theme>\n\n"
         f"<project_brief>\n{json.dumps(brief_dict, ensure_ascii=False)}\n</project_brief>\n\n"
-        f"请根据审查反馈修改 HTML，修复上述问题。保留整体布局和设计风格，只修正有问题的部分。"
+        f"请根据审查反馈修改 HTML。若问题来自视觉焦点、完成度、图文比例、空白浪费或重点页冲击力不足，可以进行结构性增强；必须保留事实、数字和素材引用。"
     )
     return await call_llm_with_limit(
         system_prompt=_load_repair_prompt(),
@@ -467,7 +494,7 @@ async def compose_slide(
     brief_dict: dict,
     asset_summary: list[dict],
     binding: Optional[SlideMaterialBinding] = None,
-    mode: ComposerMode = ComposerMode.STRUCTURED,
+    mode: ComposerMode | str | None = None,
 ) -> LayoutSpec | _ComposerHTMLOutput:
     """
     单页合成入口（双模式）。
@@ -475,7 +502,8 @@ async def compose_slide(
     mode=STRUCTURED: 返回 LayoutSpec（v2）
     mode=HTML:       返回 _ComposerHTMLOutput（v3）
     """
-    if mode == ComposerMode.HTML:
+    resolved_mode = resolve_composer_mode(mode)
+    if resolved_mode == ComposerMode.HTML:
         try:
             return await _compose_slide_html(entry, theme, brief_dict, asset_summary, binding)
         except Exception as e:
@@ -492,7 +520,7 @@ async def compose_slide(
 async def compose_all_slides(
     project_id: UUID,
     db: Session,
-    mode: ComposerMode = ComposerMode.STRUCTURED,
+    mode: ComposerMode | str | None = None,
 ) -> list[Slide]:
     """
     为项目所有幻灯片生成 LayoutSpec / HTML，保存到 slides 表。
@@ -501,6 +529,8 @@ async def compose_all_slides(
     mode=STRUCTURED: v2 — 输出 LayoutSpec JSON
     mode=HTML:       v3 — 输出 body_html，spec_json 存 {"html_mode": true, "body_html": ...}
     """
+    mode = resolve_composer_mode(mode)
+
     # 1. 加载 Outline
     outline = (
         db.query(Outline)
@@ -691,4 +721,13 @@ def _default_theme(project_id: UUID) -> VisualTheme:
         cover=CoverStyle(layout_mood="split", title_on_dark=True, show_brief_metrics=True),
         style_keywords=["现代简约"],
         generation_prompt_hint="系统默认主题",
+        color_mode="mixed",
+        contrast_level="high",
+        accent_saturation="high",
+        font_mood="modern",
+        visual_intensity="bold",
+        color_strategy="high-contrast",
+        composition_style="editorial",
+        decorative_motif="architectural-lines",
+        image_treatment="natural",
     )

@@ -1,7 +1,7 @@
 ---
 name: ADR 目录说明
 description: 架构决策记录(Architecture Decision Records)的格式与索引
-last_updated: 2026-04-20
+last_updated: 2026-04-25
 owner: superxiaoyin
 ---
 
@@ -55,6 +55,7 @@ owner: <谁拍板的>
 | [ADR-003](ADR-003-composer-dual-mode.md) | Composer 双模式共存(v2 结构化 + v3 HTML 直出) | Accepted | 2026-04-05 |
 | [ADR-004](ADR-004-html-mode-vision-only.md) | HTML 模式审查只用 vision 层 | Accepted | 2026-04-07 |
 | [ADR-005](ADR-005-concept-render-via-outline.md) | 概念方案由 Outline 输出结构化字段 + runninghub 生图 | Accepted | 2026-04-20 |
+| [ADR-006](ADR-006-html-mode-bold-visual-design.md) | HTML 模式作为主流程并推进 Bold Visual Design | Accepted | 2026-04-25 |
 
 ---
 

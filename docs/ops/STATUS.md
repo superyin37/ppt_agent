@@ -1,7 +1,7 @@
 ---
 name: 项目当前状态
 description: 当前能跑什么/不能跑什么/本周焦点/阻塞点 — 覆写式,只保留最新真相
-last_updated: 2026-04-21
+last_updated: 2026-04-25
 owner: superxiaoyin
 ---
 
@@ -13,7 +13,7 @@ owner: superxiaoyin
 
 ## 今日一句话状态
 
-项目已完整跑通 **素材包 → 41 页 PDF** 的全链路 real-LLM 流程,review 回环 v2 已修复。近 5 次提交集中在面试演示文档,**代码层近 10 天无重大改动**。
+项目已完整跑通 **素材包 → 41 页 PDF** 的全链路 real-LLM 流程,review 回环 v2 已修复。ADR-006 的 **HTML 默认化 + Bold Visual Design** 第一轮代码已接入;3 页 real-LLM smoke 已验证 HTML mode 与 PDF 导出,但 Design Advisor smoke 仍需加固。
 
 ---
 
@@ -25,13 +25,13 @@ owner: superxiaoyin
 | BriefDoc 生成 | ✅ | real-LLM 验证 2026-04-05 |
 | Outline 生成(40 页蓝图驱动) | ✅ | page count 与实际 slide 一致 |
 | Material Binding(逐页素材绑定) | ✅ | coverage_score 输出正常 |
-| Composer HTML 模式(v3,默认) | ✅ | body_html 产出 + theme CSS 注入 |
+| Composer HTML 模式(v3) | ✅ | `COMPOSER_MODE=html`;API/Celery 主入口显式传 `ComposerMode.HTML`;body_html 产出 + theme CSS 注入 |
 | Composer Structured 模式(v2) | ✅ | LayoutSpec → 11 种布局 |
 | Visual Theme 生成 | ✅ | 不再写死蓝黄配色 |
 | Playwright 批量截图 | ✅ | batch `screenshot_slides_batch` 并发 4 |
 | PDF 拼装 | ✅ | `render.exporter.compile_pdf()` |
 | Review v2 回环(HTML 模式) | ✅ | recompose → re-render → re-review,最多 2 轮 |
-| Design Advisor(5 维度评分) | ✅ | vision review mode B |
+| Design Advisor(5 维度评分) | ✅ | HTML 模式已接入低分 gate:`overall_score` / `focal_point` / `polish` / 重点页 `D012` 可触发 recompose |
 | Celery 异步管线 | ✅ | 5 队列:default / outline / render / export / concept_render |
 | **Concept Render(概念渲染)** | ✅ | ADR-005,runninghub 9 图生成,失败降级占位图 |
 | 单元测试 | ✅ | 96+10 test functions × 12 files |
@@ -70,6 +70,7 @@ owner: superxiaoyin
 ## 本周焦点
 
 - [ ] **端到端再跑一次全量 real-LLM 41 页** — 距上次成功运行(2026-04-05)已 16 天,需确认 review 回环 v2 + 新增 concept_render 依然稳定
+- [ ] 加固 **ADR-006 HTML 默认化 + Bold Visual Design** smoke — 已确认 3 页 `spec_json.html_mode=true` 与 PDF 导出;剩余处理 slide 01 Design Advisor 解析失败、slide 03 `V007` residual repair_required
 - [ ] 补 web_search 外部工具,解锁蓝图中"背景研究""竞品分析"占位章节
 - [ ] 申请 runninghub 正式 workflow_id / api_key,跑一次真机概念渲染端到端
 
