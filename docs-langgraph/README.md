@@ -53,16 +53,17 @@ data/case_<id>/
 |---|---|---|
 | 1 | [glossary.md](glossary.md) | LangGraph、项目术语和外部服务名词 |
 | 2 | [pipeline.md](pipeline.md) | 一次运行中，输入如何一步步变成 40 页 deck |
-| 3 | [llm-and-external-services.md](llm-and-external-services.md) | 当前哪些地方真的调用 AI 或外部 API，哪些没有 |
-| 4 | [langgraph.md](langgraph.md) | `build_graph()` 如何构造节点、边、并发 fan-out 和 barrier |
-| 5 | [data.md](data.md) | 输入文件、`ProjectState`、reducer、`SlideSpec` 的数据契约 |
-| 6 | [templates.md](templates.md) | `SlideSpec` 如何映射到 Jinja2 组件并渲染成 HTML |
-| 7 | [configuration.md](configuration.md) | CLI、`.env`、外部 API、checkpoint 和降级行为 |
-| 8 | [debugging.md](debugging.md) | 页面缺失、图片没生成、checkpoint 复用等常见排查路径 |
-| 9 | [data-flow-walkthrough.md](data-flow-walkthrough.md) | 用 case_688 跟一遍真实数据形态 |
-| 10 | [diagrams.md](diagrams.md) | 架构、拓扑、时序、渲染和 checkpoint 图 |
-| 11 | [extension-guide.md](extension-guide.md) | 新增节点、页面组件、模板、图像供应商的改法 |
-| 12 | [architecture.md](architecture.md) | 从模块分层角度看整体架构和关键设计取舍 |
+| 3 | [project-characteristics.md](project-characteristics.md) | 当前项目的固定行为、边界和可变/不可变内容 |
+| 4 | [llm-and-external-services.md](llm-and-external-services.md) | 当前哪些地方真的调用 AI 或外部 API，哪些没有 |
+| 5 | [langgraph.md](langgraph.md) | `build_graph()` 如何构造节点、边、并发 fan-out 和 barrier |
+| 6 | [data.md](data.md) | 输入文件、`ProjectState`、reducer、`SlideSpec` 的数据契约 |
+| 7 | [templates.md](templates.md) | `SlideSpec` 如何映射到 Jinja2 组件并渲染成 HTML |
+| 8 | [configuration.md](configuration.md) | CLI、`.env`、外部 API、checkpoint 和降级行为 |
+| 9 | [debugging.md](debugging.md) | 页面缺失、图片没生成、checkpoint 复用等常见排查路径 |
+| 10 | [data-flow-walkthrough.md](data-flow-walkthrough.md) | 用 case_688 跟一遍真实数据形态 |
+| 11 | [diagrams.md](diagrams.md) | 架构、拓扑、时序、渲染和 checkpoint 图 |
+| 12 | [extension-guide.md](extension-guide.md) | 新增节点、页面组件、模板、图像供应商的改法 |
+| 13 | [architecture.md](architecture.md) | 从模块分层角度看整体架构和关键设计取舍 |
 
 ## 关键代码入口
 
