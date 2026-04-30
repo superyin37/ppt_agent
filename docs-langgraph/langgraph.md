@@ -1,289 +1,253 @@
+---
+title: LangGraph 构造说明
+audience: 第一次读项目的开发者 / 维护者
+read_time: 12 分钟
+prerequisites: glossary.md, pipeline.md
+last_verified_against: f083adb
+---
+
 # LangGraph 构造说明
 
-本文解释 [ppt_maker/graph.py](../ppt_maker/graph.py) 如何把各个节点组装成可恢复、可并发的工作流。
+> **读完这篇，你应该能回答：**
+> - `StateGraph(ProjectState)` 如何把节点、边、并发和 checkpoint 组装起来？
+> - `Send`、reducer、superstep、barrier 在这个项目里各解决什么问题？
+> - 节点失败后为什么 graph 不会直接崩？
+> - 新增节点时最容易漏掉哪些地方？
 
-## 最小心智模型
+> **关联文档：**
+> - 上一篇：[pipeline.md](pipeline.md)
+> - 下一篇：[data.md](data.md)
+> - 术语：[glossary.md](glossary.md)
 
-PPT-Maker 用 LangGraph 做三件事：
+## 如果你刚接触 LangGraph
 
-1. 让节点按依赖顺序执行。
-2. 让互不依赖的内容节点并行执行。
-3. 用 checkpoint 记录执行进度，失败后可以恢复。
+把 `ProjectState` 想成一个会被多个节点同时编辑的共享 dict：
 
-简化拓扑：
+| 概念 | 在本项目里的意思 |
+|---|---|
+| `StateGraph(ProjectState)` | 声明 graph 的共享 state 结构 |
+| 节点函数 | `(state) -> dict`，返回局部更新 |
+| 普通边 | 固定依赖关系 |
+| 条件边 + `Send` | 运行时动态 fan-out，多发几个 worker |
+| reducer | 多个并发节点写同一个 key 时怎么合并 |
+| superstep | 同一批可并发执行的节点；下一批等上一批全完成 |
+| checkpoint | 每个阶段保存状态，支持恢复 |
 
-```text
-START
-  -> load_assets
-       -> parse_outline -> 多个内容节点 -> content_join -> barrier
-       -> poi_parser    -> poi_analysis  -> content_join -> barrier
+一句话：LangGraph 负责调度和合并，业务节点只负责读 state、产出局部更新。
 
-barrier
-  -> summary_node
-  -> aggregate_specs
-  -> render_html
-  -> validate
-  -> END
+## 完整拓扑
+
+```mermaid
+flowchart TD
+  START --> load_assets
+  load_assets --> parse_outline
+  load_assets --> poi_parser
+
+  parse_outline --> policy_research
+  parse_outline --> location_analysis
+  parse_outline --> economy_analysis
+  parse_outline --> cultural_node
+  parse_outline --> competitor_search
+  parse_outline --> cover_transition
+  parse_outline --> metrics
+  parse_outline --> poi_analysis
+  poi_parser --> poi_analysis
+
+  parse_outline --> case_study_dispatch
+  case_study_dispatch -.Send x3.-> case_study_worker
+
+  parse_outline --> concept_dispatch
+  concept_dispatch -.Send x9.-> runninghub_worker
+
+  policy_research --> content_join
+  location_analysis --> content_join
+  economy_analysis --> content_join
+  poi_analysis --> content_join
+  cultural_node --> content_join
+  competitor_search --> content_join
+  cover_transition --> content_join
+  metrics --> content_join
+
+  content_join --> barrier
+  case_study_worker --> barrier
+  runninghub_worker --> barrier
+
+  barrier --> summary_node
+  summary_node --> aggregate_specs
+  aggregate_specs --> render_html
+  render_html --> validate
+  validate --> END
 ```
 
-另有两组动态 fan-out：
-
-```text
-parse_outline -> case_study_dispatch -> case_study_worker x 3 -> barrier
-parse_outline -> concept_dispatch    -> runninghub_worker x 9 -> barrier
-```
+构图入口：[graph.py:64](../ppt_maker/graph.py#L64)
 
 ## `StateGraph(ProjectState)`
 
-构图从这里开始：
+构图从：
 
 ```python
 g = StateGraph(ProjectState)
 ```
 
-`ProjectState` 定义在 [ppt_maker/state.py](../ppt_maker/state.py)。LangGraph 会根据里面的 reducer 知道并发写入怎么合并。
+开始。`ProjectState` 定义在 [state.py:176](../ppt_maker/state.py#L176)。里面最关键的是 reducer 字段：
 
-最关键的 reducer：
+| 字段 | reducer | 作用 |
+|---|---|---|
+| `slide_specs` | `merge_dict` | 多节点并行写不同页 |
+| `charts` | `merge_dict` | 多节点写图表路径 |
+| `generated_images` | `merge_dict` | 多节点写生成图路径 |
+| `search_cache` | `merge_dict` | 缓存 Tavily 搜索结果 |
+| `errors` | `operator.add` | 节点错误列表拼接 |
 
-```python
-slide_specs: Annotated[dict[int, SlideSpec], merge_dict]
-charts: Annotated[dict[str, str], merge_dict]
-generated_images: Annotated[dict[str, str], merge_dict]
-search_cache: Annotated[dict[str, Any], merge_dict]
-errors: Annotated[list[NodeError], add]
-```
+`merge_dict` 是浅合并，右侧覆盖左侧。正常情况下不同节点写不同页码；如果两个节点写同一页，后合并的值会覆盖前一个。
 
-这允许多个节点同时返回：
+## 节点注册和包装
 
-```python
-{"slide_specs": {18: spec}}
-{"slide_specs": {21: spec}}
-```
-
-最终合并成同一个 `state["slide_specs"]`。
-
-## 节点注册
-
-节点函数集中注册在 [ppt_maker/nodes/__init__.py](../ppt_maker/nodes/__init__.py)：
-
-```python
-NODE_REGISTRY = {
-    "load_assets": load.run,
-    "parse_outline": outline.run,
-    ...
-}
-```
-
-`build_graph()` 遍历注册表，把每个函数包一层 `_wrap_with_timer()`：
+节点集中注册在 [nodes/__init__.py](../ppt_maker/nodes/__init__.py)。`build_graph()` 遍历注册表，把每个节点包一层 `_wrap_with_timer()`：
 
 ```python
 for name, fn in NODE_REGISTRY.items():
     g.add_node(name, _wrap_with_timer(name, fn))
 ```
 
-包装层负责：
+代码：[graph.py:67-68](../ppt_maker/graph.py#L67-L68)
 
-- 记录节点耗时
-- 记录产出页数
-- 把异常转成 `NodeError`
-- 避免单个节点失败中断整条工作流
+## `_wrap_with_timer` 全解
 
-## 普通边
+包装器入口：[graph.py:44](../ppt_maker/graph.py#L44)
 
-普通边表示固定依赖关系：
+它做三件事：
 
-```python
-g.add_edge(START, "load_assets")
-g.add_edge("load_assets", "parse_outline")
-g.add_edge("load_assets", "poi_parser")
-```
+| 职责 | 行为 |
+|---|---|
+| 计时 | 记录 `duration_s` |
+| 产页计数 | 统计返回的 `slide_specs` 数量 |
+| 异常隔离 | 捕获异常，返回 `{"errors": [NodeError(...)]}` |
 
-含义：
-
-- `load_assets` 是入口节点。
-- 它完成后，`parse_outline` 和 `poi_parser` 都可以开始。
-
-## 静态并行内容节点
-
-`CONTENT_NODES` 定义了一批内容节点：
+失败路径不会让 graph 直接崩：
 
 ```python
-CONTENT_NODES = [
-    "policy_research",
-    "location_analysis",
-    "economy_analysis",
-    "poi_analysis",
-    "cultural_node",
-    "competitor_search",
-    "cover_transition",
-    "metrics",
-]
+except Exception as e:
+    jsonl_event(..., ok=False, error=f"{type(e).__name__}: {e}")
+    return {"errors": [NodeError(node=name, message=str(e))]}
 ```
 
-大多数节点只依赖 `parse_outline`：
+因此一个节点失败后，后续仍可继续运行；最终缺失页面由 `aggregate_specs` 补 `[missing page N]`。
+
+`logs/run.jsonl` 的典型字段：
+
+| 字段 | 含义 |
+|---|---|
+| `node` | 节点名 |
+| `ok` | 是否成功 |
+| `duration_s` | 节点耗时 |
+| `slides_emitted` | 成功时产出的页数 |
+| `error` | 失败时的异常类型和消息 |
+
+## 普通边和静态并行
+
+入口边：
 
 ```python
-for n in CONTENT_NODES:
-    if n == "poi_analysis":
-        continue
-    g.add_edge("parse_outline", n)
+START -> load_assets
+load_assets -> parse_outline
+load_assets -> poi_parser
 ```
 
-`poi_analysis` 特殊一点，它同时需要 `parse_outline` 和 `poi_parser`：
+代码：[graph.py:73-77](../ppt_maker/graph.py#L73-L77)
 
-```python
-g.add_edge("poi_parser", "poi_analysis")
-g.add_edge("parse_outline", "poi_analysis")
-```
+静态内容节点列表在 [graph.py:32](../ppt_maker/graph.py#L32)。除 `poi_analysis` 外，它们都从 `parse_outline` 发出；`poi_analysis` 同时依赖 `parse_outline` 和 `poi_parser`。
 
-## 动态 fan-out：`Send`
+代码：[graph.py:80-85](../ppt_maker/graph.py#L80-L85)
 
-有些任务不是一个节点生成所有页面，而是拆成多个 worker。
+## Send worker 的 state 传递
 
-### 参考案例页
-
-```python
-g.add_edge("parse_outline", "case_study_dispatch")
-g.add_conditional_edges(
-    "case_study_dispatch",
-    case_study.fanout,
-    ["case_study_worker"],
-)
-```
-
-`case_study.fanout()` 返回多个 `Send`：
+参考案例 fan-out：
 
 ```python
 Send("case_study_worker", {"case_idx": i, **state})
 ```
 
-每个 worker 负责一个案例页，通常是第 23-25 页。
+代码：[case_study.py:13-14](../ppt_maker/nodes/case_study.py#L13-L14)
 
-### 概念方案页
-
-```python
-g.add_edge("parse_outline", "concept_dispatch")
-g.add_conditional_edges(
-    "concept_dispatch",
-    concept.fanout,
-    ["runninghub_worker"],
-)
-```
-
-`concept.fanout()` 通常发出 9 个 worker：
-
-```text
-3 个方案 x 3 个视角 = 9 页
-```
-
-对应第 29-37 页。
-
-## 为什么需要 `content_join` 和 `barrier`
-
-`content_join` 和 `barrier` 都是 no-op：
+概念方案 fan-out：
 
 ```python
-def _barrier(state: ProjectState) -> dict:
-    return {}
+Send("runninghub_worker", {"scheme_idx": scheme_idx, "view": view, **state})
 ```
 
-它们的作用不是改状态，而是控制汇合点。
+代码：[concept.py:26-31](../ppt_maker/nodes/concept.py#L26-L31)
 
-### `content_join`
+为什么要 `**state`：worker 是独立调用的节点，它需要拿到 `outline`、`assets`、`output_dir`、`dry_run` 等上下文字段。worker 返回的 `slide_specs`、`generated_images` 由 reducer 合并回主 state。
 
-所有静态内容节点都指向它：
+## reducer 合并示例
 
 ```python
-for n in CONTENT_NODES:
-    g.add_edge(n, "content_join")
+# 节点 A 返回
+{"slide_specs": {18: spec_a}}
+
+# 节点 B 同 superstep 并发返回
+{"slide_specs": {21: spec_b}}
+
+# merge_dict 合并后
+state["slide_specs"] == {18: spec_a, 21: spec_b}
 ```
 
-这保证静态内容节点完成后才进入下一层。
+如果两个节点都返回 `{18: ...}`，浅合并会覆盖其中一个。排查页码冲突时，要对照 [pipeline.md](pipeline.md) 的 40 页表和各节点里的 `page=` 字面量。
 
-### `barrier`
+## 为什么需要两层 barrier
 
-三类分支都要汇入 `barrier`：
+```mermaid
+sequenceDiagram
+  participant P as parse_outline
+  participant S as static content nodes
+  participant C as content_join
+  participant W as Send workers
+  participant B as barrier
+  participant A as aggregate_specs
 
-```python
-g.add_edge("content_join", "barrier")
-g.add_edge("case_study_worker", "barrier")
-g.add_edge("runninghub_worker", "barrier")
+  P->>S: superstep N+1
+  P->>W: dispatch workers
+  S->>C: superstep N+2
+  W->>B: superstep N+2 / N+3
+  C->>B: superstep N+3
+  B->>A: all content done
 ```
 
-这保证下游的 `summary_node -> aggregate_specs -> render_html` 只在所有内容分支完成后执行。
+`content_join` 只等待 8 个静态内容节点。`case_study_worker` 和 `runninghub_worker` 是 `Send` 动态分支，不属于 `content_join` 的上游集合，所以还需要第二层 `barrier`。
 
-如果没有这个汇合点，渲染阶段可能在 worker 尚未写入页面时提前开始。
+边定义：[graph.py:98-104](../ppt_maker/graph.py#L98-L104)
 
-## 串行尾段
+## Checkpoint 工作机制
 
-所有内容完成后，进入尾段：
-
-```python
-g.add_edge("barrier", "summary_node")
-g.add_edge("summary_node", "aggregate_specs")
-g.add_edge("aggregate_specs", "render_html")
-g.add_edge("render_html", "validate")
-g.add_edge("validate", END)
-```
-
-这里必须串行：
-
-1. `summary_node` 需要读取前面生成的状态。
-2. `aggregate_specs` 需要看到所有页面。
-3. `render_html` 需要完整 `slide_specs`。
-4. `validate` 需要最终 HTML 路径。
-
-## Checkpoint 如何接入
-
-CLI 中：
+CLI 创建：
 
 ```python
 ckpt_path = Path(state["output_dir"]) / "checkpoint.sqlite"
-with get_checkpointer(ckpt_path) as saver:
-    app = build_graph(checkpointer=saver)
-    app.invoke(state, config={"configurable": {"thread_id": f"case-{case_id}"}})
+thread_id = f"case-{case_id}"
+config = {"configurable": {"thread_id": thread_id}}
 ```
 
-`get_checkpointer()` 返回：
+代码：[__main__.py:64-69](../ppt_maker/__main__.py#L64-L69)
 
-```python
-SqliteSaver.from_conn_string(str(sqlite_path))
-```
+`get_checkpointer()` 用 sqlite 保存 LangGraph checkpoint：[graph.py:116](../ppt_maker/graph.py#L116)
 
-关键点：
+关键行为：
 
-- checkpoint 文件在 `output/case_<id>/checkpoint.sqlite`
-- `thread_id` 是 `case-<id>`
-- 同一 case 多次运行会复用同一线程
-- 使用 `--force` 会先删除 checkpoint 文件
+| 行为 | 结果 |
+|---|---|
+| 同 case 再次运行 | 使用同一个 `thread_id`，可能复用 checkpoint |
+| 中断后重跑 | 已保存的状态可恢复 |
+| 使用 `--force` | CLI 删除 checkpoint 文件，相当于全新运行 |
+| 只改模板 | 应优先用 `render-only`，不需要重跑 graph |
 
-## 节点失败时发生什么
+## 新增节点常见坑
 
-节点函数被 `_wrap_with_timer()` 包住：
-
-```python
-try:
-    out = fn(state)
-except Exception as e:
-    return {"errors": [NodeError(node=name, message=str(e))]}
-```
-
-因此节点失败后：
-
-- graph 不会直接崩溃
-- 错误进入 `state["errors"]`
-- `logs/run.jsonl` 写入失败记录
-- 后续 `aggregate_specs` 会补缺页
-
-这也是为什么最终可能生成成功，但 deck 里有 `[missing page N]`。
-
-## 新增节点时要改哪里
-
-最小步骤：
-
-1. 新建 `ppt_maker/nodes/my_node.py`。
-2. 在 `ppt_maker/nodes/__init__.py` 注册。
-3. 在 `ppt_maker/graph.py` 连边。
-4. 确保节点返回的字段在 `ProjectState` 里有合理 reducer，尤其是并行写字段。
-
-具体示例见 [extension-guide.md](extension-guide.md)。
+| 坑 | 结果 | 修复 |
+|---|---|---|
+| 忘记进 `NODE_REGISTRY` | graph 里没有这个节点 | 在 [nodes/__init__.py](../ppt_maker/nodes/__init__.py) 注册 |
+| 忘记连边 | 节点永远不会执行 | 在 [graph.py](../ppt_maker/graph.py) 加边 |
+| 并发写字段没有 reducer | 并发合并报错或覆盖 | 在 `ProjectState` 加 reducer |
+| 两个节点写同一页 | 后写覆盖前写 | 对照 40 页表修正页码 |
+| 改了节点但结果没变 | checkpoint 复用旧状态 | 用 `--force` 或删 `checkpoint.sqlite` |
+| `SlideSpec.component` 没进枚举 | Pydantic 构造失败 | 更新 [state.py:149](../ppt_maker/state.py#L149) |

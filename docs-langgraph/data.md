@@ -1,4 +1,23 @@
+---
+title: 数据模型与输入契约
+audience: 第一次读项目的开发者 / 维护者
+read_time: 10 分钟
+prerequisites: glossary.md
+last_verified_against: f083adb
+---
+
 # 数据模型与输入契约
+
+> **读完这篇，你应该能回答：**
+> - 输入文件如何被索引成语义键？
+> - `ProjectState`、reducer、`SlideSpec` 分别承担什么职责？
+> - `parse_outline` 当前是否调用 LLM？
+> - `SlideSpec.data` 为什么是常见 bug 来源？
+
+> **关联文档：**
+> - 上一篇：[pipeline.md](pipeline.md)
+> - 下一篇：[templates.md](templates.md)
+> - 术语：[glossary.md](glossary.md)
 
 PPT-Maker 的核心数据流是：
 
@@ -149,7 +168,9 @@ class DesignOutline(BaseModel):
 | `设计策略` | `DesignStrategy[]` |
 | `设计愿景`、`方案鸟瞰图`、`方案人视图` | `ConceptSchemeSeed[]` |
 
-解析逻辑主要是正则、markdown 表格和编号项抽取，不是 LLM 强依赖。
+解析逻辑完全由正则、markdown 表格和编号项抽取完成，当前实现**零 LLM 调用**。关键 helper 包括 `_split_sections()`、`_parse_table()`、`_numbered_items()` 和 `_bold_field()`，入口是 [outline.py:285](../ppt_maker/nodes/outline.py#L285)。
+
+`DoubaoClient` 虽然存在，但没有被 `parse_outline` 或其他节点调用；它是后续扩展预留。外部 AI 当前只出现在 RunningHub 图像生成，详见 [llm-and-external-services.md](llm-and-external-services.md)。
 
 ## POI Excel
 
@@ -266,3 +287,5 @@ templates/<template>/components/chart.html.j2
 ```
 
 各组件的 `data` 形状见 [templates.md](templates.md)。
+
+需要特别注意：`data` 是 `dict[str, Any]`，Pydantic 不校验内部字段。模板使用 `ChainableUndefined`，字段名写错或层级写错时通常只会渲染为空，不会抛异常。这是模板排查里最常见的问题之一，具体见 [templates.md](templates.md) 和 [debugging.md](debugging.md)。

@@ -1,186 +1,153 @@
+---
+title: 系统架构
+audience: 维护者 / 架构师
+read_time: 10 分钟
+prerequisites: glossary.md, pipeline.md
+last_verified_against: f083adb
+---
+
 # 系统架构
 
-本文从模块分层角度解释 PPT-Maker。若只想理解 LangGraph 具体怎么连边，先读 [langgraph.md](langgraph.md)；若只想看一次生成链路，先读 [pipeline.md](pipeline.md)。
+> **读完这篇，你应该能回答：**
+> - 项目分成哪些层，每层边界是什么？
+> - 关键设计取舍为什么这样做，代价是什么？
+> - 线程模型、reducer、全局常量分别有哪些维护风险？
+> - 想做架构级改动时应该先看哪里？
 
-## 架构分层
+> **关联文档：**
+> - 主链路：[pipeline.md](pipeline.md)
+> - 图集：[diagrams.md](diagrams.md)
+> - 扩展：[extension-guide.md](extension-guide.md)
 
-```text
-CLI 层
-  ppt_maker/__main__.py
+## 分层架构
 
-编排层
-  ppt_maker/graph.py
-
-状态与契约层
-  ppt_maker/state.py
-  ppt_maker/assets.py
-
-内容节点层
-  ppt_maker/nodes/*.py
-
-外部服务层
-  ppt_maker/clients/*.py
-
-渲染层
-  ppt_maker/render/*.py
-  templates/<template_name>/
-
-输出层
-  output/case_<id>/
+```mermaid
+flowchart TB
+  CLI[CLI 层: __main__.py] --> ORCH[编排层: graph.py]
+  ORCH --> STATE[状态与契约层: state.py/assets.py]
+  ORCH --> NODES[内容节点层: nodes/*.py]
+  NODES --> CLIENTS[外部服务层: clients/*.py]
+  NODES --> RENDER[渲染层: render/html_renderer.py]
+  RENDER --> TPL[模板层: templates/*]
+  RENDER --> OUT[输出层: output/case_<id>]
 ```
 
-## CLI 层
-
-入口：[ppt_maker/__main__.py](../ppt_maker/__main__.py)
-
-职责：
-
-- 解析命令行参数
-- 创建初始 `ProjectState`
-- 配置 checkpoint
-- 调用 `build_graph().invoke(...)`
-- 提供 `render-only` 和 `inspect` 这两个调试入口
-
-CLI 不直接生成页面。它只负责启动工作流。
-
-## 编排层
-
-入口：[ppt_maker/graph.py](../ppt_maker/graph.py)
-
-职责：
-
-- 创建 `StateGraph(ProjectState)`
-- 注册所有节点
-- 定义节点之间的边
-- 使用 `Send` 动态 fan-out worker
-- 用 barrier 汇合并发分支
-- 给每个节点包一层计时、日志和错误隔离
-
-设计重点是：内容节点可以并行写入 `slide_specs`，最终由 reducer 合并。
-
-## 状态与契约层
-
-入口：[ppt_maker/state.py](../ppt_maker/state.py)
-
-这里定义了项目的核心数据契约：
-
-- `AssetIndex`：case 输入文件索引
-- `UserInput` / `SiteCoords`：基础输入
-- `DesignOutline`：从 markdown 大纲抽取出的结构化信息
-- `POIData`：从 Excel 抽取出的 POI 信息
-- `SlideSpec`：页面的统一中间表示
-- `ProjectState`：LangGraph 流转状态
-
-最关键的是 `SlideSpec`：
-
-```python
-class SlideSpec(BaseModel):
-    page: int
-    component: ComponentKind
-    title: str = ""
-    subtitle_en: str | None = None
-    data: dict[str, Any] = Field(default_factory=dict)
-    notes: str | None = None
-```
-
-所有内容节点最终都应该产出 `SlideSpec`，而不是直接拼 HTML。
-
-## 内容节点层
-
-入口：[ppt_maker/nodes/](../ppt_maker/nodes)
-
-每个节点遵守同一个接口：
-
-```python
-def run(state: ProjectState) -> dict:
-    return {"slide_specs": {page: spec}}
-```
-
-节点可以读取 `assets`、`outline`、`poi_data` 等字段，但只返回自己负责的局部更新。
-
-节点注册表在 [ppt_maker/nodes/__init__.py](../ppt_maker/nodes/__init__.py)：
-
-```python
-NODE_REGISTRY = {
-    "load_assets": load.run,
-    "parse_outline": outline.run,
-    ...
-}
-```
-
-新增节点时，先注册到这里，再在 [ppt_maker/graph.py](../ppt_maker/graph.py) 连边。
-
-## 外部服务层
-
-入口：[ppt_maker/clients/](../ppt_maker/clients)
-
-当前有三类外部能力：
-
-| Client | 用途 | 可选性 |
+| 层 | 责任 | 不该做什么 |
 |---|---|---|
-| `DoubaoClient` | LLM 能力预留 | 可选 |
-| `TavilyWrapper` | 第 22 页联网检索 | 可选 |
-| `RunningHubClient` | logo、文化图、概念方案图 | 可选 |
+| CLI | 解析命令、建初始 state、处理 checkpoint 参数 | 不生成页面 |
+| 编排 | 注册节点、连边、fan-out、barrier、checkpoint | 不写业务内容 |
+| 状态与契约 | 定义 Pydantic schema、reducer、语义键索引 | 不做渲染 |
+| 内容节点 | 读取输入和 state，产出 `SlideSpec` | 不拼最终 HTML |
+| 外部服务 | 封装 RunningHub、Tavily、豆包预留 | 不决定页面结构 |
+| 渲染 | `SlideSpec` 到 HTML | 不调用 LLM 或业务 API |
+| 输出 | 保存 HTML、spec、日志、checkpoint、资源 | 不承载业务逻辑 |
 
-这些服务都应该能降级。也就是说，缺 key 或调用失败时，工作流仍应产出 deck，只是部分内容变成说明或占位图。
+## 模块依赖图
 
-## 渲染层
-
-入口：
-
-- [ppt_maker/render/html_renderer.py](../ppt_maker/render/html_renderer.py)
-- [templates/minimalist_architecture/](../templates/minimalist_architecture)
-
-渲染层只关心 `SlideSpec`：
-
-```text
-SlideSpec(component="chart")
-  -> templates/<template>/components/chart.html.j2
-  -> HTML 片段
+```mermaid
+flowchart LR
+  main[__main__.py] --> graph[graph.py]
+  graph --> registry[nodes/__init__.py]
+  graph --> state[state.py]
+  registry --> nodes[nodes/*.py]
+  nodes --> state
+  nodes --> clients[clients/*.py]
+  nodes --> charts[render/charts.py]
+  nodes --> renderer[render/html_renderer.py]
+  renderer --> state
+  renderer --> templates[templates/*]
 ```
-
-`HtmlRenderer` 会：
-
-1. 读取 `theme.json`
-2. 读取 `viewport-base.css`
-3. 初始化 Jinja2 environment
-4. 为每页选择对应组件模板
-5. 把图片以内联 `data:` URI 写入 HTML
-6. 最后套进 `base.html.j2`
-
-这个设计让内容生成和视觉表现分离：改视觉模板不需要改节点，改节点通常不需要碰模板。
-
-## 输出层
-
-一次成功运行会写出：
-
-| 文件 | 用途 |
-|---|---|
-| `index.html` | 最终可打开的 40 页演示文稿 |
-| `slide_specs.json` | 结构化页面数据，可手改后 `render-only` |
-| `assets/charts/` | 图表 PNG |
-| `assets/generated/` | AI 生成图或 SVG 占位 |
-| `checkpoint.sqlite` | LangGraph 恢复执行 |
-| `logs/run.jsonl` | 每个节点的耗时、产页数量、错误 |
 
 ## 关键设计取舍
 
-### 1. 先生成结构化 spec，再渲染 HTML
+### 1. 先 `SlideSpec` 再 HTML
 
-这样可以：
+考虑过：节点直接拼 HTML，少一层转换。
 
-- 用 `inspect` 查看任意页面数据
-- 手动编辑 `slide_specs.json` 后快速重渲
-- 让模板系统保持可替换
+放弃原因：
+
+| 原因 | 说明 |
+|---|---|
+| 模板要可替换 | 节点直接写 HTML 会把内容和视觉绑死 |
+| inspect/render-only 需要中间结果 | `slide_specs.json` 是调试边界 |
+| 并发节点难合并 HTML | dict reducer 合并 `SlideSpec` 更简单 |
+
+代价：新增组件时要同步改 `ComponentKind`、节点数据、组件模板和 [templates.md](templates.md)。
 
 ### 2. 节点失败不阻断整份 deck
 
-建筑方案汇报通常宁愿先得到一份有占位页的 deck，也不希望因为一张图失败导致整条链路中断。因此节点异常被记录到 `errors[]`，最终由 `aggregate_specs` 补缺页。
+考虑过：任何节点失败就终止。
 
-### 3. 使用 checkpoint 避免重复调用昂贵 API
+放弃原因：建筑汇报生成更需要“先拿到一份可检查的 deck”，一张图或一个表失败不该让 40 页都没有产物。
 
-RunningHub 图像生成成本高、耗时长。checkpoint 让已完成节点结果可以复用。调试节点逻辑时记得使用 `--force`。
+代价：最终 HTML 可能成功生成，但里面有缺页占位或局部空白，所以必须看 `logs/run.jsonl`。
 
-### 4. 并行节点通过 reducer 合并结果
+### 3. 用 checkpoint 复用昂贵节点
 
-`slide_specs`、`charts`、`generated_images` 都是字典型 reducer 字段。不同节点写不同 key，可以天然并行合并。
+考虑过：每次都从头跑，结果最直观。
+
+放弃原因：RunningHub 图像生成耗时长，重复跑成本高。
+
+代价：调试代码时可能复用旧状态，必须知道 `--force` 的作用。
+
+### 4. `SlideSpec.data` 保持松耦合
+
+考虑过：给每个组件 data 建严格 Pydantic schema。
+
+放弃原因：早期迭代中组件字段变化频繁，松耦合更快。
+
+代价：模板字段名拼错时可能静默渲染为空。长期应对高价值组件补局部 schema。
+
+## 线程模型
+
+LangGraph 同一个 superstep 中的节点可能并发执行。图像节点内部调用 async client 时，会在当前线程里用 `asyncio.run()` 启动 event loop。
+
+因此 RunningHub 的全局并发限制使用：
+
+```python
+_CONCURRENCY_SEM = threading.Semaphore(MAX_CONCURRENCY)
+```
+
+代码：[runninghub.py:32-33](../ppt_maker/clients/runninghub.py#L32-L33)
+
+这比 `asyncio.Semaphore` 更合适，因为限制要跨多个 LangGraph worker 线程生效。
+
+## reducer 字段和非 reducer 字段
+
+| 字段 | reducer | 写入方式 |
+|---|---|---|
+| `slide_specs` | `merge_dict` | 多节点并行写不同页 |
+| `charts` | `merge_dict` | 多节点写图表路径 |
+| `generated_images` | `merge_dict` | 多节点写生成图路径 |
+| `search_cache` | `merge_dict` | 搜索结果缓存 |
+| `errors` | `operator.add` | 异常列表追加 |
+
+非 reducer 字段应由单个节点写：
+
+| 字段 | 写入节点 |
+|---|---|
+| `assets` | `load_assets` |
+| `user_input` | `load_assets` |
+| `site_coords` | `load_assets` |
+| `outline` | `parse_outline` |
+| `poi_data` | `poi_parser` |
+| `output_html` | `render_html` |
+
+## 全局常量分布
+
+改总页数或章节结构时，需要同步检查：
+
+| 常量 | 位置 | 含义 |
+|---|---|---|
+| `range(1, 41)` | [aggregate.py:17](../ppt_maker/nodes/aggregate.py#L17) | 补齐 40 页 |
+| `expected 40` / `range(1, 41)` | [validate.py:18-19](../ppt_maker/nodes/validate.py#L18-L19) | 校验 40 页 |
+| 章节页码边界 | [html_renderer.py:54-58](../ppt_maker/render/html_renderer.py#L54-L58) | 页码到章节映射 |
+| 章节中英文标签 | [html_renderer.py:61-67](../ppt_maker/render/html_renderer.py#L61-L67) | chrome 显示 |
+| 目录四章文案 | [cover.py:7-16](../ppt_maker/nodes/cover.py#L7-L16) | 目录页 |
+| 转场页页码 | [cover.py](../ppt_maker/nodes/cover.py) | 3、13、20、27 |
+| 概念方案 3x3 | [concept.py:28-39](../ppt_maker/nodes/concept.py#L28-L39) | 29-37 页 |
+| 总页码显示 | [components/_chrome.html.j2](../templates/minimalist_architecture/components/_chrome.html.j2) | 页码视觉 |
+
+## 当前架构边界
+
+当前没有内容审查节点、截图回看、RAG、LLM-as-judge，也没有跨节点业务缓存层。豆包客户端是预留能力，不是当前 pipeline 的文字生成来源。

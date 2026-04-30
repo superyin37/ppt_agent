@@ -1,273 +1,221 @@
+---
+title: 扩展指南
+audience: 维护者 / 准备改功能的开发者
+read_time: 12 分钟
+prerequisites: pipeline.md, langgraph.md, templates.md
+last_verified_against: f083adb
+---
+
 # 扩展指南
 
-本文给出常见扩展任务的改法。扩展前建议先读：
+> **读完这篇，你应该能回答：**
+> - 改文案、视觉、数据逻辑、节点和架构分别从哪里动？
+> - 把启发式逻辑换成豆包 LLM 时如何保留兜底？
+> - 加内容审查节点时应该接在哪条边上？
+> - 改完后最低限度要跑哪些自检？
 
-- [pipeline.md](pipeline.md)
-- [langgraph.md](langgraph.md)
-- [data.md](data.md)
-- [templates.md](templates.md)
+> **关联文档：**
+> - 主链路：[pipeline.md](pipeline.md)
+> - 架构：[architecture.md](architecture.md)
+> - 排查：[debugging.md](debugging.md)
 
-## 新增一个内容节点
+## Level 1：改文案 / 视觉
 
-目标：新增一个节点，生成第 6 页的“风险评估”页面。
+| 任务 | 入口 |
+|---|---|
+| 改第 19/26/39 页综合文案 | [summary.py](../ppt_maker/nodes/summary.py) |
+| 改目录和章节转场文案 | [cover.py](../ppt_maker/nodes/cover.py) |
+| 改颜色、字体、章节色 | [theme.json](../templates/minimalist_architecture/theme.json) |
+| 改全局尺寸、排版 | [viewport-base.css](../templates/minimalist_architecture/viewport-base.css) |
+| 改单个组件视觉 | [components/](../templates/minimalist_architecture/components) |
 
-### 1. 新建节点文件
-
-新建：
-
-```text
-ppt_maker/nodes/risk.py
-```
-
-示例：
-
-```python
-from __future__ import annotations
-
-from ..state import ProjectState, SlideSpec
-
-
-def run(state: ProjectState) -> dict:
-    spec = SlideSpec(
-        page=6,
-        component="content_bullets",
-        title="风险评估",
-        subtitle_en="RISK ASSESSMENT",
-        data={
-            "lede": "项目风险主要来自政策、市场、交通组织和实施节奏。",
-            "bullets": [
-                {"title": "政策风险", "body": "关注上位规划和用地条件约束。"},
-                {"title": "市场风险", "body": "关注周边竞品供给和客群错位。"},
-            ],
-        },
-    )
-    return {"slide_specs": {6: spec}}
-```
-
-注意：如果第 6 页已有节点生成，后写入的结果可能覆盖前者。更稳妥的方式是选择空闲页，或明确调整页码分配。
-
-### 2. 注册节点
-
-修改 [ppt_maker/nodes/__init__.py](../ppt_maker/nodes/__init__.py)：
-
-```python
-from . import risk
-
-NODE_REGISTRY = {
-    ...
-    "risk_assessment": risk.run,
-}
-```
-
-### 3. 接入 graph
-
-如果节点依赖 `parse_outline`，加入 [ppt_maker/graph.py](../ppt_maker/graph.py) 的 `CONTENT_NODES`：
-
-```python
-CONTENT_NODES = [
-    ...
-    "risk_assessment",
-]
-```
-
-并确保循环会连边：
-
-```text
-parse_outline -> risk_assessment -> content_join
-```
-
-### 4. 更新文档
-
-至少更新：
-
-- [pipeline.md](pipeline.md) 的页码表
-- 如有新输入，更新 [data.md](data.md)
-
-## 新增一个页面组件
-
-目标：新增 `comparison_matrix` 组件。
-
-### 1. 注册组件类型
-
-修改 [ppt_maker/state.py](../ppt_maker/state.py)：
-
-```python
-ComponentKind = Literal[
-    ...
-    "comparison_matrix",
-]
-```
-
-### 2. 新建模板组件
-
-新建：
-
-```text
-templates/minimalist_architecture/components/comparison_matrix.html.j2
-```
-
-组件接收 `data`：
-
-```python
-{
-    "headers": list[str],
-    "rows": list[list[str]],
-    "highlights": list[int],
-}
-```
-
-### 3. 节点产出新组件
-
-```python
-SlideSpec(
-    page=22,
-    component="comparison_matrix",
-    title="竞品对比矩阵",
-    data={
-        "headers": ["项目", "距离", "定位", "启示"],
-        "rows": [...],
-        "highlights": [0, 2],
-    },
-)
-```
-
-### 4. 更新模板文档
-
-在 [templates.md](templates.md) 的组件数据契约中补充 `comparison_matrix`。
-
-## 新增一个模板风格
-
-复制默认模板：
+只改模板或 CSS 时，用：
 
 ```bash
-Copy-Item templates/minimalist_architecture templates/my_style -Recurse
+python -m ppt_maker render-only --case 688
 ```
 
-修改：
+## Level 2：改数据 / 逻辑
 
-- `theme.json`：颜色和字体。
-- `viewport-base.css`：全局排版、尺寸、导航。
-- `base.html.j2`：HTML 外壳。
-- `components/*.html.j2`：各组件视觉。
+### 加新输入文件类型
 
-运行：
-
-```bash
-python -m ppt_maker run --case 688 --template my_style --dry-run --force
-```
-
-只改模板时：
-
-```bash
-python -m ppt_maker render-only --case 688 --template my_style
-```
-
-## 新增输入文件类型
-
-假设要新增 `市场调研_<id>.md`。
-
-### 1. 文件命名
-
-放入：
+例如新增：
 
 ```text
 data/case_688/市场调研_688.md
 ```
 
-语义键会是：
-
-```text
-市场调研
-```
-
-### 2. 节点读取
+语义键会是 `市场调研`。节点读取：
 
 ```python
 assets = state.get("assets")
 path = assets.docs.get("市场调研") if assets else None
 ```
 
-### 3. 新增 schema
+如果多个节点都要用这份解析结果，建议在 [state.py](../ppt_maker/state.py) 加 schema 和 `ProjectState` 字段；如果只有一个节点用，留在节点内部解析即可。
 
-如果数据会被多个节点共享，建议在 [ppt_maker/state.py](../ppt_maker/state.py) 加 Pydantic schema，并在 `ProjectState` 中加字段。
+### 把启发式打分换成豆包 LLM
 
-如果只被单个节点使用，可以在节点内部解析，不必污染全局状态。
+当前 `policy._impact_score()` 是关键词启发式。低风险改法是保留原函数作为兜底：
 
-### 4. 注意 reducer
+```python
+def _heuristic_score(impact: str) -> int:
+    pos = sum(1 for w in ["提升", "降低", "优化"] if w in impact)
+    return max(2, min(5, 2 + pos))
+```
 
-如果新字段会被多个并行节点写入，必须加 reducer。否则 LangGraph 并发写同一字段时可能报错或行为不符合预期。
+再接入豆包：
 
-## 修改总页数
+```python
+from pydantic import BaseModel
+from ..clients.doubao import DoubaoClient
 
-当前总页数 40 写在多个地方：
 
-| 位置 | 含义 |
+class ImpactScore(BaseModel):
+    score: int
+    reason: str
+
+
+def _impact_score(impact: str) -> int:
+    client = DoubaoClient()
+    if not client.available:
+        return _heuristic_score(impact)
+    try:
+        result = client.structured(
+            ImpactScore,
+            system="你是一个建筑政策评估专家。只输出 JSON。",
+            user=f"评估以下政策对项目的影响，给 1-5 分：{impact}",
+        )
+        return max(1, min(5, result.score))
+    except Exception:
+        return _heuristic_score(impact)
+```
+
+关键点：
+
+| 要求 | 原因 |
 |---|---|
-| [ppt_maker/nodes/aggregate.py](../ppt_maker/nodes/aggregate.py) | 补齐 1-40 页 |
-| [ppt_maker/nodes/validate.py](../ppt_maker/nodes/validate.py) | 校验 40 页 |
-| [ppt_maker/render/html_renderer.py](../ppt_maker/render/html_renderer.py) | 章节页码归属 |
-| `templates/*/components/_chrome.html.j2` | 页码显示 `/ 40` |
-| [docs/pipeline.md](pipeline.md) | 页码表 |
+| 缺 key 直接兜底 | 本地和 CI 不应强依赖 LLM |
+| 超时/异常兜底 | 外部服务不应阻断 deck |
+| 输出用 Pydantic 校验 | 避免自由文本污染节点逻辑 |
+| 只在节点层调用 LLM | 模板层保持纯渲染 |
 
-建议抽成配置前，先小心同步修改这些位置。
+## Level 3：加新结构
 
-## 换图像供应商
+### 新增内容节点
 
-当前图像供应商是 [ppt_maker/clients/runninghub.py](../ppt_maker/clients/runninghub.py)。
+1. 新建 `ppt_maker/nodes/risk.py`。
+2. 实现：
 
-要替换成新的服务，建议保持类似接口：
+   ```python
+   from ..state import ProjectState, SlideSpec
+
+   def run(state: ProjectState) -> dict:
+       spec = SlideSpec(
+           page=6,
+           component="content_bullets",
+           title="风险评估",
+           data={"bullets": [{"title": "政策风险", "body": "..."}]},
+       )
+       return {"slide_specs": {6: spec}}
+   ```
+
+3. 在 [nodes/__init__.py](../ppt_maker/nodes/__init__.py) 注册。
+4. 在 [graph.py](../ppt_maker/graph.py) 连边。依赖 `parse_outline` 的静态节点通常加入 `CONTENT_NODES`。
+5. 更新 [pipeline.md](pipeline.md) 的 40 页表。
+
+注意页码冲突：`merge_dict` 会让同页后写覆盖前写。
+
+### 新增页面组件
+
+1. 在 [state.py:149](../ppt_maker/state.py#L149) 的 `ComponentKind` 加 `"comparison_matrix"`。
+2. 新建 `templates/<template>/components/comparison_matrix.html.j2`。
+3. 节点产出：
+
+   ```python
+   SlideSpec(page=22, component="comparison_matrix", data={...})
+   ```
+
+4. 在 [templates.md](templates.md) 写清 data 契约。
+
+### 新增模板风格
+
+```powershell
+Copy-Item templates/minimalist_architecture templates/my_style -Recurse
+```
+
+修改 `theme.json`、`viewport-base.css` 和组件模板后：
+
+```bash
+python -m ppt_maker render-only --case 688 --template my_style
+```
+
+## Level 4：改架构
+
+### 修改总页数
+
+至少检查：
+
+| 位置 | 事项 |
+|---|---|
+| [aggregate.py:17](../ppt_maker/nodes/aggregate.py#L17) | 补页范围 |
+| [validate.py:18-19](../ppt_maker/nodes/validate.py#L18-L19) | 页数校验 |
+| [html_renderer.py:54-58](../ppt_maker/render/html_renderer.py#L54-L58) | 章节页码边界 |
+| [cover.py:7-16](../ppt_maker/nodes/cover.py#L7-L16) | 目录文案 |
+| [cover.py](../ppt_maker/nodes/cover.py) | 转场页页码 |
+| [concept.py:28-39](../ppt_maker/nodes/concept.py#L28-L39) | 3x3 概念图页码 |
+| [case_study.py:13-19](../ppt_maker/nodes/case_study.py#L13-L19) | 3 个案例页 |
+| [summary.py](../ppt_maker/nodes/summary.py) | 19/26/39 三页 |
+| [pipeline.md](pipeline.md) | 40 页表 |
+
+### 换图像供应商
+
+保持 RunningHub 当前接口形状最省事：
 
 ```python
 class MyImageClient:
     @property
-    def available(self) -> bool:
-        ...
-
-    async def generate(self, prompt: str, out_path: Path) -> Path:
-        ...
-
-    def placeholder_svg(self, path: Path, *, title: str, subtitle: str, palette: tuple[str, str], hint: str = "") -> Path:
-        ...
+    def available(self) -> bool: ...
+    async def generate(self, prompt: str, out_path: Path) -> Path: ...
+    def placeholder_svg(self, out_path: Path, *, title: str, hint: str = "") -> Path: ...
 ```
 
-需要修改调用处：
+需要改：
 
-- [ppt_maker/nodes/concept.py](../ppt_maker/nodes/concept.py)
-- [ppt_maker/nodes/culture.py](../ppt_maker/nodes/culture.py)
+| 调用处 | 用途 |
+|---|---|
+| [concept.py](../ppt_maker/nodes/concept.py) | 29-37 页概念图 |
+| [culture.py](../ppt_maker/nodes/culture.py) | 第 9 页文化图 |
+| [cover.py](../ppt_maker/nodes/cover.py) / [concept.py](../ppt_maker/nodes/concept.py) | logo 和目录插图 |
 
-原则：失败时返回可用占位图，而不是让整个节点崩溃。
+原则：失败时返回占位图路径，不让整条 graph 崩。
 
-## 修改图拓扑
+### 加内容审查节点
 
-新增依赖时要想清楚两件事：
+当前项目没有审查节点。如果要加，推荐接在渲染之后、校验之前：
 
-1. 该节点依赖哪些状态字段？
-2. 它写入的字段是否可能和其他节点并发冲突？
-
-常见接法：
-
-```python
-g.add_edge("parse_outline", "my_node")
-g.add_edge("my_node", "content_join")
+```text
+aggregate_specs -> render_html -> review -> validate
 ```
 
-如果它还依赖 POI：
+实现方向：
 
-```python
-g.add_edge("parse_outline", "my_node")
-g.add_edge("poi_parser", "my_node")
-g.add_edge("my_node", "content_join")
-```
+1. 新建 `ppt_maker/nodes/review.py`。
+2. 节点读取 `slide_specs` 和 `output_html`。
+3. 可选地截图 HTML，再调用 vision LLM 或规则检查。
+4. 审查失败时写 `errors` 或 report，不建议阻断 HTML 产出。
+5. 在 [graph.py](../ppt_maker/graph.py) 改边。
 
-如果它需要动态展开多个 worker，参考 `case_study_dispatch` 和 `concept_dispatch` 的 `Send` 模式。
+## 扩展前 self-test
 
-## 扩展前的检查清单
+每次扩展后至少跑：
 
-- 新节点是否注册到 `NODE_REGISTRY`？
-- graph 是否连边？
-- 并发写入字段是否有 reducer？
-- `SlideSpec.component` 是否在 `ComponentKind` 中？
-- 模板组件文件是否存在？
-- `spec.data` 是否满足组件契约？
-- 改过图逻辑后是否用了 `--force` 清 checkpoint？
-- 只改模板时是否用了 `render-only`？
+| 检查 | 命令或动作 |
+|---|---|
+| dry-run 能否跑通 | `python -m ppt_maker run --case 688 --dry-run --force` |
+| 单页 spec 是否符合预期 | `python -m ppt_maker inspect --case 688 --page <N>` |
+| 只改模板能否复现 | `python -m ppt_maker render-only --case 688` |
+| 日志是否有节点成功记录 | 看 `output/case_688/logs/run.jsonl` |
+| 新组件字段是否符合契约 | 对照 [templates.md](templates.md) |
+| 新页码是否进入 40 页表 | 更新 [pipeline.md](pipeline.md) |
+| 改 graph 后是否清 checkpoint | 使用 `--force` |
