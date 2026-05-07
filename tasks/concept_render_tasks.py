@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
     name="tasks.concept_render_tasks.render_concept_images_task",
 )
 def render_concept_images_task(self, project_id: str):
-    """Render concept images for the project; failures degrade to placeholders."""
+    """Render concept images for the project; background task keeps fallback behavior."""
     try:
         from agent.concept_render import run_concept_render
 

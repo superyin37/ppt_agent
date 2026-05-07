@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import logging
 import math
+import re
 from typing import Optional
 
 from schema.visual_theme import (
@@ -939,6 +940,207 @@ def _table_asset_to_markdown(asset: dict) -> str:
 # ─────────────────────────────────────────────
 # HTML 直出模式（Composer v3）
 # ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────
+# Template mode (Composer v4 / ADR-006)
+# ─────────────────────────────────────────────
+
+
+def render_slide_template(
+    spec_json: dict,
+    theme: VisualTheme,
+    plan,
+    assets: dict[str, dict] | None = None,
+) -> str:
+    """Render one slide that was composed in template mode.
+
+    Args:
+        spec_json: Slide.spec_json with `mode == "template"`. Must include
+                   `component_type` and `data`.
+        theme:     project VisualTheme (drives CSS variables).
+        plan:      `schema.slide_plan.SlidePlan` for total_pages, section
+                   metadata, accent colors. May be None — the renderer falls
+                   back to spec_json fields.
+        assets:    asset_id → asset_dict map for asset_resolver lookup.
+    """
+    from render.jinja_env import get_jinja_env, set_asset_resolver
+
+    component = spec_json.get("component_type")
+    data = spec_json.get("data") or {}
+    slide_no = int(spec_json.get("slide_no") or 0)
+
+    if not component:
+        raise ValueError(f"render_slide_template: spec_json missing component_type ({spec_json})")
+
+    pack = getattr(theme, "template_pack", None) or "minimalist_architecture"
+    env = get_jinja_env(pack)
+
+    # Per-render asset resolver (closure over the assets dict for this slide)
+    if assets:
+        set_asset_resolver(_make_asset_resolver(assets))
+
+    # Resolve plan-derived fields with safe fallbacks
+    if plan is not None:
+        section = plan.section_for(slide_no)
+        display_section_no = _display_section_no(plan, slide_no)
+        section_no_str = f"{display_section_no:02d}" if display_section_no else "00"
+        section_en = section.en if section else ""
+        total_pages = plan.total_pages
+        project_title = plan.project_title
+        section_colors = [s.accent_color for s in plan.sections if s.accent_color]
+    else:
+        section_no_str = "00"
+        section_en = spec_json.get("section_en") or ""
+        total_pages = int(spec_json.get("total_pages") or 0)
+        project_title = spec_json.get("project_title") or spec_json.get("title") or ""
+        section_colors = []
+
+    title = data.get("title") or spec_json.get("title") or ""
+    subtitle_en = spec_json.get("subtitle_en") or ""
+
+    tpl = env.get_template(f"{component}.html.j2")
+    slide_html = tpl.render(
+        page=slide_no,
+        total_pages=total_pages,
+        section=section_no_str,
+        section_en=section_en,
+        project_title=project_title,
+        title=title,
+        subtitle_en=subtitle_en,
+        data=data,
+    )
+
+    theme_css = generate_theme_css(theme)
+    viewport_css = _read_viewport_css(pack)
+    section_color_css = _section_color_css(section_colors)
+
+    # Single-slide doc shell (Playwright-friendly): force the slide visible
+    # and skip the multi-slide deck navigation. base.html.j2's interactive JS
+    # is not needed for screenshot rendering.
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<style>
+{theme_css}
+{viewport_css}
+{section_color_css}
+.slide {{ opacity: 1 !important; pointer-events: auto !important; position: relative !important; }}
+.deck {{ width: 1920px; height: 1080px; }}
+</style>
+</head>
+<body>
+<main class="deck">
+{slide_html}
+</main>
+</body>
+</html>"""
+
+
+def _make_asset_resolver(assets: dict[str, dict]):
+    """Return a resolver that looks up asset_id in `assets` and returns a
+    URL the browser can load (file:// for local paths, http:// for OSS, etc.).
+
+    Returns "" only when the asset record cannot be found at all; the caller
+    (`embed_image` filter in jinja_env) treats "" as "render a visible
+    placeholder". For file:// URLs that point at non-existent files, we
+    still return the URL — letting the filter detect the missing file and
+    render its own placeholder — but log a warning here so the failing
+    asset_id is captured in the chain.
+
+    Existence check on file:// URLs handles percent-encoded paths (e.g.
+    Chinese filenames produced by `path.as_uri()`) by decoding before stat.
+    """
+    from pathlib import Path
+    from urllib.parse import unquote, urlparse
+
+    def _resolve(asset_id: str) -> str:
+        info = assets.get(str(asset_id))
+        if not info:
+            logger.warning("asset_resolver: id=%s not present in assets dict", asset_id)
+            return ""
+        url = (
+            (info.get("config_json") or {}).get("preview_url")
+            or info.get("image_url")
+            or info.get("url")
+            or ""
+        )
+        if not url:
+            logger.warning(
+                "asset_resolver: id=%s has no preview_url/image_url/url (logical_key=%s)",
+                asset_id, info.get("logical_key"),
+            )
+            return ""
+        if url.startswith("file:"):
+            decoded = unquote(urlparse(url).path).lstrip("/")
+            try:
+                if not Path(decoded).exists():
+                    logger.warning(
+                        "asset_resolver: id=%s image_url=%s decodes to %s but file is missing",
+                        asset_id, url, decoded,
+                    )
+            except Exception:
+                pass
+            return url
+        if url.startswith(("http:", "https:", "data:")):
+            return url
+        try:
+            local = Path(url)
+            if not local.is_absolute():
+                local = local.resolve()
+            if not local.exists():
+                logger.warning(
+                    "asset_resolver: id=%s image_url=%s resolved to %s but file is missing",
+                    asset_id, url, local,
+                )
+            return local.as_uri()
+        except Exception as exc:
+            logger.warning("asset_resolver: id=%s could not normalise %r: %s", asset_id, url, exc)
+            return url
+    return _resolve
+
+
+_VIEWPORT_CSS_CACHE: dict[str, str] = {}
+
+
+def _read_viewport_css(pack_name: str) -> str:
+    cached = _VIEWPORT_CSS_CACHE.get(pack_name)
+    if cached is not None:
+        return cached
+    from pathlib import Path
+    css_path = Path(__file__).resolve().parents[1] / "templates" / "packs" / pack_name / "viewport-base.css"
+    css = css_path.read_text(encoding="utf-8") if css_path.exists() else ""
+    _VIEWPORT_CSS_CACHE[pack_name] = css
+    return css
+
+
+def _section_color_css(section_colors: list[str]) -> str:
+    """Generate per-section accent rules for `.slide[data-section="0N"]::before`."""
+    if not section_colors:
+        return ""
+    return "\n".join(
+        f'.slide[data-section="{i + 1:02d}"]::before {{ background: {color}; }}'
+        for i, color in enumerate(section_colors)
+        if color
+    )
+
+
+def _display_section_no(plan, slide_no: int) -> int:
+    """Display正文 chapter 编号，跳过封面/目录等非章节页。"""
+    entries = sorted(getattr(plan, "slides", []) or [], key=lambda e: e.slide_no)
+    chapter_no = 0
+    current_no = 0
+    for entry in entries:
+        slot_id = getattr(entry, "slot_id", "") or ""
+        if re.search(r"chapter-\d+-divider", slot_id):
+            chapter_no += 1
+            current_no = chapter_no
+        if entry.slide_no == slide_no:
+            return current_no or chapter_no or 0
+    section = plan.section_for(slide_no)
+    return int(section.no) if section else 0
+
 
 def render_slide_html_direct(
     body_html: str,

@@ -11,6 +11,9 @@ from schema.concept_proposal import ConceptProposal, ConceptViewKind
 
 AERIAL_TEMPLATE = (
     "Architectural rendering, aerial bird's-eye view, photorealistic 3D building. "
+    "Preserve the reference image's red site boundary / user-selected plot outline: "
+    "keep the red outline clearly visible, accurately aligned with the site, and "
+    "place the proposed building design inside that boundary. "
     "Scheme name: {name} — {design_idea}. "
     "Building type: {building_type}. Site context: {site_context}. "
     "Massing: {massing}. Materials: {materials}. "
@@ -39,12 +42,6 @@ INT_PERSPECTIVE_TEMPLATE = (
     "Style: {style_prefs}, natural light, 24mm lens, editorial interior photography, "
     "magazine quality, award-winning."
 )
-
-NEGATIVE_PROMPT = (
-    "cartoon, illustration, sketch, low quality, blurry, distorted proportions, "
-    "watermark, text overlay, signature, people crowds, cluttered, dirty"
-)
-
 
 @dataclass
 class ConceptPromptContext:
@@ -85,17 +82,3 @@ def build_prompt(
     if view is ConceptViewKind.INT_PERSPECTIVE:
         return _render(INT_PERSPECTIVE_TEMPLATE, proposal, ctx)
     raise ValueError(f"unknown view kind: {view}")
-
-
-def denoise_for(view: ConceptViewKind) -> float:
-    """Recommended denoise strength per view (serial chaining).
-
-    Aerial uses site ref (0.75 — strong transformation), each subsequent view
-    uses the previous image as a style anchor with progressively lower denoise
-    to keep materials / mood consistent across the three views.
-    """
-    return {
-        ConceptViewKind.AERIAL: 0.75,
-        ConceptViewKind.EXT_PERSPECTIVE: 0.60,
-        ConceptViewKind.INT_PERSPECTIVE: 0.50,
-    }[view]

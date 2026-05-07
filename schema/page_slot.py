@@ -13,6 +13,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field, field_validator
 
+from schema.slide_data import ComponentType
+
 
 class GenerationMethod(str, Enum):
     LLM_TEXT = "llm_text"
@@ -57,6 +59,11 @@ class PageSlot(BaseModel):
 
     is_chapter_divider: bool = False
     is_cover: bool = False
+
+    # template_component: which Jinja2 component renders this slot in template mode.
+    # None ⇒ Composer falls back to html_free (v3) or layout_spec (v2).
+    # See ADR-006 / 2026-05-01 brief.
+    template_component: Optional[ComponentType] = None
 
     @field_validator("required_inputs", mode="before")
     @classmethod

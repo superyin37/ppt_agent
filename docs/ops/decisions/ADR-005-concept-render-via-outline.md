@@ -35,7 +35,7 @@ owner: superxiaoyin
 | 方案 | 评估 |
 |------|-----|
 | A:Nanobanana 原生 | 未验证,账户 / API 稳定性不明 |
-| **B:runninghub `/rhart-image-n-g31-flash-official/image-to-image`**(选) | ✅ 用户已有账户,异步提交 + 轮询 + 下载的标准模式,工作流模型固化,image-to-image 原生支持 |
+| **B:runninghub `/openapi/v2/rhart-image-n-g31-flash/image-to-image` 标准模型 API**(选) | ✅ 用户已有账户,异步提交 + 查询 + 下载的标准模式,image-to-image 原生支持 |
 | C:SDXL / Flux 自建 / OpenRouter 图像模型 | 增加基础设施或成本,本期无必要 |
 | D:占位不做 | 违背蓝图第七章设计意图,九页永远空白 |
 
@@ -58,7 +58,7 @@ owner: superxiaoyin
 
 ### 好处
 - Outline Agent 无需新增独立 LLM 调用,只扩 prompt 输出 schema(增量小)
-- runninghub 工作流模型固化,部署 / API 形态稳定
+- runninghub 标准模型 API 形态稳定,不依赖单独发布的图像生成编排配置
 - 串行链式保证三视图强一致性,符合"同一方案的三张效果图"直觉
 - 失败降级确保管线健壮性 —— 单张图失败不会让项目状态机走到 FAILED
 

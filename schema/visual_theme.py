@@ -87,6 +87,8 @@ class VisualTheme(BaseModel):
     composition_style: Literal["editorial", "poster", "swiss", "cinematic", "exhibition"] = "editorial"
     decorative_motif: Literal["grid-lines", "architectural-lines", "oversized-type", "geometric-blocks"] = "architectural-lines"
     image_treatment: Literal["natural", "duotone", "high-contrast", "masked", "full-bleed"] = "natural"
+    section_colors: list[str] = Field(default_factory=list, max_length=12)
+    template_pack: Literal["minimalist_architecture"] = "minimalist_architecture"
 
 
 # ─────────────────────────────────────────────
@@ -254,6 +256,12 @@ class LayoutSpec(BaseModel):
 # Visual Theme Agent I/O
 # ─────────────────────────────────────────────
 
+class ChapterMeta(BaseModel):
+    id: str = ""
+    title: str
+    narrative_direction: str = ""
+
+
 class VisualThemeInput(BaseModel):
     project_id: UUID
     building_type: str
@@ -263,6 +271,8 @@ class VisualThemeInput(BaseModel):
     narrative_hint: str
     project_name: str
     client_name: Optional[str] = None
+    chapters: list[ChapterMeta] = Field(default_factory=list)
+    recommended_emphasis: dict[str, str] = Field(default_factory=dict)
 
 
 class VisualThemeRead(BaseModel):

@@ -4,6 +4,9 @@ Visual Theme Agent
 案例偏好确认后触发，生成项目级 VisualTheme，存入 visual_themes 表。
 """
 import logging
+import json
+import hashlib
+import colorsys
 from pathlib import Path
 from uuid import UUID
 
@@ -40,6 +43,19 @@ def _build_user_message(inp: VisualThemeInput) -> str:
 ## 叙事基调
 {inp.narrative_hint or "标准建筑汇报风格"}
 
+## 章节结构
+{chr(10).join(f"- {c.title}：{c.narrative_direction or '无'}" for c in inp.chapters) if inp.chapters else "- 未提供章节结构"}
+
+## 推荐强调方向
+{json.dumps(inp.recommended_emphasis or {}, ensure_ascii=False, indent=2)}
+
+## Template Pack
+- 当前固定使用 minimalist_architecture。
+- 请输出 template_pack="minimalist_architecture"。
+- 请输出 section_colors：长度应等于章节数量，按上述章节顺序排列；每个值是合法 hex 色。
+- section_colors 应来自主色/辅助色/强调色的协调变化，反映章节调性，但不能破坏整体 palette。
+- 稳定性种子：{_theme_seed(inp.project_id)}。同一 project_id 与章节输入下应保持一致。
+
 请生成完整 VisualTheme JSON。project_id 使用：{inp.project_id}"""
 
 
@@ -67,6 +83,7 @@ async def generate_visual_theme(
 
     # 确保 project_id 一致
     theme = theme.model_copy(update={"project_id": inp.project_id})
+    theme = _normalize_template_theme(theme, inp)
 
     # 字号安全护栏：1920×1080 画布上 base_size 不得低于 20px
     t = theme.typography
@@ -98,6 +115,8 @@ async def generate_visual_theme(
         version=version,
         status="draft",
         theme_json=theme.model_dump(mode="json"),
+        section_colors_json=json.dumps(theme.section_colors, ensure_ascii=False),
+        template_pack=theme.template_pack,
     )
     db.add(orm)
     db.commit()
@@ -120,7 +139,14 @@ def get_latest_theme(project_id: UUID, db: Session) -> VisualTheme | None:
     )
     if not orm:
         return None
-    return VisualTheme.model_validate(orm.theme_json)
+    payload = dict(orm.theme_json or {})
+    if getattr(orm, "section_colors_json", None) and not payload.get("section_colors"):
+        try:
+            payload["section_colors"] = json.loads(orm.section_colors_json or "[]")
+        except Exception:
+            payload["section_colors"] = []
+    payload.setdefault("template_pack", getattr(orm, "template_pack", None) or "minimalist_architecture")
+    return VisualTheme.model_validate(payload)
 
 
 def build_theme_input_from_package(
@@ -132,6 +158,7 @@ def build_theme_input_from_package(
     用于在不经过 Reference Agent 的素材包管线中驱动主题生成。
     """
     from db.models.project import Project, ProjectBrief
+    from db.models.brief_doc import BriefDoc
     from db.models.material_item import MaterialItem
     from db.models.material_package import MaterialPackage
 
@@ -190,6 +217,24 @@ def build_theme_input_from_package(
                 if style_prefs:
                     narrative_hint += f"，风格倾向：{'、'.join(style_prefs[:3])}"
 
+    brief_doc = (
+        db.query(BriefDoc)
+        .filter(BriefDoc.project_id == project_id)
+        .order_by(BriefDoc.version.desc())
+        .first()
+    )
+    brief_outline = brief_doc.outline_json if brief_doc else {}
+    chapters = []
+    for idx, chapter in enumerate(brief_outline.get("chapters") or [], start=1):
+        if not isinstance(chapter, dict) or not chapter.get("title"):
+            continue
+        chapters.append({
+            "id": str(chapter.get("chapter_id") or idx),
+            "title": str(chapter.get("title")),
+            "narrative_direction": str(chapter.get("narrative_direction") or ""),
+        })
+    recommended_emphasis = brief_outline.get("recommended_emphasis") or {}
+
     if not dominant_styles:
         dominant_styles = style_prefs[:3] if style_prefs else ["现代"]
     if not dominant_features:
@@ -204,7 +249,65 @@ def build_theme_input_from_package(
         narrative_hint=narrative_hint,
         project_name=project_name,
         client_name=client_name,
+        chapters=chapters,
+        recommended_emphasis=recommended_emphasis if isinstance(recommended_emphasis, dict) else {},
     )
+
+
+def _normalize_template_theme(theme: VisualTheme, inp: VisualThemeInput) -> VisualTheme:
+    colors = [
+        color for color in (theme.colors.accent, theme.colors.primary, theme.colors.secondary)
+        if _is_hex_color(color)
+    ]
+    if not colors:
+        colors = ["#2B3B63", "#7A8B6F", "#B85C38"]
+
+    required = len(inp.chapters or [])
+    raw = [color for color in (theme.section_colors or []) if _is_hex_color(color)]
+    if required > 0 and len(raw) != required:
+        raw = _derive_section_colors(colors, required, _theme_seed(inp.project_id))
+    elif not raw and required == 0:
+        raw = []
+
+    return theme.model_copy(update={
+        "section_colors": raw[:12],
+        "template_pack": "minimalist_architecture",
+    })
+
+
+def _derive_section_colors(base_colors: list[str], count: int, seed: int) -> list[str]:
+    out: list[str] = []
+    for idx in range(min(count, 12)):
+        color = base_colors[(idx + seed) % len(base_colors)]
+        out.append(_shift_hex_color(color, idx, seed))
+    return out
+
+
+def _shift_hex_color(hex_color: str, idx: int, seed: int) -> str:
+    value = hex_color.lstrip("#")
+    r, g, b = (int(value[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    h, l, s = colorsys.rgb_to_hls(r, g, b)
+    h = (h + ((seed % 17) - 8) / 360 + idx * 0.035) % 1.0
+    l = min(0.72, max(0.32, l + ((idx % 3) - 1) * 0.045))
+    s = min(0.82, max(0.38, s))
+    rr, gg, bb = colorsys.hls_to_rgb(h, l, s)
+    return f"#{int(rr * 255):02X}{int(gg * 255):02X}{int(bb * 255):02X}"
+
+
+def _is_hex_color(value: str) -> bool:
+    if not isinstance(value, str):
+        return False
+    if not value.startswith("#") or len(value) != 7:
+        return False
+    try:
+        int(value[1:], 16)
+        return True
+    except ValueError:
+        return False
+
+
+def _theme_seed(project_id: UUID) -> int:
+    return int(hashlib.sha1(str(project_id).encode("utf-8")).hexdigest()[:8], 16)
 
 
 _STYLE_KEYWORDS = [

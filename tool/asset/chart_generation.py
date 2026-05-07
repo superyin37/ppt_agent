@@ -20,6 +20,75 @@ COLOR_SCHEMES: dict[str, list[str]] = {
 }
 
 
+# CJK font candidates, in preference order (system-shipped first, then likely-installed).
+_CJK_FONT_CANDIDATES = (
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Microsoft YaHei UI",
+    "SimHei",
+    "Heiti SC",
+    "Heiti TC",
+    "STHeiti",
+    "Noto Sans CJK SC",
+    "Noto Sans SC",
+    "Source Han Sans CN",
+    "Source Han Sans SC",
+    "WenQuanYi Micro Hei",
+    "WenQuanYi Zen Hei",
+    "Arial Unicode MS",
+)
+
+_cjk_font_resolved: Optional[str] = None
+_cjk_probe_done = False
+
+
+def _ensure_cjk_font_configured() -> Optional[str]:
+    """Probe matplotlib's font list for the first CJK-capable font available
+    on this machine and update rcParams once. Returns the chosen font name
+    (or None if no candidate is installed). Idempotent.
+
+    Charts will still render without a CJK font, but Chinese labels show
+    as tofu boxes — so this is critical for the architecture-PPT use case.
+    """
+    global _cjk_font_resolved, _cjk_probe_done
+    if _cjk_probe_done:
+        return _cjk_font_resolved
+
+    try:
+        import matplotlib
+        import matplotlib.font_manager as fm
+    except ImportError:
+        _cjk_probe_done = True
+        return None
+
+    available = {fp.name for fp in fm.fontManager.ttflist}
+    chosen: Optional[str] = None
+    for candidate in _CJK_FONT_CANDIDATES:
+        if candidate in available:
+            chosen = candidate
+            break
+
+    if chosen:
+        # Prepend so existing sans-serif fallbacks remain after CJK glyphs.
+        existing = list(matplotlib.rcParams.get("font.sans-serif", []))
+        if chosen in existing:
+            existing.remove(chosen)
+        matplotlib.rcParams["font.sans-serif"] = [chosen, *existing]
+        # Default minus glyph clashes with most CJK fonts.
+        matplotlib.rcParams["axes.unicode_minus"] = False
+        logger.info("chart_generation: using CJK font %r", chosen)
+    else:
+        logger.warning(
+            "chart_generation: no CJK font found among %s; Chinese labels will "
+            "render as tofu blocks. Install one of these system fonts to fix.",
+            ", ".join(_CJK_FONT_CANDIDATES[:5]),
+        )
+
+    _cjk_font_resolved = chosen
+    _cjk_probe_done = True
+    return chosen
+
+
 class ChartGenerationInput(BaseModel):
     chart_type: str             # bar / line / pie / radar
     title: str
@@ -49,6 +118,8 @@ def chart_generation(input: ChartGenerationInput) -> ChartGenerationOutput:
         import matplotlib.font_manager as fm
     except ImportError:
         raise ToolError("MISSING_DEPENDENCY", "matplotlib not installed", retryable=False)
+
+    _ensure_cjk_font_configured()
 
     colors = COLOR_SCHEMES.get(input.color_scheme, COLOR_SCHEMES["primary"])
     dpi = 96

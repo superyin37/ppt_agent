@@ -1,0 +1,71 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide concept-scheme" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .concept-scheme { padding: 0; }
+    .concept-scheme::before { background: var(--color-accent) !important; z-index: 3; }
+    .concept-scheme .hero { position: absolute; inset: 0; overflow: hidden; }
+    .concept-scheme .hero img { width: 100%; height: 100%;
+                                max-width: none; max-height: none; object-fit: cover;
+                                display: block; transform: scale(1.04); }
+    .concept-scheme .overlay { position: absolute; inset: 0;
+      background: linear-gradient(92deg,
+        rgba(10,14,26,0.78) 0%, rgba(10,14,26,0.55) 38%, rgba(10,14,26,0.05) 72%);
+      z-index: 1; }
+    .concept-scheme .overlay::after { content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,14,26,0.20) 0%,
+        rgba(10,14,26,0) 28%, rgba(10,14,26,0) 68%, rgba(10,14,26,0.45) 100%); }
+    .concept-scheme .meta {
+      position: absolute; inset: 0; z-index: 2;
+      padding: clamp(48px, 7vh, 100px) clamp(56px, 7vw, 120px) clamp(46px, 6vh, 72px);
+      display: flex; flex-direction: column; justify-content: space-between;
+      color: #fff; pointer-events: none;
+    }
+    .concept-scheme .top .tag {
+      font-family: var(--font-en); letter-spacing: 0.36em; color: var(--color-accent);
+      font-size: clamp(11px, 1.4vh, 13px); font-weight: 600;
+      border-top: 2px solid var(--color-accent); padding-top: 8px;
+      display: inline-block; width: fit-content;
+    }
+    .concept-scheme .top .scheme-name {
+      color: #fff; font-weight: 700;
+      font-size: clamp(38px, 6vh, 84px); line-height: 1.05;
+      margin-top: clamp(8px, 1.2vh, 14px); max-width: 16ch;
+      letter-spacing: -0.01em;
+    }
+    .concept-scheme .bottom { max-width: 68ch; }
+    .concept-scheme .bottom .view-label {
+      font-family: var(--font-en); letter-spacing: 0.32em; font-size: clamp(11px, 1.4vh, 14px);
+      color: var(--color-accent); margin-bottom: clamp(10px, 1.4vh, 14px);
+      font-weight: 600;
+    }
+    .concept-scheme .bottom .idea {
+      font-size: clamp(20px, 3vh, 34px); font-weight: 600; line-height: 1.25;
+      max-width: 22ch; margin-bottom: clamp(10px, 1.6vh, 16px);
+      color: #fff;
+    }
+    .concept-scheme .bottom .analysis {
+      color: #d6dced; line-height: 1.65;
+      font-size: clamp(13px, 1.65vh, 15px);
+      max-width: 64ch; max-height: 18vh; overflow: hidden;
+    }
+    .concept-scheme .running-head,
+    .concept-scheme .section-tag,
+    .concept-scheme .page-no { z-index: 3; }
+  </style>
+  <div class="hero">
+    {% if data.image %}<img src="{{ data.image|embed_image }}" alt="">{% endif %}
+  </div>
+  <div class="overlay"></div>
+  <div class="meta">
+    <div class="top">
+      <div class="tag">CONCEPT · SCHEME {{ "%02d"|format((data.scheme_idx or 0) + 1) }}</div>
+      <div class="scheme-name">{{ data.scheme_name|e }}</div>
+    </div>
+    <div class="bottom">
+      <div class="view-label">{{ data.view_label|e if data.view_label else (data.view or "")|e }}</div>
+      {% if data.idea %}<p class="idea">{{ data.idea|e }}</p>{% endif %}
+      {% if data.analysis %}<p class="analysis">{{ data.analysis|e }}</p>{% endif %}
+    </div>
+  </div>
+  {{ chrome(page, total_pages, section, section_en, project_title, dark=true) }}
+</section>

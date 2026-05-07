@@ -96,11 +96,24 @@ def render_slides_task(
                 "total_slides": len(slides),
             }
 
+            # Build SlidePlan once per render batch — needed by template-mode
+            # slides for total_pages / section_no / section_en / accent colors.
+            # If outline or brief are missing, skip plan and let template-mode
+            # slides fall back to their spec_json embedded fields.
+            plan = None
+            if outline and brief:
+                try:
+                    from agent.slide_plan import build_slide_plan
+                    section_colors = list(getattr(theme, "section_colors", None) or [])
+                    plan = build_slide_plan(outline, brief, section_colors=section_colors)
+                except Exception as exc:
+                    logger.warning("render_slides_task: failed to build SlidePlan: %s", exc)
+
             # Generate HTML for all slides first
             html_list: list[str | None] = []
             for slide in slides:
                 try:
-                    html = _generate_slide_html(slide, assets_dict, deck_meta, theme=theme)
+                    html = _generate_slide_html(slide, assets_dict, deck_meta, theme=theme, plan=plan)
                     slide.html_content = html[:65535]
                     html_list.append(html)
                 except Exception as e:
@@ -155,15 +168,25 @@ def render_slides_task(
         self.retry(exc=exc, countdown=5)
 
 
-def _generate_slide_html(slide, assets_dict: dict, deck_meta: dict, theme=None) -> str:
+def _generate_slide_html(slide, assets_dict: dict, deck_meta: dict, theme=None, plan=None) -> str:
     """Generate HTML for one slide from spec_json. No screenshot or DB side effects."""
-    from render.engine import render_slide_html, render_slide_html_direct
+    from render.engine import render_slide_html, render_slide_html_direct, render_slide_template
     from schema.visual_theme import LayoutSpec
 
     spec_json = slide.spec_json or {}
+    mode = spec_json.get("mode")
+
+    # Template mode (v4 / ADR-006)
+    if mode == "template":
+        return render_slide_template(
+            spec_json=spec_json,
+            theme=theme,
+            plan=plan,
+            assets=assets_dict,
+        )
 
     # HTML 直出模式（v3）
-    if spec_json.get("html_mode"):
+    if mode == "html" or spec_json.get("html_mode"):
         return render_slide_html_direct(
             body_html=spec_json.get("body_html", ""),
             theme=theme,

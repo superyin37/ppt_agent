@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
+import re
 from typing import Optional
 from uuid import UUID
 
@@ -32,6 +33,18 @@ from tool.material_resolver import expand_requirement, find_matching_items
 logger = logging.getLogger(__name__)
 
 _PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "outline_system_v2.md"
+
+_CONCEPT_SLOT_ORDER = {
+    "concept-intro": 0,
+    "concept-aerial": 1,
+    "concept-perspective": 2,
+}
+_CONCEPT_GROUP_IDS = {
+    "concept-proposal-pages",
+    "concept-aerial-pages",
+    "concept-perspective-pages",
+}
+_CONCEPT_SLOT_RE = re.compile(r"^(concept-(?:intro|aerial|perspective))-(\d+)$")
 
 
 class _SlotAssignmentLLM(BaseModel):
@@ -68,6 +81,83 @@ def _find_slot(slot_id: str) -> Optional[PageSlot]:
     return _slot_map().get(normalize_slot_id(slot_id))
 
 
+def _concept_slot_parts(slot_id: str) -> tuple[str, int] | None:
+    match = _CONCEPT_SLOT_RE.match(slot_id)
+    if not match:
+        return None
+    return match.group(1), int(match.group(2))
+
+
+def _concept_sort_key(slot_id: str) -> tuple[int, int]:
+    parts = _concept_slot_parts(slot_id)
+    if not parts:
+        return (999, 999)
+    base, index = parts
+    return (index, _CONCEPT_SLOT_ORDER[base])
+
+
+def _expanded_blueprint_slots(reference_count: int) -> list[tuple[str, str, PageSlot]]:
+    slots: list[tuple[str, str, PageSlot]] = []
+    concept_groups: dict[str, PageSlotGroup] = {}
+
+    for item in PPT_BLUEPRINT:
+        if isinstance(item, PageSlot):
+            slots.append((item.slot_id, item.title, item))
+            continue
+
+        if item.group_id in _CONCEPT_GROUP_IDS:
+            concept_groups[item.group_id] = item
+            if len(concept_groups) < len(_CONCEPT_GROUP_IDS):
+                continue
+
+            ordered_groups = [
+                concept_groups["concept-proposal-pages"],
+                concept_groups["concept-aerial-pages"],
+                concept_groups["concept-perspective-pages"],
+            ]
+            count = min(group.repeat_count_min for group in ordered_groups)
+            for i in range(1, count + 1):
+                for group in ordered_groups:
+                    template = group.slot_template
+                    slots.append((
+                        f"{template.slot_id}-{i}",
+                        f"{template.title} {i}/{group.repeat_count_min}",
+                        template,
+                    ))
+            continue
+
+        count = reference_count if item.group_id == "reference-case-pages" else item.repeat_count_min
+        for i in range(1, count + 1):
+            template = item.slot_template
+            slots.append((f"{template.slot_id}-{i}", f"{template.title} {i}/{count}", template))
+
+    return slots
+
+
+def _normalize_assignment_order(assignments: list["_SlotAssignmentLLM"]) -> list["_SlotAssignmentLLM"]:
+    concept_assignments = [a for a in assignments if _concept_slot_parts(a.slot_id)]
+    if not concept_assignments:
+        return assignments
+
+    sorted_concepts = sorted(concept_assignments, key=lambda a: _concept_sort_key(a.slot_id))
+    first_concept_at = min(i for i, a in enumerate(assignments) if _concept_slot_parts(a.slot_id))
+    reordered: list[_SlotAssignmentLLM] = []
+    inserted_concepts = False
+
+    for i, assignment in enumerate(assignments):
+        if _concept_slot_parts(assignment.slot_id):
+            if not inserted_concepts and i == first_concept_at:
+                reordered.extend(sorted_concepts)
+                inserted_concepts = True
+            continue
+        reordered.append(assignment)
+
+    return [
+        assignment.model_copy(update={"slide_no": slide_no})
+        for slide_no, assignment in enumerate(reordered, start=1)
+    ]
+
+
 def _load_system_prompt(brief: ProjectBrief, brief_doc: Optional[BriefDoc]) -> str:
     template = _PROMPT_PATH.read_text(encoding="utf-8")
     outline_json = brief_doc.outline_json if brief_doc else {}
@@ -85,31 +175,18 @@ def _load_system_prompt(brief: ProjectBrief, brief_doc: Optional[BriefDoc]) -> s
 
 def _build_blueprint_summary(reference_count: int) -> str:
     lines = ["<blueprint>"]
-    for item in PPT_BLUEPRINT:
-        if isinstance(item, PageSlot):
-            lines.append(
-                json.dumps({
-                    "slot_id": item.slot_id,
-                    "title": item.title,
-                    "chapter": item.chapter,
-                    "is_cover": item.is_cover,
-                    "is_chapter_divider": item.is_chapter_divider,
-                    "layout_hint": item.layout_hint,
-                    "required_inputs": item.required_input_keys,
-                }, ensure_ascii=False)
-            )
-        else:
-            count = reference_count if item.group_id == "reference-case-pages" else item.repeat_count_min
-            for i in range(1, count + 1):
-                lines.append(
-                    json.dumps({
-                        "slot_id": f"{item.slot_template.slot_id}-{i}",
-                        "title": f"{item.slot_template.title} {i}/{count}",
-                        "chapter": item.slot_template.chapter,
-                        "layout_hint": item.slot_template.layout_hint,
-                        "required_inputs": item.slot_template.required_input_keys,
-                    }, ensure_ascii=False)
-                )
+    for slot_id, title, slot in _expanded_blueprint_slots(reference_count):
+        lines.append(
+            json.dumps({
+                "slot_id": slot_id,
+                "title": title,
+                "chapter": slot.chapter,
+                "is_cover": slot.is_cover,
+                "is_chapter_divider": slot.is_chapter_divider,
+                "layout_hint": slot.layout_hint,
+                "required_inputs": slot.required_input_keys,
+            }, ensure_ascii=False)
+        )
     lines.append("</blueprint>")
     return "\n".join(lines)
 
@@ -221,7 +298,7 @@ async def generate_outline(project_id: UUID, db: Session) -> Outline:
         logger.error("Outline LLM failed: %s", exc)
         result = _fallback_outline(brief, reference_count)
 
-    assignments = [
+    assignments = _normalize_assignment_order([
         SlotAssignment(
             slot_id=a.slot_id,
             slide_no=a.slide_no,
@@ -235,7 +312,7 @@ async def generate_outline(project_id: UUID, db: Session) -> Outline:
             estimated_content_density=a.estimated_content_density,
         )
         for a in result.assignments
-    ]
+    ])
 
     coverage_by_slide: dict[str, dict] = {}
     slot_binding_hints: dict[str, dict] = {}
@@ -332,32 +409,21 @@ def _fallback_outline(brief: ProjectBrief, reference_count: int) -> _OutlineLLMO
     client = brief.client_name or "项目"
     building_type = brief.building_type or "building"
     assignments: list[_SlotAssignmentLLM] = []
-    slide_no = 1
-    for item in PPT_BLUEPRINT:
-        if isinstance(item, PageSlot):
-            slots = [(item.slot_id, item.title, item)]
-        else:
-            count = reference_count if item.group_id == "reference-case-pages" else item.repeat_count_min
-            slots = [
-                (f"{item.slot_template.slot_id}-{i}", f"{item.slot_template.title} {i}/{count}", item.slot_template)
-                for i in range(1, count + 1)
-            ]
-        for slot_id, title, slot in slots:
-            assignments.append(
-                _SlotAssignmentLLM(
-                    slot_id=slot_id,
-                    slide_no=slide_no,
-                    section=slot.chapter,
-                    title=title,
-                    content_directive=f"[{client} {building_type}] {slot.content_task[:220]}",
-                    asset_keys=[],
-                    layout_hint=slot.layout_hint,
-                    is_cover=slot.is_cover,
-                    is_chapter_divider=slot.is_chapter_divider,
-                    estimated_content_density="medium",
-                )
+    for slide_no, (slot_id, title, slot) in enumerate(_expanded_blueprint_slots(reference_count), start=1):
+        assignments.append(
+            _SlotAssignmentLLM(
+                slot_id=slot_id,
+                slide_no=slide_no,
+                section=slot.chapter,
+                title=title,
+                content_directive=f"[{client} {building_type}] {slot.content_task[:220]}",
+                asset_keys=[],
+                layout_hint=slot.layout_hint,
+                is_cover=slot.is_cover,
+                is_chapter_divider=slot.is_chapter_divider,
+                estimated_content_density="medium",
             )
-            slide_no += 1
+        )
     return _OutlineLLMOutput(
         deck_title=f"{client} {building_type.title()} 设计建议书",
         total_pages=len(assignments),

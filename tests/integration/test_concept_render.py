@@ -15,7 +15,7 @@ from uuid import uuid4
 
 import pytest
 
-from agent.concept_render import run_concept_render
+from agent.concept_render import ConceptRenderStrictError, run_concept_render
 from db.models.asset import Asset
 from db.models.brief_doc import BriefDoc
 from db.models.material_item import MaterialItem
@@ -68,9 +68,9 @@ def project_with_outline(db, tmp_path):
     package = MaterialPackage(
         project_id=project.id,
         version=1,
-        source="local",
         summary_json={},
         manifest_json={},
+        created_from={"source": "local"},
     )
     db.add(package)
     db.flush()
@@ -132,14 +132,10 @@ def _make_fake_client(tmp_path: Path, *, fail: bool = False):
     client.aclose = AsyncMock(return_value=None)
 
     if fail:
-        client.upload_image = AsyncMock(side_effect=RunningHubError("offline"))
-        client.run_workflow = AsyncMock(side_effect=RunningHubError("offline"))
+        client.run_image_to_image = AsyncMock(side_effect=RunningHubError("offline"))
         return client
 
-    async def fake_upload(path):
-        return f"uploaded-{Path(path).name}"
-
-    async def fake_run(node_overrides, dest_path, **_kwargs):
+    async def fake_run_image_to_image(image_path, prompt, dest_path, **_kwargs):
         dest = Path(dest_path)
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(b"\x89PNG\r\n\x1a\nrendered")
@@ -150,8 +146,7 @@ def _make_fake_client(tmp_path: Path, *, fail: bool = False):
             local_path=dest,
         )
 
-    client.upload_image = AsyncMock(side_effect=fake_upload)
-    client.run_workflow = AsyncMock(side_effect=fake_run)
+    client.run_image_to_image = AsyncMock(side_effect=fake_run_image_to_image)
     return client
 
 
@@ -162,7 +157,6 @@ def _make_fake_client(tmp_path: Path, *, fail: bool = False):
 async def test_concept_render_success_persists_nine_assets(db, project_with_outline, tmp_path, monkeypatch):
     asset_root = tmp_path / "assets"
     monkeypatch.setattr("agent.concept_render.settings.running_hub_key", "fake")
-    monkeypatch.setattr("agent.concept_render.settings.running_hub_workflow_id", "wf-1")
     monkeypatch.setattr("agent.concept_render.settings.running_hub_asset_dir", str(asset_root))
 
     fake = _make_fake_client(tmp_path)
@@ -197,7 +191,6 @@ async def test_concept_render_falls_back_to_placeholders_on_failure(
 ):
     asset_root = tmp_path / "assets"
     monkeypatch.setattr("agent.concept_render.settings.running_hub_key", "fake")
-    monkeypatch.setattr("agent.concept_render.settings.running_hub_workflow_id", "wf-1")
     monkeypatch.setattr("agent.concept_render.settings.running_hub_asset_dir", str(asset_root))
 
     fake = _make_fake_client(tmp_path, fail=True)
@@ -215,6 +208,53 @@ async def test_concept_render_falls_back_to_placeholders_on_failure(
         assert asset.source_info["source"] == "placeholder"
         assert asset.config_json["generation_failed"] is True
         assert Path(asset.image_url).exists()
+
+
+@pytest.mark.asyncio
+async def test_concept_render_strict_raises_on_placeholder(
+    db, project_with_outline, tmp_path, monkeypatch
+):
+    asset_root = tmp_path / "assets"
+    monkeypatch.setattr("agent.concept_render.settings.running_hub_key", "fake")
+    monkeypatch.setattr("agent.concept_render.settings.running_hub_asset_dir", str(asset_root))
+
+    fake = _make_fake_client(tmp_path, fail=True)
+    with patch("agent.concept_render.RunningHubClient", return_value=fake):
+        with pytest.raises(ConceptRenderStrictError) as exc_info:
+            await run_concept_render(project_with_outline.id, db, strict=True)
+
+    stats = exc_info.value.stats
+    assert stats.total == 9
+    assert stats.generated == 0
+    assert stats.placeholders == 9
+    assert stats.failures
+
+
+@pytest.mark.asyncio
+async def test_concept_render_reuses_existing_ready_assets(
+    db, project_with_outline, tmp_path, monkeypatch
+):
+    asset_root = tmp_path / "assets"
+    monkeypatch.setattr("agent.concept_render.settings.running_hub_key", "fake")
+    monkeypatch.setattr("agent.concept_render.settings.running_hub_asset_dir", str(asset_root))
+
+    fake = _make_fake_client(tmp_path)
+    with patch("agent.concept_render.RunningHubClient", return_value=fake):
+        first = await run_concept_render(project_with_outline.id, db)
+
+    assert first.generated == 9
+    assert fake.run_image_to_image.await_count == 9
+
+    failing_client = _make_fake_client(tmp_path, fail=True)
+    with patch("agent.concept_render.RunningHubClient", return_value=failing_client):
+        second = await run_concept_render(project_with_outline.id, db, strict=True)
+
+    assert second.total == 9
+    assert second.generated == 9
+    assert second.placeholders == 0
+    assert second.reused == 9
+    assert failing_client.run_image_to_image.await_count == 0
+    assert len(_concept_assets(db, project_with_outline.id)) == 9
 
 
 @pytest.mark.asyncio

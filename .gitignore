@@ -145,8 +145,18 @@ Thumbs.db
 test_material/
 test_output/
 output/
+tmp/
+tmp_pytest/
 uploads/
 logs/
+runninghub_effect_pages_smoke/
+runninghub_standard_api_smoke.jpg
+# Interview docs
+*[Ii][Nn][Tt][Ee][Rr][Vv][Ii][Ee][Ww]*.md
+*[Ii][Nn][Tt][Ee][Rr][Vv][Ii][Ee][Ww]*.txt
+*[Ii][Nn][Tt][Ee][Rr][Vv][Ii][Ee][Ww]*.doc
+*[Ii][Nn][Tt][Ee][Rr][Vv][Ii][Ee][Ww]*.docx
+*[Ii][Nn][Tt][Ee][Rr][Vv][Ii][Ee][Ww]*.pdf
 *.pdf
 *.pptx
 *.docx

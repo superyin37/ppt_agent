@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from pathlib import Path
+from unittest.mock import MagicMock
 from uuid import uuid4
 
 from db.models.asset import Asset
 from db.models.material_item import MaterialItem
 from tool.material_pipeline import (
     _build_item_payload,
+    derive_assets_from_items,
     _group_chart_variants,
     build_manifest,
     build_summary,
@@ -43,13 +45,23 @@ def _asset(logical_key: str, asset_type: str = "image") -> Asset:
 
 def test_infer_logical_key_for_project1_files():
     assert infer_logical_key(PROJECT1_DIR / "场地四至分析_285.png") == "site.boundary.image"
+    assert infer_logical_key(Path("test_material/project2/场地四至_688.png")) == "site.boundary.image"
     assert infer_logical_key(PROJECT1_DIR / "场地poi_285.xlsx") == "site.poi.table"
     assert infer_logical_key(PROJECT1_DIR / "场地坐标_285.md") == "site.coordinate.text"
     assert infer_logical_key(PROJECT1_DIR / "枢纽站点_285.png") == "site.transport.hub.image"
+    assert infer_logical_key(Path("test_material/project2/外部道路交通_688.png")) == "site.transport.external.image"
     assert infer_logical_key(PROJECT1_DIR / "参考案例4_archdaily.cn_285.md") == "reference.case.4.source"
+    assert infer_logical_key(Path("test_material/project2/参考案例1_详情_688.md")) == "reference.case.1.source"
     assert infer_logical_key(PROJECT1_DIR / "参考案例4_缩略图_285.png") == "reference.case.4.thumbnail"
     assert infer_logical_key(PROJECT1_DIR / "案例4_评价和分析_285.md") == "reference.case.4.analysis"
     assert infer_logical_key(PROJECT1_DIR / "经济背景 - 城市经济_chart_2_285.svg") == "economy.city.chart.2"
+    assert infer_logical_key(Path("test_material/project2/GDP及其增速_688.png")) == "economy.city.chart.0"
+    assert infer_logical_key(Path("test_material/project2/常驻人口及其增速_688.png")) == "economy.city.chart.1"
+    assert infer_logical_key(Path("test_material/project2/城镇化率_688.png")) == "economy.city.chart.2"
+    assert infer_logical_key(Path("test_material/project2/产业结构_688.png")) == "economy.industry.chart.0"
+    assert infer_logical_key(Path("test_material/project2/第三产业发展情况及其产业增速_688.png")) == "economy.industry.chart.1"
+    assert infer_logical_key(Path("test_material/project2/消费品零售总额发展情况_688.png")) == "economy.consumption.chart.0"
+    assert infer_logical_key(Path("test_material/project2/城镇居民人均收支情况_688.png")) == "economy.consumption.chart.1"
 
 
 def test_group_chart_variants_groups_html_svg_json():
@@ -80,6 +92,37 @@ def test_build_item_payload_for_chart_bundle_prefers_svg_and_html():
     assert payload["preview_url"].endswith(".svg")
     assert payload["content_url"].endswith(".html")
     assert payload["structured_data"] is not None
+
+
+def test_build_item_payload_for_economy_png_is_chart():
+    payload = _build_item_payload(
+        Path("test_material/project2/GDP及其增速_688.png"),
+        "economy.city.chart.0",
+    )
+
+    assert payload["kind"] == "chart"
+    assert payload["preview_url"].endswith(".png")
+
+
+def test_derive_assets_includes_plain_chart_items():
+    item = MaterialItem(
+        id=uuid4(),
+        package_id=uuid4(),
+        logical_key="economy.city.chart.0",
+        kind="chart",
+        format="png",
+        title="GDP及其增速",
+        source_path="test_material/project2/GDP及其增速_688.png",
+        preview_url="file:///GDP.png",
+        content_url="file:///GDP.png",
+    )
+
+    assets = derive_assets_from_items(uuid4(), uuid4(), [item], MagicMock())
+
+    assert len(assets) == 1
+    assert assets[0].asset_type == "chart"
+    assert assets[0].logical_key == "economy.city.chart.0"
+    assert assets[0].image_url == "file:///GDP.png"
 
 
 def test_manifest_and_summary_include_logical_keys_and_snippets():

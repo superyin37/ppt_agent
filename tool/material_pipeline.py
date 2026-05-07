@@ -40,6 +40,10 @@ def infer_logical_key(path: Path) -> str:
     if match:
         return f"reference.case.{match.group(1)}.source"
 
+    match = re.search(r"参考案例(\d+)_详情", name)
+    if match:
+        return f"reference.case.{match.group(1)}.source"
+
     match = re.search(r"案例(\d+)_评价和分析", name)
     if match:
         return f"reference.case.{match.group(1)}.analysis"
@@ -53,12 +57,28 @@ def infer_logical_key(path: Path) -> str:
         }
         return f"economy.{topic_map.get(match.group(1), 'general')}.chart.{match.group(2)}"
 
+    economy_aliases = {
+        "GDP及其增速": "economy.city.chart.0",
+        "常驻人口及其增速": "economy.city.chart.1",
+        "城镇化率": "economy.city.chart.2",
+        "产业结构": "economy.industry.chart.0",
+        "第三产业发展情况及其产业增速": "economy.industry.chart.1",
+        "消费品零售总额发展情况": "economy.consumption.chart.0",
+        "城镇居民人均收支情况": "economy.consumption.chart.1",
+    }
+    for prefix, logical_key in economy_aliases.items():
+        if name.startswith(prefix):
+            return logical_key
+
     static_mapping = {
         "场地四至分析": "site.boundary.image",
+        "场地四至": "site.boundary.image",
         "场地poi": "site.poi.table",
         "场地坐标": "site.coordinate.text",
         "外部交通站点_POI": "site.transport.station.table",
         "外部交通站点": "site.transport.station.image",
+        "外部道路交通_POI": "site.transport.external.table",
+        "外部道路交通": "site.transport.external.image",
         "外部交通_POI": "site.transport.external.table",
         "外部交通": "site.transport.external.image",
         "枢纽站点_POI": "site.transport.hub.table",
@@ -81,7 +101,7 @@ def infer_logical_key(path: Path) -> str:
 
 def _guess_kind(path: Path, logical_key: str) -> str:
     suffix = path.suffix.lower()
-    if logical_key.startswith("economy.") and "_chart_" in path.stem:
+    if logical_key.startswith("economy."):
         return "chart_bundle" if suffix in CHART_VARIANT_EXTENSIONS else "chart"
     if suffix in IMAGE_EXTENSIONS:
         return "image"
@@ -405,7 +425,7 @@ def derive_assets_from_items(project_id, package_id, items: list[MaterialItem], 
         data_json = item.structured_data
         summary = item.text_content[:500] if item.text_content else None
 
-        if item.kind == "chart_bundle":
+        if item.kind in {"chart", "chart_bundle"}:
             asset_type = AssetType.CHART.value
             render_role = "chart"
             image_url = item.preview_url or item.content_url

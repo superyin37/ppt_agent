@@ -5,12 +5,12 @@ views per proposal via runninghub (aerial → exterior → interior, serial chai
 for consistency), and persists each result as an Asset with logical_key
 `concept.{index}.{view}`.
 
-Falls back to a grey placeholder on any failure so the downstream pipeline
-never blocks on image-model outages (see ADR-005).
+By default it falls back to a grey placeholder on failure so the background
+pipeline can keep moving. E2E/acceptance runs can enable strict mode to fail
+when any required concept image is still a placeholder.
 """
 from __future__ import annotations
 
-import asyncio
 import logging
 import uuid
 from dataclasses import dataclass
@@ -36,12 +36,9 @@ from schema.concept_proposal import (
 from tool.image_gen.concept_prompts import (
     ConceptPromptContext,
     build_prompt,
-    denoise_for,
-    NEGATIVE_PROMPT,
 )
 from tool.image_gen.placeholder import make_placeholder
 from tool.image_gen.runninghub import (
-    NodeOverride,
     RunningHubClient,
     RunningHubError,
     RunningHubResult,
@@ -63,9 +60,33 @@ class ConceptRenderStats:
     total: int
     generated: int
     placeholders: int
+    reused: int = 0
+    failures: list[dict[str, str]] | None = None
 
 
-async def run_concept_render(project_id: UUID, db: Session) -> ConceptRenderStats:
+class ConceptRenderStrictError(RuntimeError):
+    """Raised when strict concept rendering leaves one or more placeholders."""
+
+    def __init__(self, stats: ConceptRenderStats) -> None:
+        self.stats = stats
+        failures = stats.failures or []
+        failure_text = "; ".join(
+            f"{item.get('logical_key')}: {item.get('error')}" for item in failures[:5]
+        )
+        super().__init__(
+            "concept render strict gate failed: "
+            f"generated={stats.generated}/{stats.total}, placeholders={stats.placeholders}"
+            + (f" ({failure_text})" if failure_text else "")
+        )
+
+
+async def run_concept_render(
+    project_id: UUID,
+    db: Session,
+    *,
+    strict: bool = False,
+    reuse_existing: bool = True,
+) -> ConceptRenderStats:
     """Entry point. Generates 9 assets (3 proposals × 3 views) for the project."""
     if not settings.concept_render_enabled:
         logger.info("concept_render disabled via settings; skipping project=%s", project_id)
@@ -116,37 +137,43 @@ async def run_concept_render(project_id: UUID, db: Session) -> ConceptRenderStat
     dest_root = _project_asset_dir(project_id)
     dest_root.mkdir(parents=True, exist_ok=True)
 
-    stats = ConceptRenderStats(total=0, generated=0, placeholders=0)
+    stats = ConceptRenderStats(total=0, generated=0, placeholders=0, reused=0, failures=[])
 
-    _clear_existing_concept_assets(db, project_id)
+    existing_ready = _load_existing_ready_concept_outcomes(db, project_id) if reuse_existing else {}
+    if reuse_existing:
+        _clear_failed_concept_assets(db, project_id)
+    else:
+        _clear_existing_concept_assets(db, project_id)
 
-    can_generate = bool(settings.running_hub_key and settings.running_hub_workflow_id)
+    can_generate = bool(settings.running_hub_key)
     client: Optional[RunningHubClient] = None
     if can_generate:
         client = RunningHubClient(
             api_key=settings.running_hub_key,
-            workflow_id=settings.running_hub_workflow_id,
             base_url=settings.running_hub_base_url,
+            model_path=settings.running_hub_model_path,
+            query_path=settings.running_hub_query_path,
             poll_interval_seconds=settings.running_hub_poll_interval_seconds,
             poll_timeout_seconds=settings.running_hub_poll_timeout_seconds,
         )
     else:
         logger.warning(
-            "running_hub key/workflow_id not set; all concept images will use placeholders"
+            "running_hub key not set; all concept images will use placeholders"
         )
 
     try:
-        tasks = [
-            _render_proposal(
-                proposal=proposal,
-                ctx=ctx,
-                site_ref_path=site_ref_path,
-                client=client,
-                dest_root=dest_root,
+        results = []
+        for proposal in proposals:
+            results.append(
+                await _render_proposal(
+                    proposal=proposal,
+                    ctx=ctx,
+                    site_ref_path=site_ref_path,
+                    client=client,
+                    dest_root=dest_root,
+                    existing_ready=existing_ready,
+                )
             )
-            for proposal in proposals
-        ]
-        results = await asyncio.gather(*tasks, return_exceptions=False)
     finally:
         if client is not None:
             await client.aclose()
@@ -156,23 +183,37 @@ async def run_concept_render(project_id: UUID, db: Session) -> ConceptRenderStat
             stats.total += 1
             if outcome.is_placeholder:
                 stats.placeholders += 1
+                if stats.failures is not None:
+                    stats.failures.append(
+                        {
+                            "logical_key": concept_logical_key(proposal.index, view),
+                            "error": outcome.error or "placeholder generated",
+                        }
+                    )
             else:
                 stats.generated += 1
-            _persist_asset(
-                db=db,
-                project_id=project_id,
-                package_id=package.id if package else None,
-                proposal=proposal,
-                view=view,
-                outcome=outcome,
-            )
+                if outcome.reused:
+                    stats.reused += 1
+            if not outcome.reused:
+                _persist_asset(
+                    db=db,
+                    project_id=project_id,
+                    package_id=package.id if package else None,
+                    proposal=proposal,
+                    view=view,
+                    outcome=outcome,
+                )
+
+    if strict and stats.placeholders:
+        raise ConceptRenderStrictError(stats)
 
     db.commit()
     logger.info(
-        "concept_render project=%s generated=%d placeholders=%d",
+        "concept_render project=%s generated=%d placeholders=%d reused=%d",
         project_id,
         stats.generated,
         stats.placeholders,
+        stats.reused,
     )
     return stats
 
@@ -189,6 +230,7 @@ class _RenderOutcome:
     file_url: Optional[str] = None
     task_id: Optional[str] = None
     error: Optional[str] = None
+    reused: bool = False
 
 
 async def _render_proposal(
@@ -198,12 +240,21 @@ async def _render_proposal(
     site_ref_path: Optional[Path],
     client: Optional[RunningHubClient],
     dest_root: Path,
+    existing_ready: dict[str, _RenderOutcome],
 ) -> dict[ConceptViewKind, _RenderOutcome]:
     outcomes: dict[ConceptViewKind, _RenderOutcome] = {}
     prev_ref: Optional[Path] = site_ref_path
 
     for view in _VIEW_ORDER:
         dest_path = dest_root / f"concept_{proposal.index}_{view.value}.png"
+        logical_key = concept_logical_key(proposal.index, view)
+        if logical_key in existing_ready:
+            outcome = existing_ready[logical_key]
+            outcomes[view] = outcome
+            prev_ref = outcome.local_path
+            logger.info("reusing existing concept asset %s from %s", logical_key, outcome.local_path)
+            continue
+
         outcome = await _render_single_view(
             proposal=proposal,
             view=view,
@@ -233,39 +284,44 @@ async def _render_single_view(
         return _placeholder_outcome(proposal, view, dest_path, reason)
 
     prompt = build_prompt(proposal, view, ctx)
-    try:
-        ref_filename = await client.upload_image(ref_image_path)
-        overrides = _build_node_overrides(
-            prompt=prompt,
-            ref_filename=ref_filename,
-            denoise=denoise_for(view),
-            seed=_seed_for(proposal.index, view),
-        )
-        result: RunningHubResult = await client.run_workflow(
-            node_overrides=overrides,
-            dest_path=dest_path,
-        )
-        return _RenderOutcome(
-            local_path=result.local_path or dest_path,
-            is_placeholder=False,
-            file_url=result.file_url,
-            task_id=result.task_id,
-        )
-    except RunningHubError as exc:
-        logger.warning(
-            "runninghub failed for proposal=%s view=%s: %s",
-            proposal.index,
-            view.value,
-            exc,
-        )
-        return _placeholder_outcome(proposal, view, dest_path, str(exc))
-    except Exception as exc:  # network, disk, etc.
-        logger.exception(
-            "unexpected error in concept render proposal=%s view=%s",
-            proposal.index,
-            view.value,
-        )
-        return _placeholder_outcome(proposal, view, dest_path, repr(exc))
+    attempts = max(1, int(getattr(settings, "running_hub_generation_retries", 1) or 1))
+    last_error = ""
+    for attempt in range(1, attempts + 1):
+        try:
+            result = await client.run_image_to_image(
+                image_path=ref_image_path,
+                prompt=prompt,
+                dest_path=dest_path,
+                aspect_ratio="16:9",
+                resolution="1k",
+            )
+            return _RenderOutcome(
+                local_path=result.local_path or dest_path,
+                is_placeholder=False,
+                file_url=result.file_url,
+                task_id=result.task_id,
+            )
+        except RunningHubError as exc:
+            last_error = str(exc)
+            logger.warning(
+                "runninghub failed for proposal=%s view=%s attempt=%d/%d: %s",
+                proposal.index,
+                view.value,
+                attempt,
+                attempts,
+                exc,
+            )
+        except Exception as exc:  # network, disk, etc.
+            last_error = repr(exc)
+            logger.exception(
+                "unexpected error in concept render proposal=%s view=%s attempt=%d/%d",
+                proposal.index,
+                view.value,
+                attempt,
+                attempts,
+            )
+
+    return _placeholder_outcome(proposal, view, dest_path, last_error or "runninghub failed")
 
 
 def _placeholder_outcome(
@@ -344,59 +400,6 @@ def _build_prompt_context(
     )
 
 
-def _build_node_overrides(
-    *,
-    prompt: str,
-    ref_filename: str,
-    denoise: float,
-    seed: int,
-) -> list[NodeOverride]:
-    overrides: list[NodeOverride] = [
-        NodeOverride(
-            node_id=settings.running_hub_prompt_node_id,
-            field_name="text",
-            field_value=prompt,
-        ),
-        NodeOverride(
-            node_id=settings.running_hub_init_image_node_id,
-            field_name="image",
-            field_value=ref_filename,
-        ),
-        NodeOverride(
-            node_id=settings.running_hub_init_image_node_id,
-            field_name="denoise",
-            field_value=denoise,
-        ),
-    ]
-    if settings.running_hub_negative_prompt_node_id:
-        overrides.append(
-            NodeOverride(
-                node_id=settings.running_hub_negative_prompt_node_id,
-                field_name="text",
-                field_value=NEGATIVE_PROMPT,
-            )
-        )
-    if settings.running_hub_seed_node_id:
-        overrides.append(
-            NodeOverride(
-                node_id=settings.running_hub_seed_node_id,
-                field_name="seed",
-                field_value=seed,
-            )
-        )
-    return overrides
-
-
-def _seed_for(proposal_index: int, view: ConceptViewKind) -> int:
-    base = proposal_index * 10_000
-    delta = {
-        ConceptViewKind.AERIAL: 0,
-        ConceptViewKind.EXT_PERSPECTIVE: 17,
-        ConceptViewKind.INT_PERSPECTIVE: 43,
-    }[view]
-    return base + delta
-
-
 def _project_asset_dir(project_id: UUID) -> Path:
     return Path(settings.running_hub_asset_dir) / str(project_id) / "concepts"
 
@@ -406,6 +409,50 @@ def _clear_existing_concept_assets(db: Session, project_id: UUID) -> None:
         Asset.project_id == project_id,
         Asset.logical_key.like("concept.%"),
     ).delete(synchronize_session=False)
+
+
+def _clear_failed_concept_assets(db: Session, project_id: UUID) -> None:
+    db.query(Asset).filter(
+        Asset.project_id == project_id,
+        Asset.logical_key.like("concept.%"),
+        Asset.status != "ready",
+    ).delete(synchronize_session=False)
+
+
+def _load_existing_ready_concept_outcomes(
+    db: Session,
+    project_id: UUID,
+) -> dict[str, _RenderOutcome]:
+    outcomes: dict[str, _RenderOutcome] = {}
+    assets = (
+        db.query(Asset)
+        .filter(Asset.project_id == project_id)
+        .filter(Asset.logical_key.like("concept.%"))
+        .filter(Asset.status == "ready")
+        .all()
+    )
+    for asset in assets:
+        logical_key = asset.logical_key or ""
+        if not logical_key:
+            continue
+        source_info = asset.source_info or {}
+        config_json = asset.config_json or {}
+        if source_info.get("source") != "runninghub" or config_json.get("generation_failed"):
+            continue
+        if not asset.image_url:
+            continue
+        path = Path(asset.image_url)
+        if not path.exists():
+            logger.warning("existing concept asset file is missing; will regenerate %s", logical_key)
+            continue
+        outcomes[logical_key] = _RenderOutcome(
+            local_path=path,
+            is_placeholder=False,
+            file_url=source_info.get("file_url"),
+            task_id=source_info.get("task_id"),
+            reused=True,
+        )
+    return outcomes
 
 
 def _persist_asset(
@@ -418,6 +465,10 @@ def _persist_asset(
     outcome: _RenderOutcome,
 ) -> None:
     logical_key = concept_logical_key(proposal.index, view)
+    db.query(Asset).filter(
+        Asset.project_id == project_id,
+        Asset.logical_key == logical_key,
+    ).delete(synchronize_session=False)
     title = f"{proposal.name} · {_view_label(view)}"
     asset = Asset(
         id=uuid.uuid4(),

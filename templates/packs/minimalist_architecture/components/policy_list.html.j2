@@ -1,0 +1,60 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide policy" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .policy .list { flex: 1; min-height: 0; overflow: hidden;
+                    display: flex; flex-direction: column;
+                    gap: clamp(8px, 1.2vh, 14px);
+                    margin-top: clamp(14px, 2vh, 22px); }
+    .policy .pol-item {
+      position: relative;
+      display: grid; grid-template-columns: 2.8em minmax(220px, 1.05fr) 2.45fr;
+      gap: clamp(10px, 1.8vw, 22px);
+      padding: clamp(16px, 2.2vh, 24px) clamp(12px, 1.6vw, 22px);
+      border-top: 1px solid var(--color-border);
+      transition: background 220ms;
+    }
+    .policy .list.n1 .pol-item { min-height: clamp(220px, 30vh, 320px); }
+    .policy .list.n2 .pol-item { min-height: clamp(150px, 21vh, 220px); }
+    .policy .pol-item:hover { background: color-mix(in srgb, var(--color-border), transparent 50%); }
+    .policy .pol-item .idx { font-family: var(--font-en); color: var(--color-accent);
+                             font-size: clamp(20px, 2.8vh, 30px); font-style: italic;
+                             line-height: 1; padding-top: 2px; }
+    .policy .pol-item .ttl { color: var(--color-text-primary); font-weight: 700;
+                             font-size: clamp(16px, 2.15vh, 21px); line-height: 1.35; }
+    .policy .pol-item .ttl .yr { display: inline-block; margin-left: 6px;
+                                  font-family: var(--font-en); font-weight: 500;
+                                  font-size: 70%; color: var(--color-text-secondary);
+                                  letter-spacing: 0.12em; vertical-align: middle; }
+    .policy .pol-item .body p { margin-bottom: clamp(4px, 0.7vh, 6px);
+                                 font-size: clamp(14px, 1.9vh, 17px); line-height: 1.58; }
+    .policy .pol-item .body .impact {
+      color: var(--color-accent); font-weight: 600; padding-left: 10px;
+      border-left: 2px solid var(--color-accent); }
+    .policy .pol-item .body a { color: var(--color-accent); word-break: break-all;
+                                 font-size: clamp(9px, 1.15vh, 11px); opacity: 0.75;
+                                 font-family: var(--font-en); }
+    .policy .placeholder { color: var(--color-text-secondary); font-style: italic; padding: 24px; }
+  </style>
+  <h2>{{ data.title|e }}</h2>
+  <div class="list n{{ data.policies|length if data.policies else 0 }}">
+  {% if data.policies %}
+    {% for p in data.policies %}
+    <div class="pol-item">
+      <div class="idx">{{ "%02d"|format(loop.index) }}</div>
+      <div class="ttl">
+        {{ p.title|e }}
+        {% if p.publish_year %}<span class="yr">{{ p.publish_year }}</span>{% endif %}
+      </div>
+      <div class="body">
+        {% if p.content %}<p>{{ p.content|e }}</p>{% endif %}
+        {% if p.impact %}<p class="impact">→ {{ p.impact|e }}</p>{% endif %}
+        {% if p.source_url %}<p><a href="{{ p.source_url|e }}">{{ p.source_url|e }}</a></p>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p class="placeholder">[policy content pending]</p>
+  {% endif %}
+  </div>
+  {{ chrome(page, total_pages, section, section_en, project_title) }}
+</section>

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from typing import Optional
 from uuid import UUID
 
@@ -18,6 +19,8 @@ from tool.material_resolver import expand_requirement, find_matching_assets, fin
 
 logger = logging.getLogger(__name__)
 
+_CONCEPT_SLOT_RE = re.compile(r"^(concept-(?:aerial|perspective))-(\d+)$")
+
 
 def _all_blueprint_slots() -> dict[str, PageSlot]:
     mapping: dict[str, PageSlot] = {}
@@ -33,7 +36,24 @@ def _find_slot(slot_id: str) -> Optional[PageSlot]:
     return _all_blueprint_slots().get(normalize_slot_id(slot_id))
 
 
+def _concept_asset_patterns(slot_id: str) -> list[str]:
+    match = _CONCEPT_SLOT_RE.match(slot_id)
+    if not match:
+        return []
+
+    page_kind, index = match.groups()
+    if page_kind == "concept-aerial":
+        return [f"concept.{index}.aerial"]
+    if page_kind == "concept-perspective":
+        return [f"concept.{index}.ext_perspective", f"concept.{index}.int_perspective"]
+    return []
+
+
 def _collect_required_patterns(entry: OutlineSlideEntry) -> list[str]:
+    concept_patterns = _concept_asset_patterns(entry.slot_id)
+    if concept_patterns:
+        return concept_patterns
+
     if entry.required_input_keys:
         patterns: list[str] = []
         for key in entry.required_input_keys:

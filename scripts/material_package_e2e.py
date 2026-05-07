@@ -19,25 +19,28 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock, patch
+from uuid import UUID
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from agent.brief_doc import generate_brief_doc
 from agent.composer import ComposerMode, _default_theme, compose_all_slides, recompose_slide_html
-from agent.concept_render import run_concept_render
+from agent.concept_render import ConceptRenderStrictError, run_concept_render
 from agent.critic import review_slide
 from agent.material_binding import bind_outline_slides
 from agent.outline import generate_outline
 from agent.visual_theme import build_theme_input_from_package, generate_visual_theme, get_latest_theme
 from db.models.asset import Asset
+from db.models.brief_doc import BriefDoc
 from db.models.project import Project, ProjectBrief
 from db.models.slide import Slide
 from db.session import SessionLocal
-from render.engine import render_slide_html, render_slide_html_direct
+from render.engine import render_slide_html, render_slide_html_direct, render_slide_template
 from render.exporter import compile_pdf, screenshot_slide
-from schema.common import ProjectStatus, ReviewDecision, SlideStatus
+from schema.common import ProjectStatus, ReviewDecision, ReviewSeverity, SlideStatus
 from schema.outline import OutlineSlideEntry, OutlineSpec
+from schema.review import ReviewReport
 from schema.visual_theme import LayoutSpec
 from tool.material_pipeline import ingest_local_material_package
 
@@ -70,9 +73,13 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--composer-mode",
-        choices=["structured", "html"],
+        choices=["structured", "html", "template"],
         default="html",
-        help="Composer output mode: 'structured' (v2 LayoutSpec) or 'html' (v3 direct HTML). Default: html.",
+        help=(
+            "Composer output mode: 'structured' (v2 LayoutSpec), "
+            "'html' (v3 direct HTML), or 'template' (v4 Jinja2 templates). "
+            "Default: html."
+        ),
     )
     parser.add_argument(
         "--design-review",
@@ -83,6 +90,14 @@ def _parse_args() -> argparse.Namespace:
         "--skip-concept-render",
         action="store_true",
         help="Skip the concept render step (useful when runninghub is unreachable).",
+    )
+    parser.add_argument(
+        "--allow-concept-placeholders",
+        action="store_true",
+        help=(
+            "Allow concept_render placeholders to pass. By default real-LLM "
+            "template E2E treats concept placeholders as a failure."
+        ),
     )
     return parser.parse_args()
 
@@ -160,12 +175,78 @@ def _write_design_summary(path: Path, advices: list[dict]) -> None:
     _write_text(path, "\n".join(lines) + "\n")
 
 
+def _audit_template_specs(specs: list[dict[str, Any]]) -> dict[str, Any]:
+    critical: list[dict[str, Any]] = []
+    warnings: list[dict[str, Any]] = []
+    image_grid_refs: dict[tuple[str, ...], list[int]] = {}
+
+    for spec in specs:
+        slide_no = int(spec.get("slide_no") or 0)
+        mode = spec.get("mode")
+        data = spec.get("data") or {}
+        component_type = spec.get("component_type") or data.get("component_type")
+        text_blob = json.dumps(spec, ensure_ascii=False)
+
+        if _contains_prompt_instruction(text_blob):
+            critical.append({
+                "slide_no": slide_no,
+                "code": "prompt_text_leak",
+                "message": f"slide {slide_no:02d} contains task/prompt text in final spec",
+            })
+
+        if mode == "html" and str(spec.get("content_summary") or "").startswith("Fallback"):
+            critical.append({
+                "slide_no": slide_no,
+                "code": "html_fallback",
+                "message": f"slide {slide_no:02d} fell back to generic HTML",
+            })
+
+        if component_type == "concept_scheme" and not data.get("image"):
+            critical.append({
+                "slide_no": slide_no,
+                "code": "concept_image_missing",
+                "message": f"slide {slide_no:02d} concept_scheme has no image",
+            })
+
+        refs = tuple(spec.get("asset_refs") or [])
+        if component_type == "image_grid" and refs:
+            image_grid_refs.setdefault(refs, []).append(slide_no)
+
+    for refs, pages in image_grid_refs.items():
+        if len(pages) > 1:
+            critical.append({
+                "slide_no": pages[0],
+                "code": "repeated_image_grid_assets",
+                "message": f"image_grid slides {pages} reuse the same asset set",
+                "asset_refs": list(refs),
+            })
+
+    return {"critical_issues": critical, "warnings": warnings}
+
+
+def _contains_prompt_instruction(text: str) -> bool:
+    lowered = (text or "").lower()
+    markers = (
+        "[material package e2e",
+        "调用 nanobanana",
+        "nanobanana",
+        "联网搜索",
+        "生成封面",
+        "生成目录",
+        "请为该页面",
+        "分析设计建议书大纲",
+        "提供政策来源",
+    )
+    return any(marker in lowered for marker in markers)
+
+
 def _mock_llm_stack() -> ExitStack:
     stack = ExitStack()
     mocked_error = RuntimeError("mock llm enabled for e2e validation")
     stack.enter_context(patch("agent.brief_doc.call_llm_with_limit", new=AsyncMock(side_effect=mocked_error)))
     stack.enter_context(patch("agent.outline.call_llm_with_limit", new=AsyncMock(side_effect=mocked_error)))
     stack.enter_context(patch("agent.composer.call_llm_with_limit", new=AsyncMock(side_effect=mocked_error)))
+    stack.enter_context(patch("agent.composer_template.call_llm_with_limit", new=AsyncMock(side_effect=mocked_error)))
     stack.enter_context(patch("agent.visual_theme.call_llm_structured", new=AsyncMock(side_effect=mocked_error)))
     stack.enter_context(patch("tool.review.semantic_check.call_llm_with_limit", new=AsyncMock(side_effect=mocked_error)))
     return stack
@@ -236,16 +317,37 @@ def _brief_dict(project_id, db) -> dict[str, Any]:
     )
     if not brief:
         return {}
+    brief_doc = (
+        db.query(BriefDoc)
+        .filter(BriefDoc.project_id == project_id)
+        .order_by(BriefDoc.version.desc())
+        .first()
+    )
     return {
         "building_type": brief.building_type,
         "client_name": brief.client_name,
         "style_preferences": brief.style_preferences or [],
+        "province": brief.province,
+        "city": brief.city,
+        "district": brief.district,
+        "site_address": brief.site_address,
         "gross_floor_area": float(brief.gross_floor_area) if brief.gross_floor_area else None,
+        "site_area": float(brief.site_area) if brief.site_area else None,
         "far": float(brief.far) if brief.far else None,
+        "brief_doc_outline": brief_doc.outline_json if brief_doc else {},
+        "brief_doc_summary": brief_doc.narrative_summary if brief_doc else "",
     }
 
 
-async def _render_and_review(project_id, outline, output_dir: Path, db, *, design_review: bool = False) -> dict[str, Any]:
+async def _render_and_review(
+    project_id,
+    outline,
+    output_dir: Path,
+    db,
+    *,
+    design_review: bool = False,
+    skip_review: bool = False,
+) -> dict[str, Any]:
     MAX_REPAIR_ROUNDS = 2
     slides_dir = _ensure_directory(output_dir / "slides")
     slides = (
@@ -269,6 +371,22 @@ async def _render_and_review(project_id, outline, output_dir: Path, db, *, desig
         e.slide_no: e for e in outline_spec.slides
     }
 
+    plan = None
+    brief_orm = (
+        db.query(ProjectBrief)
+        .filter(ProjectBrief.project_id == project_id)
+        .order_by(ProjectBrief.version.desc())
+        .first()
+    )
+    if brief_orm:
+        try:
+            from agent.slide_plan import build_slide_plan
+
+            section_colors = list(getattr(theme, "section_colors", None) or [])
+            plan = build_slide_plan(outline, brief_orm, section_colors=section_colors)
+        except Exception as exc:
+            LOGGER.warning("failed to build SlidePlan for template render: %s", exc)
+
     # Build theme colors dict for design advisor
     theme_colors = {}
     if hasattr(theme, 'palette'):
@@ -285,10 +403,19 @@ async def _render_and_review(project_id, outline, output_dir: Path, db, *, desig
     rendered_count = 0
     for slide in slides:
         spec_json = slide.spec_json or {}
-        is_html_mode = spec_json.get("html_mode", False)
+        mode = spec_json.get("mode")
+        is_template_mode = mode == "template"
+        is_html_mode = mode == "html" or spec_json.get("html_mode", False)
 
         # ── initial render ──
-        if is_html_mode:
+        if is_template_mode:
+            html = render_slide_template(
+                spec_json=spec_json,
+                theme=theme,
+                plan=plan,
+                assets=assets,
+            )
+        elif is_html_mode:
             html = render_slide_html_direct(
                 body_html=spec_json.get("body_html", ""),
                 theme=theme,
@@ -324,6 +451,18 @@ async def _render_and_review(project_id, outline, output_dir: Path, db, *, desig
         repair_round = 0
         report = None
         while True:
+            if skip_review:
+                report = ReviewReport(
+                    target_type="slide",
+                    target_id=UUID(int=0),
+                    review_layer="mock",
+                    severity=ReviewSeverity.PASS,
+                    issues=[],
+                    final_decision=ReviewDecision.PASS,
+                    repair_plan=[],
+                )
+                break
+
             # Only run design_advisor on the final round
             design_advisor_kwargs = {}
             if design_review and repair_round >= MAX_REPAIR_ROUNDS:
@@ -334,8 +473,8 @@ async def _render_and_review(project_id, outline, output_dir: Path, db, *, desig
                     "theme_colors": theme_colors,
                 }
 
-            if is_html_mode:
-                # HTML 模式：跳过 rule lint（fallback_spec 是假数据，会产生 phantom issues），只用 vision
+            if is_html_mode or is_template_mode:
+                # HTML/template 模式：跳过 rule lint（fallback_spec 是假数据，会产生 phantom issues），只用 vision
                 from schema.visual_theme import SingleColumnLayout, ContentBlock, RegionBinding
                 fallback_spec = LayoutSpec(
                     slide_no=slide.slide_no or 0,
@@ -414,6 +553,10 @@ async def _render_and_review(project_id, outline, output_dir: Path, db, *, desig
                         break
                 else:
                     break  # no entry or no issues, nothing to recompose
+            elif is_template_mode:
+                # Template-mode local repair is not implemented in this brief.
+                # Keep the rendered screenshot and record the review result.
+                break
             else:
                 # v2 structured: spec already updated by review_slide, re-render
                 spec = LayoutSpec.model_validate(slide.spec_json)
@@ -428,7 +571,7 @@ async def _render_and_review(project_id, outline, output_dir: Path, db, *, desig
         # Ensure the final accepted screenshot gets a design score when requested.
         if design_review and report and not report.design_advice:
             _, da_report = await review_slide(
-                spec=fallback_spec if is_html_mode else LayoutSpec.model_validate(slide.spec_json),
+                spec=fallback_spec if (is_html_mode or is_template_mode) else LayoutSpec.model_validate(slide.spec_json),
                 brief=brief,
                 layers=[],
                 screenshot_url=str(png_path.resolve()),
@@ -561,8 +704,14 @@ async def run_validation(args: argparse.Namespace) -> int:
         if args.skip_concept_render:
             summary["steps"].append({"step": "concept_render", "status": "skipped"})
         else:
+            strict_concept_render = bool(args.real_llm and not args.allow_concept_placeholders)
             try:
-                cr_stats = await run_concept_render(project.id, db)
+                cr_stats = await run_concept_render(
+                    project.id,
+                    db,
+                    strict=strict_concept_render,
+                    reuse_existing=True,
+                )
                 db.commit()
                 summary["steps"].append(
                     {
@@ -571,10 +720,37 @@ async def run_validation(args: argparse.Namespace) -> int:
                         "total": cr_stats.total,
                         "generated": cr_stats.generated,
                         "placeholders": cr_stats.placeholders,
+                        "reused": cr_stats.reused,
+                        "strict": strict_concept_render,
                     }
                 )
+                if strict_concept_render and cr_stats.total and cr_stats.placeholders:
+                    raise RuntimeError(
+                        "strict concept render failed: "
+                        f"{cr_stats.placeholders}/{cr_stats.total} placeholders"
+                    )
+            except ConceptRenderStrictError as exc:
+                db.rollback()
+                cr_stats = exc.stats
+                summary["steps"].append(
+                    {
+                        "step": "concept_render",
+                        "status": "failed",
+                        "total": cr_stats.total,
+                        "generated": cr_stats.generated,
+                        "placeholders": cr_stats.placeholders,
+                        "reused": cr_stats.reused,
+                        "strict": strict_concept_render,
+                        "failures": cr_stats.failures or [],
+                        "error": str(exc),
+                    }
+                )
+                raise
             except Exception as exc:
                 db.rollback()
+                if strict_concept_render:
+                    LOGGER.exception("strict concept_render failed")
+                    raise
                 LOGGER.warning("concept_render failed, continuing without images: %s", exc)
                 summary["steps"].append({"step": "concept_render", "status": "failed", "error": str(exc)})
 
@@ -592,16 +768,41 @@ async def run_validation(args: argparse.Namespace) -> int:
         composer_mode = ComposerMode(args.composer_mode)
         slides = await compose_all_slides(project.id, db, mode=composer_mode)
         db.commit()
+        mode_counts: dict[str, int] = {}
+        for slide in slides:
+            mode = (slide.spec_json or {}).get("mode") or "layout_spec"
+            mode_counts[mode] = mode_counts.get(mode, 0) + 1
         summary["steps"].append(
             {
                 "step": "compose_slides",
                 "status": "ok",
                 "slide_count": len(slides),
+                "mode_counts": mode_counts,
             }
         )
         _write_json(output_dir / "slides_spec.json", [slide.spec_json for slide in slides])
+        if composer_mode == ComposerMode.TEMPLATE:
+            quality_report = _audit_template_specs([slide.spec_json for slide in slides])
+            _write_json(output_dir / "template_quality_report.json", quality_report)
+            summary["steps"].append({
+                "step": "template_quality",
+                "status": "ok" if not quality_report["critical_issues"] else "failed",
+                "critical_issue_count": len(quality_report["critical_issues"]),
+            })
+            if quality_report["critical_issues"]:
+                raise RuntimeError(
+                    "template quality gate failed: "
+                    + "; ".join(issue["message"] for issue in quality_report["critical_issues"][:5])
+                )
 
-        render_result = await _render_and_review(project.id, outline, output_dir, db, design_review=args.design_review)
+        render_result = await _render_and_review(
+            project.id,
+            outline,
+            output_dir,
+            db,
+            design_review=args.design_review,
+            skip_review=not args.real_llm,
+        )
         summary["steps"].append(
             {
                 "step": "render_and_review",

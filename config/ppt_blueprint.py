@@ -5,8 +5,10 @@ PPT 生成蓝图 — manus.md 40 页结构的完整代码化定义
 Outline Agent 读取此蓝图，结合 brief_doc 生成 SlotAssignmentList。
 """
 from schema.page_slot import PageSlot, PageSlotGroup, GenerationMethod
+from schema.slide_data import ComponentType
 
 M = GenerationMethod  # 简写
+C = ComponentType  # 简写
 
 PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
 
@@ -26,6 +28,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         generation_methods=[M.NANOBANANA, M.LLM_TEXT],
         layout_hint="full-bleed 或 split 封面，呼应 CoverStyle.layout_mood",
         is_cover=True,
+        template_component=C.COVER,
     ),
 
     PageSlot(
@@ -39,6 +42,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc"],
         generation_methods=[M.NANOBANANA, M.LLM_TEXT],
         layout_hint="split-h：左侧大插画，右侧目录列表",
+        template_component=C.TOC,
     ),
 
     # ══════════════════════════════════════════════════════════
@@ -52,6 +56,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         generation_methods=[M.LLM_TEXT],
         layout_hint="full-bleed，章节编号 + 中英文标题",
         is_chapter_divider=True,
+        template_component=C.TRANSITION,
     ),
 
     PageSlotGroup(
@@ -68,6 +73,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
             required_inputs=["brief_doc", "web_search_policy"],
             generation_methods=[M.LLM_TEXT, M.WEB_SEARCH],
             layout_hint="sidebar 或 single-column：政策条目列表 + 来源链接",
+            template_component=C.POLICY_LIST,
         ),
         repeat_count_min=2,
         repeat_count_max=2,
@@ -86,6 +92,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc"],
         generation_methods=[M.LLM_TEXT, M.CHART],
         layout_hint="split-h 或 hero-strip：大图表 + 文字分析",
+        template_component=C.CHART,
     ),
 
     PageSlot(
@@ -101,6 +108,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc", "web_search_planning"],
         generation_methods=[M.LLM_TEXT, M.WEB_SEARCH, M.CHART],
         layout_hint="sidebar：规划对比表格 + 文字说明 + 链接注释",
+        template_component=C.TABLE,
     ),
 
     PageSlot(
@@ -114,6 +122,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["map_hub_stations", "map_transport_nodes", "map_infra_plan"],
         generation_methods=[M.ASSET_REF],
         layout_hint="triptych：三图并排，下方简要说明条",
+        template_component=C.IMAGE_GRID,
     ),
 
     PageSlot(
@@ -128,6 +137,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc"],
         generation_methods=[M.LLM_TEXT, M.NANOBANANA],
         layout_hint="split-h：左侧文化分析，右侧 Nanobanana 文化插画",
+        template_component=C.CONTENT_BULLETS,
     ),
 
     PageSlotGroup(
@@ -148,6 +158,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
             ],
             generation_methods=[M.ASSET_REF, M.LLM_TEXT],
             layout_hint="grid 2×3 或 3×2：图表卡片 + 底部文字总结",
+            template_component=C.IMAGE_GRID,
         ),
         repeat_count_min=3,
         repeat_count_max=3,
@@ -165,6 +176,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         generation_methods=[M.LLM_TEXT],
         layout_hint="full-bleed 章节页",
         is_chapter_divider=True,
+        template_component=C.TRANSITION,
     ),
 
     PageSlotGroup(
@@ -180,6 +192,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
             required_inputs=["map_site_boundary", "map_transport_nodes", "map_hub_stations"],
             generation_methods=[M.ASSET_REF, M.LLM_TEXT],
             layout_hint="overlay-mosaic：大地图 + 浮动分析标注面板",
+            template_component=C.IMAGE_GRID,
         ),
         repeat_count_min=4,
         repeat_count_max=4,
@@ -198,6 +211,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["poi_data"],
         generation_methods=[M.CHART, M.LLM_TEXT],
         layout_hint="split-h：左 POI 分类图表，右文字分析 + 注意事项",
+        template_component=C.CHART,
     ),
 
     PageSlot(
@@ -211,6 +225,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc", "poi_data"],
         generation_methods=[M.LLM_TEXT, M.CHART],
         layout_hint="sidebar 或 single-column：SWOT 矩阵或分析框",
+        template_component=C.CONTENT_BULLETS,
     ),
 
     # ══════════════════════════════════════════════════════════
@@ -224,6 +239,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         generation_methods=[M.LLM_TEXT],
         layout_hint="full-bleed 章节页",
         is_chapter_divider=True,
+        template_component=C.TRANSITION,
     ),
 
     PageSlot(
@@ -238,6 +254,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["poi_data", "site_coordinate"],
         generation_methods=[M.LLM_TEXT, M.CHART],
         layout_hint="sidebar 或 grid：表格为主，配文字分析",
+        template_component=C.TABLE,
     ),
 
     PageSlot(
@@ -251,6 +268,8 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["web_search_competitors"],
         generation_methods=[M.WEB_SEARCH, M.LLM_TEXT, M.CHART],
         layout_hint="sidebar 或 grid：对比表格为主",
+        # WEB_SEARCH 未实装时回退 html_free；接入后可改为 C.TABLE
+        template_component=None,
     ),
 
     # ══════════════════════════════════════════════════════════
@@ -269,6 +288,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
             required_inputs=["case_thumbnail", "brief_doc", "case_meta"],
             generation_methods=[M.ASSET_REF, M.LLM_TEXT],
             layout_hint="split-h：左案例大图，右分析文字 + 启示条目",
+            template_component=C.CASE_CARD,
         ),
         repeat_count_min=2,
         repeat_count_max=5,
@@ -289,6 +309,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc"],
         generation_methods=[M.LLM_TEXT],
         layout_hint="single-column 或 split-v：大字定位标语 + 下方价值说明",
+        template_component=C.CONTENT_BULLETS,
     ),
 
     # ══════════════════════════════════════════════════════════
@@ -302,6 +323,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         generation_methods=[M.LLM_TEXT],
         layout_hint="full-bleed 章节页",
         is_chapter_divider=True,
+        template_component=C.TRANSITION,
     ),
 
     PageSlot(
@@ -316,6 +338,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc"],
         generation_methods=[M.LLM_TEXT],
         layout_hint="triptych 或 grid：多策略并排，每条含标题 + 说明",
+        template_component=C.CONTENT_BULLETS,
     ),
 
     # ══════════════════════════════════════════════════════════
@@ -335,6 +358,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
             required_inputs=["brief_doc"],
             generation_methods=[M.LLM_TEXT],
             layout_hint="split-h 或 hero-strip：理念大字 + 图",
+            template_component=C.CONTENT_BULLETS,
         ),
         repeat_count_min=3,
         repeat_count_max=3,
@@ -355,6 +379,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
             required_inputs=["brief_doc", "concept_description", "concept_aerial"],
             generation_methods=[M.NANOBANANA],
             layout_hint="full-bleed 或 split-v：大鸟瞰图 + 底部图注条",
+            template_component=C.CONCEPT_SCHEME,
         ),
         repeat_count_min=3,
         repeat_count_max=3,
@@ -380,6 +405,9 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
             ],
             generation_methods=[M.NANOBANANA, M.LLM_TEXT],
             layout_hint="split-h 或 triptych：两张效果图 + 注释文字",
+            # 人视页含 ext+int 两张图；先用 image_grid 稳定接入效果图。
+            # 后续若拆分为 6 页（每页一张），可再改用 C.CONCEPT_SCHEME。
+            template_component=C.IMAGE_GRID,
         ),
         repeat_count_min=3,
         repeat_count_max=3,
@@ -402,6 +430,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc", "project_brief_data"],
         generation_methods=[M.LLM_TEXT, M.CHART],
         layout_hint="triptych 或 grid：三方案对比表格，上方材质样板",
+        template_component=C.TABLE,
     ),
 
     # ══════════════════════════════════════════════════════════
@@ -419,6 +448,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         required_inputs=["brief_doc", "project_brief_data"],
         generation_methods=[M.LLM_TEXT],
         layout_hint="single-column 或 sidebar：正式文档排版",
+        template_component=C.CONTENT_BULLETS,
     ),
 
     # ══════════════════════════════════════════════════════════
@@ -436,6 +466,7 @@ PPT_BLUEPRINT: list[PageSlot | PageSlotGroup] = [
         generation_methods=[M.LLM_TEXT],
         layout_hint="full-bleed 或 centered：与封面风格呼应",
         is_chapter_divider=True,
+        template_component=C.ENDING,
     ),
 ]
 

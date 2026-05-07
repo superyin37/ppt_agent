@@ -29,7 +29,7 @@ owner: superxiaoyin
 | LLM | OpenRouter 代理,统一经 [config/llm.py](../../config/llm.py) |
 | 数据库 | PostgreSQL 16 + pgvector |
 | 渲染 | Jinja2 / LLM 直出 HTML → Playwright 截图 → PDF |
-| 概念图生成 | runninghub ComfyUI 工作流(image-to-image),见 [decisions/ADR-005](decisions/ADR-005-concept-render-via-outline.md) |
+| 概念图生成 | runninghub 标准模型 API(image-to-image),见 [decisions/ADR-005](decisions/ADR-005-concept-render-via-outline.md) |
 
 **当前模型配置**(见 [.env](../../.env)):
 - `LLM_STRONG_MODEL=claude-opus-4-6` — BriefDoc / Outline / Composer

@@ -7,7 +7,6 @@ import httpx
 import pytest
 
 from tool.image_gen.runninghub import (
-    NodeOverride,
     RunningHubClient,
     RunningHubError,
     RunningHubTaskFailed,
@@ -20,7 +19,6 @@ def _client(handler, **kwargs) -> RunningHubClient:
     http = httpx.AsyncClient(transport=transport)
     return RunningHubClient(
         api_key="fake-key",
-        workflow_id="wf-1",
         base_url="https://rh.test",
         poll_interval_seconds=0.0,
         poll_timeout_seconds=1.0,
@@ -29,31 +27,48 @@ def _client(handler, **kwargs) -> RunningHubClient:
     )
 
 
-def _ok(payload: dict | list) -> httpx.Response:
+def _upload_ok(payload: dict) -> httpx.Response:
+    return httpx.Response(200, json={"code": 0, "msg": "ok", "data": payload})
+
+
+def _standard(
+    *,
+    task_id: str = "std-1",
+    status: str = "SUCCESS",
+    results: list[dict] | None = None,
+    error_code: str = "",
+    error_message: str = "",
+) -> httpx.Response:
     return httpx.Response(
         200,
-        json={"code": 0, "msg": "ok", "data": payload},
+        json={
+            "taskId": task_id,
+            "status": status,
+            "errorCode": error_code,
+            "errorMessage": error_message,
+            "results": results,
+            "clientId": "",
+            "promptTips": "",
+        },
     )
 
 
-def test_init_requires_api_key_and_workflow() -> None:
+def test_init_requires_api_key() -> None:
     with pytest.raises(RunningHubError):
-        RunningHubClient(api_key="", workflow_id="wf")
-    with pytest.raises(RunningHubError):
-        RunningHubClient(api_key="k", workflow_id="")
+        RunningHubClient(api_key="")
+    RunningHubClient(api_key="k")
 
 
 @pytest.mark.asyncio
 async def test_upload_image_returns_file_name(tmp_path: Path) -> None:
     img = tmp_path / "ref.png"
     img.write_bytes(b"\x89PNG\r\n\x1a\nfake")
-
     seen: dict = {}
 
     def handler(request: httpx.Request) -> httpx.Response:
         seen["url"] = str(request.url)
         seen["content_type"] = request.headers.get("content-type", "")
-        return _ok({"fileName": "server-xyz.png"})
+        return _upload_ok({"fileName": "server-xyz.png"})
 
     client = _client(handler)
     try:
@@ -68,7 +83,7 @@ async def test_upload_image_returns_file_name(tmp_path: Path) -> None:
 
 @pytest.mark.asyncio
 async def test_upload_image_missing_file_raises(tmp_path: Path) -> None:
-    client = _client(lambda req: _ok({}))
+    client = _client(lambda req: _upload_ok({}))
     try:
         with pytest.raises(RunningHubError):
             await client.upload_image(tmp_path / "nope.png")
@@ -77,139 +92,196 @@ async def test_upload_image_missing_file_raises(tmp_path: Path) -> None:
 
 
 @pytest.mark.asyncio
-async def test_create_task_posts_node_info_list() -> None:
+async def test_create_image_to_image_posts_standard_payload() -> None:
     captured: dict = {}
 
     def handler(request: httpx.Request) -> httpx.Response:
+        captured["url"] = str(request.url)
+        captured["auth"] = request.headers.get("authorization")
         captured["body"] = json.loads(request.content.decode("utf-8"))
-        return _ok({"taskId": "task-42"})
+        return _standard(task_id="std-42", status="QUEUED", results=None)
 
     client = _client(handler)
     try:
-        task_id = await client.create_task(
-            [
-                NodeOverride("6", "text", "positive"),
-                NodeOverride("10", "image", "server.png"),
-            ]
+        task_id, payload = await client.create_image_to_image_task(
+            image_url="https://rh.test/view?filename=api/ref.png&type=input&subfolder=",
+            prompt="make architecture",
+            aspect_ratio="16:9",
+            resolution="1k",
         )
     finally:
         await client.aclose()
 
-    assert task_id == "task-42"
-    assert captured["body"]["apiKey"] == "fake-key"
-    assert captured["body"]["workflowId"] == "wf-1"
-    assert captured["body"]["nodeInfoList"] == [
-        {"nodeId": "6", "fieldName": "text", "fieldValue": "positive"},
-        {"nodeId": "10", "fieldName": "image", "fieldValue": "server.png"},
-    ]
+    assert task_id == "std-42"
+    assert payload["status"] == "QUEUED"
+    assert captured["url"].endswith("/openapi/v2/rhart-image-n-g31-flash/image-to-image")
+    assert captured["auth"] == "Bearer fake-key"
+    assert captured["body"] == {
+        "imageUrls": ["https://rh.test/view?filename=api/ref.png&type=input&subfolder="],
+        "prompt": "make architecture",
+        "aspectRatio": "16:9",
+        "resolution": "1k",
+    }
 
 
 @pytest.mark.asyncio
-async def test_create_task_nonzero_code_raises() -> None:
+async def test_poll_result_succeeds_after_running_status() -> None:
+    calls = 0
+
     def handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(
-            200, json={"code": 901, "msg": "quota exceeded", "data": {}}
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return _standard(task_id="std-1", status="RUNNING", results=None)
+        return _standard(
+            task_id="std-1",
+            status="SUCCESS",
+            results=[{"url": "https://cdn/final.jpg", "outputType": "jpg", "text": None}],
         )
 
     client = _client(handler)
     try:
-        with pytest.raises(RunningHubError):
-            await client.create_task([])
+        payload = await client.poll_result("std-1")
     finally:
         await client.aclose()
 
+    assert payload["status"] == "SUCCESS"
+    assert payload["results"][0]["url"] == "https://cdn/final.jpg"
+
 
 @pytest.mark.asyncio
-async def test_poll_outputs_succeeds_after_running_status() -> None:
-    calls: list[str] = []
+async def test_poll_result_retries_transient_http_errors() -> None:
+    calls = 0
 
     def handler(request: httpx.Request) -> httpx.Response:
-        url = str(request.url)
-        calls.append(url)
-        if url.endswith("/task/openapi/status"):
-            if len([u for u in calls if u.endswith("/status")]) == 1:
-                return _ok({"taskStatus": "RUNNING"})
-            return _ok({"taskStatus": "SUCCEED"})
-        if url.endswith("/task/openapi/outputs"):
-            return _ok([{"fileUrl": "https://cdn/x.png", "fileType": "png"}])
-        raise AssertionError(f"unexpected url {url}")
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return httpx.Response(525, text="")
+        return _standard(
+            task_id="std-1",
+            status="SUCCESS",
+            results=[{"url": "https://cdn/final.jpg", "outputType": "jpg", "text": None}],
+        )
 
     client = _client(handler)
     try:
-        outputs = await client.poll_outputs("task-42")
+        payload = await client.poll_result("std-1")
     finally:
         await client.aclose()
 
-    assert outputs == [{"fileUrl": "https://cdn/x.png", "fileType": "png"}]
-    assert sum(1 for u in calls if u.endswith("/status")) == 2
+    assert calls == 2
+    assert payload["status"] == "SUCCESS"
 
 
 @pytest.mark.asyncio
-async def test_poll_outputs_terminal_failure_raises() -> None:
-    def handler(request: httpx.Request) -> httpx.Response:
-        if str(request.url).endswith("/status"):
-            return _ok({"taskStatus": "FAILED"})
-        raise AssertionError("outputs should not be fetched on failure")
-
-    client = _client(handler)
+async def test_poll_result_terminal_failure_raises() -> None:
+    client = _client(lambda req: _standard(status="FAILED", results=None))
     try:
         with pytest.raises(RunningHubTaskFailed):
-            await client.poll_outputs("task-err")
+            await client.poll_result("std-err")
     finally:
         await client.aclose()
 
 
 @pytest.mark.asyncio
-async def test_poll_outputs_times_out() -> None:
-    def handler(request: httpx.Request) -> httpx.Response:
-        return _ok({"taskStatus": "RUNNING"})
-
-    client = _client(handler)
+async def test_poll_result_times_out() -> None:
+    client = _client(lambda req: _standard(status="RUNNING", results=None))
     try:
         with pytest.raises(RunningHubTimeout):
-            await client.poll_outputs("task-slow")
+            await client.poll_result("std-slow")
     finally:
         await client.aclose()
 
 
 @pytest.mark.asyncio
-async def test_run_workflow_end_to_end(tmp_path: Path) -> None:
-    dest = tmp_path / "out.png"
+async def test_run_image_to_image_end_to_end(tmp_path: Path) -> None:
+    ref = tmp_path / "ref.png"
+    ref.write_bytes(b"\x89PNG\r\n\x1a\nfake")
+    dest = tmp_path / "out.jpg"
 
     def handler(request: httpx.Request) -> httpx.Response:
         url = str(request.url)
-        if url.endswith("/task/openapi/create"):
-            return _ok({"taskId": "task-99"})
-        if url.endswith("/task/openapi/status"):
-            return _ok({"taskStatus": "SUCCEED"})
-        if url.endswith("/task/openapi/outputs"):
-            return _ok([{"fileUrl": "https://cdn/final.png", "fileType": "png"}])
-        if url == "https://cdn/final.png":
-            return httpx.Response(200, content=b"BINARY")
+        if url.endswith("/task/openapi/upload"):
+            return _upload_ok({"fileName": "api/ref.png"})
+        if url.endswith("/openapi/v2/rhart-image-n-g31-flash/image-to-image"):
+            return _standard(task_id="std-99", status="RUNNING", results=None)
+        if url.endswith("/openapi/v2/query"):
+            return _standard(
+                task_id="std-99",
+                status="SUCCESS",
+                results=[{"url": "https://cdn/final.jpg", "outputType": "jpg", "text": None}],
+            )
+        if url == "https://cdn/final.jpg":
+            return httpx.Response(200, content=b"JPEG")
         raise AssertionError(f"unexpected {url}")
 
     client = _client(handler)
     try:
-        result = await client.run_workflow(
-            [NodeOverride("6", "text", "p")], dest
+        result = await client.run_image_to_image(
+            image_path=ref,
+            prompt="make architecture",
+            dest_path=dest,
+            aspect_ratio="16:9",
+            resolution="1k",
         )
     finally:
         await client.aclose()
 
-    assert result.task_id == "task-99"
-    assert result.file_url == "https://cdn/final.png"
-    assert result.local_path == dest
-    assert dest.read_bytes() == b"BINARY"
+    assert result.task_id == "std-99"
+    assert result.file_url == "https://cdn/final.jpg"
+    assert result.file_type == "jpg"
+    assert dest.read_bytes() == b"JPEG"
 
 
 @pytest.mark.asyncio
-async def test_parse_ok_surfaces_http_errors() -> None:
+async def test_standard_api_error_code_raises() -> None:
+    client = _client(
+        lambda req: _standard(error_code="1007", error_message="bad image")
+    )
+    try:
+        with pytest.raises(RunningHubError):
+            await client.create_image_to_image_task(
+                image_url="https://example.test/ref.png",
+                prompt="p",
+            )
+    finally:
+        await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_create_image_to_image_retries_rate_limit() -> None:
+    calls = 0
+
     def handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(502, text="bad gateway")
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return _standard(error_code="1003", error_message="rate limit")
+        return _standard(task_id="std-retry", status="QUEUED", results=None)
 
     client = _client(handler)
     try:
+        task_id, payload = await client.create_image_to_image_task(
+            image_url="https://example.test/ref.png",
+            prompt="p",
+        )
+    finally:
+        await client.aclose()
+
+    assert calls == 2
+    assert task_id == "std-retry"
+    assert payload["status"] == "QUEUED"
+
+
+@pytest.mark.asyncio
+async def test_parse_surfaces_http_errors() -> None:
+    client = _client(lambda req: httpx.Response(502, text="bad gateway"))
+    try:
         with pytest.raises(RunningHubError):
-            await client.create_task([])
+            await client.create_image_to_image_task(
+                image_url="https://example.test/ref.png",
+                prompt="p",
+            )
     finally:
         await client.aclose()

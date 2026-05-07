@@ -1,0 +1,61 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide image-grid" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .image-grid .body { flex: 1; min-height: 0; display: flex; flex-direction: column;
+                        gap: clamp(14px, 1.8vh, 20px);
+                        margin-top: clamp(16px, 2.2vh, 24px); }
+    .image-grid .grid { display: grid; gap: clamp(12px, 1.4vw, 20px);
+                        flex: 1; min-height: 0; }
+    .image-grid .grid.n1 { grid-template-columns: 1fr; }
+    .image-grid .grid.n2 { grid-template-columns: 1fr 1fr; }
+    .image-grid .grid.n3 { grid-template-columns: 1fr 1fr 1fr; }
+    .image-grid .grid.n4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+    .image-grid figure {
+      display: flex; flex-direction: column; overflow: hidden; min-height: 0;
+      background: var(--color-surface);
+      box-shadow: 0 1px 0 var(--color-border), 0 10px 24px rgba(21,25,42,0.06);
+      position: relative;
+    }
+    .image-grid figure::after {
+      content: ""; position: absolute; top: 10px; left: 10px;
+      width: 22px; height: 22px; border-top: 2px solid var(--color-accent); border-left: 2px solid var(--color-accent);
+      pointer-events: none;
+    }
+    .image-grid figure img { flex: 1; width: 100%;
+                             max-width: 100%; max-height: none; min-height: 0;
+                             object-fit: contain; background: #fff; padding: 4px; }
+    .image-grid figcaption {
+      font-size: clamp(12px, 1.55vh, 14px); color: var(--color-text-primary);
+      padding: clamp(9px, 1.25vh, 12px) clamp(12px, 1.4vw, 16px);
+      background: var(--color-surface); border-top: 1px solid var(--color-border);
+      font-family: var(--font-en); letter-spacing: 0.1em;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .image-grid figcaption::before { content: "FIG"; color: var(--color-accent); font-weight: 700; }
+    .image-grid .caption {
+      color: var(--color-text-primary); font-size: clamp(14px, 1.85vh, 17px); line-height: 1.58;
+      max-width: 110ch; padding-left: clamp(12px, 1.4vw, 18px);
+      border-left: 2px solid var(--color-accent);
+      max-height: 16vh; overflow: hidden;
+    }
+    .image-grid .placeholder { color: var(--color-text-secondary); font-style: italic;
+                               padding: 60px; border: 1px dashed var(--color-border);
+                               text-align: center; }
+  </style>
+  <h2>{{ data.title|e }}</h2>
+  <div class="body">
+  {% set imgs = data.images or [] %}
+  {% set n = imgs|length %}
+  <div class="grid {% if n == 1 %}n1{% elif n == 2 %}n2{% elif n == 4 %}n4{% elif n == 3 %}n3{% else %}n3{% endif %}">
+    {% for img in imgs %}
+    <figure>
+      <img src="{{ img.path|embed_image }}" alt="{{ img.caption|e }}">
+      {% if img.caption %}<figcaption>{{ "%02d"|format(loop.index) }} · {{ img.caption|e }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+    {% if not imgs %}<div class="placeholder">[images pending]</div>{% endif %}
+  </div>
+  {% if data.caption %}<p class="caption">{{ data.caption|e }}</p>{% endif %}
+  </div>
+  {{ chrome(page, total_pages, section, section_en, project_title) }}
+</section>

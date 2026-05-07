@@ -1,0 +1,88 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide cover" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .cover { padding: clamp(56px, 8vh, 110px) clamp(56px, 7vw, 120px);
+             background:
+               radial-gradient(1100px 700px at 82% 8%, color-mix(in srgb, var(--color-accent), transparent 70%) 0%, transparent 62%),
+               linear-gradient(155deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg), var(--color-text-primary) 6%) 100%);
+             justify-content: space-between; overflow: hidden; }
+    .cover .mono-year {
+      position: absolute; left: clamp(56px, 7vw, 120px);
+      top: clamp(70px, 10vh, 130px);
+      font-family: var(--font-en); font-size: clamp(120px, 34vh, 420px);
+      line-height: 0.82; color: var(--color-accent); opacity: 0.08;
+      font-weight: 700; letter-spacing: -0.03em; pointer-events: none;
+    }
+    .cover .top-row { display: flex; justify-content: space-between; align-items: flex-start;
+                      position: relative; z-index: 2; }
+    .cover .eyebrow { font-family: var(--font-en); letter-spacing: 0.32em;
+                      color: var(--color-accent); font-size: clamp(11px, 1.4vh, 14px);
+                      border-top: 2px solid var(--color-accent); padding-top: 10px;
+                      width: clamp(220px, 28vw, 360px); }
+    .cover .eyebrow small { display: block; color: var(--color-text-secondary); font-size: 80%;
+                            margin-top: 6px; letter-spacing: 0.15em; }
+    .cover .logo-mark { width: clamp(68px, 9vh, 104px); opacity: 0.9; }
+    .cover .logo-mark img { max-height: none; width: 100%; height: auto; }
+
+    .cover .mid { position: relative; z-index: 2; margin-top: auto; }
+    .cover h1 { color: var(--color-text-primary); max-width: 92vw;
+                font-size: clamp(34px, 6.4vh, 86px); letter-spacing: -0.01em; }
+    .cover .slogan { margin-top: clamp(16px, 2.2vh, 28px); color: var(--color-text-secondary);
+                     font-family: var(--font-en); font-style: italic;
+                     font-size: clamp(16px, 2.4vh, 24px); max-width: 60ch; }
+
+    .cover .bottom { display: flex; justify-content: space-between;
+                     align-items: flex-end; gap: clamp(20px, 3vw, 40px);
+                     padding-top: clamp(16px, 2vh, 24px);
+                     border-top: 1px solid var(--color-border); position: relative; z-index: 2;
+                     margin-top: clamp(24px, 3vh, 40px); }
+    .cover .meta { display: grid; grid-template-columns: repeat(3, minmax(120px, auto));
+                   gap: clamp(14px, 3vw, 40px); }
+    .cover .meta div { display: flex; flex-direction: column; gap: 3px; }
+    .cover .meta .k { font-family: var(--font-en); letter-spacing: 0.2em;
+                      font-size: clamp(9px, 1.1vh, 11px); color: var(--color-text-secondary);
+                      text-transform: uppercase; }
+    .cover .meta .v { color: var(--color-text-primary); font-size: clamp(13px, 1.75vh, 17px);
+                      font-weight: 600; }
+    .cover .signature { color: var(--color-text-secondary); font-family: var(--font-en);
+                        letter-spacing: 0.18em; font-size: clamp(10px, 1.3vh, 12px);
+                        text-align: right; line-height: 1.8; }
+    .cover .signature em { color: var(--color-accent); font-style: normal; font-weight: 600; }
+  </style>
+
+  <div class="mono-year">{{ data.year }}</div>
+
+  <div class="top-row">
+    <div class="eyebrow">
+      {{ data.en|e }}
+      {% if section_en %}<small>{{ section_en|e }} / VOL. 01</small>{% endif %}
+    </div>
+    {% if data.logo %}
+    <div class="logo-mark"><img src="{{ data.logo|embed_image }}" alt="logo"></div>
+    {% endif %}
+  </div>
+
+  <div class="mid">
+    <h1>{{ data.title|e }}</h1>
+    <p class="slogan">{{ data.slogan|e }}</p>
+  </div>
+
+  <div class="bottom">
+    <div class="meta">
+      {% for line in (data.meta_lines or []) %}
+      <div>
+        <span class="k">{{ line.label|e }}</span>
+        <span class="v">{{ line.value|e }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="signature">
+      {%- if data.signature %}
+      <div>{{ data.signature.line1|e }}{% if data.signature.role %} <em>{{ data.signature.role|e }}</em>{% endif %}</div>
+      {%- if data.signature.date %}<div>{{ data.signature.date|e }}</div>{% endif %}
+      {%- endif %}
+    </div>
+  </div>
+
+  {{ chrome(page, total_pages, section, section_en, project_title, show_section=false) }}
+</section>

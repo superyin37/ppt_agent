@@ -1,0 +1,57 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide chart-slide" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .chart-slide .body { display: grid; grid-template-columns: 3fr 2fr;
+                         gap: clamp(20px, 3vw, 44px);
+                         flex: 1; min-height: 0; align-items: stretch;
+                         margin-top: clamp(12px, 1.8vh, 20px); }
+    .chart-slide .chart-wrap { min-height: 0; position: relative;
+                               display: flex; align-items: center; justify-content: center;
+                               padding: clamp(12px, 2vh, 24px); }
+    .chart-slide .chart-wrap::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      width: clamp(20px, 3vw, 30px); height: clamp(20px, 3vw, 30px);
+      border-top: 1px solid var(--color-accent); border-left: 1px solid var(--color-accent);
+    }
+    .chart-slide .chart-wrap::after {
+      content: ""; position: absolute; bottom: 0; right: 0;
+      width: clamp(20px, 3vw, 30px); height: clamp(20px, 3vw, 30px);
+      border-bottom: 1px solid var(--color-accent); border-right: 1px solid var(--color-accent);
+    }
+    .chart-slide .chart-wrap img { width: 100%; height: 100%;
+                                    max-width: 100%; max-height: 100%;
+                                    object-fit: contain; }
+    .chart-slide .notes { display: flex; flex-direction: column;
+                          gap: clamp(10px, 1.8vh, 16px);
+                          justify-content: center; overflow: hidden; }
+    .chart-slide .notes .label { font-family: var(--font-en); letter-spacing: 0.25em;
+                                  color: var(--color-accent); font-size: clamp(10px, 1.2vh, 12px);
+                                  border-top: 1px solid var(--color-accent); padding-top: 6px;
+                                  display: inline-block; width: fit-content;
+                                  margin-bottom: clamp(4px, 0.8vh, 8px); }
+    .chart-slide .notes p { font-size: clamp(13px, 1.8vh, 16px); line-height: 1.6;
+                            padding-left: clamp(12px, 1.4vw, 18px);
+                            border-left: 2px solid var(--color-accent); color: var(--color-text-primary); }
+    .chart-slide .notes p + p { border-left-color: color-mix(in srgb, var(--color-accent), transparent 70%); }
+    .chart-slide .placeholder { color: var(--color-text-secondary); font-style: italic; }
+  </style>
+  <h2>{{ data.title|e }}</h2>
+  <div class="body">
+    <div class="chart-wrap">
+      {% if data.chart_path %}
+        <img src="{{ data.chart_path|embed_image }}" alt="{{ data.title|e }}">
+      {% else %}
+        <div class="placeholder" style="border:1px dashed var(--color-border); padding:80px; text-align:center;">[图表生成失败 / 待补充]</div>
+      {% endif %}
+    </div>
+    <div class="notes">
+      <div class="label">KEY READINGS</div>
+      {% if data.bullets %}
+        {% for b in data.bullets %}<p>{{ b|e }}</p>{% endfor %}
+      {% else %}
+        <p class="placeholder">[analysis pending]</p>
+      {% endif %}
+    </div>
+  </div>
+  {{ chrome(page, total_pages, section, section_en, project_title) }}
+</section>

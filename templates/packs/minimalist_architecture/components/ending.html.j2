@@ -1,0 +1,63 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide ending" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .ending {
+      justify-content: center; align-items: center; text-align: center;
+      background:
+        radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--color-accent), transparent 70%) 0%, transparent 55%),
+        radial-gradient(circle at 80% 75%, color-mix(in srgb, var(--color-accent), transparent 80%) 0%, transparent 60%),
+        var(--color-bg);
+      overflow: hidden;
+    }
+    .ending::before { background: var(--color-accent) !important;
+                      width: clamp(160px, 22vw, 320px) !important; }
+    .ending .wreath {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(1px 1px at 20% 30%, rgba(21,25,42,0.25) 0, transparent 1px) 0 0/24px 24px,
+        radial-gradient(1px 1px at 70% 80%, rgba(21,25,42,0.15) 0, transparent 1px) 0 0/32px 32px;
+      mask-image: radial-gradient(ellipse at 50% 50%, transparent 40%, #000 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 50%, transparent 40%, #000 75%);
+      pointer-events: none;
+    }
+    .ending .content { position: relative; z-index: 2;
+                       display: flex; flex-direction: column; align-items: center;
+                       gap: clamp(10px, 1.6vh, 18px); }
+    .ending .mark { font-family: var(--font-en); font-style: italic;
+                    color: var(--color-accent); font-size: clamp(14px, 1.8vh, 18px);
+                    letter-spacing: 0.35em; margin-bottom: clamp(10px, 1.6vh, 14px);
+                    border-bottom: 1px solid var(--color-accent); padding-bottom: 6px; }
+    .ending h1 { font-size: clamp(52px, 10vh, 128px); letter-spacing: -0.01em;
+                 line-height: 1; color: var(--color-text-primary); }
+    .ending .en { color: var(--color-accent); font-family: var(--font-en);
+                  font-size: clamp(16px, 2.2vh, 22px); letter-spacing: 0.4em;
+                  font-style: normal; font-weight: 500;
+                  margin-top: clamp(8px, 1.2vh, 12px); }
+    .ending .tag { color: var(--color-text-secondary); font-family: var(--font-en);
+                   margin-top: clamp(16px, 2.4vh, 28px); font-style: italic;
+                   font-size: clamp(14px, 1.8vh, 18px); letter-spacing: 0.06em; }
+    .ending .signature {
+      position: absolute; bottom: clamp(80px, 12vh, 130px); left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: clamp(32px, 5vw, 64px); align-items: center;
+      font-family: var(--font-en); color: var(--color-text-secondary);
+      letter-spacing: 0.25em; font-size: clamp(10px, 1.2vh, 12px);
+    }
+    .ending .signature span { position: relative; }
+    .ending .signature span + span::before {
+      content: ""; position: absolute; left: clamp(-20px, -2.5vw, -32px); top: 50%;
+      width: 1px; height: 12px; background: var(--color-text-secondary);
+    }
+  </style>
+  <div class="wreath"></div>
+  <div class="content">
+    <div class="mark">— FIN —</div>
+    <h1>{{ data.title|e }}</h1>
+    <div class="en">{{ data.en|e }}</div>
+    <div class="tag">{{ data.tagline|e }}</div>
+  </div>
+  <div class="signature">
+    {% for s in (data.signature_parts or []) %}<span>{{ s|e }}</span>{% endfor %}
+  </div>
+  {{ chrome(page, total_pages, section, section_en, project_title) }}
+</section>

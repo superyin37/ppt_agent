@@ -1,0 +1,15 @@
+{# Reusable chrome: running-head (top-right), section-tag (bottom-left), page-no (bottom-right). #}
+{% macro chrome(page, total_pages, section=None, section_en='', project_title='', show_section=true, dark=false) -%}
+<div class="running-head"{% if dark %} style="color:rgba(255,255,255,0.7);"{% endif %}>
+  {{ project_title[:18]|e if project_title else 'PROJECT BRIEF' }}
+</div>
+{% if show_section and section_en %}
+<div class="section-tag"{% if dark %} style="color:rgba(255,255,255,0.6);"{% endif %}>
+  §{{ section }} · {{ section_en|e }}
+</div>
+{% endif %}
+<div class="page-no"{% if dark %} style="color:rgba(255,255,255,0.72);"{% endif %}>
+  <span class="big"{% if dark %} style="color:rgba(255,255,255,0.9);"{% endif %}>{{ "%02d"|format(page) }}</span>
+  <span>/ {{ "%02d"|format(total_pages) }}</span>
+</div>
+{%- endmacro %}

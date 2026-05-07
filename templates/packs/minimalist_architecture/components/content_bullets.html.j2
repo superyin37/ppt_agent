@@ -1,0 +1,103 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide content-bullets" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .content-bullets .body {
+      flex: 1; min-height: 0; overflow: hidden;
+      display: flex; flex-direction: column; gap: clamp(16px, 2.2vh, 26px);
+      margin-top: clamp(16px, 2.2vh, 24px);
+    }
+    .content-bullets .grid {
+      display: grid; grid-template-columns: 3fr 2fr;
+      gap: clamp(16px, 2.4vw, 32px); flex: 1; min-height: 0;
+    }
+    .content-bullets .lede {
+      color: var(--color-text-primary); max-width: 84ch;
+      font-size: clamp(17px, 2.35vh, 22px); line-height: 1.55;
+      padding: clamp(14px, 2vh, 22px) clamp(18px, 2.2vw, 28px);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-accent);
+      box-shadow: 0 4px 14px rgba(21,25,42,0.04);
+      font-weight: 500;
+    }
+    .content-bullets ul {
+      flex: 1; min-height: 0; padding-left: 0; list-style: none;
+      display: flex; flex-direction: column;
+    }
+    .content-bullets li {
+      display: grid; grid-template-columns: 3.2em 1fr;
+      gap: clamp(12px, 1.5vw, 20px);
+      padding: clamp(15px, 2.2vh, 24px) 0;
+      border-top: 1px solid var(--color-border);
+      align-items: start;
+    }
+    .content-bullets li:first-child { border-top-color: var(--color-text-primary); }
+    .content-bullets li .n {
+      font-family: var(--font-en); color: var(--color-accent);
+      font-size: clamp(22px, 3.1vh, 34px); line-height: 1;
+      font-style: italic; font-weight: 500; padding-top: 3px;
+    }
+    .content-bullets li .t {
+      font-weight: 700; margin-bottom: 4px;
+      color: var(--color-text-primary); font-size: clamp(17px, 2.25vh, 22px);
+    }
+    .content-bullets li .d {
+      color: var(--color-text-primary); opacity: 0.78;
+      font-size: clamp(15px, 2vh, 18px); line-height: 1.58;
+    }
+    .content-bullets .illust {
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+      background: color-mix(in srgb, var(--color-bg), var(--color-text-primary) 6%);
+    }
+    .content-bullets .illust::before {
+      content: ""; position: absolute; inset: 12px;
+      border: 1px solid var(--color-border);
+    }
+    .content-bullets .illust img {
+      max-height: 82%; max-width: 82%; object-fit: contain; position: relative;
+    }
+    .content-bullets .placeholder { color: var(--color-text-secondary); font-style: italic; padding: 24px; }
+  </style>
+  <h2>{{ data.title|e }}</h2>
+  {% if data.illustration %}
+  <div class="body grid">
+    <div style="display:flex;flex-direction:column;gap:clamp(12px,1.8vh,18px);min-height:0;">
+      {% if data.lede %}<p class="lede">{{ data.lede|e }}</p>{% endif %}
+      {% if data.bullets %}
+      <ul>
+        {% for b in data.bullets %}
+        <li>
+          <span class="n">{{ "%02d"|format(loop.index) }}</span>
+          <div>
+            {% if b.title %}<div class="t">{{ b.title|e }}</div>{% endif %}
+            <div class="d">{{ b.body|e if b.body else b|e }}</div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="illust"><img src="{{ data.illustration|embed_image }}" alt=""></div>
+  </div>
+  {% else %}
+  <div class="body">
+    {% if data.lede %}<p class="lede">{{ data.lede|e }}</p>{% endif %}
+    {% if data.bullets %}
+    <ul>
+      {% for b in data.bullets %}
+      <li>
+        <span class="n">{{ "%02d"|format(loop.index) }}</span>
+        <div>
+          {% if b.title %}<div class="t">{{ b.title|e }}</div>{% endif %}
+          <div class="d">{{ b.body|e if b.body else b|e }}</div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p class="placeholder">[content pending]</p>
+    {% endif %}
+  </div>
+  {% endif %}
+  {{ chrome(page, total_pages, section, section_en, project_title) }}
+</section>

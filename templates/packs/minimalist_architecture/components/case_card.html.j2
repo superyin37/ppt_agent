@@ -1,0 +1,78 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide case-card" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .case-card .wrap { display: grid; grid-template-columns: 5fr 4fr;
+                       gap: clamp(20px, 3vw, 44px);
+                       flex: 1; min-height: 0;
+                       margin-top: clamp(12px, 1.8vh, 20px); }
+    .case-card figure {
+      overflow: hidden; min-height: 0; display: flex;
+      position: relative; background: var(--color-surface);
+      box-shadow: 0 12px 32px rgba(21,25,42,0.10);
+    }
+    .case-card figure::before {
+      content: ""; position: absolute; top: 14px; left: 14px;
+      width: 30px; height: 30px;
+      border-top: 2px solid rgba(255,255,255,0.72);
+      border-left: 2px solid rgba(255,255,255,0.72);
+      z-index: 2; pointer-events: none;
+    }
+    .case-card figure img { width: 100%; height: 100%;
+                            max-width: 100%; max-height: none;
+                            object-fit: cover; display: block; }
+    .case-card .ph { width: 100%; height: 100%;
+                     background: linear-gradient(135deg,
+                       color-mix(in srgb, var(--color-accent), transparent 70%),
+                       var(--color-bg));
+                     display: flex; align-items: center; justify-content: center;
+                     color: var(--color-text-secondary); }
+    .case-card .detail { overflow: hidden; display: flex; flex-direction: column;
+                         gap: clamp(10px, 1.4vh, 14px);
+                         padding-top: clamp(2px, 0.4vh, 6px); }
+    .case-card .meta {
+      font-family: var(--font-en); color: var(--color-accent);
+      letter-spacing: 0.28em; font-size: clamp(10px, 1.3vh, 12px);
+      border-top: 2px solid var(--color-accent); padding-top: 8px;
+      width: fit-content; font-weight: 600;
+    }
+    .case-card .name {
+      color: var(--color-text-primary); font-size: clamp(22px, 3.3vh, 34px);
+      line-height: 1.15; font-weight: 700;
+      margin-bottom: clamp(2px, 0.6vh, 6px); letter-spacing: -0.005em;
+    }
+    .case-card .block {
+      padding-top: clamp(7px, 1.1vh, 10px);
+      border-top: 1px solid var(--color-border);
+    }
+    .case-card .block h3 {
+      color: var(--color-accent); margin-bottom: 3px;
+      font-size: clamp(10px, 1.3vh, 12px); letter-spacing: 0.2em;
+      font-family: var(--font-en); font-weight: 600;
+    }
+    .case-card .block p {
+      font-size: clamp(12px, 1.6vh, 15px); line-height: 1.6;
+      color: var(--color-text-primary);
+    }
+  </style>
+  <h2>{{ data.title|e }}</h2>
+  <div class="wrap">
+    <figure>
+      {% if data.thumbnail %}
+        <img src="{{ data.thumbnail|embed_image }}" alt="{{ data.case_name|e }}">
+      {% else %}
+        <div class="ph">[case image]</div>
+      {% endif %}
+    </figure>
+    <div class="detail">
+      <div class="meta">REFERENCE · {{ "%02d"|format((data.case_idx or 0) + 1) }}</div>
+      <h3 class="name">{{ data.case_name|e if data.case_name else "（待补充）" }}</h3>
+      <div class="block"><h3>SCALE / 规模</h3>
+        <p>{{ data.scale|e if data.scale else "—" }}</p></div>
+      <div class="block"><h3>HIGHLIGHTS / 设计亮点</h3>
+        <p>{{ data.highlights|e if data.highlights else "—" }}</p></div>
+      <div class="block"><h3>INSIGHT / 对本项目启示</h3>
+        <p>{{ data.inspiration|e if data.inspiration else "—" }}</p></div>
+    </div>
+  </div>
+  {{ chrome(page, total_pages, section, section_en, project_title) }}
+</section>

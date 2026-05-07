@@ -1,13 +1,11 @@
-"""RunningHub REST API client — ComfyUI cloud workflow runner.
+"""RunningHub standard model API client.
 
-Endpoints used (see ADR-005 brief):
-- POST {base}/task/openapi/upload       multipart file upload → returns data.fileName
-- POST {base}/task/openapi/create       create workflow task → returns data.taskId
-- POST {base}/task/openapi/outputs      poll task outputs → returns list of {fileUrl, fileType}
-- POST {base}/task/openapi/status       (fallback) poll task status → returns taskStatus string
+This client intentionally uses the direct image-to-image model endpoint:
+- Authorization: Bearer <RUNNING_HUB_KEY>
+- imageUrls + prompt + aspectRatio + resolution
 
-Auth: apiKey is passed in the JSON body / form data, never as an HTTP header.
-Workflow parameter overrides use `nodeInfoList = [{nodeId, fieldName, fieldValue}, ...]`.
+Local files are first uploaded through RunningHub's upload endpoint, then
+converted to a `/view?filename=...` URL for the standard model API.
 """
 from __future__ import annotations
 
@@ -16,6 +14,7 @@ import logging
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional
+from urllib.parse import quote
 
 import httpx
 
@@ -35,20 +34,6 @@ class RunningHubTaskFailed(RunningHubError):
 
 
 @dataclass
-class NodeOverride:
-    node_id: str
-    field_name: str
-    field_value: Any
-
-    def to_payload(self) -> dict:
-        return {
-            "nodeId": self.node_id,
-            "fieldName": self.field_name,
-            "fieldValue": self.field_value,
-        }
-
-
-@dataclass
 class RunningHubResult:
     task_id: str
     file_url: str
@@ -59,27 +44,30 @@ class RunningHubResult:
 _USER_AGENT = "PPT-Agent-RunningHub-Client/1.0"
 _TERMINAL_SUCCESS = {"SUCCEED", "SUCCESS", "SUCCEEDED"}
 _TERMINAL_FAILURE = {"FAILED", "ERROR", "CANCELLED", "CANCELED"}
+_RETRYABLE_HTTP_STATUS = {408, 425, 429, 500, 502, 503, 504, 520, 521, 522, 523, 524, 525}
+_RETRYABLE_ERROR_CODES = {"1003"}
+_DEFAULT_RETRY_ATTEMPTS = 3
 
 
 class RunningHubClient:
-    """Thin async client wrapping the runninghub standard API."""
+    """Async client for RunningHub's standard image-to-image model API."""
 
     def __init__(
         self,
         api_key: str,
-        workflow_id: str,
         base_url: str = "https://www.runninghub.cn",
+        model_path: str = "/openapi/v2/rhart-image-n-g31-flash/image-to-image",
+        query_path: str = "/openapi/v2/query",
         poll_interval_seconds: float = 3.0,
         poll_timeout_seconds: float = 180.0,
         http_client: Optional[httpx.AsyncClient] = None,
     ) -> None:
         if not api_key:
             raise RunningHubError("runninghub api_key is empty")
-        if not workflow_id:
-            raise RunningHubError("runninghub workflow_id is empty")
         self.api_key = api_key
-        self.workflow_id = workflow_id
         self.base_url = base_url.rstrip("/")
+        self.model_path = _normalize_path(model_path)
+        self.query_path = _normalize_path(query_path)
         self.poll_interval = poll_interval_seconds
         self.poll_timeout = poll_timeout_seconds
         self._external_client = http_client is not None
@@ -99,7 +87,7 @@ class RunningHubClient:
             await self._client.aclose()
 
     async def upload_image(self, image_path: Path) -> str:
-        """Upload a local image, return the server-side fileName."""
+        """Upload a local image and return the server-side fileName."""
         image_path = Path(image_path)
         if not image_path.exists():
             raise RunningHubError(f"image not found: {image_path}")
@@ -114,7 +102,7 @@ class RunningHubClient:
         }
         data = {"apiKey": self.api_key, "fileType": "image"}
         response = await self._client.post(url, data=data, files=files)
-        payload = self._parse_ok(response, context="upload_image")
+        payload = self._parse_upload_response(response, context="upload_image")
         file_name = payload.get("fileName") or payload.get("fileUrl")
         if not file_name:
             raise RunningHubError(
@@ -122,64 +110,122 @@ class RunningHubClient:
             )
         return file_name
 
-    async def create_task(
+    async def run_image_to_image(
         self,
-        node_overrides: list[NodeOverride],
         *,
-        instance_type: Optional[str] = None,
-    ) -> str:
-        """Create a workflow task, return the runninghub taskId."""
-        url = f"{self.base_url}/task/openapi/create"
-        body: dict[str, Any] = {
-            "apiKey": self.api_key,
-            "workflowId": self.workflow_id,
-            "nodeInfoList": [override.to_payload() for override in node_overrides],
-        }
-        if instance_type:
-            body["instanceType"] = instance_type
-        response = await self._client.post(url, json=body)
-        payload = self._parse_ok(response, context="create_task")
+        image_path: Path,
+        prompt: str,
+        dest_path: Path,
+        aspect_ratio: str = "16:9",
+        resolution: str = "1k",
+    ) -> RunningHubResult:
+        file_name = await self.upload_image(image_path)
+        image_url = self.uploaded_file_to_view_url(file_name)
+        task_id, initial = await self.create_image_to_image_task(
+            image_url=image_url,
+            prompt=prompt,
+            aspect_ratio=aspect_ratio,
+            resolution=resolution,
+        )
+        final = (
+            initial
+            if (initial.get("status") or "").upper() in _TERMINAL_SUCCESS
+            else await self.poll_result(task_id)
+        )
+        results = final.get("results") or []
+        image_output = next((r for r in results if r.get("url")), None)
+        if not image_output:
+            raise RunningHubError(f"runninghub task returned no image url: {final!r}")
+        file_url = image_output["url"]
+        local_path = await self.download(file_url, dest_path)
+        return RunningHubResult(
+            task_id=task_id,
+            file_url=file_url,
+            file_type=image_output.get("outputType", "image"),
+            local_path=local_path,
+        )
+
+    async def create_image_to_image_task(
+        self,
+        *,
+        image_url: str,
+        prompt: str,
+        aspect_ratio: str = "16:9",
+        resolution: str = "1k",
+    ) -> tuple[str, dict[str, Any]]:
+        url = f"{self.base_url}{self.model_path}"
+        payload: dict[str, Any] | None = None
+        for attempt in range(_DEFAULT_RETRY_ATTEMPTS):
+            try:
+                response = await self._client.post(
+                    url,
+                    json={
+                        "imageUrls": [image_url],
+                        "prompt": prompt,
+                        "aspectRatio": aspect_ratio,
+                        "resolution": resolution,
+                    },
+                    headers=self._bearer_headers(),
+                )
+                payload = self._parse_standard_response(response, context="image_to_image")
+                break
+            except Exception as exc:
+                if not self._should_retry(exc) or attempt >= _DEFAULT_RETRY_ATTEMPTS - 1:
+                    raise
+                logger.warning(
+                    "runninghub image_to_image transient failure, retrying "
+                    "(attempt %d/%d): %s",
+                    attempt + 1,
+                    _DEFAULT_RETRY_ATTEMPTS,
+                    exc,
+                )
+                await self._sleep_before_retry(attempt)
+
+        if payload is None:
+            raise RunningHubError("runninghub image_to_image returned no payload")
         task_id = payload.get("taskId")
         if not task_id:
-            raise RunningHubError(f"runninghub create_task returned no taskId: {payload!r}")
-        return str(task_id)
+            raise RunningHubError(f"runninghub task returned no taskId: {payload!r}")
+        return str(task_id), payload
 
-    async def poll_outputs(self, task_id: str) -> list[dict]:
-        """Poll the task until it has outputs or fails. Returns list of {fileUrl, fileType, ...}."""
+    async def poll_result(self, task_id: str) -> dict[str, Any]:
         deadline = asyncio.get_event_loop().time() + self.poll_timeout
-        status_url = f"{self.base_url}/task/openapi/status"
-        outputs_url = f"{self.base_url}/task/openapi/outputs"
-        body = {"apiKey": self.api_key, "taskId": task_id}
-
+        url = f"{self.base_url}{self.query_path}"
         last_status = "UNKNOWN"
         while True:
-            response = await self._client.post(status_url, json=body)
-            payload = self._parse_ok(response, context="poll_status", allow_list=True)
-            status = _extract_status(payload) or last_status
+            try:
+                response = await self._client.post(
+                    url,
+                    json={"taskId": task_id},
+                    headers=self._bearer_headers(),
+                )
+                payload = self._parse_standard_response(response, context="query")
+            except Exception as exc:
+                if not self._should_retry(exc) or asyncio.get_event_loop().time() >= deadline:
+                    raise
+                logger.warning(
+                    "runninghub query transient failure for task %s, retrying: %s",
+                    task_id,
+                    exc,
+                )
+                await self._sleep_before_retry(0)
+                continue
+
+            status = (payload.get("status") or last_status).upper()
             last_status = status
             logger.debug("runninghub task %s status=%s", task_id, status)
 
-            if status.upper() in _TERMINAL_FAILURE:
+            if status in _TERMINAL_FAILURE:
                 raise RunningHubTaskFailed(
-                    f"runninghub task {task_id} terminal status={status}"
+                    f"runninghub task {task_id} terminal status={status}: "
+                    f"{payload.get('errorMessage') or payload.get('failedReason')}"
                 )
-
-            if status.upper() in _TERMINAL_SUCCESS:
-                outputs_resp = await self._client.post(outputs_url, json=body)
-                outputs_payload = self._parse_ok(
-                    outputs_resp, context="get_outputs", allow_list=True
-                )
-                outputs = _normalize_outputs(outputs_payload)
-                if not outputs:
-                    raise RunningHubError(
-                        f"runninghub task {task_id} succeeded but returned no outputs"
-                    )
-                return outputs
-
+            if status in _TERMINAL_SUCCESS:
+                return payload
             if asyncio.get_event_loop().time() >= deadline:
                 raise RunningHubTimeout(
-                    f"runninghub task {task_id} not finished within {self.poll_timeout}s "
-                    f"(last status={last_status})"
+                    f"runninghub task {task_id} not finished within "
+                    f"{self.poll_timeout}s (last status={last_status})"
                 )
             await asyncio.sleep(self.poll_interval)
 
@@ -193,38 +239,18 @@ class RunningHubClient:
                     fh.write(chunk)
         return dest
 
-    async def run_workflow(
-        self,
-        node_overrides: list[NodeOverride],
-        dest_path: Path,
-        *,
-        instance_type: Optional[str] = None,
-    ) -> RunningHubResult:
-        """End-to-end: create → poll → download first image output."""
-        task_id = await self.create_task(node_overrides, instance_type=instance_type)
-        outputs = await self.poll_outputs(task_id)
-        image_output = next(
-            (o for o in outputs if (o.get("fileType") or "").lower() in {"png", "jpg", "jpeg", "webp", "image"}),
-            outputs[0],
-        )
-        file_url = image_output.get("fileUrl")
-        if not file_url:
-            raise RunningHubError(f"runninghub output missing fileUrl: {image_output!r}")
-        local_path = await self.download(file_url, dest_path)
-        return RunningHubResult(
-            task_id=task_id,
-            file_url=file_url,
-            file_type=image_output.get("fileType", "png"),
-            local_path=local_path,
+    def uploaded_file_to_view_url(self, file_name: str) -> str:
+        return (
+            f"{self.base_url}/view?filename={quote(file_name, safe='/')}"
+            "&type=input&subfolder="
         )
 
-    def _parse_ok(
+    def _parse_upload_response(
         self,
         response: httpx.Response,
         *,
         context: str,
-        allow_list: bool = False,
-    ) -> Any:
+    ) -> dict[str, Any]:
         if response.status_code >= 400:
             raise RunningHubError(
                 f"runninghub {context} HTTP {response.status_code}: {response.text[:300]}"
@@ -243,37 +269,53 @@ class RunningHubClient:
                 f"runninghub {context} code={code} msg={payload.get('msg')}"
             )
         data = payload.get("data")
-        if data is None:
-            raise RunningHubError(f"runninghub {context} missing data field: {payload!r}")
-        if isinstance(data, list):
-            if allow_list:
-                return data
+        if not isinstance(data, dict):
+            raise RunningHubError(f"runninghub {context} missing data object: {payload!r}")
+        return data
+
+    def _parse_standard_response(
+        self,
+        response: httpx.Response,
+        *,
+        context: str,
+    ) -> dict[str, Any]:
+        if response.status_code >= 400:
             raise RunningHubError(
-                f"runninghub {context} got list, expected dict: {data!r}"
+                f"runninghub {context} HTTP {response.status_code}: {response.text[:300]}"
             )
-        return data
+        try:
+            payload = response.json()
+        except ValueError as exc:
+            raise RunningHubError(
+                f"runninghub {context} non-JSON response: {response.text[:300]}"
+            ) from exc
+        if not isinstance(payload, dict):
+            raise RunningHubError(f"runninghub {context} unexpected payload: {payload!r}")
+        error_code = payload.get("errorCode")
+        if error_code:
+            raise RunningHubError(
+                f"runninghub {context} errorCode={error_code} "
+                f"errorMessage={payload.get('errorMessage')}"
+            )
+        return payload
 
+    def _bearer_headers(self) -> dict[str, str]:
+        return {"Authorization": f"Bearer {self.api_key}"}
 
-def _extract_status(data: Any) -> Optional[str]:
-    if isinstance(data, dict):
-        return data.get("taskStatus") or data.get("status")
-    if isinstance(data, str):
-        return data
-    if isinstance(data, list) and data:
-        return "SUCCEED"
-    return None
+    def _should_retry(self, exc: Exception) -> bool:
+        if isinstance(exc, (httpx.TimeoutException, httpx.TransportError)):
+            return True
+        if not isinstance(exc, RunningHubError):
+            return False
+        message = str(exc)
+        if any(f"HTTP {status}" in message for status in _RETRYABLE_HTTP_STATUS):
+            return True
+        return any(f"errorCode={code}" in message for code in _RETRYABLE_ERROR_CODES)
 
-
-def _normalize_outputs(data: Any) -> list[dict]:
-    if isinstance(data, list):
-        return [o for o in data if isinstance(o, dict)]
-    if isinstance(data, dict):
-        if "fileUrl" in data:
-            return [data]
-        outputs = data.get("outputs") or data.get("data")
-        if isinstance(outputs, list):
-            return [o for o in outputs if isinstance(o, dict)]
-    return []
+    async def _sleep_before_retry(self, attempt: int) -> None:
+        delay = min(max(self.poll_interval, 0.0) * (attempt + 1), 10.0)
+        if delay > 0:
+            await asyncio.sleep(delay)
 
 
 def _guess_mime(path: Path) -> str:
@@ -285,3 +327,9 @@ def _guess_mime(path: Path) -> str:
         ".webp": "image/webp",
         ".gif": "image/gif",
     }.get(ext, "application/octet-stream")
+
+
+def _normalize_path(path: str) -> str:
+    if not path:
+        return ""
+    return path if path.startswith("/") else f"/{path}"

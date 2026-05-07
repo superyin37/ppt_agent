@@ -67,13 +67,11 @@ class Settings(BaseSettings):
     concept_render_enabled: bool = True
     running_hub_key: str = ""
     running_hub_base_url: str = "https://www.runninghub.cn"
-    running_hub_workflow_id: str = ""
-    running_hub_prompt_node_id: str = "6"
-    running_hub_negative_prompt_node_id: str = "7"
-    running_hub_init_image_node_id: str = "10"
-    running_hub_seed_node_id: str = ""
+    running_hub_model_path: str = "/openapi/v2/rhart-image-n-g31-flash/image-to-image"
+    running_hub_query_path: str = "/openapi/v2/query"
     running_hub_poll_interval_seconds: float = 3.0
-    running_hub_poll_timeout_seconds: float = 180.0
+    running_hub_poll_timeout_seconds: float = 360.0
+    running_hub_generation_retries: int = 2
     running_hub_asset_dir: str = "D:/tmp/assets"
 
 

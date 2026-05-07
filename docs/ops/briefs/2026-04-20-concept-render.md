@@ -20,7 +20,7 @@ assignee: Claude Code (Opus 4.7)
 
 - 蓝图 [config/ppt_blueprint.py:321-382](../../../config/ppt_blueprint.py#L321-L382) 预留了 9 页概念方案槽位,标注 `generation_methods=[M.NANOBANANA]`,但**从未被消费**(`NANOBANANA` enum 被定义但无 dispatcher,见上轮分析)
 - TODO `[P1-2] 接入 Nanobanana 图像生成`(现改为 runninghub)是蓝图完整度的最后一块硬缺口,接入后蓝图 41 页均可跑出真实内容
-- 使用 runninghub `/rhart-image-n-g31-flash-official/image-to-image` 模型,image-to-image 模式(非 text-to-image)
+- 使用 runninghub `/openapi/v2/rhart-image-n-g31-flash/image-to-image` 标准模型 API,image-to-image 模式(非 text-to-image)
 
 ---
 
@@ -54,7 +54,7 @@ assignee: Claude Code (Opus 4.7)
 - 记录新的 rule code `V008=CONCEPT_IMAGE_MISSING`(P2)由 Critic 视觉层识别
 
 ### 环境
-- `.env` 已有 `RUNNING_HUB_KEY`;新增 `RUNNING_HUB_WORKFLOW_ID`、`RUNNING_HUB_BASE_URL`、`RUNNING_HUB_*_NODE_ID`(全部 `RUNNING_HUB_*` 前缀,保持与既有命名一致)
+- `.env` 已有 `RUNNING_HUB_KEY`;新增 `RUNNING_HUB_BASE_URL`、`RUNNING_HUB_MODEL_PATH`、`RUNNING_HUB_QUERY_PATH`(全部 `RUNNING_HUB_*` 前缀,保持与既有命名一致)
 - 本地跑 E2E 默认**开启** concept_render;通过 `settings.CONCEPT_RENDER_ENABLED=false` 可关闭(smoke test 用)
 
 ---
@@ -158,7 +158,7 @@ NEGATIVE = "cartoon, low quality, blurry, distorted, watermark, text overlay, cr
 
 ```python
 {
-    "workflow_id": "rhart-image-n-g31-flash-official/image-to-image",
+    "model_path": "/openapi/v2/rhart-image-n-g31-flash/image-to-image",
     "prompt": "...",
     "negative_prompt": "...",
     "init_image_url": "<uploaded ref image url or base64>",
@@ -210,7 +210,7 @@ concept.3.int_perspective
 ## 8. Questions / Risks
 
 ### 开工前要对齐
-- **runninghub API 文档** — 我将凭名字 `/rhart-image-n-g31-flash-official/image-to-image` 做合理假设(submit + poll + download 标准异步模式),实际参数名 / 鉴权方式需开发中读官方文档;若 API 与假设偏差大,需调整 `tool/image_gen/runninghub.py`
+- **runninghub API 文档** — 以用户提供的 OpenAPI 为准:提交 `/openapi/v2/rhart-image-n-g31-flash/image-to-image`,查询 `/openapi/v2/query`
 - **image-to-image 是否必须 ref 图** — 若可无 ref 退化 text-to-image,需保留此路径用于方案 2/3 的 aerial(此时无上游图)
 
 ### 已知风险
@@ -238,11 +238,33 @@ concept.3.int_perspective
 - 新 Celery 队列 `concept_render` + `concept_render_tasks.py` ✅
 
 **与 brief 假设偏差/补充**:
-- runninghub 鉴权是 JSON body `apiKey`(不是 HTTP header),且 workflow 参数通过 `nodeInfoList` 覆盖而非扁平字段。凭 ComfyUI_RH_APICall 源码对齐,实际节点 id(`RUNNING_HUB_*_NODE_ID`)做成可配置,不同 workflow 可换
+- RunningHub 实际接入方式已改为标准模型 API:鉴权使用 `Authorization: Bearer <RUNNING_HUB_KEY>`,请求体传 `imageUrls` / `prompt` / `aspectRatio` / `resolution`
 - image-to-image 若没有 ref 图(项目缺 `site.boundary.image`),不退化成 text-to-image,而是直接落降级占位 — 简化逻辑,保证管线不抖
 - 已新增 `CONCEPT_RENDER_ENABLED=false` 开关,smoke / dev 可跳过烧钱
 
 **产出**:见 [CHANGELOG 2026-04-21](../CHANGELOG.md#2026-04-21--concept-render-管线adr-005) 完整清单。决策记录见 [ADR-005](../decisions/ADR-005-concept-render-via-outline.md)。
 
 **遗留**:
-- 真机 workflow_id / api_key 尚未申请;本地只验证 placeholder 降级路径 + 单元 mock,真机一次端到端列入 [TODO P0-2](../TODO.md)
+- 标准模型 API 单图真机 smoke 已通过;9 图 concept_render 端到端验证列入 [TODO P0-2](../TODO.md)
+
+### 2026-05-01 — RunningHub 接入方式修正
+
+用户提供的 RunningHub OpenAPI 文档显示,`rhart-image-n-g31-flash/image-to-image`
+属于标准模型 API:
+
+- 提交接口:`POST /openapi/v2/rhart-image-n-g31-flash/image-to-image`
+- 查询接口:`POST /openapi/v2/query`
+- 鉴权方式:`Authorization: Bearer <RUNNING_HUB_KEY>`
+- 请求参数:`imageUrls` + `prompt` + `aspectRatio` + `resolution`
+
+因此它**不需要**单独发布的图像生成编排 id 或节点覆盖参数。项目代码已完全切到标准模型 API。
+
+已完成一次真实 smoke:
+
+- 先用现有上传接口上传本地参考图,得到 `fileName`
+- 将 `fileName` 转成 `/view?filename=...&type=input&subfolder=` URL
+- 调标准模型 API 提交任务,返回 `taskId=2050116358980915202`
+- 查询任务返回 `SUCCESS`,结果 URL 指向 `.jpg`
+- 已下载生成图到仓库根目录 `runninghub_standard_api_smoke.jpg`
+
+代码已完全切换到标准模型 API,`concept_render` 不再保留其他调用模式。

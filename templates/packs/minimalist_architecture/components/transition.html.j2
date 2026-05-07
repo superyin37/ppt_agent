@@ -1,0 +1,59 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide transition" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .transition { background: var(--color-text-primary); color: var(--color-bg);
+                  justify-content: center; padding: 0;
+                  overflow: hidden; }
+    .transition::before { background: var(--color-accent) !important; height: 3px !important;
+                          width: clamp(120px, 18vw, 260px) !important; }
+    .transition .bg-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 88px 88px;
+      mask-image: radial-gradient(ellipse at 30% 40%, #000 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 40%, transparent 80%);
+      pointer-events: none;
+    }
+    .transition .wrap { position: relative; z-index: 2;
+                        padding: clamp(40px, 7vh, 90px) clamp(56px, 8vw, 140px);
+                        display: grid; grid-template-columns: auto 1fr; align-items: end;
+                        gap: clamp(24px, 4vw, 56px); width: 100%; }
+    .transition .no { font-family: var(--font-en); font-style: italic; font-weight: 600;
+                      font-size: clamp(140px, 30vh, 360px); line-height: 0.82;
+                      color: color-mix(in srgb, var(--color-accent), transparent 70%);
+                      letter-spacing: -0.02em; }
+    .transition .right { padding-bottom: clamp(16px, 3vh, 40px); }
+    .transition .eyebrow { font-family: var(--font-en); letter-spacing: 0.32em;
+                           color: var(--color-accent); font-size: clamp(11px, 1.4vh, 14px);
+                           margin-bottom: clamp(12px, 1.8vh, 20px);
+                           border-top: 2px solid var(--color-accent); padding-top: 8px;
+                           display: inline-block; }
+    .transition h1 { color: var(--color-bg);
+                     font-size: clamp(36px, 6.4vh, 88px); line-height: 1.05; }
+    .transition .sub { color: color-mix(in srgb, var(--color-accent), transparent 70%);
+                       margin-top: clamp(10px, 1.6vh, 16px);
+                       font-family: var(--font-en); font-style: italic;
+                       font-size: clamp(16px, 2.4vh, 22px); max-width: 60ch; }
+    .transition .rail {
+      position: absolute; bottom: clamp(22px, 3vh, 40px);
+      left: clamp(56px, 8vw, 140px); right: clamp(56px, 8vw, 140px); height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
+    }
+    .transition .page-no, .transition .running-head, .transition .section-tag {
+      color: rgba(255,255,255,0.78);
+    }
+    .transition .page-no .big { color: #fff; }
+  </style>
+  <div class="bg-grid"></div>
+  <div class="wrap">
+    <div class="no">{{ data.section_no or "00" }}</div>
+    <div class="right">
+      <div class="eyebrow">CHAPTER · {{ data.section_no or "" }}</div>
+      <h1>{{ data.title|e }}</h1>
+      <div class="sub">{{ data.subtitle_en|e if data.subtitle_en else '' }}{% if data.sub %} · {{ data.sub|e }}{% endif %}</div>
+    </div>
+  </div>
+  <div class="rail"></div>
+  {{ chrome(page, total_pages, section, section_en, project_title, dark=true) }}
+</section>

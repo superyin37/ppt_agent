@@ -1,0 +1,60 @@
+{% from "_chrome.html.j2" import chrome %}
+<section class="slide toc" data-page="{{ page }}" data-section="{{ section }}">
+  <style>
+    .toc .head { margin-bottom: clamp(18px, 2.6vh, 36px); }
+    .toc .head h2 { font-size: clamp(28px, 4.2vh, 52px); padding-bottom: clamp(10px, 1.6vh, 16px); }
+    .toc .head .en { display: block; color: var(--color-text-secondary);
+                     font-size: clamp(11px, 1.4vh, 13px); letter-spacing: 0.3em;
+                     margin-top: 4px; font-style: normal; }
+    .toc .wrap { display: grid; grid-template-columns: 3fr 2fr;
+                 gap: clamp(32px, 5vw, 72px); flex: 1; min-height: 0; }
+    .toc ol { list-style: none; display: flex; flex-direction: column;
+              gap: clamp(10px, 1.8vh, 20px); padding-top: clamp(4px, 0.8vh, 8px); }
+    .toc li { display: grid; grid-template-columns: 3.4em 1fr auto;
+              gap: clamp(14px, 1.6vw, 24px); align-items: baseline;
+              border-top: 1px solid var(--color-border);
+              padding-top: clamp(10px, 1.6vh, 16px);
+              transition: background 220ms; }
+    .toc li:hover { background: color-mix(in srgb, var(--color-border), transparent 50%); }
+    .toc .no { font-family: var(--font-en); font-size: clamp(22px, 3.6vh, 36px);
+               color: var(--color-accent); font-style: italic; line-height: 1; font-weight: 500; }
+    .toc .lbl { font-size: clamp(17px, 2.5vh, 24px); color: var(--color-text-primary); font-weight: 600; }
+    .toc .en-sub { font-family: var(--font-en); font-size: clamp(10px, 1.3vh, 12px);
+                   color: var(--color-text-secondary); letter-spacing: 0.2em; margin-top: 3px; }
+    .toc .page-range { font-family: var(--font-en); color: var(--color-text-secondary);
+                       font-size: clamp(11px, 1.3vh, 13px); letter-spacing: 0.14em; }
+    .toc .illust { display: flex; align-items: center; justify-content: center;
+                   position: relative; overflow: hidden;
+                   background: linear-gradient(135deg,
+                     color-mix(in srgb, var(--color-bg), var(--color-text-primary) 6%),
+                     var(--color-bg)); }
+    .toc .illust::before {
+      content: ""; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent 0 44px,
+                  color-mix(in srgb, var(--color-border), transparent 50%) 44px 45px);
+    }
+    .toc .illust img { max-height: 86%; max-width: 86%; object-fit: contain;
+                       position: relative; z-index: 1; }
+  </style>
+  <div class="head">
+    <h2>{{ data.title|e }}<span class="en">CONTENTS · INDEX</span></h2>
+  </div>
+  <div class="wrap">
+    <ol>
+      {% for entry in data.entries %}
+      <li>
+        <span class="no">{{ entry.no|e }}</span>
+        <div>
+          <div class="lbl">{{ entry.label|e }}</div>
+          <div class="en-sub">{{ entry.en|e }}{% if entry.sub %} · {{ entry.sub|e }}{% endif %}</div>
+        </div>
+        <span class="page-range">{{ entry.page_range|e if entry.page_range else '' }}</span>
+      </li>
+      {% endfor %}
+    </ol>
+    {% if data.illustration %}
+    <div class="illust"><img src="{{ data.illustration|embed_image }}" alt=""></div>
+    {% endif %}
+  </div>
+  {{ chrome(page, total_pages, section, section_en, project_title) }}
+</section>
